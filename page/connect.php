@@ -2,7 +2,7 @@
 $dbhost="localhost";
 $dbuser="root";
 $dbpass="";
-$dbname="qlbh_php";
+$dbname="doanphp";
 $conn=mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 if($conn)
 {

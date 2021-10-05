@@ -1,5 +1,15 @@
 <?php
-include ('../layout/header.php')
+if(!isset($_GET["Masp"]))
+    header("location:product-details-default.php");
+include ('../layout/header.php');
+
+
+?>
+<?php
+include ('connect.php');
+$laysp="SELECT * FROM sanpham WHERE MaSanPham='".$_GET["Masp"]."'";
+$truyvan=mysqli_query($conn,$laysp);
+$cot=mysqli_fetch_array($truyvan);
 ?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
@@ -36,23 +46,24 @@ include ('../layout/header.php')
                     <div class="product-large-image product-large-image-horaizontal swiper-container">
                         <div class="swiper-wrapper">
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/default/home-1/default-1.jpg" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/default/home-1/default-2.jpg" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/default/home-1/default-3.jpg" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/default/home-1/default-4.jpg" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/default/home-1/default-5.jpg" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/default/home-1/default-6.jpg" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
+
                         </div>
                     </div>
                     <!-- End Large Image -->
@@ -77,6 +88,8 @@ include ('../layout/header.php')
                             <div class="product-image-thumb-single swiper-slide">
                                 <img class="img-fluid" src="../images/product/default/home-1/default-6.jpg" alt="">
                             </div>
+
+
                         </div>
                         <!-- Add Arrows -->
                         <div class="gallery-thumb-arrow swiper-button-next"></div>
@@ -89,7 +102,7 @@ include ('../layout/header.php')
                 <div class="product-details-content-area product-details--golden" data-aos="fade-up"  data-aos-delay="200">
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
-                        <h4 class="title">Ornare sed consequat</h4>
+                        <h4 class="title"><?php echo $cot["TenSanPham"]?></h4>
                         <div class="d-flex align-items-center">
                             <ul class="review-star">
                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -100,8 +113,8 @@ include ('../layout/header.php')
                             </ul>
                             <a href="#" class="customer-review ml-2">(customer review )</a>
                         </div>
-                        <div class="price">$80.00</div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+                        <div class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</div>
+                        <p><?php echo $cot["ThongTin"]?></p>
                     </div> <!-- End  Product Details Text Area-->
                     <!-- Start Product Variable Area -->
                     <div class="product-details-variable">

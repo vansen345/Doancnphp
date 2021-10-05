@@ -2,16 +2,38 @@
 include ('../layout/header.php');
 ?>
 <?php
-include ('connect.php');
-$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:4;
-$current_page=!empty($_GET['page'])?$_GET['page']:1;
-$offset=($current_page-1) * $item_per_page;
-$laysp="SELECT * FROM sanpham  ORDER BY MaSanPham ASC LIMIT ".$item_per_page." OFFSET ".$offset;
-$truyvan=mysqli_query($conn,$laysp);
-$total=mysqli_query($conn,"SELECT * FROM sanpham");
-$total= $total->num_rows;
-$totalpage= ceil($total / $item_per_page);
 
+if(isset($_POST['timkiemtensp'])){
+    $search = $_POST["timkiemtensp"];
+
+}
+else{
+    $search=$_GET['timkiemtensp'];
+}
+    if(isset($_GET['page'])){
+        $page=$_GET['page'];
+    }
+    else{
+        $page=1;
+    }
+    $rowperpgae=4;
+    $perrow=$page * $rowperpgae-$rowperpgae;
+
+include ('connect.php');
+$laysp="SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$_POST["timkiemtensp"]."%'  ORDER BY MaSanPham DESC LIMIT $perrow,$rowperpgae ";
+$query = mysqli_query($conn,$laysp);
+    $totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$_POST["timkiemtensp"]."%'"));
+    $totalpage=ceil($totalrow/$rowperpgae);
+$listpage="";
+for($i=1; $i<=$totalpage; $i++) {
+    if ($page == $i) {
+        $listpage .= '<li><a class="active" href="Timkiemsp.php&search='.$_POST["timkiemtensp"].'&page='.$i.'">'.$i.'</a></li>';
+    }
+    else{
+        $listpage .= '<li><a href="Timkiemsp.php&search='.$_POST["timkiemtensp"].'&page='.$i.'">'.$i.'</a></li>';
+
+    }
+}
 ?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
@@ -96,49 +118,49 @@ $totalpage= ceil($total / $item_per_page);
                                     <div class="tab-pane active show sort-layout-single" id="layout-4-grid">
                                         <div class="row">
                                             <?php
-                                            while ($cot=mysqli_fetch_array($truyvan)){
+                                            while ($cot=mysqli_fetch_array($query)){
 
 
 
-                                            ?>
-                                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                                <!-- Start Product Default Single Item -->
-                                                <div class="product-default-single-item product-color--golden" data-aos="fade-up"  data-aos-delay="0">
-                                                    <div class="image-box">
-                                                        <a href="product-details-default.php" class="image-link">
-                                                            <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                                                            <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                                                        </a>
-                                                        <div class="action-link">
-                                                            <div class="action-link-left">
-                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
+                                                ?>
+                                                <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                                    <!-- Start Product Default Single Item -->
+                                                    <div class="product-default-single-item product-color--golden" data-aos="fade-up"  data-aos-delay="0">
+                                                        <div class="image-box">
+                                                            <a href="product-details-default.php" class="image-link">
+                                                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
+                                                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
+                                                            </a>
+                                                            <div class="action-link">
+                                                                <div class="action-link-left">
+                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
+                                                                </div>
+                                                                <div class="action-link-right">
+                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
+                                                                    <a href="wishlist.php"><i class="icon-heart"></i></a>
+                                                                    <a href="compare.php"><i class="icon-shuffle"></i></a>
+                                                                </div>
                                                             </div>
-                                                            <div class="action-link-right">
-                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
-                                                                <a href="wishlist.php"><i class="icon-heart"></i></a>
-                                                                <a href="compare.php"><i class="icon-shuffle"></i></a>
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class="content-left">
+                                                                <h6 class="title"><a href="product-details-default.php"><?php echo $cot["TenSanPham"] ?></a></h6>
+                                                                <ul class="review-star">
+                                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                                                </ul>
                                                             </div>
+                                                            <div class="content-right">
+                                                                <span class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</span>
+                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                    <div class="content">
-                                                        <div class="content-left">
-                                                            <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>"><?php echo $cot["TenSanPham"] ?></a></h6>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="content-right">
-                                                            <span class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</span>
-                                                        </div>
-
-                                                    </div>
+                                                    <!-- End Product Default Single Item -->
                                                 </div>
-                                                <!-- End Product Default Single Item -->
-                                            </div>
                                             <?php } ?>
 
                                         </div>
@@ -290,13 +312,22 @@ $totalpage= ceil($total / $item_per_page);
                 </div> <!-- End Tab Wrapper -->
 
                 <!-- Start Pagination -->
-                <?php
-                include ("phantrang.php");
-                ?>
+                <div class="page-pagination text-center" data-aos="fade-up"  data-aos-delay="0">
+                    <ul>
+                        <?php
+                        echo $listpage;
+                        ?>
+                    </ul>
+                </div> <!-- End Pagination -->
+
             </div> <!-- End Shop Product Sorting Section  -->
         </div>
     </div>
-</div> <!-- ...:::: End Shop Section:::... -->
+</div>
+<!-- ...:::: End Shop Section:::... -->
 <?php
+
 include ('../layout/footer.php')
+
 ?>
+
