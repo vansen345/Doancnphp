@@ -34,6 +34,12 @@
     <!-- <link rel="stylesheet" href="../css/vendor/vendor.min.css">
     <link rel="stylesheet" href="../css/plugins/plugins.min.css">
     <link rel="stylesheet" href="../css/style.min.css">-->
+    <?php
+    session_start();
+    if(isset($_GET["dx"]))
+        unset($_SESSION["tendangnhap"]);
+
+    ?>
 
 </head>
 <body>
@@ -66,42 +72,32 @@
                                             <li><a href="index-4.php">Home 4</a></li>
                                         </ul>-->
                                     </li>
+                                    <li class="has-dropdown">
+                                        <a href="../page/shop-full-width.php">ProDuct</a>
+                                    </li>
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="../page/product-details-default.php">Shop <i class="fa fa-angle-down"></i></a>
+                                        <a href="../page/product-details-default.php">Category <i class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
+                                                <?php
+                                                include ('../page/connect.php');
+                                                $layloaisp="SELECT * FROM loaisp";
+                                                $truyvan=mysqli_query($conn,$layloaisp);
+                                                while ($row=mysqli_fetch_array($truyvan))
+                                                {
+
+
+                                                ?>
                                                 <!-- Mega Menu Sub Link -->
                                                 <li class="mega-menu-item">
-                                                    <a href="../page/shop-full-width.php" class="mega-menu-item-title">Đồ chơi xe máy</a>
+                                                    <a href="../page/danhmucsp.php?loaisp=<?php echo $row["MaLoaiSP"]?>" class="mega-menu-item-title"><?php echo $row["TenLoai"]?></a>
 
                                                 </li>
                                                 <!-- Mega Menu Sub Link -->
-                                                <li class="mega-menu-item">
-                                                    <a href="#" class="mega-menu-item-title">Phụ tùng thay thế</a>
-                                                    <!--<ul class="mega-menu-sub">
-                                                        <li><a href="cart.php">Cart</a></li>
-                                                        <li><a href="empty-cart.php">Cart</a></li>
-                                                        <li><a href="wishlist.php">Wishlist</a></li>
-                                                        <li><a href="compare.php">Compare</a></li>
-                                                        <li><a href="checkout.php">Checkout</a></li>
-                                                        <li><a href="login.php">Login</a></li>
-                                                        <li><a href="my-account.php">My Account</a></li>
-                                                    </ul>-->
-                                                </li>
-                                                <!-- Mega Menu Sub Link -->
-                                                <li class="mega-menu-item">
-                                                    <a href="#" class="mega-menu-item-title">Vỏ, lốp xe máy</a>
-                                                </li>
-                                                <!-- Mega Menu Sub Link -->
-                                                <li class="mega-menu-item">
-                                                    <a href="#" class="mega-menu-item-title">Nhớt xe</a>
-                                                </li>
-                                                <!-- Mega Menu Sub Link -->
-                                                <li class="mega-menu-item">
-                                                    <a href="#" class="mega-menu-item-title">Phụ kiện biker</a>
 
-                                                </li>
+                                                <?php } ?>
+
                                             </ul>
                                             <div class="menu-banner">
                                                 <a href="#" class="menu-banner-link">
@@ -110,6 +106,7 @@
                                             </div>
                                         </div>
                                     </li>
+
                                     <li class="has-dropdown">
                                         <a href="../page/blog-full-width.php">Blog</a>
                                     </li>
@@ -159,11 +156,24 @@
                                     <i class="icon-menu"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="../page/login.php">
-                                    <i class="icon-user"></i>
-                                </a>
-                            </li>
+                            <?php if(!isset($_SESSION["tendangnhap"])){ ?>
+                                <li>
+                                    <a href="../page/login.php">
+                                        <i class="icon-user"></i>
+                                    </a>
+                                </li>
+                            <?php } else { ?>
+                                <li >
+                                   Hello <?php echo $_SESSION["tendangnhap"]?>
+
+                                    <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
+
+
+                                        <i class="icon-logout"></i>
+                                    </a>
+                                </li>
+                            <?php }?>
+
                         </ul>
                         <!-- End Header Action Link -->
                     </div>
