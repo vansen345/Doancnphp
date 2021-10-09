@@ -20,6 +20,7 @@ else{
     $perrow=$page * $rowperpgae-$rowperpgae;
 
 include ('connect.php');
+
 $laysp="SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$_POST["timkiemtensp"]."%'  ORDER BY MaSanPham DESC LIMIT $perrow,$rowperpgae ";
 $query = mysqli_query($conn,$laysp);
     $totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$_POST["timkiemtensp"]."%'"));
