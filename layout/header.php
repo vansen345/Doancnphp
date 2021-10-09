@@ -88,13 +88,13 @@
                                                 {
 
 
-                                                ?>
-                                                <!-- Mega Menu Sub Link -->
-                                                <li class="mega-menu-item">
-                                                    <a href="../page/danhmucsp.php?loaisp=<?php echo $row["MaLoaiSP"]?>" class="mega-menu-item-title"><?php echo $row["TenLoai"]?></a>
+                                                    ?>
+                                                    <!-- Mega Menu Sub Link -->
+                                                    <li class="mega-menu-item">
+                                                        <a href="../page/danhmucsp.php?loaisp=<?php echo $row["MaLoaiSP"]?>" class="mega-menu-item-title"><?php echo $row["TenLoai"]?></a>
 
-                                                </li>
-                                                <!-- Mega Menu Sub Link -->
+                                                    </li>
+                                                    <!-- Mega Menu Sub Link -->
 
                                                 <?php } ?>
 
@@ -164,7 +164,7 @@
                                 </li>
                             <?php } else { ?>
                                 <li >
-                                   Hello <?php echo $_SESSION["tendangnhap"]?>
+                                    Hello <?php echo $_SESSION["tendangnhap"]?>
 
                                     <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
 
