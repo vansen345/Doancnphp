@@ -11,6 +11,6 @@ if($conn)
 else{
     echo "Bạn đã kết nối thất bại".mysqli_connect_error();
 }
-
+//fix lỗi
 ?>
 
