@@ -14,7 +14,7 @@ include ('../layout/header.php')
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="../images/hero-slider/home-3/hero-slider-1.jpg" alt="">
+                    <img src="../images/hero-slider/home-3/banner.png" alt="">
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
@@ -22,9 +22,9 @@ include ('../layout/header.php')
                         <div class="row">
                             <div class="col-auto">
                                 <div class="hero-slider-content">
-                                    <h4 class="subtitle">New collection</h4>
-                                    <h1 class="title">New Series of <br> Degital Watch  </h1>
-                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">shop now </a>
+                                    <h4 class="subtitle">Sản phẩm mới</h4>
+                                    <h1 class="title">Diện mạo mới  </h1>
+                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">Đặt ngay </a>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ include ('../layout/header.php')
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="../images/hero-slider/home-3/hero-slider-2.jpg" alt="">
+                    <img src="../images/hero-slider/home-3/motul2.png" alt="">
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
