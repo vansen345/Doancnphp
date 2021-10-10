@@ -101,7 +101,7 @@
                                             </ul>
                                             <div class="menu-banner">
                                                 <a href="#" class="menu-banner-link">
-                                                    <img class="menu-banner-img" src="../images/banner/menu-banner.jpg" alt="">
+                                                    <img class="menu-banner-img" src="../images/banner/menubanner.png" alt="">
                                                 </a>
                                             </div>
                                         </div>

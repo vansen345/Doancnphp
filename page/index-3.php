@@ -14,18 +14,18 @@ include ('../layout/header.php')
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="../images/hero-slider/home-3/banner.png" alt="">
+                    <img src="../images/hero-slider/home-3/bannerledtun.png" alt="">
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
                     <div class="container">
                         <div class="row">
                             <div class="col-auto">
-                                <div class="hero-slider-content">
-                                    <h4 class="subtitle">Sản phẩm mới</h4>
-                                    <h1 class="title">Diện mạo mới  </h1>
-                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">Đặt ngay </a>
-                                </div>
+<!--                                <div class="hero-slider-content">-->
+<!--                                    <h4 class="subtitle" style="color: #ff365d">Sản phẩm mới</h4>-->
+<!--                                    <h1 class="title" style="color: #ff365d">Diện mạo mới  </h1>-->
+<!--                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">Đặt ngay </a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -42,11 +42,11 @@ include ('../layout/header.php')
                     <div class="container">
                         <div class="row">
                             <div class="col-auto">
-                                <div class="hero-slider-content">
-                                    <h4 class="subtitle">New collection</h4>
-                                    <h1 class="title">Best Of HiFi <br> Loud Speaker</h1>
-                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">shop now </a>
-                                </div>
+<!--                                <div class="hero-slider-content">-->
+<!--                                    <h4 class="subtitle">New collection</h4>-->
+<!--                                    <h1 class="title">Best Of HiFi <br> Loud Speaker</h1>-->
+<!--                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">shop now </a>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ include ('../layout/header.php')
         <a href="../page/product-details-default.php">
             <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="0">
                 <div class="image">
-                    <img class="img-fluid" src="../images/banner/banner-style-7-img-1.jpg" alt="">
+                    <img class="img-fluid" src="../images/banner/ad1.png" alt="">
                 </div>
             </div>
         </a>
@@ -143,7 +143,7 @@ include ('../layout/header.php')
         <a href="../page/product-details-default.php">
             <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="200">
                 <div class="image">
-                    <img class="img-fluid" src="../images/banner/banner-style-7-img-2.jpg" alt="">
+                    <img class="img-fluid" src="../images/banner/ad2.png" alt="">
                 </div>
             </div>
         </a>
@@ -152,7 +152,7 @@ include ('../layout/header.php')
         <a href="../page/product-details-default.php">
             <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="400">
                 <div class="image">
-                    <img class="img-fluid" src="../images/banner/banner-style-7-img-3.jpg" alt="">
+                    <img class="img-fluid" src="../images/banner/ad3.png" alt="">
                 </div>
             </div>
         </a>
@@ -652,7 +652,7 @@ include ('../layout/header.php')
         <a href="../page/product-details-default.php">
             <div class="banner-single-item banner-style-8 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="0">
                 <div class="image">
-                    <img class="img-fluid" src="../images/banner/banner-style-8-img-1.jpg" alt="">
+                    <img class="img-fluid" src="../images/banner/pirelli.png" alt="">
                 </div>
             </div>
         </a>
@@ -661,7 +661,7 @@ include ('../layout/header.php')
         <a href="../page/product-details-default.php">
             <div class="banner-single-item banner-style-8 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="200">
                 <div class="image">
-                    <img class="img-fluid" src="../images/banner/banner-style-8-img-2.jpg" alt="">
+                    <img class="img-fluid" src="../images/banner/thungxe.png" alt="">
                 </div>
             </div>
         </a>
