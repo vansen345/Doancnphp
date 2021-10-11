@@ -164,7 +164,7 @@
                                 </li>
                             <?php } else { ?>
                                 <li >
-                                    Hello <?php echo $_SESSION["tendangnhap"]?>
+                                    Hello-<a href="../page/thongtintk.php" style="margin-right: 18px"> <?php echo $_SESSION["tendangnhap"]?></a>
 
                                     <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
 
