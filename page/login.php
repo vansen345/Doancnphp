@@ -1,7 +1,8 @@
 <?php
-include ('../layout/header.php');
 if(isset($_SESSION["tendangnhap"]))
-    echo "<script>location='index-3.php'</script>";
+    header("location:index-3.php");
+include ('../layout/header.php');
+
 ?>
     <!-- Offcanvas Overlay -->
     <div class="offcanvas-overlay"></div>
@@ -57,7 +58,7 @@ if(isset($_SESSION["tendangnhap"]))
                                     <input type="checkbox" id="offer">
                                     <span>Nhớ tôi</span>
                                 </label>
-                                <a href="#">Quên mật khẩu?</a>
+                                <a href="quenmatkhau.php">Quên mật khẩu?</a>
 
                             </div>
                         </form>

@@ -1,4 +1,5 @@
 <?php
+
 include ('../connect.php');
 $ktmktontai="SELECT * FROM thanhvien WHERE TenDangNhap='".$_POST["tendangnhap"]."' and MatKhau='".$_POST["matkhaucu"]."'";
 $truyvanmktontai=mysqli_query($conn,$ktmktontai);

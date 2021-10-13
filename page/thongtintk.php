@@ -1,7 +1,8 @@
 <?php
 include ('../layout/header.php');
-if(isset($_SESSION["tendangnhap"]))
+if(!isset($_SESSION["tendangnhap"])){
     echo "<script>location='index-3.php'</script>";
+}
 ?>
 <?php
 include ('connect.php');
@@ -71,48 +72,7 @@ $cotthongtin=mysqli_fetch_array($truyvanthongtin);
             <!--login area start-->
 
             <!--register area start-->
-            <div class="col-lg-6 col-md-6">
-                <div class="account_form register" data-aos="fade-up"  data-aos-delay="200">
-                    <a href="#"><h3 >Thông tin tài khoản</h3></a>
-                    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
-                        <div class="default-form-box">
-                            <label>Tên đăng nhập <span style="color: red">(*)</span></label>
-                            <input id="tendangnhap" type="hidden" value="<?php echo $cotthongtin["TenDangNhap"]; ?>">
 
-                            <p style="color: red"><?php echo $cotthongtin["TenDangNhap"]; ?></p>
-                        </div>
-                        <div class="default-form-box">
-                            <label>Họ và tên <span style="color: red">(*)</span></label>
-
-                            <p style="color: red"><?php echo $cotthongtin["Hoten"]; ?></p>
-                        </div>
-                        <div class="default-form-box">
-                            <label>Email <span style="color: red">(*)</span></label>
-
-                            <p style="color: red"><?php echo $cotthongtin["Email"]; ?></p>
-                        </div>
-
-                        <div class="default-form-box">
-                            <label>Mật khẩu <span style="color: red">(*)</span></label>
-
-                            <p style="color: red">*****</p>
-                        </div>
-
-
-                        <div class="default-form-box">
-                            <label>Số điện thoại <span style="color: red">(*)</span></label>
-
-                            <p style="color: red"><?php echo $cotthongtin["Dienthoai"]; ?></p>
-                        </div>
-
-                        <div class="default-form-box">
-                            <label>Địa chỉ <span style="color: red">(*)</span></label>
-                            <p style="color: red"><?php echo $cotthongtin["Diachi"]; ?></p>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
             <!--register area end-->
         </div>
     </div>
