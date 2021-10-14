@@ -53,7 +53,7 @@
                         <!-- Start Header Logo -->
                         <div class="header-logo">
                             <div class="logo">
-                                <a href="../page/index-3.php"><img src="../images/logo/logo_white.png" alt=""></a>
+                                <a href="../page/index-3.php"><img src="../images/logo/logo1.png" alt=""></a>
                             </div>
                         </div>
                         <!-- End Header Logo -->
@@ -101,7 +101,7 @@
                                             </ul>
                                             <div class="menu-banner">
                                                 <a href="#" class="menu-banner-link">
-                                                    <img class="menu-banner-img" src="../images/banner/menu-banner.jpg" alt="">
+                                                    <img class="menu-banner-img" src="../images/banner/menubanner.png" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -195,7 +195,7 @@
                         <li>
                             <a href="../page/index-3.php">
                                 <div class="logo">
-                                    <img src="../images/logo/logo_white.png" alt="">
+                                    <img src="../images/logo/logo1.png" alt="">
                                 </div>
                             </a>
                         </li>
