@@ -135,6 +135,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $dienthoai = $_POST["dienthoai"];
     $email = $_POST["email"];
 
+    
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         echo "<script>$('#thongbaoemail').text('Email không hợp lệ');</script>";
     else{
@@ -146,7 +148,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             $themnguoidung="INSERT INTO thanhvien VALUES ('".$tendangnhap."','".$matkhau."','".$hoten."','".$diachi."','".$dienthoai."','".$email."')";
             $truyvanthemnguoidung=mysqli_query($conn,$themnguoidung);
             if($truyvanthemnguoidung)
-                echo "<script>$('#thongbao').text('Đăng ký thành công');</script>";
+                //echo "<script>$('#thongbao').text('Đăng ký thành công');</script>";
+                echo "<script>alert('Đăng ký thành công')</script>";
 
         }
     }

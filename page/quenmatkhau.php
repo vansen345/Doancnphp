@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         $cot=mysqli_fetch_array($truyvantk);
         if(mail($cot["Email"],"Lấy lại mật khẩu website","Xin Chào ! \nMật khẩu của bạn là:".$cot["MatKhau"],"From:highclubrenew.vansang2000@gmail.com"))
-            echo "<script>alert('Lấy mật khẩu thành công')</script>";
+            echo "<script>alert('Lấy lại mật khẩu thành công')</script>";
         else
             echo "<script>alert('Đã xảy ra lỗi')</script>";
 

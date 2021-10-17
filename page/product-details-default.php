@@ -49,20 +49,12 @@ $cot=mysqli_fetch_array($truyvan);
                                 <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh2"]?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh3"]?>" alt="">
                             </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                            </div>
+
 
                         </div>
                     </div>
@@ -71,13 +63,13 @@ $cot=mysqli_fetch_array($truyvan);
                     <div class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
                         <div class="swiper-wrapper">
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/default/home-1/default-1.jpg" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"] ?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/default/home-1/default-2.jpg" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh2"]?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/default/home-1/default-3.jpg" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh3"]?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
                                 <img class="img-fluid" src="../images/product/default/home-1/default-4.jpg" alt="">
@@ -128,12 +120,12 @@ $cot=mysqli_fetch_array($truyvan);
                             <div class="variable-single-item ">
                                 <span>Quantity</span>
                                 <div class="product-variable-quantity">
-                                    <input min="1" max="100" value="1" type="number">
+                                    <input id="quanlity" min="1" max="100" value="1" type="number">
                                 </div>
                             </div>
 
                             <div class="product-add-to-cart-btn">
-                                <a href="#" class="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
+                                <a  onclick="addCart(<?php echo $cot["MaSanPham"]?>)" class="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
                             </div>
                         </div>
                         <!-- Start  Product Details Meta Area-->

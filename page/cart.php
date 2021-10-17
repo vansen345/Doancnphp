@@ -50,33 +50,37 @@ include ('../layout/header.php')
                                 </tr>
                                 </thead> <!-- End Cart Table Head -->
                                 <tbody>
+
+                                <?php
+                                $number=0;
+                                $total=0;
+                                $tongtien=0;
+                                if(isset($_SESSION["giohang"])){
+                                $giohang=$_SESSION["giohang"];
+                                foreach ($giohang as $key=> $value){
+
+
+                                ?>
+
                                 <!-- Start Cart Single Item-->
                                 <tr>
-                                    <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="../page/product-details-default.php"><img src="../images/product/default/home-1/default-1.jpg" alt=""></a></td>
-                                    <td class="product_name"><a href="../page/product-details-default.php">Handbag fringilla</a></td>
-                                    <td class="product-price">$65.00</td>
-                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                    <td class="product_total">$130.00</td>
-                                </tr> <!-- End Cart Single Item-->
-                                <!-- Start Cart Single Item-->
-                                <tr>
-                                    <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="../page/product-details-default.php"><img src="../images/product/default/home-1/default-2.jpg" alt=""></a></td>
-                                    <td class="product_name"><a href="../page/product-details-default.php">Handbags justo</a></td>
-                                    <td class="product-price">$90.00</td>
-                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                    <td class="product_total">$180.00</td>
-                                </tr> <!-- End Cart Single Item-->
-                                <!-- Start Cart Single Item-->
-                                <tr>
-                                    <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    <td class="product_thumb"><a href="../page/product-details-default.php"><img src="../images/product/default/home-1/default-3.jpg" alt=""></a></td>
-                                    <td class="product_name"><a href="../page/product-details-default.php">Handbag elit</a></td>
-                                    <td class="product-price">$80.00</td>
-                                    <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
-                                    <td class="product_total">$160.00</td>
-                                </tr> <!-- End Cart Single Item-->
+                                    <td class="product_remove"><a href="#" onclick="xoahang(<?php echo $key ?>)"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="product_thumb"><a href="../page/product-details-default.php"><img src="../images/product/hinhanh/<?php echo $value["image"]?>" alt=""></a></td>
+                                    <td class="product_name"><a href="../page/product-details-default.php"><?php echo $value["name"]?></a></td>
+                                    <td class="product-price"><?=number_format($value["price"],0,",",".")?></td>
+                                    <td class="product_quantity"><label>Quantity</label> <input  onclick="update(<?php echo $key; ?>,$(this).val())" value="<?php echo $value["number"] ?>" id="num_<?php echo $key ?>" type="number"></td>
+                                    <td class="product_total"><?php
+                                        $total=$value["number"]*$value["price"];
+                                        $tongtien+=$total;
+                                        echo number_format($total,0,",",".");
+                                        ?></td>
+                                </tr>
+                                <?php }
+
+
+                                }?>
+                                <!-- End Cart Single Item-->
+
                                 </tbody>
                             </table>
                         </div>
@@ -109,7 +113,7 @@ include ('../layout/header.php')
                         <div class="coupon_inner">
                             <div class="cart_subtotal">
                                 <p>Subtotal</p>
-                                <p class="cart_amount">$215.00</p>
+                                <p class="cart_amount"><?php  echo number_format($tongtien,0,",","."); ?></p>
                             </div>
                             <div class="cart_subtotal ">
                                 <p>Shipping</p>

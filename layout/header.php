@@ -36,8 +36,8 @@
     <link rel="stylesheet" href="../css/style.min.css">-->
     <?php
     session_start();
-    if(isset($_GET["dx"]))
-        unset($_SESSION["tendangnhap"]);
+        if(isset($_GET["dx"]))
+            unset($_SESSION["tendangnhap"]);
 
     ?>
 
@@ -140,10 +140,19 @@
                                     <span class="item-count">3</span>
                                 </a>
                             </li>
+                            <?php
+                            $number=0;
+
+                                $giohang=$_SESSION["giohang"];
+                                foreach ($giohang as $value){
+                                    $number +=(int)$value["number"];
+                                }
+
+                            ?>
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="icon-bag"></i>
-                                    <span class="item-count">3</span>
+                                    <span id="numcart" class="item-count"><?php echo $number?></span>
                                 </a>
                             </li>
                             <li>
@@ -164,7 +173,7 @@
                                 </li>
                             <?php } else { ?>
                                 <li >
-                                    Hello-<a href="../page/thongtintk.php" style="margin-right: 18px"> <?php echo $_SESSION["tendangnhap"]?></a>
+                                    Hello-<a href="../page/thongtintk.php" style="margin-right: 18px" > <?php echo $_SESSION["tendangnhap"]?></a>
 
                                     <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
 
@@ -401,19 +410,28 @@
     </div> <!-- End Offcanvas Header -->
 
     <!-- Start  Offcanvas Addcart Wrapper -->
+
+
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
-        <ul class="offcanvas-cart">
+        <?php
+        if(isset($_SESSION["giohang"])){
+            $giohang=$_SESSION["giohang"];
+            foreach ($giohang as $key => $value){
+
+
+                ?>
+        <ul class="offcanvas-cart" >
             <li class="offcanvas-cart-item-single">
                 <div class="offcanvas-cart-item-block">
                     <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../images/product/default/home-3/default-1.jpg" alt="" class="offcanvas-cart-image">
+                        <img src="../images/product/hinhanh/<?php echo $value["image"]?>" alt="" class="offcanvas-cart-image">
                     </a>
                     <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
+                        <a href="#" class="offcanvas-cart-item-link"><?php echo $value["name"]?></a>
                         <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$49.00</span>
+                            <span class="offcanvas-cart-item-details-quantity"><?php echo $value["number"] ?> x </span>
+                            <span class="offcanvas-cart-item-details-price"><?=number_format($value["price"],0,",",".")?></span>
                         </div>
                     </div>
                 </div>
@@ -421,50 +439,27 @@
                     <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
                 </div>
             </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../images/product/default/home-2/default-1.jpg" alt="" class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                            <span class="offcanvas-cart-item-details-price">$500.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../images/product/default/home-3/default-1.jpg" alt="" class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$350.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
+
+
         </ul>
+        <?php } } ?>
+        <?php
+        $total=0;
+        $tongtien=0;
+        $total=$value["number"]*$value["price"];
+        $tongtien+=$total;
+
+        ?>
         <div class="offcanvas-cart-total-price">
             <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-            <span class="offcanvas-cart-total-price-value">$170.00</span>
+            <span class="offcanvas-cart-total-price-value"><?php   echo number_format($tongtien,0,",","."); ?></span>
         </div>
         <ul class="offcanvas-cart-action-button">
             <li><a href="../page/cart.php" class="btn btn-block btn-pink">View Cart</a></li>
             <li><a href="../page/compare.php" class=" btn btn-block btn-pink mt-5">Checkout</a></li>
         </ul>
     </div> <!-- End  Offcanvas Addcart Wrapper -->
+
 
 </div> <!-- End  Offcanvas Addcart Section -->
 
