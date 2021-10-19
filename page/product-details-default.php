@@ -54,6 +54,9 @@ $cot=mysqli_fetch_array($truyvan);
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                 <img src="../images/product/hinhanh/<?php echo $cot["Anh3"]?>" alt="">
                             </div>
+                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
+                                <img src="../images/product/hinhanh/<?php echo $cot["Anh4"]?>" alt="">
+                            </div>
 
 
                         </div>
@@ -72,14 +75,9 @@ $cot=mysqli_fetch_array($truyvan);
                                 <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh3"]?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/default/home-1/default-4.jpg" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh4"]?>" alt="">
                             </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/default/home-1/default-5.jpg" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/default/home-1/default-6.jpg" alt="">
-                            </div>
+
 
 
                         </div>
