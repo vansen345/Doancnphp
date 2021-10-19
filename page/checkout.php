@@ -33,33 +33,8 @@ include ('../layout/header.php')
                 <!-- User Quick Action Form -->
                 <div class="col-12">
                     <div class="user-actions accordion" data-aos="fade-up"  data-aos-delay="0">
-                        <h3>
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Bạn chưa đăng nhập?
-                            <a class="Returning" href="#" data-bs-toggle="collapse" data-bs-target="#checkout_login" aria-expanded="true">Đăng nhập ngay!</a>
-                        </h3>
-                        <div id="checkout_login" class="collapse" data-parent="#checkout_login">
-                            <div class="checkout_info">
-                                <form action="#">
-                                    <div class="form_group default-form-box">
-                                        <label>Email <span style="color: red">(*)</span></label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="form_group default-form-box">
-                                        <label>Mật khẩu <span style="color: red">(*)</span></label>
-                                        <input type="password">
-                                    </div>
-                                    <div class="form_group group_3 default-form-box">
-                                        <button class="btn btn-md btn-black-default-hover" type="submit">Đăng nhập</button>
-                                        <label class="checkbox-default">
-                                            <input type="checkbox">
-                                            <span>Nhớ tôi</span>
-                                        </label>
-                                    </div>
-                                    <a href="#">Quên mật khẩu</a>
-                                </form>
-                            </div>
-                        </div>
+
+
                     </div>
                     <div class="user-actions accordion" data-aos="fade-up"  data-aos-delay="200">
                         <h3>
@@ -95,13 +70,26 @@ include ('../layout/header.php')
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
-                                        <label>Tên <span style="color: red">(*)</span></label>
+                                        <label> Email <span style="color: red">(*)</span></label>
+                                        <input type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="default-form-box">
+                                        <label>Số nhà, đường<span style="color: red">(*)</span></label>
+                                        <input type="text" name="noigiao" id="noigiao">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="default-form-box">
+                                        <label>Số điện thoại <span style="color: red">(*)</span></label>
                                         <input type="text">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="default-form-box">
-                                        <label>Số nhà, đường<span style="color: red">(*)</span></label>
+                                        <label>Ngày đặt<span style="color: red">(*)</span></label>
                                         <input type="text">
                                     </div>
                                 </div>
@@ -150,117 +138,7 @@ include ('../layout/header.php')
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="default-form-box">
-                                        <label>Số điện thoại <span style="color: red">(*)</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="default-form-box">
-                                        <label> Email <span style="color: red">(*)</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="checkbox-default" for="newAccount" data-bs-toggle="collapse" data-bs-target="#newAccountPassword">
-                                        <input type="checkbox" id="newAccount">
-                                        <span>Tạo tài khoản mới?</span>
-                                    </label>
-                                    <div id="newAccountPassword" class="collapse mt-3" data-parent="#newAccountPassword">
-                                        <div class="card-body1 default-form-box">
-                                            <label>Mật khẩu<span style="color: red">(*)</span></label>
-                                            <input placeholder="Mật khẩu" type="password">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="checkbox-default" for="newShipping" data-bs-toggle="collapse" data-bs-target="#anotherShipping">
-                                        <input type="checkbox" id="newShipping">
-                                        <span>Giao hàng đến địa chỉ khác</span>
-                                    </label>
 
-                                    <div id="anotherShipping" class="collapse mt-3" data-parent="#anotherShipping">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="default-form-box">
-                                                    <label>Họ và tên lót <span style="color: red">(*)</span></label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="default-form-box">
-                                                    <label>Tên <span style="color: red">(*)</span></label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="default-form-box">
-                                                    <label>Số nhà, đường </label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="select_form_select default-form-box">
-                                                    <label for="countru_name">Phường/ xã <span style="color: red">(*)</span></label>
-                                                    <select class="niceselect_option wide" name="cuntry" id="countru_name">
-                                                        <option value="2">Bangladesh</option>
-                                                        <option value="3">Algeria</option>
-                                                        <option value="4">Afghanistan</option>
-                                                        <option value="5">Ghana</option>
-                                                        <option value="6">Albania</option>
-                                                        <option value="7">Bahrain</option>
-                                                        <option value="8">Colombia</option>
-                                                        <option value="9">Dominican Republic</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12">
-                                                <div class="select_form_select default-form-box">
-                                                    <label for="countru_name">Quận/ huyện <span style="color: red">(*)</span></label>
-                                                    <select class="niceselect_option wide" name="cuntry" id="countru_name">
-                                                        <option value="2">Bangladesh</option>
-                                                        <option value="3">Algeria</option>
-                                                        <option value="4">Afghanistan</option>
-                                                        <option value="5">Ghana</option>
-                                                        <option value="6">Albania</option>
-                                                        <option value="7">Bahrain</option>
-                                                        <option value="8">Colombia</option>
-                                                        <option value="9">Dominican Republic</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="select_form_select default-form-box">
-                                                    <label for="countru_name">Tỉnh/ thành phố <span style="color: red">(*)</span></label>
-                                                    <select class="niceselect_option wide" name="cuntry" id="countru_name">
-                                                        <option value="2">Bangladesh</option>
-                                                        <option value="3">Algeria</option>
-                                                        <option value="4">Afghanistan</option>
-                                                        <option value="5">Ghana</option>
-                                                        <option value="6">Albania</option>
-                                                        <option value="7">Bahrain</option>
-                                                        <option value="8">Colombia</option>
-                                                        <option value="9">Dominican Republic</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="default-form-box">
-                                                    <label>Số điện thoại <span style="color: red">(*)</span></label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="default-form-box">
-                                                    <label> Email <span style="color: red">(*)</span></label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-12 mt-3">
                                     <div class="order-notes">
                                         <label for="order_note">Ghi chú</label>
@@ -286,18 +164,7 @@ include ('../layout/header.php')
                                             <td> Handbag fringilla <strong> × 2</strong></td>
                                             <td> $165.00</td>
                                         </tr>
-                                        <tr>
-                                            <td> Handbag justo <strong> × 2</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td> Handbag elit <strong> × 2</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td> Handbag Rutrum <strong> × 1</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
+
                                     </tbody>
                                     <tfoot>
                                         <tr>

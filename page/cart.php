@@ -126,7 +126,12 @@ include ('../layout/header.php')
                                 <p class="cart_amount">$215.00</p>
                             </div>
                             <div class="checkout_btn">
-                                <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                <?php if(isset($_SESSION["tendangnhap"])){ ?>
+                                <a href="checkout.php" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                <?php } else{ ?>
+                                <span style="margin-left: 100px" class="text-danger">Bạn cần đăng nhập để đặt hàng</span>
+                                <?php } ?>
+
                             </div>
                         </div>
                     </div>

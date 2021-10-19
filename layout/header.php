@@ -36,8 +36,15 @@
     <link rel="stylesheet" href="../css/style.min.css">-->
     <?php
     session_start();
-        if(isset($_GET["dx"]))
+        if(isset($_GET["dx"])){
             unset($_SESSION["tendangnhap"]);
+            echo "<script>location='index-3.php';</script>";
+
+
+        }
+
+
+
 
     ?>
 
@@ -142,17 +149,23 @@
                             </li>
                             <?php
                             $number=0;
-
+                            if(isset($_SESSION["giohang"])){
                                 $giohang=$_SESSION["giohang"];
-                                foreach ($giohang as $value){
+                                //echo "<prE>";
+                                //print_r($_SESSION["giohang"]);
+
+                                foreach ($giohang as $key => $value){
                                     $number +=(int)$value["number"];
                                 }
 
+                            }
+
                             ?>
+
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="icon-bag"></i>
-                                    <span id="numcart" class="item-count"><?php echo $number?></span>
+                                    <span id="numcart" class="item-count"><?php echo $number ?></span>
                                 </a>
                             </li>
                             <li>
@@ -442,21 +455,16 @@
 
 
         </ul>
-        <?php } } ?>
-        <?php
-        $total=0;
-        $tongtien=0;
-        $total=$value["number"]*$value["price"];
-        $tongtien+=$total;
+        <?php } } else{ ?>
+        <span style="margin-right: 200px" class="text-danger">Giỏ Hàng Trống</span>
+        <?php } ?>
 
-        ?>
-        <div class="offcanvas-cart-total-price">
-            <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-            <span class="offcanvas-cart-total-price-value"><?php   echo number_format($tongtien,0,",","."); ?></span>
-        </div>
+
+
+
         <ul class="offcanvas-cart-action-button">
             <li><a href="../page/cart.php" class="btn btn-block btn-pink">View Cart</a></li>
-            <li><a href="../page/compare.php" class=" btn btn-block btn-pink mt-5">Checkout</a></li>
+
         </ul>
     </div> <!-- End  Offcanvas Addcart Wrapper -->
 

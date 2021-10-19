@@ -43,14 +43,14 @@ $cotthongtin=mysqli_fetch_array($truyvanthongtin);
             <div class="col-lg-6 col-md-6 div_doimatkhau">
                 <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
                     <h3>Đổi mật khẩu</h3>
-
+                    <input id="tendangnhap" name="tendangnhap" type="hidden" >
                         <div class="default-form-box">
                             <label>Mật khẩu cũ <span style="color: red">(*)</span></label>
-                            <input required=""  id="matkhaucu" type="password">
+                            <input required="" name="matkhaucu"  id="matkhaucu" type="password">
                         </div>
                         <div class="default-form-box">
                             <label>Mật khẩu mới <span style="color: red">(*)</span></label>
-                            <input required=""  type="password" id="matkhaumoi">
+                            <input required="" name="matkhaumoi"  type="password" id="matkhaumoi">
                         </div>
                         <div class="default-form-box">
                             <label>Nhập lại mật khẩu <span style="color: red">(*)</span></label>
