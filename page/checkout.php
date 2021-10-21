@@ -93,7 +93,7 @@ include ('../layout/header.php')
                                         <input type="text">
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <!--  <div class="col-12">
                                     <div class="default-form-box">
                                         <label for="country">Phường/ xã <span style="color: red">(*)</span></label>
                                         <select class="country_option nice-select wide" name="country" id="country">
@@ -137,7 +137,7 @@ include ('../layout/header.php')
                                             <option value="9">Dominican Republic</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="col-12 mt-3">
                                     <div class="order-notes">
@@ -152,6 +152,17 @@ include ('../layout/header.php')
                         <form action="#">
                             <h3>Đơn hàng của bạn</h3>
                             <div class="order_table table-responsive">
+                                <?php
+                                if(isset($_SESSION["giohang"])){
+                                $subtotal =0;
+                                $ordertotal =0;
+                                foreach ($_SESSION["giohang"] as $key=>$value){
+                                    $subtotal +=$value["price"]*$value["number"];
+                                    $ordertotal+=$subtotal;
+
+                                }
+
+                                ?>
                                 <table>
                                     <thead>
                                         <tr>
@@ -159,28 +170,33 @@ include ('../layout/header.php')
                                             <th>Tổng cộng</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    foreach ($_SESSION["giohang"] as $key=>$value){
+                                    ?>
+
                                     <tbody>
                                         <tr>
-                                            <td> Handbag fringilla <strong> × 2</strong></td>
-                                            <td> $165.00</td>
+
+                                            <td><?php echo $value["name"] ?> <strong> × <?php echo $value["number"] ?></strong></td>
+                                            <td><?php  echo number_format($subtotal,0,",","."); ?></td>
+
                                         </tr>
 
                                     </tbody>
+                                    <?php }?>
                                     <tfoot>
-                                        <tr>
-                                            <th>Cart Subtotal</th>
-                                            <td>$215.00</td>
-                                        </tr>
                                         <tr>
                                             <th>Shipping</th>
                                             <td><strong>$5.00</strong></td>
                                         </tr>
                                         <tr class="order_total">
                                             <th>Order Total</th>
-                                            <td><strong>$220.00</strong></td>
+                                            <td><strong><?php  echo number_format($ordertotal,0,",","."); ?></strong></td>
                                         </tr>
                                     </tfoot>
+
                                 </table>
+                                <?php } ?>
                             </div>
                             <div class="payment_method">
                                 <div class="panel-default">
