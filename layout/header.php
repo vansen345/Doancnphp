@@ -456,7 +456,7 @@
 
         </ul>
         <?php } } else{ ?>
-        <span style="margin-right: 200px" class="text-danger">Giỏ Hàng Trống</span>
+        <span style="margin-left: 90px;font-size: 25px" class="text-danger">Giỏ Hàng Trống</span>
         <?php } ?>
 
 

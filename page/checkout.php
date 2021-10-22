@@ -55,42 +55,54 @@ include ('../layout/header.php')
                 </div>
                 <!-- User Quick Action Form -->
             </div>
+            <?php
+
+            if(isset($_SESSION["tendangnhap"])) {
+                $laythanhvien = "SELECT * FROM thanhvien WHERE TenDangNhap='" . $_SESSION["tendangnhap"] . "'";
+                $truyvan = mysqli_query($conn, $laythanhvien);
+                $cottv = mysqli_fetch_array($truyvan);
+
+
+
+
+            ?>
+
             <!-- Start User Details Checkout Form -->
             <div class="checkout_form" data-aos="fade-up"  data-aos-delay="400">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <form action="#">
+                        <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                             <h3>Chi tiết đơn hàng</h3>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label>Họ và tên lót <span style="color: red">(*)</span></label>
-                                        <input type="text">
+                                        <input type="text" value="<?php echo $cottv["Hoten"];?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label> Email <span style="color: red">(*)</span></label>
-                                        <input type="text">
+                                        <input type="text" value="<?php echo $cottv["Email"];?>">
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="default-form-box">
                                         <label>Số nhà, đường<span style="color: red">(*)</span></label>
-                                        <input type="text" name="noigiao" id="noigiao">
+                                        <input type="text" name="noigiao" value="<?php echo $cottv["Diachi"];?>" id="noigiao">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label>Số điện thoại <span style="color: red">(*)</span></label>
-                                        <input type="text">
+                                        <input type="text" name="dienthoai" id="dienthoai" value="<?php echo $cottv["Dienthoai"];?>">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="default-form-box">
                                         <label>Ngày đặt<span style="color: red">(*)</span></label>
-                                        <input type="text">
+                                        <input type="text" value="<?php echo date("d/m/Y"); ?>">
                                     </div>
                                 </div>
                                 <!--  <div class="col-12">
@@ -142,8 +154,11 @@ include ('../layout/header.php')
                                 <div class="col-12 mt-3">
                                     <div class="order-notes">
                                         <label for="order_note">Ghi chú</label>
-                                        <textarea id="order_note" placeholder="Hãy ghi chú lại điều bạn mong muốn để chúng tôi phục vụ tốt hơn!"></textarea>
+                                        <textarea id="order_note" name="ghichu" placeholder="Hãy ghi chú lại điều bạn mong muốn để chúng tôi phục vụ tốt hơn!"></textarea>
                                     </div>
+                                </div>
+                                <div class="order_button pt-3">
+                                    <button class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
                                 </div>
                             </div>
                         </form>
@@ -222,9 +237,7 @@ include ('../layout/header.php')
                                         </div>
                                     </div>
                                 </div>
-                                <div class="order_button pt-3">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
-                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -232,6 +245,42 @@ include ('../layout/header.php')
             </div> <!-- Start User Details Checkout Form -->
         </div>
     </div><!-- ...:::: End Checkout Section:::... -->
+<?php }
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    if(isset($_SESSION["giohang"])){
+        $tendangnhap = $_SESSION["tendangnhap"];
+        $trangthai = "0";
+        $noigiao = $_POST["noigiao"];
+        $ngaydat = date("Y-m-d");
+        $dienthoai=$_POST["dienthoai"];
+        $ghichu=$_POST["ghichu"];
+        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."')";
+        if (mysqli_query($conn, $themdondat)) {
+            $madondat = 0;
+            $laydon = "SELECT * FROM dondat ORDER BY MaDonDat";
+            $truyvanlaydondat = mysqli_query($conn, $laydon);
+            while ($cotDD = mysqli_fetch_array($truyvanlaydondat)) {
+                $madondat = $cotDD["MaDonDat"];
+            }
+            foreach ($_SESSION["giohang"] as $key=> $value) {
+                $masp = $value["masp"];
+                $number = $value["number"];
+
+                $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
+                mysqli_query($conn, $themctdd);
+            }
+            unset($_SESSION["giohang"]);
+            echo "<script>alert('Đặt hàng thành công');location='shop-full-width.php';</script>";
+        }
+        else {
+            echo "<script>alert('Đã xảy ra lỗi');</script>";
+        }
+    }
+    else {
+        echo "<script>alert('Giỏ hàng trống');</script>";
+    }
+}
+?>
 <?php
 include ('../layout/footer.php')
 ?>

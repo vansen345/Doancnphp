@@ -75,10 +75,9 @@ include ('../layout/header.php')
                                         echo number_format($total,0,",",".");
                                         ?></td>
                                 </tr>
-                                <?php }
-
-
-                                }?>
+                                <?php } } else{ ?>
+                                    <span style="margin-left: 500px;font-size: 30px" class="text-danger">Giỏ Hàng Trống</span>
+                                <?php } ?>
                                 <!-- End Cart Single Item-->
 
                                 </tbody>
