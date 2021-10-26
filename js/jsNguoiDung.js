@@ -13,6 +13,7 @@ function DoiMatKhau(tendangnhap,matkhaucu,matkhaumoi) {
         }
     });
 }
+
 function addCart(id) {
     num= parseInt($("#quanlity").val());
     $.post("addCart.php",{'id':id,'num':num},function (data,status) {

@@ -185,15 +185,19 @@
                                     </a>
                                 </li>
                             <?php } else { ?>
-                                <li >
-                                    Hello-<a href="../page/thongtintk.php" style="margin-right: 18px" > <?php echo $_SESSION["tendangnhap"]?></a>
 
-                                    <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
+                                        <li >
+                                            Hello-<a href="../page/thongtintk.php" style="margin-right: 18px" > <?php echo $_SESSION["tendangnhap"]?></a>
+
+                                            <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
 
 
-                                        <i class="icon-logout"></i>
-                                    </a>
-                                </li>
+                                                <i class="icon-logout"></i>
+                                            </a>
+                                        </li>
+
+
+
                             <?php }?>
 
                         </ul>

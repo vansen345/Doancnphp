@@ -340,6 +340,10 @@
 <script src="../js/plugins/ajax-mail.js"></script>
 <script src="../js/jsNguoiDung.js"></script>
 
+
+
+
+
 <!-- Use the minified version files listed below for better performance and remove the files listed above -->
 <!-- <script src="../js/vendor/vendor.min.js"></script>
 <script src="../js/plugins/plugins.min.js"></script>-->

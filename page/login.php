@@ -48,7 +48,7 @@ include ('../layout/header.php');
                                 <input required="" name="matkhau" type="password" id="dn_matkhau">
                             </div>
                             <div>
-                                <span class="text-danger" id="dn_thongbao"></span>
+                                <span style="color:red;" id="dn_thongbao"></span>
 
                             </div>
 
@@ -134,9 +134,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $diachi = $_POST["diachi"];
     $dienthoai = $_POST["dienthoai"];
     $email = $_POST["email"];
-
-    
-
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         echo "<script>$('#thongbaoemail').text('Email không hợp lệ');</script>";
     else{
@@ -191,6 +188,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             {
                 return false;
             }
+        });
+        $('#dangnhap').click(function () {
+            dn_tendangnhap = $('#dn_dangnhap').val();
+            dn_matkhau = $('#dn_matkhau').val();
+
+            loi=0;
+            if(dn_tendangnhap == "" || dn_matkhau==""){
+                loi++;
+                $('#dn_thongbao').text("Hãy nhập đầy đủ thông tin");
+
+            }
+            if(loi!=0){
+                return false;
+            }
+
+            
         });
 
 

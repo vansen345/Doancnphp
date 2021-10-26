@@ -1,6 +1,24 @@
 <?php
 include ('../layout/header.php')
 ?>
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+include ('connect.php');
+
+
+?>
+<?php
+
+
+//include ('../PHPMAILER/lib/PHPMailer.php');
+//include ('../PHPMAILER/lib/Exception.php');
+//include ('../PHPMAILER/lib/OAuth.php');
+//include ('../PHPMAILER/lib/POP3.php');
+//include ('../PHPMAILER/lib/SMTP.php');
+
+?>
     <!-- Offcanvas Overlay -->
     <div class="offcanvas-overlay"></div>
 
@@ -71,19 +89,19 @@ include ('../layout/header.php')
             <div class="checkout_form" data-aos="fade-up"  data-aos-delay="400">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                        <form  method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                             <h3>Chi tiết đơn hàng</h3>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label>Họ và tên lót <span style="color: red">(*)</span></label>
-                                        <input type="text" value="<?php echo $cottv["Hoten"];?>">
+                                        <input name="hoten" type="text" value="<?php echo $cottv["Hoten"];?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label> Email <span style="color: red">(*)</span></label>
-                                        <input type="text" value="<?php echo $cottv["Email"];?>">
+                                        <input type="text" name="email" value="<?php echo $cottv["Email"];?>">
                                     </div>
                                 </div>
 
@@ -105,51 +123,38 @@ include ('../layout/header.php')
                                         <input type="text" value="<?php echo date("d/m/Y"); ?>">
                                     </div>
                                 </div>
-                                <!--  <div class="col-12">
+                                 <div class="col-12 ">
                                     <div class="default-form-box">
-                                        <label for="country">Phường/ xã <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide" name="country" id="country">
-                                            <option value="2">Bangladesh</option>
-                                            <option value="3">Algeria</option>
-                                            <option value="4">Afghanistan</option>
-                                            <option value="5">Ghana</option>
-                                            <option value="6">Albania</option>
-                                            <option value="7">Bahrain</option>
-                                            <option value="8">Colombia</option>
-                                            <option value="9">Dominican Republic</option>
+                                        <label for="country">Tỉnh/Thành Phố <span style="color: red">(*)</span></label>
+                                        <select class="country_option nice-select wide" name="province" id="province" >
+                                            <?php
+                                            $truyvantp="SELECT * FROM pvs_tinhthanhpho";
+                                            $laytp=mysqli_query($conn,$truyvantp);
+                                                while ($row = mysqli_fetch_array($laytp)){
+                                                   echo" <option value=".$row["matp"].">".$row["name_city"]."</option>";
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label>Quận/ huyện <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide" name="country" id="country">
-                                            <option value="2">Bangladesh</option>
-                                            <option value="3">Algeria</option>
-                                            <option value="4">Afghanistan</option>
-                                            <option value="5">Ghana</option>
-                                            <option value="6">Albania</option>
-                                            <option value="7">Bahrain</option>
-                                            <option value="8">Colombia</option>
-                                            <option value="9">Dominican Republic</option>
+                                        <select class="country_option nice-select wide" name="district" id="district" >
+
+
+
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="default-form-box">
-                                        <label>Tỉnh/ Thành phố <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide" name="country" id="country">
-                                            <option value="2">Bangladesh</option>
-                                            <option value="3">Algeria</option>
-                                            <option value="4">Afghanistan</option>
-                                            <option value="5">Ghana</option>
-                                            <option value="6">Albania</option>
-                                            <option value="7">Bahrain</option>
-                                            <option value="8">Colombia</option>
-                                            <option value="9">Dominican Republic</option>
+                                        <label>Phường/Xã <span style="color: red">(*)</span></label>
+                                        <select class="country_option nice-select wide " name="ward" id="ward" >
+
                                         </select>
                                     </div>
-                                </div>-->
+                                </div>
 
                                 <div class="col-12 mt-3">
                                     <div class="order-notes">
@@ -158,7 +163,7 @@ include ('../layout/header.php')
                                     </div>
                                 </div>
                                 <div class="order_button pt-3">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
+                                    <button name="send" class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
                                 </div>
                             </div>
                         </form>
@@ -246,7 +251,7 @@ include ('../layout/header.php')
         </div>
     </div><!-- ...:::: End Checkout Section:::... -->
 <?php }
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if(isset($_POST["send"])){
     if(isset($_SESSION["giohang"])){
         $tendangnhap = $_SESSION["tendangnhap"];
         $trangthai = "0";
@@ -255,6 +260,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $dienthoai=$_POST["dienthoai"];
         $ghichu=$_POST["ghichu"];
         $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."')";
+
         if (mysqli_query($conn, $themdondat)) {
             $madondat = 0;
             $laydon = "SELECT * FROM dondat ORDER BY MaDonDat";
@@ -262,13 +268,35 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             while ($cotDD = mysqli_fetch_array($truyvanlaydondat)) {
                 $madondat = $cotDD["MaDonDat"];
             }
+            $content="<table width='500' border='1'>";
+            $content = "<tr>
+                           <th>#</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                      </tr>";
+            $i=0;
             foreach ($_SESSION["giohang"] as $key=> $value) {
+                $i++;
                 $masp = $value["masp"];
+                $price=$value["price"];
                 $number = $value["number"];
+                $total=$price * $number;
 
                 $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
                 mysqli_query($conn, $themctdd);
+                $content.="<tr>
+                              <td>$i</td>
+                              <td>".$value["name"]."</td>
+                              <td>$price</td>
+                              <td>$number</td>
+                              <td>$total</td>
+
+                           </tr>";
             }
+            $content.='<table>';
+
             unset($_SESSION["giohang"]);
             echo "<script>alert('Đặt hàng thành công');location='shop-full-width.php';</script>";
         }
@@ -276,11 +304,65 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             echo "<script>alert('Đã xảy ra lỗi');</script>";
         }
     }
+
     else {
         echo "<script>alert('Giỏ hàng trống');</script>";
     }
+    include ('../PHPMAILER/lib/PHPMailer.php');
+    include ('../PHPMAILER/lib/SMTP.php');
+    include ('../PHPMAILER/lib/Exception.php');
+//        include ('../PHPMAILER/class/class.smtp.php');
+//        include ('../PHPMAILER/class/class.phpmailer.php');
+
+
+
+    $mail = new PHPMailer(true);
+    try{
+
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = '12cbvansennttkg2018@gmail.com';                     //SMTP username
+        $mail->Password   = 'sendeptraikg123';
+        $mail->SMTPSecure = 'tls';
+        $mail->CharSet = 'UTF-8';
+        $mail->Port       = 587;
+        $sendmail= $_POST["email"];
+        $fullname=$_POST["hoten"];
+
+        $mail->setFrom('12cbvansennttkg2018@gmail.com', 'Shopping Cart');
+        $mail->addAddress($sendmail, $fullname);
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Chào bạn đây là thông tin đơn hàng của bạn';
+        $mail->Body    = $content;
+        $mail->send();
+        echo 'Đã gửi đơn hàng';
+
+    } catch (Exception $e) {
+        echo "Lỗi gửi mail: {$mail->ErrorInfo}";
+    }
+
+
+
 }
 ?>
 <?php
 include ('../layout/footer.php')
 ?>
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function () {-->
+<!--        $('#province').change(function () {-->
+<!--            var matp = $(this).val();-->
+<!--            $.ajax({-->
+<!--                url:"ajax.quanhuyenAjax.php",-->
+<!--                method:"POST",-->
+<!--                data:{matp:matp},-->
+<!--                success:function (data) {-->
+<!--                    $('#district').html(data);-->
+<!---->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!---->
+<!--</script>-->
