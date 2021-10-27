@@ -102,6 +102,7 @@ include ('connect.php');
                                     <div class="default-form-box">
                                         <label> Email <span style="color: red">(*)</span></label>
                                         <input type="text" name="email" value="<?php echo $cottv["Email"];?>">
+
                                     </div>
                                 </div>
 
@@ -111,7 +112,7 @@ include ('connect.php');
                                         <input type="text" name="noigiao" value="<?php echo $cottv["Diachi"];?>" id="noigiao">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="default-form-box">
                                         <label>Số điện thoại <span style="color: red">(*)</span></label>
                                         <input type="text" name="dienthoai" id="dienthoai" value="<?php echo $cottv["Dienthoai"];?>">
@@ -121,6 +122,7 @@ include ('connect.php');
                                     <div class="default-form-box">
                                         <label>Ngày đặt<span style="color: red">(*)</span></label>
                                         <input type="text" value="<?php echo date("d/m/Y"); ?>">
+
                                     </div>
                                 </div>
                                  <div class="col-12 ">
@@ -268,34 +270,47 @@ if(isset($_POST["send"])){
             while ($cotDD = mysqli_fetch_array($truyvanlaydondat)) {
                 $madondat = $cotDD["MaDonDat"];
             }
-            $content="<table width='500' border='1'>";
-            $content = "<tr>
-                           <th>#</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền</th>
-                      </tr>";
+            $content="<div style='background: white;padding: 15px;border: 1px solid'>";
+
+            $content="<div>";
             $i=0;
             foreach ($_SESSION["giohang"] as $key=> $value) {
                 $i++;
                 $masp = $value["masp"];
-                $price=$value["price"];
+                $price=number_format($value["price"],0,",",".");
                 $number = $value["number"];
-                $total=$price * $number;
+                $total=number_format($value["price"] * $value["number"],0,",",".");
+                $date=date("d/m/Y");
+//               $tongtien +=number_format($total,0,",",".");;
+
+
+
 
                 $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
                 mysqli_query($conn, $themctdd);
-                $content.="<tr>
-                              <td>$i</td>
-                              <td>".$value["name"]."</td>
-                              <td>$price</td>
-                              <td>$number</td>
-                              <td>$total</td>
+                $content.=" <div style='width: 15%;float: left'>
+                              <a href=''>
+                              <img style='max-width: 100%;width: 80px;height: 100px' src='../images/product/hinhanh/".$value["image"]."'>
+                              
+                              </a>
+ 
+                             </div>
+                           <div style='width: 80%;float: right'>
+                              <h4 style='margin: 10px 0;font-size: 18px'>Đơn Hàng Của Bạn</h4>
+                              <p style='margin: 4px 0;font-size: 14px'>".$value["name"]."</p>
+                              <p style='margin: 4px 0;font-size: 14px'>Ngày đặt: <span>$date</span></p>
+                              <p style='margin: 4px 0;font-size: 14px'>Đơn giá: <span>$price</span></p>
+                              <p style='margin: 4px 0;font-size: 14px'>Số lượng: <span>$number</span></p>
+                              <p style='margin: 4px 0;font-size: 14px'>Thành tiền: <span>$total</span></p>
+                             
+                              
 
-                           </tr>";
+                           </div>";
+
             }
-            $content.='<table>';
+
+            $content.='</div>';
+            $content.='</div>';
 
             unset($_SESSION["giohang"]);
             echo "<script>alert('Đặt hàng thành công');location='shop-full-width.php';</script>";
