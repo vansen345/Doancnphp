@@ -453,7 +453,7 @@
                     </div>
                 </div>
                 <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
+                    <a href="#" onclick="xoahang(<?php echo $key ?>)" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
                 </div>
             </li>
 

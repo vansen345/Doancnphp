@@ -83,9 +83,9 @@ include ('../layout/header.php')
                                 </tbody>
                             </table>
                         </div>
-                        <div class="cart_submit">
-                            <button class="btn btn-md btn-golden" type="submit">update cart</button>
-                        </div>
+<!--                        <div class="cart_submit">-->
+<!--                            <button class="btn btn-md btn-golden" type="submit">update cart</button>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>

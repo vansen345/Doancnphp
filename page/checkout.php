@@ -281,20 +281,15 @@ if(isset($_POST["send"])){
                 $number = $value["number"];
                 $total=number_format($value["price"] * $value["number"],0,",",".");
                 $date=date("d/m/Y");
-//               $tongtien +=number_format($total,0,",",".");;
+
+
 
 
 
 
                 $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
                 mysqli_query($conn, $themctdd);
-                $content.=" <div style='width: 15%;float: left'>
-                              <a href=''>
-                              <img style='max-width: 100%;width: 80px;height: 100px' src='../images/product/hinhanh/".$value["image"]."'>
-                              
-                              </a>
- 
-                             </div>
+                $content.=" 
                            <div style='width: 80%;float: right'>
                               <h4 style='margin: 10px 0;font-size: 18px'>Đơn Hàng Của Bạn</h4>
                               <p style='margin: 4px 0;font-size: 14px'>".$value["name"]."</p>
@@ -309,11 +304,12 @@ if(isset($_POST["send"])){
 
             }
 
+
             $content.='</div>';
             $content.='</div>';
 
             unset($_SESSION["giohang"]);
-            echo "<script>alert('Đặt hàng thành công');location='shop-full-width.php';</script>";
+            echo "<script>alert('Đặt hàng thành công xin hãy kiểm tra email của bạn');location='shop-full-width.php';</script>";
         }
         else {
             echo "<script>alert('Đã xảy ra lỗi');</script>";

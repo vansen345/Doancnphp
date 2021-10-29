@@ -105,7 +105,7 @@ $totalpage= ceil($total / $item_per_page);
                                                 <!-- Start Product Default Single Item -->
                                                 <div class="product-default-single-item product-color--golden" data-aos="fade-up"  data-aos-delay="0">
                                                     <div class="image-box">
-                                                        <a href="product-details-default.php" class="image-link">
+                                                        <a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>" class="image-link">
                                                             <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                             <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                         </a>

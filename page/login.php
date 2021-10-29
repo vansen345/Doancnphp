@@ -4,6 +4,10 @@ if(isset($_SESSION["tendangnhap"]))
 include ('../layout/header.php');
 
 ?>
+<?php
+
+
+?>
     <!-- Offcanvas Overlay -->
     <div class="offcanvas-overlay"></div>
 
@@ -43,9 +47,17 @@ include ('../layout/header.php');
                                 <label>Tên đăng nhập <span style="color: red">(*)</span></label>
                                 <input required="" name="tendangnhap" id="dn_dangnhap" type="text">
                             </div>
+                            <div>
+                                <span style="color:red;" id="erroruser"></span>
+
+                            </div>
                             <div class="default-form-box">
                                 <label>Mật khẩu <span style="color: red">(*)</span></label>
                                 <input required="" name="matkhau" type="password" id="dn_matkhau">
+                            </div>
+                            <div>
+                                <span style="color:red;" id="errormk"></span>
+
                             </div>
                             <div>
                                 <span style="color:red;" id="dn_thongbao"></span>
@@ -81,7 +93,7 @@ include ('../layout/header.php');
                             </div>
                             <div class="default-form-box">
                                 <label>Email <span style="color: red">(*)</span></label>
-                                <input type="text" name="email" id="email">
+                                <input type="text" name="email" id="email" onblur="checkEmail(this.value)">
                             </div>
                             <div class="form-group">
                                 <span style="color: red"  id="thongbaoemail"></span>
@@ -134,21 +146,32 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $diachi = $_POST["diachi"];
     $dienthoai = $_POST["dienthoai"];
     $email = $_POST["email"];
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-        echo "<script>$('#thongbaoemail').text('Email không hợp lệ');</script>";
-    else{
-        $kt="SELECT * FROM thanhvien WHERE TenDangNhap = '".$tendangnhap."'";
-        $truyvantontai=mysqli_query($conn,$kt);
-        if(mysqli_num_rows($truyvantontai)>0)
-            echo "<script>$('#thongbao').text('Tài khoản đã tồn tại');</script>";
-        else{
-            $themnguoidung="INSERT INTO thanhvien VALUES ('".$tendangnhap."','".$matkhau."','".$hoten."','".$diachi."','".$dienthoai."','".$email."')";
-            $truyvanthemnguoidung=mysqli_query($conn,$themnguoidung);
-            if($truyvanthemnguoidung)
-                //echo "<script>$('#thongbao').text('Đăng ký thành công');</script>";
-                echo "<script>alert('Đăng ký thành công')</script>";
 
+    $sqlcheckmail="SELECT * FROM thanhvien WHERE Email = '".$_POST["email"]."'";
+    $truvanmail=mysqli_query($conn,$sqlcheckmail);
+    $checkmail=mysqli_fetch_row($truvanmail);
+    if($checkmail){
+        echo "<script>alert('Email đã tồn tại')</script>";
+
+    }
+    else{
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+            echo "<script>$('#thongbaoemail').text('Email không hợp lệ');</script>";
+        else{
+            $kt="SELECT * FROM thanhvien WHERE TenDangNhap = '".$tendangnhap."'";
+            $truyvantontai=mysqli_query($conn,$kt);
+            if(mysqli_num_rows($truyvantontai)>0)
+                echo "<script>$('#thongbao').text('Tài khoản đã tồn tại');</script>";
+            else{
+                $themnguoidung="INSERT INTO thanhvien VALUES ('".$tendangnhap."','".$matkhau."','".$hoten."','".$diachi."','".$dienthoai."','".$email."')";
+                $truyvanthemnguoidung=mysqli_query($conn,$themnguoidung);
+                if($truyvanthemnguoidung)
+                    //echo "<script>$('#thongbao').text('Đăng ký thành công');</script>";
+                    echo "<script>alert('Đăng ký thành công')</script>";
+
+            }
         }
+
     }
 }
 ?>
@@ -199,6 +222,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                 $('#dn_thongbao').text("Hãy nhập đầy đủ thông tin");
 
             }
+
             if(loi!=0){
                 return false;
             }
@@ -207,5 +231,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         });
 
 
+
     });
 </script>
+
+
+
