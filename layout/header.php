@@ -431,14 +431,17 @@
 
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
-        <?php
-        if(isset($_SESSION["giohang"])){
+
+        <ul class="offcanvas-cart" >
+            <?php
+            $total=0;
+            $tongtien=0;
+            if(isset($_SESSION["giohang"])){
             $giohang=$_SESSION["giohang"];
             foreach ($giohang as $key => $value){
 
 
-                ?>
-        <ul class="offcanvas-cart" >
+            ?>
             <li class="offcanvas-cart-item-single">
                 <div class="offcanvas-cart-item-block">
                     <a href="#" class="offcanvas-cart-item-image-link">
@@ -450,18 +453,35 @@
                             <span class="offcanvas-cart-item-details-quantity"><?php echo $value["number"] ?> x </span>
                             <span class="offcanvas-cart-item-details-price"><?=number_format($value["price"],0,",",".")?></span>
                         </div>
+                        <div class="offcanvas-cart-item-details">
+                            <b>Thành tiền:</b>
+                            <span class="offcanvas-cart-item-details-quantity"><?php
+                                $total=$value["number"]*$value["price"];
+                                $tongtien+=$total;
+                                echo number_format($total,0,",",".");
+                                ?></span>
+
+                        </div>
                     </div>
+
                 </div>
                 <div class="offcanvas-cart-item-delete text-right">
                     <a href="#" onclick="xoahang(<?php echo $key ?>)" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
                 </div>
             </li>
+            <?php } }
+
+            else{ ?>
+<!--                <span style="margin-left: 90px;font-size: 25px" class="text-danger">Giỏ Hàng Trống</span>-->
+                <img src="../images/product/hinhanh/empty-cart.png" alt="" class="offcanvas-cart-image">
+            <?php } ?>
 
 
         </ul>
-        <?php } } else{ ?>
-        <span style="margin-left: 90px;font-size: 25px" class="text-danger">Giỏ Hàng Trống</span>
-        <?php } ?>
+        <div class="offcanvas-cart-total-price">
+            <span class="offcanvas-cart-total-price-text">Subtotal:</span>
+            <span class="offcanvas-cart-total-price-value"><?php echo number_format($tongtien,0,",",".");?></span>
+        </div>
 
 
 
@@ -470,10 +490,12 @@
             <li><a href="../page/cart.php" class="btn btn-block btn-pink">View Cart</a></li>
 
         </ul>
+
     </div> <!-- End  Offcanvas Addcart Wrapper -->
 
 
 </div> <!-- End  Offcanvas Addcart Section -->
+
 
 <!-- Start Offcanvas Mobile Menu Section -->
 <div id="offcanvas-wishlish" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">

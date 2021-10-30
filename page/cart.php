@@ -3,6 +3,7 @@
 include ('../layout/header.php')
 ?>
 
+
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
 
@@ -38,6 +39,16 @@ include ('../layout/header.php')
                     <div class="table_desc">
                         <div class="table_page table-responsive">
                             <table>
+                                <?php
+
+                                if(!isset($_SESSION["giohang"])){
+                                    echo "<script>location='empty-cart.php';</script>";
+                                ?>
+
+
+
+                                <?php } else{
+                                    ?>
                                 <!-- Start Cart Table Head -->
                                 <thead>
                                 <tr>
@@ -51,18 +62,16 @@ include ('../layout/header.php')
                                 </thead> <!-- End Cart Table Head -->
                                 <tbody>
 
-                                <?php
+
+
+<!--                             <?php
                                 $number=0;
                                 $total=0;
                                 $tongtien=0;
-                                if(isset($_SESSION["giohang"])){
                                 $giohang=$_SESSION["giohang"];
                                 foreach ($giohang as $key=> $value){
-
-
                                 ?>
-
-                                <!-- Start Cart Single Item-->
+<!--                               Start Cart Single Item-->
                                 <tr>
                                     <td class="product_remove"><a href="#" onclick="xoahang(<?php echo $key ?>)"><i class="fa fa-trash-o"></i></a></td>
                                     <td class="product_thumb"><a href="../page/product-details-default.php"><img src="../images/product/hinhanh/<?php echo $value["image"]?>" alt=""></a></td>
@@ -75,9 +84,8 @@ include ('../layout/header.php')
                                         echo number_format($total,0,",",".");
                                         ?></td>
                                 </tr>
-                                <?php } } else{ ?>
-                                    <span style="margin-left: 500px;font-size: 30px" class="text-danger">Giỏ Hàng Trống</span>
-                                <?php } ?>
+                                  <?php } } ?>
+
                                 <!-- End Cart Single Item-->
 
                                 </tbody>
@@ -136,8 +144,11 @@ include ('../layout/header.php')
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div> <!-- End Coupon Start -->
+
 </div> <!-- ...:::: End Cart Section:::... -->
 <?php
 include ('../layout/footer.php')
