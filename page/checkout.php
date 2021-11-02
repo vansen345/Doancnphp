@@ -95,7 +95,7 @@ include ('connect.php');
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label>Họ và tên lót <span style="color: red">(*)</span></label>
-                                        <input name="hoten" type="text" value="<?php echo $cottv["Hoten"];?>">
+                                        <input name="hoten" type="text" value="<?php echo $cottv["Hoten"];?>" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -121,7 +121,7 @@ include ('connect.php');
                                 <div class="col-12">
                                     <div class="default-form-box">
                                         <label>Ngày đặt<span style="color: red">(*)</span></label>
-                                        <input type="text" value="<?php echo date("d/m/Y"); ?>">
+                                        <input type="text" value="<?php echo date("d/m/Y"); ?>" disabled>
 
                                     </div>
                                 </div>
@@ -292,7 +292,8 @@ if(isset($_POST["send"])){
                 $content.=" 
                            <div style='width: 80%;float: right'>
                               <h4 style='margin: 10px 0;font-size: 18px'>Đơn Hàng Của Bạn</h4>
-                              <p style='margin: 4px 0;font-size: 14px'>".$value["name"]."</p>
+                              <p style='margin: 4px 0;font-size: 14px'>Tên sản phẩm: <span>".$value["name"]."</span></p>
+                            
                               <p style='margin: 4px 0;font-size: 14px'>Ngày đặt: <span>$date</span></p>
                               <p style='margin: 4px 0;font-size: 14px'>Đơn giá: <span>$price</span></p>
                               <p style='margin: 4px 0;font-size: 14px'>Số lượng: <span>$number</span></p>

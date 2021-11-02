@@ -1,6 +1,6 @@
 <?php
-if(isset($_SESSION["tendangnhap"]))
-    header("location:index-3.php");
+//if(isset($_SESSION["tendangnhap"]))
+//    header("location:index-3.php");
 include ('../layout/header.php');
 
 ?>
