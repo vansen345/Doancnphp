@@ -1,6 +1,11 @@
 <?php
+if(isset($_SESSION["tendangnhap"]))
+    echo "<script>location='product-details-default.php';</script>";
+
+?>
+<?php
 if(!isset($_GET["Masp"]))
-    header("location:product-details-default.php");
+    echo "<script>location='index-3.php';</script>";
 include ('../layout/header.php');
 
 
@@ -223,12 +228,21 @@ $cot=mysqli_fetch_array($truyvan);
                                     <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
                                 </div>
                             </div> <!-- End Product Details Tab Content Singel -->
+                            <?php
+                            $laybl="SELECT * FROM binhluan INNER JOIN thanhvien ON binhluan.TenDangNhap = thanhvien.TenDangNhap WHERE MaSanPham='".$cot["MaSanPham"]."' ORDER BY MaBinhLuan DESC ";
+                            $cotbl=mysqli_query($conn,$laybl);
+                            ?>
                             <!-- Start Product Details Tab Content Singel -->
                             <div class="tab-pane" id="review">
                                 <div class="single-tab-content-item">
                                     <!-- Start - Review Comment -->
                                     <ul class="comment">
                                         <!-- Start - Review Comment list-->
+                                        <?php
+                                            while ($truyvanbl=mysqli_fetch_array($cotbl)){
+
+
+                                        ?>
                                         <li class="comment-list">
                                             <div class="comment-wrapper">
                                                 <div class="comment-img">
@@ -237,7 +251,7 @@ $cot=mysqli_fetch_array($truyvan);
                                                 <div class="comment-content">
                                                     <div class="comment-content-top">
                                                         <div class="comment-content-left">
-                                                            <h6 class="comment-name">Kaedyn Fraser</h6>
+                                                            <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
                                                             <ul class="review-star">
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -252,89 +266,31 @@ $cot=mysqli_fetch_array($truyvan);
                                                     </div>
 
                                                     <div class="para-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
+                                                        <p><?php echo $truyvanbl["NoiDung"]  ?>. </p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Start - Review Comment Reply-->
-                                            <ul class="comment-reply">
-                                                <li class="comment-reply-list">
-                                                    <div class="comment-wrapper">
-                                                        <div class="comment-img">
-                                                            <img src="../images/user/image-2.png" alt="">
-                                                        </div>
-                                                        <div class="comment-content">
-                                                            <div class="comment-content-top">
-                                                                <div class="comment-content-left">
-                                                                    <h6 class="comment-name">Oaklee Odom</h6>
-                                                                </div>
-                                                                <div class="comment-content-right">
-                                                                    <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="para-content">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul> <!-- End - Review Comment Reply-->
+                                          <!-- End - Review Comment Reply-->
                                         </li> <!-- End - Review Comment list-->
+                                        <?php } ?>
                                         <!-- Start - Review Comment list-->
-                                        <li class="comment-list">
-                                            <div class="comment-wrapper">
-                                                <div class="comment-img">
-                                                    <img src="../images/user/image-3.png" alt="">
-                                                </div>
-                                                <div class="comment-content">
-                                                    <div class="comment-content-top">
-                                                        <div class="comment-content-left">
-                                                            <h6 class="comment-name">Jaydin Jones</h6>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="comment-content-right">
-                                                            <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="para-content">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li> <!-- End - Review Comment list-->
+                                       <!-- End - Review Comment list-->
                                     </ul> <!-- End - Review Comment -->
                                     <div class="review-form">
                                         <div class="review-form-text-top">
                                             <h5>ADD A REVIEW</h5>
-                                            <p>Your email address will not be published. Required fields are marked *</p>
+<!--                                            <p>Your email address will not be published. Required fields are marked *</p>-->
                                         </div>
+                                        <?php if(isset($_SESSION["tendangnhap"])){ ?>
 
-                                        <form action="#" method="post">
+                                        <form action="<?php echo $_SERVER["PHP_SELF"]?>?Masp=<?php echo $cot["MaSanPham"]?>" method="post">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="default-form-box">
-                                                        <label for="comment-name">Your name <span>*</span></label>
-                                                        <input id="comment-name" type="text" placeholder="Enter your name" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="default-form-box">
-                                                        <label for="comment-email">Your Email <span>*</span></label>
-                                                        <input id="comment-email" type="email" placeholder="Enter your email" required>
-                                                    </div>
-                                                </div>
+
                                                 <div class="col-12">
                                                     <div class="default-form-box">
                                                         <label for="comment-review-text">Your review <span>*</span></label>
-                                                        <textarea id="comment-review-text" placeholder="Write a review" required></textarea>
+                                                        <textarea name="ndbinhluan" id="comment-review-text" placeholder="Write a review" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -342,6 +298,9 @@ $cot=mysqli_fetch_array($truyvan);
                                                 </div>
                                             </div>
                                         </form>
+                                        <?php } else {?>
+                                            <b style="margin-left: 350px;font-size: 20px" class="text-danger">Bạn cần đăng nhập để bình luận sản phẩm</b>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div> <!-- End Product Details Tab Content Singel -->
@@ -444,7 +403,23 @@ $cot=mysqli_fetch_array($truyvan);
         </div>
     </div>
 </div>
+
 <!-- End Product Default Slider Section -->
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $masp= $_GET["Masp"];
+    $ngaybinhluan= date("Y-m-d");
+    $ndbinhluan=$_POST["ndbinhluan"];
+    $tendangnhap=$_SESSION["tendangnhap"];
+    $thembl="INSERT INTO binhluan(MaSanPham,NgayBinhLuan,NoiDung,TenDangNhap) VALUES ('".$masp."','".$ngaybinhluan."','".$ndbinhluan."','".$tendangnhap."') ";
+    if(mysqli_query($conn,$thembl)){
+        echo "<script>alert('Bình luận của bạn đã được ghi nhận');</script>";
+    } else{
+        echo "<script>alert('Đã xảy ra lỗi');</script>";
+
+    }
+}
+?>
 <?php
 include ('../layout/footer.php')
 ?>

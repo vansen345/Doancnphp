@@ -1,6 +1,10 @@
 <?php
+if(isset($_SESSION["tendangnhap"]))
+    echo "<script>location='danhmucsp.php';</script>";
+?>
+<?php
 if(!isset($_GET["loaisp"]))
-    header("location:product-details-default.php");
+    echo "<script>location='index-3.php';</script>";
 include ('../layout/header.php');
 ?>
 <?php

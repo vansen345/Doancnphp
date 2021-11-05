@@ -115,7 +115,7 @@ include ('connect.php');
                                 <div class="col-lg-12">
                                     <div class="default-form-box">
                                         <label>Số điện thoại <span style="color: red">(*)</span></label>
-                                        <input type="text" name="dienthoai" id="dienthoai" value="<?php echo $cottv["Dienthoai"];?>">
+                                        <input type="tel" name="dienthoai" id="dienthoai" value="<?php echo $cottv["Dienthoai"];?>">
                                     </div>
                                 </div>
                                 <div class="col-12">
