@@ -16,6 +16,11 @@ $laysp="SELECT * FROM sanpham WHERE MaSanPham='".$_GET["Masp"]."'";
 $truyvan=mysqli_query($conn,$laysp);
 $cot=mysqli_fetch_array($truyvan);
 ?>
+<?php
+$count="SELECT MaBinhLuan FROM binhluan WHERE MaSanPham = '".$_GET["Masp"]."' ";
+$countbl=mysqli_query($conn,$count);
+$row= mysqli_num_rows($countbl);
+?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
 
@@ -193,7 +198,7 @@ $cot=mysqli_fetch_array($truyvan);
                                 Specification
                             </a></li>
                         <li><a class="nav-link" data-bs-toggle="tab" href="#review">
-                                Reviews (1)
+                                Reviews (<?php echo $row ?>)
                             </a></li>
                     </ul> <!-- End Product Details Tab Button -->
 
@@ -235,6 +240,31 @@ $cot=mysqli_fetch_array($truyvan);
                             <!-- Start Product Details Tab Content Singel -->
                             <div class="tab-pane" id="review">
                                 <div class="single-tab-content-item">
+                                    <div class="review-form">
+                                        <div class="review-form-text-top">
+                                            <h5>ADD A REVIEW</h5>
+                                            <!--                                            <p>Your email address will not be published. Required fields are marked *</p>-->
+                                        </div>
+                                        <?php if(isset($_SESSION["tendangnhap"])){ ?>
+
+                                            <form action="<?php echo $_SERVER["PHP_SELF"]?>?Masp=<?php echo $cot["MaSanPham"]?>" method="post">
+                                                <div class="row">
+
+                                                    <div class="col-12">
+                                                        <div class="default-form-box">
+                                                            <label for="comment-review-text">Your review <span>*</span></label>
+                                                            <textarea name="ndbinhluan" id="comment-review-text" placeholder="Write a review" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12" >
+                                                        <button style="float: right" class="btn btn-md btn-black-default-hover" type="submit">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        <?php } else {?>
+                                            <b style="margin-left: 350px;font-size: 20px" class="text-danger">Bạn cần đăng nhập để bình luận sản phẩm</b>
+                                        <?php } ?>
+                                    </div> <br>
                                     <!-- Start - Review Comment -->
                                     <ul class="comment">
                                         <!-- Start - Review Comment list-->
@@ -246,12 +276,13 @@ $cot=mysqli_fetch_array($truyvan);
                                         <li class="comment-list">
                                             <div class="comment-wrapper">
                                                 <div class="comment-img">
-                                                    <img src="../images/user/image-1.png" alt="">
+                                                    <img src="../images/product/hinhanh/hinhsen2.jpg" width="78px" height="78px" alt="">
                                                 </div>
                                                 <div class="comment-content">
                                                     <div class="comment-content-top">
                                                         <div class="comment-content-left">
                                                             <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
+
                                                             <ul class="review-star">
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -260,9 +291,14 @@ $cot=mysqli_fetch_array($truyvan);
                                                                 <li class="empty"><i class="ion-android-star"></i></li>
                                                             </ul>
                                                         </div>
-                                                        <div class="comment-content-right">
-                                                            <a href="#"><i class="fa fa-reply"></i>Reply</a>
+                                                        <div style="margin-bottom: 28px">
+                                                            <span style="margin-left: 10px;">Đã bình luận vào ngày : <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
+                                                            <?php if(isset($_SESSION["tendangnhap"]) && $truyvanbl["TenDangNhap"]== $_SESSION["tendangnhap"] ){ ?>
+                                                            <a style="margin-left: 100px" class="ion-edit"></a>
+                                                            <a style="margin-left: 10px" onclick="XoaBinhLuan(<?php echo $truyvanbl["MaBinhLuan"]; ?>,<?php echo $cot["MaSanPham"];?>)" class="ion-android-delete"></a>
+                                                            <?php } ?>
                                                         </div>
+
                                                     </div>
 
                                                     <div class="para-content">
@@ -277,31 +313,7 @@ $cot=mysqli_fetch_array($truyvan);
                                         <!-- Start - Review Comment list-->
                                        <!-- End - Review Comment list-->
                                     </ul> <!-- End - Review Comment -->
-                                    <div class="review-form">
-                                        <div class="review-form-text-top">
-                                            <h5>ADD A REVIEW</h5>
-<!--                                            <p>Your email address will not be published. Required fields are marked *</p>-->
-                                        </div>
-                                        <?php if(isset($_SESSION["tendangnhap"])){ ?>
 
-                                        <form action="<?php echo $_SERVER["PHP_SELF"]?>?Masp=<?php echo $cot["MaSanPham"]?>" method="post">
-                                            <div class="row">
-
-                                                <div class="col-12">
-                                                    <div class="default-form-box">
-                                                        <label for="comment-review-text">Your review <span>*</span></label>
-                                                        <textarea name="ndbinhluan" id="comment-review-text" placeholder="Write a review" required></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-md btn-black-default-hover" type="submit">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <?php } else {?>
-                                            <b style="margin-left: 350px;font-size: 20px" class="text-danger">Bạn cần đăng nhập để bình luận sản phẩm</b>
-                                        <?php } ?>
-                                    </div>
                                 </div>
                             </div> <!-- End Product Details Tab Content Singel -->
                         </div>
@@ -403,6 +415,9 @@ $cot=mysqli_fetch_array($truyvan);
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
+
+
 
 <!-- End Product Default Slider Section -->
 <?php
@@ -413,7 +428,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $tendangnhap=$_SESSION["tendangnhap"];
     $thembl="INSERT INTO binhluan(MaSanPham,NgayBinhLuan,NoiDung,TenDangNhap) VALUES ('".$masp."','".$ngaybinhluan."','".$ndbinhluan."','".$tendangnhap."') ";
     if(mysqli_query($conn,$thembl)){
-        echo "<script>alert('Bình luận của bạn đã được ghi nhận');</script>";
+        echo "<script>alert('Bình luận của bạn đã được ghi nhận');window.location='product-details-default.php?Masp=".$masp."'</script>";
     } else{
         echo "<script>alert('Đã xảy ra lỗi');</script>";
 
@@ -423,3 +438,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <?php
 include ('../layout/footer.php')
 ?>
+
+
+

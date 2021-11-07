@@ -12,6 +12,8 @@
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/png">
 
+
+
     <!-- ::::::::::::::All CSS Files here :::::::::::-->
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../css/vendor/font-awesome.min.css">
@@ -571,7 +573,7 @@
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
     <form method="post" name="sfrom" action="Timkiemsp.php">
-        <input  name="timkiemtensp" type="search" placeholder="type keyword(s) here" />
+        <input  name="timkiemtensp"  type="search" placeholder="type keyword(s) here" />
         <button type="submit" class="btn btn-lg btn-pink">Search</button>
     </form>
 </div>

@@ -322,9 +322,12 @@
 <!-- Global Vendor, plugins JS -->
 <script src="../js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="../js/vendor/jquery-3.5.1.min.js"></script>
+<script src="../js/vendor/bootstrap.min.js"></script>
 <script src="../js/vendor/jquery-migrate-3.3.0.min.js"></script>
 <script src="../js/vendor/popper.min.js"></script>
-<script src="../js/vendor/bootstrap.min.js"></script>
+
+
+
 <script src="../js/vendor/jquery-ui.min.js"></script>
 
 <!--Plugins JS-->
@@ -353,4 +356,3 @@
 </body>
 
 <!-- Mirrored from htmldemo.hasthemes.com/hono/hono/index-3.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jan 2021 00:32:12 GMT -->
-<../

@@ -14,6 +14,25 @@ function DoiMatKhau(tendangnhap,matkhaucu,matkhaumoi) {
     });
 }
 
+function XoaBinhLuan(mabinhluan,masanpham) {
+    $.ajax({
+        url:"ajax/XoaBinhLuan.php",
+        type:"POST",
+        data:{
+           mabinhluan:mabinhluan
+        },
+        success:function (giatri) {
+            alert(giatri);
+            window.location="product-details-default.php?Masp="+masanpham;
+
+
+        }
+    });
+
+}
+
+
+
 function addCart(id) {
     num= parseInt($("#quanlity").val());
     $.post("addCart.php",{'id':id,'num':num},function (data,status) {
