@@ -31,6 +31,24 @@ function XoaBinhLuan(mabinhluan,masanpham) {
 
 }
 
+function DanhGiaSP(masanpham,tendangnhap,noidung) {
+    $.ajax({
+        url:"ajax/DanhGiaSP.php",
+        type:"POST",
+        data:{
+           masanpham:masanpham,
+            tendangnhap:tendangnhap,
+            noidung:noidung
+        },
+        success:function (giatri) {
+            alert(giatri);
+            window.location="product-details-default.php?Masp="+masanpham;
+
+        }
+    });
+
+}
+
 
 
 function addCart(id) {
@@ -39,6 +57,7 @@ function addCart(id) {
         //location.reload();
         item=data.split("-");
         $("#numcart").text(item[0]);
+
 
         //$("#listcart").load("cart.php #listcart");
         

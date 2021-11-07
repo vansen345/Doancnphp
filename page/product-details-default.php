@@ -4,23 +4,48 @@ if(isset($_SESSION["tendangnhap"]))
 
 ?>
 <?php
-if(!isset($_GET["Masp"]))
-    echo "<script>location='index-3.php';</script>";
 include ('../layout/header.php');
 
-
-?>
-<?php
 include ('connect.php');
 $laysp="SELECT * FROM sanpham WHERE MaSanPham='".$_GET["Masp"]."'";
 $truyvan=mysqli_query($conn,$laysp);
 $cot=mysqli_fetch_array($truyvan);
-?>
-<?php
+
+if(!isset($_GET["Masp"]))
+    echo "<script>location='index-3.php';</script>";
+
 $count="SELECT MaBinhLuan FROM binhluan WHERE MaSanPham = '".$_GET["Masp"]."' ";
 $countbl=mysqli_query($conn,$count);
 $row= mysqli_num_rows($countbl);
-?>
+
+$layDG="SELECT * FROM danhgia WHERE MaSanPham='".$cot["MaSanPham"]."'";
+$truyvan_layDG=mysqli_query($conn,$layDG);
+
+
+$tendangnhap="0";
+$sosao="0";
+if(isset($_SESSION["tendangnhap"]))
+{
+    $tendangnhap=$_SESSION["tendangnhap"];
+    $layDG_ND="SELECT * FROM danhgia WHERE MaSanPham='".$cot["MaSanPham"]."' and TenDangNhap='".$tendangnhap."'";
+    $truyvanND=mysqli_query($conn,$layDG_ND);
+    if(mysqli_num_rows($truyvanND)>0){
+        $cotDG=mysqli_fetch_array($truyvanND);
+        $sosao= $cotDG["NoiDung"];
+    }
+
+}
+
+
+
+//?>
+<?php
+//?>
+<?php
+//
+//
+//
+//?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
 
@@ -118,13 +143,13 @@ $row= mysqli_num_rows($countbl);
                         <h4 class="title"><?php echo $cot["TenSanPham"]?></h4>
                         <div class="d-flex align-items-center">
                             <ul class="review-star">
-                                <li class="fill"><i class="ion-android-star"></i></li>
-                                <li class="fill"><i class="ion-android-star"></i></li>
-                                <li class="fill"><i class="ion-android-star"></i></li>
-                                <li class="fill"><i class="ion-android-star"></i></li>
-                                <li class="empty"><i class="ion-android-star"></i></li>
+                                <li class="sao sao1" data-sao="1" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 1)" ><i class="ion-android-star"></i></li>
+                                <li  class="sao sao2" data-sao="2" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 2)" ><i class="ion-android-star"></i></li>
+                                <li  class="sao sao3" data-sao="3" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 3)" ><i class="ion-android-star"></i></li>
+                                <li  class="sao sao4" data-sao="4" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 4)" ><i class="ion-android-star"></i></li>
+                                <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
                             </ul>
-                            <a href="#" class="customer-review ml-2">(customer review )</a>
+                            <a href="#" class="customer-review ml-2">(<?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá)</a>
                         </div>
                         <div class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</div>
                         <p><?php echo $cot["ThongTin"]?></p>
@@ -438,6 +463,31 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <?php
 include ('../layout/footer.php')
 ?>
+<script>
+    $(document).ready(function () {
+        for (i=1;i<=<?php echo $sosao ?>;i++){
+            $('.sao'+i).css('color','#ff365d');
+        }
+        $('.sao').mouseenter(function () {
+            for(i=1;i<=$(this).attr('data-sao');i++){
+                $('.sao'+i).addClass('saohover');
+
+            }
+        })
+        $('.sao').mouseleave(function () {
+            $('.sao').removeClass('saohover');
+
+        })
+        
+    })
+
+</script>
+<style>
+    .saohover{
+        color: #ff365d;
+
+    }
+</style>
 
 
 
