@@ -171,6 +171,13 @@
         </div>
     </div>
 </div>  End Modal Add cart -->
+<?php
+//include ('../page/connect.php');
+//$laysp="SELECT * FROM sanpham";
+//$truyvan=mysqli_query($conn,$laysp);
+//$cot=mysqli_fetch_array($truyvan);
+//
+//?>
 
 <!-- Start Modal Quickview cart -->
 <div class="modal fade" id="modalQuickview" tabindex="-1" role="dialog" aria-hidden="true">
@@ -192,10 +199,10 @@
                                 <div class="product-large-image modal-product-image-large swiper-container">
                                     <div class="swiper-wrapper">
                                         <div class="product-image-large-image swiper-slide img-responsive">
-                                            <img src="../images/product/default/home-3/default-1.jpg" alt="">
+                                            <img src="../images/product/default/home-1" alt="">
                                         </div>
                                         <div class="product-image-large-image swiper-slide img-responsive">
-                                            <img src="../images/product/default/home-3/default-2.jpg" alt="">
+                                            <img src="../images/product/default/home-1" alt="">
                                         </div>
                                         <div class="product-image-large-image swiper-slide img-responsive">
                                             <img src="../images/product/default/home-3/default-3.jpg" alt="">
@@ -245,8 +252,8 @@
                             <div class="modal-product-details-content-area">
                                 <!-- Start  Product Details Text Area-->
                                 <div class="product-details-text">
-                                    <h4 class="title">Nonstick Dishwasher PFOA</h4>
-                                    <div class="price"><del>$70.00</del>$80.00</div>
+                                    <h4 class="title">PDOFA</h4>
+                                    <div class="price"><del>$70.00</del>80 VND</div>
                                 </div> <!-- End  Product Details Text Area-->
                                 <!-- Start Product Variable Area -->
                                 <div class="product-details-variable">
@@ -295,7 +302,7 @@
                                     </div>
                                 </div> <!-- End Product Variable Area -->
                                 <div class="modal-product-about-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae</p>
+                                    <p><?php echo $cot["ThongTin"]?></p>
                                 </div>
                                 <!-- Start  Product Details Social Area-->
                                 <div class="modal-product-details-social">
@@ -342,6 +349,7 @@
 <script src="../js/plugins/jquery.instagramFeed.js"></script>
 <script src="../js/plugins/ajax-mail.js"></script>
 <script src="../js/jsNguoiDung.js"></script>
+<!--<script src="../js/quanhuyen.js"></script>-->
 
 
 

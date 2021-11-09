@@ -128,21 +128,24 @@ include ('connect.php');
                                  <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label for="country">Tỉnh/Thành Phố <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide" name="province" id="province" >
+                                        <select class="country_option nice-select wide city" name="province" id="province" >
                                             <?php
                                             $truyvantp="SELECT * FROM pvs_tinhthanhpho";
                                             $laytp=mysqli_query($conn,$truyvantp);
-                                                while ($row = mysqli_fetch_array($laytp)){
-                                                   echo" <option value=".$row["matp"].">".$row["name_city"]."</option>";
-                                                }
+                                            $numtp=mysqli_num_rows($laytp);
+                                            if($numtp > 0){
+                                            while ($row = mysqli_fetch_array($laytp)){
                                             ?>
+                                             <option value="<?php echo $row["matp"]?>"><?php echo $row["name_city"]?></option>;
+                                            <?php } } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label>Quận/ huyện <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide" name="district" id="district" >
+                                        <select class="country_option nice-select wide tinh" name="district" id="district" >
+                                            <option value="">--Chưa chọn quận huyện--</option>
 
 
 
@@ -153,7 +156,7 @@ include ('connect.php');
                                     <div class="default-form-box">
                                         <label>Phường/Xã <span style="color: red">(*)</span></label>
                                         <select class="country_option nice-select wide " name="ward" id="ward" >
-
+                                            <option value="">--Chưa chọn phường xã--</option>
                                         </select>
                                     </div>
                                 </div>
@@ -361,6 +364,17 @@ if(isset($_POST["send"])){
 <?php
 include ('../layout/footer.php')
 ?>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $('#province').change(function () {-->
+<!--            provinceId = $("#province").val();-->
+<!--            $.post('district.php',{"provinceId":provinceId},function (data) {-->
+<!--                $("#district").html(data);-->
+<!--                -->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <!--<script type="text/javascript">-->
 <!--    $(document).ready(function () {-->
 <!--        $('#province').change(function () {-->

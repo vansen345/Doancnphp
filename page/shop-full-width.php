@@ -111,7 +111,7 @@ $totalpage= ceil($total / $item_per_page);
                                                         </a>
                                                         <div class="action-link">
                                                             <div class="action-link-left">
-                                                                <a href="" >Add to Cart</a>
+<!--                                                                <a href=""  >Add to Cart</a>-->
                                                             </div>
                                                             <div class="action-link-right">
                                                                 <a href="" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
@@ -123,13 +123,13 @@ $totalpage= ceil($total / $item_per_page);
                                                     <div class="content">
                                                         <div class="content-left">
                                                             <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>"><?php echo $cot["TenSanPham"] ?></a></h6>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                                            </ul>
+<!--                                                            <ul class="review-star">-->
+<!--                                                                <li class="fill"><i class="ion-android-star"></i></li>-->
+<!--                                                                <li class="fill"><i class="ion-android-star"></i></li>-->
+<!--                                                                <li class="fill"><i class="ion-android-star"></i></li>-->
+<!--                                                                <li class="fill"><i class="ion-android-star"></i></li>-->
+<!--                                                                <li class="empty"><i class="ion-android-star"></i></li>-->
+<!--                                                            </ul>-->
                                                         </div>
                                                         <div class="content-right">
                                                             <span class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</span>

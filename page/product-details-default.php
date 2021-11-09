@@ -306,7 +306,14 @@ if(isset($_SESSION["tendangnhap"]))
                                                 <div class="comment-content">
                                                     <div class="comment-content-top">
                                                         <div class="comment-content-left">
-                                                            <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
+                                                            <div  style="">
+                                                                <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
+
+
+                                                            </div>
+
+
+
 
                                                             <ul class="review-star">
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -316,19 +323,22 @@ if(isset($_SESSION["tendangnhap"]))
                                                                 <li class="empty"><i class="ion-android-star"></i></li>
                                                             </ul>
                                                         </div>
-                                                        <div style="margin-bottom: 28px">
-                                                            <span style="margin-left: 10px;">Đã bình luận vào ngày : <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
+                                                        <div style="margin-bottom: 20px">
+                                                            <span style="margin-left: 550px; margin-top: 90px"> Date: <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
                                                             <?php if(isset($_SESSION["tendangnhap"]) && $truyvanbl["TenDangNhap"]== $_SESSION["tendangnhap"] ){ ?>
-                                                            <a style="margin-left: 100px" class="ion-edit"></a>
+                                                            <a style="margin-left: 100px" data-bs-toggle="modal" data-bs-target="#modalQuickview1"  class="icon_chinhsua"><i class="ion-edit"></i></a>
                                                             <a style="margin-left: 10px" onclick="XoaBinhLuan(<?php echo $truyvanbl["MaBinhLuan"]; ?>,<?php echo $cot["MaSanPham"];?>)" class="ion-android-delete"></a>
                                                             <?php } ?>
+
+                                                            <input id="bl_id" type="hidden" value="<?php echo $truyvanbl["MaBinhLuan"] ?>">
+                                                            <input id="bl_noidung" type="hidden" value="<?php echo $truyvanbl["NoiDung"]  ?>">
+                                                            <div   class="para-content bl_noidung" style="margin-bottom: 35px; margin-left: 30px">
+                                                                <p><?php echo $truyvanbl["NoiDung"]  ?>. </p>
+                                                            </div>
                                                         </div>
 
                                                     </div>
 
-                                                    <div class="para-content">
-                                                        <p><?php echo $truyvanbl["NoiDung"]  ?>. </p>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- Start - Review Comment Reply-->
@@ -401,7 +411,7 @@ if(isset($_SESSION["tendangnhap"]))
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview" ><i class="icon-magnifier"></i></a>
                                                 <a href="wishlist.php"><i class="icon-heart"></i></a>
                                                 <a href="compare.php"><i class="icon-shuffle"></i></a>
                                             </div>
@@ -440,6 +450,45 @@ if(isset($_SESSION["tendangnhap"]))
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalQuickview1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+<!--                        <div class="col text-right">-->
+<!--                            <button type="button" class="close modal-close" data-bs-dismiss="modal" aria-label="Close">-->
+<!--                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>-->
+<!--                            </button>-->
+<!--                        </div>-->
+                        <div class="col-lg-6 col-md-6 div_doimatkhau">
+                            <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
+                                <h3>Edit Comment</h3>
+
+                                <div class="default-form-box">
+                                    <label>Content <span style="color: red" >(*)</span></label> <input type="hidden" id="bl_edit">
+                                    <input id="comment_idprd" value="<?php echo $_GET["Masp"]?>" type="hidden">
+<!--                                    <input required=""  id="matkhaucu" type="password">-->
+                                    <textarea  id="contentcm" placeholder="Write a review"  style="width: 800px"></textarea>
+                                </div>
+
+
+                                <div class="login_submit">
+                                    <span style="color:red;" id="bl_thongbao"></span>
+                                    <button id="edit_commnent" class="btn btn-md btn-black-default-hover mb-4" type="submit">Lưu</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Button trigger modal -->
 
 
@@ -463,6 +512,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <?php
 include ('../layout/footer.php')
 ?>
+
 <script>
     $(document).ready(function () {
         for (i=1;i<=<?php echo $sosao ?>;i++){
@@ -478,6 +528,12 @@ include ('../layout/footer.php')
             $('.sao').removeClass('saohover');
 
         })
+        $('.icon_chinhsua').click(function () {
+            $('#bl_edit').val($(this).parent().find("#bl_id").val());
+            $('#contentcm').val($(this).parent().find("#bl_noidung").val());
+
+
+        })
         
     })
 
@@ -488,6 +544,25 @@ include ('../layout/footer.php')
 
     }
 </style>
+<script>
+    $(document).ready(function () {
+        $('#edit_commnent').click(function () {
+            contentcm=$('#contentcm').val();
+            loi=0;
+            if(contentcm=="")
+            {
+                loi++;
+                $('#contentcm').text("Hãy nhập nội dung bình luận");
+            }
+            if(loi!=0){
+                return false;
+            }
+            else {
+                EditCommnent($('#bl_edit').val(),$('#comment_idprd').val(),$('#contentcm').val());
+            }
+        });
 
+    });
+</script>
 
 

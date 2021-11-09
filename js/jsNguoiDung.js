@@ -14,6 +14,22 @@ function DoiMatKhau(tendangnhap,matkhaucu,matkhaumoi) {
     });
 }
 
+function EditCommnent(mabinhluan,masanpham,noidung) {
+    $.ajax({
+        url:"ajax/EditComment.php",
+        type:"POST",
+        data:{
+            mabinhluan:mabinhluan,
+            noidung:noidung
+        },
+        success:function (giatri) {
+            alert(giatri);
+            window.location="product-details-default.php?Masp="+masanpham;
+        }
+    });
+
+}
+
 function XoaBinhLuan(mabinhluan,masanpham) {
     $.ajax({
         url:"ajax/XoaBinhLuan.php",
@@ -24,8 +40,6 @@ function XoaBinhLuan(mabinhluan,masanpham) {
         success:function (giatri) {
             alert(giatri);
             window.location="product-details-default.php?Masp="+masanpham;
-
-
         }
     });
 
@@ -46,9 +60,7 @@ function DanhGiaSP(masanpham,tendangnhap,noidung) {
 
         }
     });
-
 }
-
 
 
 function addCart(id) {
