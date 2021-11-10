@@ -79,10 +79,6 @@ include ('connect.php');
                 $laythanhvien = "SELECT * FROM thanhvien WHERE TenDangNhap='" . $_SESSION["tendangnhap"] . "'";
                 $truyvan = mysqli_query($conn, $laythanhvien);
                 $cottv = mysqli_fetch_array($truyvan);
-
-
-
-
             ?>
 
             <!-- Start User Details Checkout Form -->
@@ -181,11 +177,8 @@ include ('connect.php');
                                 if(isset($_SESSION["giohang"])){
                                 $subtotal =0;
                                 $ordertotal =0;
-                                foreach ($_SESSION["giohang"] as $key=>$value){
-                                    $subtotal +=$value["price"]*$value["number"];
-                                    $ordertotal+=$subtotal;
 
-                                }
+
 
                                 ?>
                                 <table>
@@ -195,20 +188,25 @@ include ('connect.php');
                                             <th>Tổng cộng</th>
                                         </tr>
                                     </thead>
-                                    <?php
-                                    foreach ($_SESSION["giohang"] as $key=>$value){
-                                    ?>
+
 
                                     <tbody>
+                                    <?php
+                                    foreach ($_SESSION["giohang"] as $key=>$value){
+                                    $subtotal =$value["price"]*$value["number"];
+                                    $ordertotal+=$subtotal;
+                                    ?>
                                         <tr>
+
 
                                             <td><?php echo $value["name"] ?> <strong> × <?php echo $value["number"] ?></strong></td>
                                             <td><?php  echo number_format($subtotal,0,",","."); ?></td>
+                                    <?php }?>
 
                                         </tr>
 
                                     </tbody>
-                                    <?php }?>
+
                                     <tfoot>
                                         <tr>
                                             <th>Shipping</th>
@@ -276,39 +274,33 @@ if(isset($_POST["send"])){
             $content="<div style='background: white;padding: 15px;border: 1px solid'>";
 
             $content="<div>";
+            $content="<div style='width: 80%;float: right'>";
+            $content="<h4 style='margin: 10px 0;font-size: 18px;color: black'>Đơn Hàng Của Bạn</h4>";
             $i=0;
             foreach ($_SESSION["giohang"] as $key=> $value) {
+//                $total=0;
+//                $tongtien=0;
                 $i++;
                 $masp = $value["masp"];
                 $price=number_format($value["price"],0,",",".");
                 $number = $value["number"];
                 $total=number_format($value["price"] * $value["number"],0,",",".");
                 $date=date("d/m/Y");
-
-
-
-
-
-
                 $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
                 mysqli_query($conn, $themctdd);
-                $content.=" 
-                           <div style='width: 80%;float: right'>
-                              <h4 style='margin: 10px 0;font-size: 18px'>Đơn Hàng Của Bạn</h4>
-                              <p style='margin: 4px 0;font-size: 14px'>Tên sản phẩm: <span>".$value["name"]."</span></p>
-                            
-                              <p style='margin: 4px 0;font-size: 14px'>Ngày đặt: <span>$date</span></p>
-                              <p style='margin: 4px 0;font-size: 14px'>Đơn giá: <span>$price</span></p>
-                              <p style='margin: 4px 0;font-size: 14px'>Số lượng: <span>$number</span></p>
-                              <p style='margin: 4px 0;font-size: 14px'>Thành tiền: <span>$total</span></p>
-                             
-                              
-
-                           </div>";
+                $content.="     
+                        <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
+                          <p style='margin: 4px 0;font-size: 14px;color: black'>Ngày đặt: <span>$date</span></p>
+                          <p style='margin: 4px 0;font-size: 14px;color: black'>Đơn giá: <span>$price</span></p>
+                          <p style='margin: 4px 0;font-size: 14px;color: black'>Số lượng: <span>$number</span></p>
+                          <p style='margin: 4px 0;font-size: 14px;color: black'>Thành tiền: <span>$total</span></p>
+                           <br>
+                             ";
 
             }
 
-
+//            $content.='<b>Tổng tiền:</b>';
+            $content.='</div>';
             $content.='</div>';
             $content.='</div>';
 
@@ -356,9 +348,6 @@ if(isset($_POST["send"])){
     } catch (Exception $e) {
         echo "Lỗi gửi mail: {$mail->ErrorInfo}";
     }
-
-
-
 }
 ?>
 <?php

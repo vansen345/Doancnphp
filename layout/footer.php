@@ -302,7 +302,7 @@
                                     </div>
                                 </div> <!-- End Product Variable Area -->
                                 <div class="modal-product-about-text">
-                                    <p><?php echo $cot["ThongTin"]?></p>
+                                    <p></p>
                                 </div>
                                 <!-- Start  Product Details Social Area-->
                                 <div class="modal-product-details-social">

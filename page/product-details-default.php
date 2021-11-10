@@ -295,8 +295,6 @@ if(isset($_SESSION["tendangnhap"]))
                                         <!-- Start - Review Comment list-->
                                         <?php
                                             while ($truyvanbl=mysqli_fetch_array($cotbl)){
-
-
                                         ?>
                                         <li class="comment-list">
                                             <div class="comment-wrapper">
@@ -308,13 +306,7 @@ if(isset($_SESSION["tendangnhap"]))
                                                         <div class="comment-content-left">
                                                             <div  style="">
                                                                 <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
-
-
                                                             </div>
-
-
-
-
                                                             <ul class="review-star">
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -323,8 +315,9 @@ if(isset($_SESSION["tendangnhap"]))
                                                                 <li class="empty"><i class="ion-android-star"></i></li>
                                                             </ul>
                                                         </div>
+                                                        <br>
                                                         <div style="margin-bottom: 20px">
-                                                            <span style="margin-left: 550px; margin-top: 90px"> Date: <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
+                                                            <span style="margin-left: 400px; margin-top: 90px"> Date: <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
                                                             <?php if(isset($_SESSION["tendangnhap"]) && $truyvanbl["TenDangNhap"]== $_SESSION["tendangnhap"] ){ ?>
                                                             <a style="margin-left: 100px" data-bs-toggle="modal" data-bs-target="#modalQuickview1"  class="icon_chinhsua"><i class="ion-edit"></i></a>
                                                             <a style="margin-left: 10px" onclick="XoaBinhLuan(<?php echo $truyvanbl["MaBinhLuan"]; ?>,<?php echo $cot["MaSanPham"];?>)" class="ion-android-delete"></a>

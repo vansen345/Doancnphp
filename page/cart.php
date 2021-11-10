@@ -41,7 +41,7 @@ include ('../layout/header.php')
                             <table>
                                 <?php
 
-                                if(!isset($_SESSION["giohang"])){
+                                if(empty($_SESSION["giohang"])){
                                     echo "<script>location='empty-cart.php';</script>";
                                 ?>
 
