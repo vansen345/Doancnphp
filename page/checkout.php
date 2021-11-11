@@ -91,13 +91,13 @@ include ('connect.php');
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label>Họ và tên lót <span style="color: red">(*)</span></label>
-                                        <input name="hoten" type="text" value="<?php echo $cottv["Hoten"];?>" disabled>
+                                        <input name="hoten" type="text" value="<?php echo $cottv["Hoten"];?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label> Email <span style="color: red">(*)</span></label>
-                                        <input type="text" name="email" value="<?php echo $cottv["Email"];?>">
+                                        <input type="text" name="email" value="<?php echo $cottv["Email"];?>" disabled>
 
                                     </div>
                                 </div>
@@ -262,7 +262,8 @@ if(isset($_POST["send"])){
         $ngaydat = date("Y-m-d");
         $dienthoai=$_POST["dienthoai"];
         $ghichu=$_POST["ghichu"];
-        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."')";
+        $tenhkh=$_POST["hoten"];
+        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."')";
 
         if (mysqli_query($conn, $themdondat)) {
             $madondat = 0;

@@ -95,12 +95,15 @@
                                                 $truyvan=mysqli_query($conn,$layloaisp);
                                                 while ($row=mysqli_fetch_array($truyvan))
                                                 {
+                                                    $getcount = "SELECT * FROM sanpham WHERE MaLoaiSp = '".$row["MaLoaiSP"]."'";
+                                                    $db = mysqli_query($conn,$getcount);
+                                                    $count = mysqli_num_rows($db);
 
 
                                                     ?>
                                                     <!-- Mega Menu Sub Link -->
                                                     <li class="mega-menu-item">
-                                                        <a href="../page/danhmucsp.php?loaisp=<?php echo $row["MaLoaiSP"]?>" class="mega-menu-item-title"><?php echo $row["TenLoai"]?></a>
+                                                        <a href="../page/danhmucsp.php?loaisp=<?php echo $row["MaLoaiSP"]?>" class="mega-menu-item-title"><?php echo $row["TenLoai"]?>(<?php echo $count ?>)</a>
 
                                                     </li>
                                                     <!-- Mega Menu Sub Link -->
@@ -429,10 +432,17 @@
     </div> <!-- End Offcanvas Header -->
 
     <!-- Start  Offcanvas Addcart Wrapper -->
+    <?php
+    if(empty($_SESSION["giohang"])){
+        ?>
+        <img src="../images/product/hinhanh/empty-cart.png" alt="" class="offcanvas-cart-image">
+    <?php } else{
+    ?>
 
 
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
+
 
         <ul class="offcanvas-cart" >
             <?php
@@ -473,27 +483,31 @@
             </li>
             <?php } }
 
-            else{ ?>
+             ?>
 <!--                <span style="margin-left: 90px;font-size: 25px" class="text-danger">Giỏ Hàng Trống</span>-->
-                <img src="../images/product/hinhanh/empty-cart.png" alt="" class="offcanvas-cart-image">
-            <?php } ?>
-
+<!--                <img src="../images/product/hinhanh/empty-cart.png" alt="" class="offcanvas-cart-image">-->
 
         </ul>
+
         <div class="offcanvas-cart-total-price">
             <span class="offcanvas-cart-total-price-text">Subtotal:</span>
             <span class="offcanvas-cart-total-price-value"><?php echo number_format($tongtien,0,",",".");?></span>
         </div>
+        <?php } ?>
+
+
 
 
 
 
         <ul class="offcanvas-cart-action-button">
-            <li><a href="../page/cart.php" class="btn btn-block btn-pink">View Cart</a></li>
+            <li style="margin-top: 30px"><a href="../page/cart.php" class="btn btn-block btn-pink">View Cart</a></li>
 
         </ul>
 
+
     </div> <!-- End  Offcanvas Addcart Wrapper -->
+
 
 
 </div> <!-- End  Offcanvas Addcart Section -->

@@ -35,17 +35,7 @@ if(isset($_SESSION["tendangnhap"]))
     }
 
 }
-
-
-
-//?>
-<?php
-//?>
-<?php
-//
-//
-//
-//?>
+?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
 
@@ -266,11 +256,12 @@ if(isset($_SESSION["tendangnhap"]))
                             <div class="tab-pane" id="review">
                                 <div class="single-tab-content-item">
                                     <div class="review-form">
-                                        <div class="review-form-text-top">
+                                        <?php if(isset($_SESSION["tendangnhap"])){ ?>
+
+                                            <div class="review-form-text-top">
                                             <h5>ADD A REVIEW</h5>
                                             <!--                                            <p>Your email address will not be published. Required fields are marked *</p>-->
                                         </div>
-                                        <?php if(isset($_SESSION["tendangnhap"])){ ?>
 
                                             <form action="<?php echo $_SERVER["PHP_SELF"]?>?Masp=<?php echo $cot["MaSanPham"]?>" method="post">
                                                 <div class="row">
@@ -287,7 +278,7 @@ if(isset($_SESSION["tendangnhap"]))
                                                 </div>
                                             </form>
                                         <?php } else {?>
-                                            <b style="margin-left: 350px;font-size: 20px" class="text-danger">Bạn cần đăng nhập để bình luận sản phẩm</b>
+<!--                                            <b style="margin-left: 350px;font-size: 20px" class="text-danger">Bạn cần đăng nhập để bình luận sản phẩm</b>-->
                                         <?php } ?>
                                     </div> <br>
                                     <!-- Start - Review Comment -->
@@ -305,28 +296,20 @@ if(isset($_SESSION["tendangnhap"]))
                                                     <div class="comment-content-top">
                                                         <div class="comment-content-left">
                                                             <div  style="">
-                                                                <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
                                                             </div>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                                            </ul>
                                                         </div>
-                                                        <br>
                                                         <div style="margin-bottom: 20px">
-                                                            <span style="margin-left: 400px; margin-top: 90px"> Date: <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
+                                                            <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
+                                                            <span style="margin-left: 550px"> Date: <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
                                                             <?php if(isset($_SESSION["tendangnhap"]) && $truyvanbl["TenDangNhap"]== $_SESSION["tendangnhap"] ){ ?>
-                                                            <a style="margin-left: 100px" data-bs-toggle="modal" data-bs-target="#modalQuickview1"  class="icon_chinhsua"><i class="ion-edit"></i></a>
-                                                            <a style="margin-left: 10px" onclick="XoaBinhLuan(<?php echo $truyvanbl["MaBinhLuan"]; ?>,<?php echo $cot["MaSanPham"];?>)" class="ion-android-delete"></a>
+                                                                <a style="margin-left: 100px" data-bs-toggle="modal" data-bs-target="#modalQuickview1"  class="icon_chinhsua"><i class="ion-edit"></i></a>
+                                                                <a style="margin-left: 10px" onclick="XoaBinhLuan(<?php echo $truyvanbl["MaBinhLuan"]; ?>,<?php echo $cot["MaSanPham"];?>)" class="ion-android-delete"></a>
                                                             <?php } ?>
 
                                                             <input id="bl_id" type="hidden" value="<?php echo $truyvanbl["MaBinhLuan"] ?>">
                                                             <input id="bl_noidung" type="hidden" value="<?php echo $truyvanbl["NoiDung"]  ?>">
-                                                            <div   class="para-content bl_noidung" style="margin-bottom: 35px; margin-left: 30px">
-                                                                <p><?php echo $truyvanbl["NoiDung"]  ?>. </p>
+                                                            <div   class="para-content bl_noidung" style="margin-bottom: 35px; margin-left: -3px">
+                                                                <p><?php echo $truyvanbl["NoiDung"]  ?></p>
                                                             </div>
                                                         </div>
 
@@ -335,6 +318,7 @@ if(isset($_SESSION["tendangnhap"]))
                                                 </div>
                                             </div>
                                             <!-- Start - Review Comment Reply-->
+
                                           <!-- End - Review Comment Reply-->
                                         </li> <!-- End - Review Comment list-->
                                         <?php } ?>

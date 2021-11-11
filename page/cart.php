@@ -44,9 +44,6 @@ include ('../layout/header.php')
                                 if(empty($_SESSION["giohang"])){
                                     echo "<script>location='empty-cart.php';</script>";
                                 ?>
-
-
-
                                 <?php } else{
                                     ?>
                                 <!-- Start Cart Table Head -->
