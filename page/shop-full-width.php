@@ -177,7 +177,7 @@ $totalpage= ceil($total / $item_per_page);
                                                         <span class="product-list-price"> <?=number_format($cot2["DonGia"],0,",",".")?> VND</span>
                                                         <p><?php echo $cot2["ThongTin"]?></p>
                                                         <div class="product-action-icon-link-list">
-                                                            <input type="number" value="1" id="quantity" min="1" max="10" hidden>
+
                                                             <a href="#"   data-bs-toggle="modal" data-bs-target="#modalQuickview" class="btn btn-lg btn-black-default-hover">Add to cart</a>
                                                             <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview" class="btn btn-lg btn-black-default-hover"><i class="icon-magnifier"></i></a>
                                                             <a href="wishlist.php" class="btn btn-lg btn-black-default-hover"><i class="icon-heart"></i></a>

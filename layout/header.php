@@ -31,7 +31,7 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet" href="https://fontawesome.com/v5.15/icons?d=gallery&p=2">
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <!-- <link rel="stylesheet" href="../css/vendor/vendor.min.css">
     <link rel="stylesheet" href="../css/plugins/plugins.min.css">
@@ -147,11 +147,11 @@
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--white action-hover-color--pink">
                             <li>
-                                <a  href="#offcanvas-wishlish" class="offcanvas-toggle">
-                                    <i class="icon-heart"></i>
-                                    <span class="item-count">3</span>
+                                <a href="" class="">
+                                    <i class="icon-social-dropbox"></i>
                                 </a>
                             </li>
+
                             <?php
                             $number=0;
                             if(isset($_SESSION["giohang"])){
@@ -178,11 +178,16 @@
                                     <i class="icon-magnifier"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
-                                    <i class="icon-menu"></i>
-                                </a>
-                            </li>
+<!--                            <li>-->
+<!--                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">-->
+<!--                                    <i class="icon-menu"></i>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="" class="">-->
+<!--                                    <i class="icon-social-dropbox"></i>-->
+<!--                                </a>-->
+<!--                            </li>-->
                             <?php if(!isset($_SESSION["tendangnhap"])){ ?>
                                 <li>
                                     <a href="../page/login.php">
@@ -259,6 +264,7 @@
                                 <i class="icon-menu"></i>
                             </a>
                         </li>
+
                     </ul>
                 </div>
                 <!-- End Mobile Right Side -->
