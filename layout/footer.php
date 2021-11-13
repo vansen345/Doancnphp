@@ -10,12 +10,12 @@
                     <div class="col-lg-3 col-sm-6 mb-6">
                         <!-- Start Footer Single Item -->
                         <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"  data-aos-delay="0">
-                            <h5 class="title">INFORMATION</h5>
+                            <h5 class="title">Thông Tin</h5>
                             <ul class="footer-nav">
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="../page/contact-us.php">Contact</a></li>
-                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Thông tin vận chuyển</a></li>
+                                <li><a href="#">Điều khoản & Điều kiện</a></li>
+                                <li><a href="../page/contact-us.php">Liên Hệ</a></li>
+                                <li><a href="#">Trả hàng</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
@@ -23,13 +23,13 @@
                     <div class="col-lg-3 col-sm-6 mb-6">
                         <!-- Start Footer Single Item -->
                         <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"  data-aos-delay="200">
-                            <h5 class="title">MY ACCOUNT</h5>
+                            <h5 class="title">Tài Khoản</h5>
                             <ul class="footer-nav">
-                                <li><a href="../page/my-account.php">My account</a></li>
-                                <li><a href="../page/wishlist.php">Wishlist</a></li>
-                                <li><a href="../page/privacy-policy.php">Privacy Policy</a></li>
-                                <li><a href="../page/faq.php">Frequently Questions</a></li>
-                                <li><a href="#">Order History</a></li>
+                                <li><a href="../page/my-account.php">Tài khoản của tôi</a></li>
+                                <li><a href="../page/wishlist.php">Danh sách yêu thích</a></li>
+                                <li><a href="../page/privacy-policy.php">Cấp lại mật khẩu</a></li>
+                                <li><a href="../page/faq.php">Các câu hỏi thường gặp</a></li>
+                                <li><a href="#">Lịch sửa đơn hàng</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
@@ -53,11 +53,11 @@
                         <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"  data-aos-delay="600">
                             <h5 class="title">ABOUT US</h5>
                             <div class="footer-about">
-                                <p>We are a team of designers and developers that create high quality Magento, Prestashop, Opencart.</p>
+                                <p>Hãy đến với 2S Shop để biến đam mê của bạn thành hiện thực.</p>
 
                                 <address>
-                                    <span>Address: 4710-4890 Breckinridge St, Fayettevill</span>
-                                    <span>Email: yourmail@mail.com</span>
+                                    <span>Địa chỉ: 475A Điện Biên Phủ, Phường 25, Quận Bình Thạnh, Tp.Hồ Chí Minh</span>
+                                    <span>Email: 2sshopxe@mail.com</span>
                                 </address>
                             </div>
                         </div>
@@ -85,12 +85,12 @@
                     </div>
                     <div class="col-xl-7 col-lg-6 col-md-6 mb-6">
                         <div class="footer-newsletter" data-aos="fade-up"  data-aos-delay="200">
-                            <h4 class="title">DON'T MISS OUT ON THE LATEST</h4>
+                            <h4 class="title">ĐỪNG BỎ LỠ CÁC KHUYẾN MÃI TỪ CHÚNG TÔI BẠN NHÉ!</h4>
                             <div class="form-newsletter">
                                 <form action="#" method="post">
                                     <div class="form-fild-newsletter-single-item input-color--pink">
-                                        <input type="email" placeholder="Your email address..." required>
-                                        <button type="submit">SUBSCRIBE!</button>
+                                        <input type="email" placeholder="Email..." required>
+                                        <button type="submit">Đăng Ký!</button>
                                     </div>
                                 </form>
                             </div>

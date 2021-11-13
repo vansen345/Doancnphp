@@ -14649,7 +14649,7 @@ input {
 }
 @media (min-width: 1440px) {
     .hero-slider-bg img {
-        height: 890px;
+        height: 550px;
     }
 }
 
@@ -18267,7 +18267,7 @@ Pages - Contact
 .header-action-link li a {
     font-size: 21px;
     position: relative;
-    letter-spacing: -6px;
+    /*letter-spacing: -6px;*/
 }
 
 .header-action-link li a span {
