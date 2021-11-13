@@ -14,27 +14,6 @@ include ('../layout/header.php')
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="../images/hero-slider/home-3/bannerledtun.png" alt="">
-                </div>
-                <!-- Hero Slider Content -->
-                <div class="hero-slider-wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-auto">
-<!--                                <div class="hero-slider-content">-->
-<!--                                    <h4 class="subtitle" style="color: #ff365d">Sản phẩm mới</h4>-->
-<!--                                    <h1 class="title" style="color: #ff365d">Diện mạo mới  </h1>-->
-<!--                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">Đặt ngay </a>-->
-<!--                                </div>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- End Hero Single Slider Item -->
-            <!-- Start Hero Single Slider Item -->
-            <div class="hero-single-slider-item swiper-slide">
-                <!-- Hero Slider Image -->
-                <div class="hero-slider-bg">
                     <img src="../images/hero-slider/home-3/motul2.png" alt="">
                 </div>
                 <!-- Hero Slider Content -->
@@ -52,7 +31,29 @@ include ('../layout/header.php')
                     </div>
                 </div>
             </div> <!-- End Hero Single Slider Item -->
+            <!-- Start Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="../images/hero-slider/home-4/testbanner.jpg" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+                <div class="hero-slider-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <!--                                <div class="hero-slider-content">-->
+                                <!--                                    <h4 class="subtitle">New collection</h4>-->
+                                <!--                                    <h1 class="title">Best Of HiFi <br> Loud Speaker</h1>-->
+                                <!--                                    <a href="../page/product-details-default.php" class="btn btn-lg btn-pink">shop now </a>-->
+                                <!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Hero Single Slider Item -->
         </div>
+
 
         <!-- If we need pagination -->
         <div class="swiper-pagination active-color-pink"></div>
@@ -1163,4 +1164,3 @@ include ('../layout/header.php')
 <?php
 include ('../layout/footer.php')
 ?>
-
