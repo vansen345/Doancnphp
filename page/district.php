@@ -6,7 +6,7 @@ $sql="SELECT * FROM pvs_quanhuyen WHERE matp = '".$key."'";
 $laytp=mysqli_query($conn,$sql);
 $numtp=mysqli_num_rows($laytp);
     if($numtp > 0) {?>
-         <select class="country_option nice-select wide tinh" name="district" id="district" >
+         <select class="nice-select wide tinh" name="district" id="district" style="position: absolute;width: 573px;left: -3px;top: -1px" >
             <?php
                 while ($row = mysqli_fetch_array($laytp)){
                     ?>

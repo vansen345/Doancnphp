@@ -140,7 +140,8 @@ include ('connect.php');
                                 <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label>Quận/ huyện <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide tinh" name="district" id="district">
+                                        <select style="position: relative" class="wide tinh" name="district" id="district">
+
                                         </select>
                                     </div>
                                 </div>
@@ -295,8 +296,23 @@ if(isset($_POST["send"])){
                 $hoten= $cottv["Hoten"];
                 $diachi=$cottv["Diachi"];
                 $sdt=$cottv["Dienthoai"];
-
                 mysqli_query($conn, $themctdd);
+                //==========================Trừ số lượng tồn ==========================================
+                $getcount = "SELECT * FROM ct_dondat WHERE MaSanPham = '".$masp."' AND MaDonDat = '".$madondat."'";
+                $get_db = mysqli_fetch_array(mysqli_query($conn, $getcount));
+
+                $product = "SELECT * FROM sanpham WHERE MaSanPham = '".$masp."'";
+                $getsl = mysqli_fetch_array(mysqli_query($conn, $product));
+
+                $soluongton = $getsl["SoLuong"] - $get_db["SoLuong"];
+                if($soluongton==0) {
+                    $soldout = "UPDATE sanpham SET TrangThai = '2',SoLuong = '".$soluongton."' WHERE MaSanPham = '".$masp."'";
+                    $query_soldout=mysqli_query($conn,$soldout);
+                } else {
+                    $query = "UPDATE sanpham SET SoLuong = '".$soluongton."' WHERE MaSanPham = '".$masp."'";
+                    $queryupdate=mysqli_query($conn,$query);
+                }
+                //=======================================================================================
                 $content.="     
                         <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Đơn giá: <span>$price</span></p>
