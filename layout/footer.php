@@ -349,7 +349,7 @@
 <script src="../js/plugins/jquery.instagramFeed.js"></script>
 <script src="../js/plugins/ajax-mail.js"></script>
 <script src="../js/jsNguoiDung.js"></script>
-<!--<script src="../js/quanhuyen.js"></script>-->
+<script src="../js/quanhuyen.js"></script>
 
 
 

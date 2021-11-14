@@ -97,7 +97,7 @@ include ('connect.php');
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label> Email <span style="color: red">(*)</span></label>
-                                        <input type="text" name="email" value="<?php echo $cottv["Email"];?>" disabled>
+                                        <input type="text" name="email" value="<?php echo $cottv["Email"];?>" >
 
                                     </div>
                                 </div>
@@ -140,11 +140,7 @@ include ('connect.php');
                                 <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label>Quận/ huyện <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide tinh" name="district" id="district" >
-                                            <option value="">--Chưa chọn quận huyện--</option>
-
-
-
+                                        <select class="country_option nice-select wide tinh" name="district" id="district">
                                         </select>
                                     </div>
                                 </div>
@@ -273,10 +269,16 @@ if(isset($_POST["send"])){
                 $madondat = $cotDD["MaDonDat"];
             }
             $content="<div style='background: white;padding: 15px;border: 1px solid'>";
-
             $content="<div>";
+//            $content="<div>";
+//            $content="<h2>Thanks</h2>";
+//            $content.="</div>";
             $content="<div style='width: 80%;float: right'>";
-            $content="<h4 style='margin: 10px 0;font-size: 18px;color: black'>Đơn Hàng Của Bạn</h4>";
+            $content="<hr>";
+
+            $content="<h2 style='font-weight: normal;font-size: 24px;color: black'>Cám ơn bạn đã mua hàng!</h2>
+            <p style='font-size: 16px;color: #777;line-height: 150%'>Xin chào.Chúng tôi đã nhận được đặt hàng của bạn và đã sẵn sàng để vận chuyển. Chúng tôi sẽ thông báo cho bạn khi đơn hàng được gửi đi.</p><hr>
+            <h3 style='margin: 10px 0;font-size: 18px;color: black;font-weight: normal'>Đơn Hàng Của Bạn</h3>";
             $i=0;
             foreach ($_SESSION["giohang"] as $key=> $value) {
 //                $total=0;
@@ -288,6 +290,11 @@ if(isset($_POST["send"])){
                 $total=number_format($value["price"] * $value["number"],0,",",".");
                 $date=date("d/m/Y");
                 $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
+                $tongtien= number_format($ordertotal,0,",",".");
+                $hoten= $cottv["Hoten"];
+                $diachi=$cottv["Diachi"];
+                $sdt=$cottv["Dienthoai"];
+
                 mysqli_query($conn, $themctdd);
                 $content.="     
                         <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
@@ -300,10 +307,32 @@ if(isset($_POST["send"])){
 
             }
 
-//            $content.='<b>Tổng tiền:</b>';
+            $content.='<b>Tổng tiền: '.$tongtien.'</b>';
+            $content.='</div><hr>';
+            $content.='<h3 style="font-weight: normal;font-size: 20px;color: black">Thông tin khách hàng</h3>';
+            $content.='<table>';
+            $content.='<tbody>';
+            $content.='<tr>';
+            $content.='<td>';
+            $content.='<h4 style="font-size: 16px;font-weight: 500;color: #555">Địa chỉ giao hàng</h4>';
+            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Tên khách hàng: '.$hoten.'</p>';
+            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$noigiao.'</p>';
+            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Điện thoại: '.$dienthoai.'</p>';
+            $content.='</td>';
+//            $content.='<td>';
+//            $content.='<h4 style="font-size: 16px;font-weight: 500;color: #555">Địa chỉ thanh toán</h4>';
+//            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Tên khách hàng: '.$tenhkh.'</p>';
+//            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$diachi.'</p>';
+//            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Điện thoại: '.$sdt.'</p>';
+//            $content.='</td>';
+            $content.='</tr>';
+            $content.='</tbody>';
+            $content.='</table>';
+
+
             $content.='</div>';
             $content.='</div>';
-            $content.='</div>';
+
 
             unset($_SESSION["giohang"]);
             echo "<script>alert('Đặt hàng thành công xin hãy kiểm tra email của bạn');location='shop-full-width.php';</script>";
@@ -330,15 +359,15 @@ if(isset($_POST["send"])){
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = '12cbvansennttkg2018@gmail.com';                     //SMTP username
-        $mail->Password   = 'sendeptraikg123';
+        $mail->Username   = '2sshop69888@gmail.com';                     //SMTP username
+        $mail->Password   = 'Sen@123456789';
         $mail->SMTPSecure = 'tls';
         $mail->CharSet = 'UTF-8';
         $mail->Port       = 587;
         $sendmail= $_POST["email"];
         $fullname=$_POST["hoten"];
 
-        $mail->setFrom('12cbvansennttkg2018@gmail.com', 'Shopping Cart');
+        $mail->setFrom('2sshop69888@gmail.com', '2SShop GangSter');
         $mail->addAddress($sendmail, $fullname);
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Chào bạn đây là thông tin đơn hàng của bạn';

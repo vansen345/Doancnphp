@@ -379,13 +379,13 @@ if(isset($_SESSION["tendangnhap"]))
                                 <!-- Start Product Default Single Item -->
                                 <div class="product-default-single-item product-color--golden swiper-slide">
                                     <div class="image-box">
-                                        <a href="product-details-default.php" class="image-link">
+                                        <a href="product-details-default.php?Masp=<?php echo $cot1["MaSanPham"];?>" class="image-link">
                                             <img src="../images/product/hinhanh/<?php echo $cot1["Anh"]?>" alt="">
                                             <img src="../images/product/hinhanh/<?php echo $cot1["Anh"]?>" alt="">
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
+<!--                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>-->
                                             </div>
                                             <div class="action-link-right">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview" ><i class="icon-magnifier"></i></a>
@@ -396,7 +396,7 @@ if(isset($_SESSION["tendangnhap"]))
                                     </div>
                                     <div class="content">
                                         <div class="content-left">
-                                            <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot1["MaSanPham"];?>"><?php echo $cot1["TenSanPham"] ?></a></h6>
+                                            <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot1["MaSanPham"];?>"</a><?php echo $cot1["TenSanPham"]?></h6>
                                             <ul class="review-star">
                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                 <li class="fill"><i class="ion-android-star"></i></li>

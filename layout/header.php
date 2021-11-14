@@ -146,11 +146,11 @@
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--white action-hover-color--pink">
-                            <li>
-                                <a href="" class="">
-                                    <i class="icon-social-dropbox"></i>
-                                </a>
-                            </li>
+<!--                            <li>-->
+<!--                                <a href="" class="">-->
+<!--                                    <i class="icon-social-dropbox"></i>-->
+<!--                                </a>-->
+<!--                            </li>-->
 
                             <?php
                             $number=0;
@@ -178,11 +178,7 @@
                                     <i class="icon-magnifier"></i>
                                 </a>
                             </li>
-<!--                            <li>-->
-<!--                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">-->
-<!--                                    <i class="icon-menu"></i>-->
-<!--                                </a>-->
-<!--                            </li>-->
+
 <!--                            <li>-->
 <!--                                <a href="" class="">-->
 <!--                                    <i class="icon-social-dropbox"></i>-->
@@ -209,6 +205,11 @@
 
 
                             <?php }?>
+                            <li>
+                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
+                                    <i class="icon-menu"></i>
+                                </a>
+                            </li>
 
                         </ul>
                         <!-- End Header Action Link -->
