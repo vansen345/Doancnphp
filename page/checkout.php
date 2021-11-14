@@ -263,6 +263,7 @@ if(isset($_POST["send"])){
 
         if (mysqli_query($conn, $themdondat)) {
             $madondat = 0;
+            $date=date("d/m/Y");
             $laydon = "SELECT * FROM dondat ORDER BY MaDonDat";
             $truyvanlaydondat = mysqli_query($conn, $laydon);
             while ($cotDD = mysqli_fetch_array($truyvanlaydondat)) {
@@ -277,8 +278,8 @@ if(isset($_POST["send"])){
             $content="<hr>";
 
             $content="<h2 style='font-weight: normal;font-size: 24px;color: black'>Cám ơn bạn đã mua hàng!</h2>
-            <p style='font-size: 16px;color: #777;line-height: 150%'>Xin chào.Chúng tôi đã nhận được đặt hàng của bạn và đã sẵn sàng để vận chuyển. Chúng tôi sẽ thông báo cho bạn khi đơn hàng được gửi đi.</p><hr>
-            <h3 style='margin: 10px 0;font-size: 18px;color: black;font-weight: normal'>Đơn Hàng Của Bạn</h3>";
+            <p style='font-size: 16px;color: #777;line-height: 150%'>Xin chào $tenhkh.Chúng tôi đã nhận được đặt hàng của bạn và đã sẵn sàng để vận chuyển. Chúng tôi sẽ thông báo cho bạn khi đơn hàng được gửi đi.</p><hr>
+            <h3 style='margin: 10px 0;font-size: 18px;color: black;font-weight: normal'>Đơn Hàng Của Bạn <p style='font-size: 14px;color: #555;line-height: 150%' >Đã đặt vào ngày: $date</p></h3>";
             $i=0;
             foreach ($_SESSION["giohang"] as $key=> $value) {
 //                $total=0;
@@ -298,7 +299,6 @@ if(isset($_POST["send"])){
                 mysqli_query($conn, $themctdd);
                 $content.="     
                         <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
-                          <p style='margin: 4px 0;font-size: 14px;color: black'>Ngày đặt: <span>$date</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Đơn giá: <span>$price</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Số lượng: <span>$number</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Thành tiền: <span>$total</span></p>
@@ -307,7 +307,7 @@ if(isset($_POST["send"])){
 
             }
 
-            $content.='<b>Tổng tiền: '.$tongtien.'</b>';
+            $content.='<b style="color: black">Tổng tiền: '.$tongtien.'</b>';
             $content.='</div><hr>';
             $content.='<h3 style="font-weight: normal;font-size: 20px;color: black">Thông tin khách hàng</h3>';
             $content.='<table>';
@@ -325,6 +325,15 @@ if(isset($_POST["send"])){
 //            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$diachi.'</p>';
 //            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Điện thoại: '.$sdt.'</p>';
 //            $content.='</td>';
+            $content.='</tr>';
+            $content.='</tbody>';
+            $content.='</table><hr>';
+            $content.='<table>';
+            $content.='<tbody>';
+            $content.='<tr>';
+            $content.='<td>';
+            $content.='<p style="color: #999;line-height: 150%;font-size: 14px">Nếu bạn có bất cứ câu hỏi nào,đừng ngần ngại liên lạc  <a href="2sshop69888@gmail.com" style="font-size: 14px;text-decoration: none;color: #1666a2 ">2sshop69888@gmail.com</a></p>';
+            $content.='</td>';
             $content.='</tr>';
             $content.='</tbody>';
             $content.='</table>';
