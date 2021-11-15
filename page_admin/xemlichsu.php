@@ -125,7 +125,8 @@ include ('../page/connect.php');
                             } else{
                                 $magiaodich="";
                             }
-                            $sqlselect= mysqli_query($conn,"SELECT * FROM dondat,thanhvien,sanpham,ct_dondat WHERE ct_dondat.MaSanPham = sanpham.MaSanPham AND thanhvien.TenDangNhap = dondat.TenDangNhap AND  ct_dondat.MaDonDat = '".$magiaodich."'" );
+//                            $sqlselect= mysqli_query($conn,"SELECT * FROM dondat,thanhvien,sanpham,ct_dondat WHERE ct_dondat.MaSanPham = sanpham.MaSanPham AND thanhvien.TenDangNhap = dondat.TenDangNhap AND  ct_dondat.MaDonDat = '".$magiaodich."'" );
+
                         ?>
 
                         <table class="table table-striped table-bordered table-hover" id="sample_1">

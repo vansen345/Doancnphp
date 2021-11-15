@@ -174,9 +174,6 @@ include ('connect.php');
                                 if(isset($_SESSION["giohang"])){
                                 $subtotal =0;
                                 $ordertotal =0;
-
-
-
                                 ?>
                                 <table>
                                     <thead>
@@ -197,7 +194,7 @@ include ('connect.php');
 
 
                                             <td><?php echo $value["name"] ?> <strong> × <?php echo $value["number"] ?></strong></td>
-                                            <td><?php  echo number_format($subtotal,0,",","."); ?></td>
+                                            <td><?php  echo number_format($subtotal,0,",","."); ?> VNĐ</td>
                                     <?php }?>
 
                                         </tr>
@@ -205,13 +202,18 @@ include ('connect.php');
                                     </tbody>
 
                                     <tfoot>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td><strong>$5.00</strong></td>
-                                        </tr>
+
                                         <tr class="order_total">
                                             <th>Order Total</th>
-                                            <td><strong><?php  echo number_format($ordertotal,0,",","."); ?></strong></td>
+                                            <td><strong><?php  echo number_format($ordertotal,0,",","."); ?> VNĐ</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Shipping</th>
+                                            <td><strong class="ship"></strong></td>
+                                        </tr>
+                                        <tr class="order_total">
+                                            <th>Sub Total</th>
+                                            <td ><span class="tongtien"></span></td>
                                         </tr>
                                     </tfoot>
 
@@ -260,8 +262,10 @@ if(isset($_POST["send"])){
         $dienthoai=$_POST["dienthoai"];
         $ghichu=$_POST["ghichu"];
         $tenhkh=$_POST["hoten"];
-        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."')";
-
+        $tongship=$_SESSION["tongbill"];
+        $thanhpho=$_POST["province"];
+        $quanhuyen=$_POST["district"];
+        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH,tongtiengoc,tongtien,thanhpho,quanhuyen) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."','".$tongship."','".$ordertotal."','".$thanhpho."','".$quanhuyen."')";
         if (mysqli_query($conn, $themdondat)) {
             $madondat = 0;
             $date=date("d/m/Y");
@@ -297,7 +301,7 @@ if(isset($_POST["send"])){
                 $diachi=$cottv["Diachi"];
                 $sdt=$cottv["Dienthoai"];
                 mysqli_query($conn, $themctdd);
-                //==========================Trừ số lượng tồn ==========================================
+
                 $getcount = "SELECT * FROM ct_dondat WHERE MaSanPham = '".$masp."' AND MaDonDat = '".$madondat."'";
                 $get_db = mysqli_fetch_array(mysqli_query($conn, $getcount));
 
@@ -312,7 +316,6 @@ if(isset($_POST["send"])){
                     $query = "UPDATE sanpham SET SoLuong = '".$soluongton."' WHERE MaSanPham = '".$masp."'";
                     $queryupdate=mysqli_query($conn,$query);
                 }
-                //=======================================================================================
                 $content.="     
                         <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Đơn giá: <span>$price</span></p>
@@ -320,9 +323,7 @@ if(isset($_POST["send"])){
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Thành tiền: <span>$total</span></p>
                            <br>
                              ";
-
             }
-
             $content.='<b style="color: black">Tổng tiền: '.$tongtien.'</b>';
             $content.='</div><hr>';
             $content.='<h3 style="font-weight: normal;font-size: 20px;color: black">Thông tin khách hàng</h3>';

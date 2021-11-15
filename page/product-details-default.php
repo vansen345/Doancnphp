@@ -145,6 +145,10 @@ if(isset($_SESSION["tendangnhap"]))
                         <p><?php echo $cot["ThongTin"]?></p>
                     </div> <!-- End  Product Details Text Area-->
                     <!-- Start Product Variable Area -->
+                    <?php if($cot["SoLuong"]=='0' || $cot["TrangThai"]=='2'){
+                        echo '<h3 style="margin-bottom: 50px">Hết hàng</h3>';
+                        ?>
+                    <?php } else{ ?>
                     <div class="product-details-variable">
                         <h4 class="title">Available Options</h4>
                         <!-- Product Variable Single Item -->
@@ -152,13 +156,20 @@ if(isset($_SESSION["tendangnhap"]))
                             <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> 200 IN STOCK</div>
                         </div>
                         <!-- Product Variable Single Item -->
+
+
                         <div class="d-flex align-items-center ">
-                            <div class="variable-single-item ">
+
+                                <div class="variable-single-item ">
                                 <span>Quantity</span>
                                 <div class="product-variable-quantity">
                                     <input id="quanlity" min="1" max="100" value="1" type="number">
                                 </div>
                             </div>
+
+
+
+
 
                             <div class="product-add-to-cart-btn">
                                 <a  onclick="addCart(<?php echo $cot["MaSanPham"]?>)" class="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
@@ -170,6 +181,7 @@ if(isset($_SESSION["tendangnhap"]))
                             <a href="compare.php" class="icon-space-right"><i class="icon-refresh"></i>Compare</a>
                         </div> <!-- End  Product Details Meta Area-->
                     </div> <!-- End Product Variable Area -->
+                    <?php }?>
 
                     <!-- Start  Product Details Catagories Area-->
                     <div class="product-details-catagory mb-2">

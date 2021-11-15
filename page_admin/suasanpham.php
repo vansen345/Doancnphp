@@ -113,9 +113,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                         <td><input required id="thongtin" name="thongtin" class="form-control" style="width: 500px"  value="<?php echo empty($_POST["thongtin"])? $cot["ThongTin"]:$_POST["thongtin"]; ?>"></td>
 
                     </tr>
+                    <?php
+                    $sqltrangthai="SELECT * FROM trangthai";
+                    $laytrangthai = mysqli_query($conn,$sqltrangthai)
+                    ?>
                     <tr>
                         <th>Trạng thái</th>
-                        <td><input required id="trangthai" name="trangthai" class="form-control" style="width: 500px"  value="<?php echo empty($_POST["trangthai"])? $cot["TrangThai"]:$_POST["trangthai"]; ?>"></td>
+<!--                        <td><input required id="trangthai" name="trangthai" class="form-control" style="width: 500px"  value="--><?php //echo empty($_POST["trangthai"])? $cot["TrangThai"]:$_POST["trangthai"]; ?><!--"></td>-->
+                        <td>
+                            <select name="trangthai" id="trangthai">
+                                <?php
+                                while ($cotloai=mysqli_fetch_array($laytrangthai)){
+                                    if($cotloai["id_status"]==$cot["TrangThai"]){
+                                        ?>
+                                        <option selected value="<?php echo $cotloai["id_status"]?>"><?php echo $cotloai["tentrangthai"]?></option>
+                                    <?php } else { ?>
+                                        <option  value="<?php echo $cotloai["id_status"]?>"><?php echo $cotloai["tentrangthai"]?></option>
+                                    <?php } } ?>
+                            </select>
+                        </td>
 
                     </tr>
                     <tr>

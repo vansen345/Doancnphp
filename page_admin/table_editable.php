@@ -175,13 +175,15 @@ for($i=1; $i<=$totalpage; $i++){
                                     ?>
 									<tbody>
                                     <?php
-//                                    $sql="SELECT * FROM trangthai WHERE id_status = '".$cot["MaSanPham"]."'";
-//                                    $trangthai=mysqli_query($conn,$sql);
-//                                    $laytrangthai = mysqli_fetch_array($trangthai);
+//
                                     while ($cot=mysqli_fetch_array($query)){
+                                    $sql="SELECT * FROM trangthai WHERE id_status = '".$cot["TrangThai"]."'";
+                                    $trangthai=mysqli_query($conn,$sql);
+                                    $laytrangthai = mysqli_fetch_array($trangthai);
 
 
-                                    ?>
+
+                                        ?>
 										<tr >
                                             <td><img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="" /></td>
 
@@ -191,7 +193,7 @@ for($i=1; $i<=$totalpage; $i++){
 											<td class="center"><?=number_format($cot["DonGia"],0,",",".")?> VND</td>
 											<td><?php echo $cot["ThongTin"]?></td>
                                             <td><?php echo $cot["TenLoai"]?></td>
-                                            <td><?php echo $cot["TrangThai"]?></td>
+                                            <td><?php echo $laytrangthai["tentrangthai"]?></td>
 											<td>
                                                <a href="suasanpham.php?MaSP=<?php echo $cot["MaSanPham"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
                                                 <a onclick="return Del('<?php echo $cot["TenSanPham"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaSanPham=<?php echo $cot["MaSanPham"];?>"><span class="Xoadulieu"><i class=""></i>Xóa</span></a>
@@ -205,17 +207,19 @@ for($i=1; $i<=$totalpage; $i++){
 									</tbody>
 
 								</table>
-                                <div class="row" >
-                                    <ul class="pagination" style="margin-left: 350px;display: inline-block">
-                                        <?php
-                                        echo $listpage;
-                                        ?>
-                                    </ul>
 
-                                </div>
 
 							</div>
+
 						</div>
+                        <div class="pt" >
+                            <ul class="pagination" style="margin-left: 350px;display: inline-block">
+                                <?php
+                                echo $listpage;
+                                ?>
+                            </ul>
+
+                        </div>
 						<!-- END EXAMPLE TABLE PORTLET-->
 					</div>
 				</div>
@@ -236,4 +240,31 @@ include ('../layout/footer-admin.php')
 
   }
 </script>
+<style>
+    .pt
+    {
+        width:100%;
+        justify-content:center;
+        display:flex;
+    }
+    .pt li {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
 
+    .pt li.active {
+
+
+    }
+    .pt ul{
+        list-style-type: none !important;
+        margin-right: 453px;
+    }
+
+    .pt li:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>

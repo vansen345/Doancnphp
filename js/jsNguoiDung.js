@@ -79,8 +79,8 @@ function addCart(id) {
 function update(id) {
     num=$("#num_"+id).val();
     $.post('updatecart.php',{'id':id,'num':num},function (data) {
-        location.reload();
-        //$("#listcart").load("cart.php #listcart");
+        // location.reload();
+        $("#listcart").load("cart.php #listcart");
     });
 
 }

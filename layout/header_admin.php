@@ -69,8 +69,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <div class="navbar-inner">
         <div class="container-fluid">
             <!-- BEGIN LOGO -->
-            <a class="brand" href="../page/index.php">
-                <img src="../images/img/logo.png" alt="logo" />
+            <a class="brand" href="../page_admin/index.php">
+                <img src="../images/logo/logo1.png" width="100px" alt="">
             </a>
             <!-- END LOGO -->
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->

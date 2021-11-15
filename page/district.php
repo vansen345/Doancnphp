@@ -1,4 +1,3 @@
-
 <?php
 include ('connect.php');
 $key=$_POST["id"];
@@ -13,7 +12,7 @@ $numtp=mysqli_num_rows($laytp);
                     <option value="<?php echo $row["maqh"]?>"><?php echo $row["name_quanhuyen"]?></option>
             <?php }?>
         </select>
-    <?php }?>
+<?php }?>
 
 
 

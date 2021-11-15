@@ -129,7 +129,7 @@ for($i=1; $i<=$totalpage; $i++) {
                                                     <!-- Start Product Default Single Item -->
                                                     <div class="product-default-single-item product-color--golden" data-aos="fade-up"  data-aos-delay="0">
                                                         <div class="image-box">
-                                                            <a href="product-details-default.php" class="image-link">
+                                                            <a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>" class="image-link">
                                                                 <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                                 <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                             </a>
@@ -146,7 +146,7 @@ for($i=1; $i<=$totalpage; $i++) {
                                                         </div>
                                                         <div class="content">
                                                             <div class="content-left">
-                                                                <h6 class="title"><a href="product-details-default.php"><?php echo $cot["TenSanPham"] ?></a></h6>
+                                                                <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>"><?php echo $cot["TenSanPham"] ?></a></h6>
                                                                 <ul class="review-star">
                                                                     <li class="fill"><i class="ion-android-star"></i></li>
                                                                     <li class="fill"><i class="ion-android-star"></i></li>

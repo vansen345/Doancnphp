@@ -107,8 +107,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                             <select name="loaisp" id="loaisp">
                                 <?php
                                 while ($cotloai=mysqli_fetch_array($truyvanloai)){
-
-
                                 ?>
                                 <option value="<?php echo $cotloai["MaLoaiSP"]?>"><?php echo $cotloai["TenLoai"]?></option>
                                 <?php } ?>

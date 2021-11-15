@@ -8,9 +8,10 @@ if(!isset($_SESSION["admin"]))
 include ('../page/connect.php');
 if(isset($_GET["MaDDXoa"]))
 {
-    $xoaDD="DELETE FROM dondat WHERE MaDonDat='".$_GET["MaDDXoa"]."'";
+    $xoaDD="DELETE FROM ct_dondat WHERE MaDonDat='".$_GET["MaDDXoa"]."'";
     if(mysqli_query($conn,$xoaDD))
     {
+        mysqli_query($conn, "DELETE FROM dondat WHERE MaDonDat='".$_GET["MaDDXoa"]."'");
         echo "<script>alert('Xóa thành công')</script>";
     }
     else
