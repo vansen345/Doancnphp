@@ -351,6 +351,47 @@
 <script src="../js/jsNguoiDung.js"></script>
 <script src="../js/quanhuyen.js"></script>
 
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    var usd = document.getElementById("vnd_to_usd").value;
+    paypal.Button.render({
+        // Configure environment
+        env: 'sandbox',
+        client: {
+            sandbox: 'AU5txlFLCM0JlcLYEwaZeNNqaZI6yS-JOfpvE06Gp1nUu6fAqm2XX2Y7L9gLiYrxFykguVKZDXtNwSIr',
+            production: 'demo_production_client_id'
+        },
+        // Customize button (optional)
+        locale: 'en_US',
+        style: {
+            size: 'small',
+            color: 'blue',
+            shape: 'pill',
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // Set up a payment
+        payment: function(data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: `${usd}`,
+                        currency: 'USD'
+                    }
+                }]
+            });
+        },
+        // Execute the payment
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                // Show a confirmation message to the buyer
+                window.alert('Cám ơn bạn đãt đặt hàng!');
+            });
+        }
+    }, '#paypal-button');
+</script>
 
 
 
@@ -361,6 +402,30 @@
 
 <!-- Main JS -->
 <script src="../js/main.js"></script>
+<!--<script-->
+<!--        src="https://www.paypal.com/sdk/js?client-id=AU5txlFLCM0JlcLYEwaZeNNqaZI6yS-JOfpvE06Gp1nUu6fAqm2XX2Y7L9gLiYrxFykguVKZDXtNwSIr&currency=USD">-->
+<!--</script>-->
+<!--<script>-->
+<!--    paypal.Buttons({-->
+<!--        createOrder: function(data, actions) {-->
+<!--            // This function sets up the details of the transaction, including the amount and line item details.-->
+<!--            return actions.order.create({-->
+<!--                purchase_units: [{-->
+<!--                    amount: {-->
+<!--                        value: '10'-->
+<!--                    }-->
+<!--                }]-->
+<!--            });-->
+<!--        },-->
+<!--        onApprove: function(data, actions) {-->
+<!--            // This function captures the funds from the transaction.-->
+<!--            return actions.order.capture().then(function() {-->
+<!--                window.location = "../page/transaction-completed.php&orderID="+data.orderID;-->
+<!--            });-->
+<!--        }-->
+<!--    }).render('#paypal-button-container');-->
+<!--    //This function displays Smart Payment Buttons on your web page.-->
+</script>
 </body>
 
 <!-- Mirrored from htmldemo.hasthemes.com/hono/hono/index-3.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jan 2021 00:32:12 GMT -->
