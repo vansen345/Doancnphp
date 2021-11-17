@@ -90,7 +90,7 @@ include ('connect.php');
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
-                                        <label>Họ và tên lót <span style="color: red">(*)</span></label>
+                                        <label>Họ và tên <span style="color: red">(*)</span></label>
                                         <input name="hoten" type="text" value="<?php echo $cottv["Hoten"];?>">
                                     </div>
                                 </div>
@@ -162,6 +162,15 @@ include ('connect.php');
                                 </div>
                                 <div class="order_button pt-3">
                                     <button name="send" class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
+                                </div>
+<!--                                <div id="paypal-button-container">-->
+<!--                                </div>-->
+                                <div class="order_button pt-3" style="margin-left:200px">
+                                    <?php
+                                    $vnd_to_usd = $_SESSION["tongbill"]/ 23000
+                                    ?>
+                                    <div style=" margin-top: -45px" id="paypal-button"></div>
+                                    <input type="hidden" id="vnd_to_usd" value="<?php echo ceil($vnd_to_usd) ?>">
                                 </div>
                             </div>
                         </form>
