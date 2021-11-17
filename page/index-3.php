@@ -17,7 +17,7 @@ include ('connect.php');
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="../images/hero-slider/home-3/motul2.png" alt="">
+                    <img src="../images/hero-slider/home-4/test.jpg" alt="">
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
@@ -38,7 +38,7 @@ include ('connect.php');
             <div class="hero-single-slider-item swiper-slide">
                 <!-- Hero Slider Image -->
                 <div class="hero-slider-bg">
-                    <img src="../images/hero-slider/home-4/testbanner.jpg" alt="">
+                    <img src="../images/hero-slider/home-4/motul.jpg" alt="">
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
