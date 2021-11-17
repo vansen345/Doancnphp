@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $anh2=$cot["Anh2"];
     $anh3=$cot["Anh3"];
     $anh4=$cot["Anh4"];
-    $dongia=$_POST["dongia"] * 1000 ;
+    $dongia=$_POST["dongia"];
     $thongtin=$_POST["thongtin"];
     $trangthai=$_POST["trangthai"];
     $loaisp=$_POST["loaisp"];
@@ -43,25 +43,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         unlink("../images/product/hinhanh/".$anh);
         $anh=$_FILES["anh"]["name"];
-        move_uploaded_file($_FILES["anh"]["tmp_name"],"../images/hinhanh/".$anh);
+        move_uploaded_file($_FILES["anh"]["tmp_name"],"../images/product/hinhanh/".$anh);
     }
     if($_FILES["anh2"]["name"]!="")
     {
         unlink("../images/product/hinhanh/".$anh2);
-        $anh=$_FILES["anh2"]["name"];
-        move_uploaded_file($_FILES["anh2"]["tmp_name"],"../images/hinhanh/".$anh2);
+        $anh2=$_FILES["anh2"]["name"];
+        move_uploaded_file($_FILES["anh2"]["tmp_name"],"../images/product/hinhanh/".$anh2);
     }
     if($_FILES["anh3"]["name"]!="")
     {
         unlink("../images/product/hinhanh/".$anh3);
-        $anh=$_FILES["anh3"]["name"];
-        move_uploaded_file($_FILES["anh3"]["tmp_name"],"../images/hinhanh/".$anh3);
+        $anh3=$_FILES["anh3"]["name"];
+        move_uploaded_file($_FILES["anh3"]["tmp_name"],"../images/product/hinhanh/".$anh3);
     }
     if($_FILES["anh4"]["name"]!="")
     {
         unlink("../images/product/hinhanh/".$anh4);
-        $anh=$_FILES["anh4"]["name"];
-        move_uploaded_file($_FILES["anh4"]["tmp_name"],"../images/hinhanh/".$anh4);
+        $anh4=$_FILES["anh4"]["name"];
+        move_uploaded_file($_FILES["anh4"]["tmp_name"],"../images/product/hinhanh/".$anh4);
     }
     $sua="UPDATE sanpham SET TenSanPham='".$tensanpham."',SoLuong='".$soluong."',Anh='".$anh."', Anh2='".$anh2."', Anh3='".$anh3."', DonGia='".$dongia."', ThongTin='".$thongtin."',Anh4='".$anh4."',TrangThai='".$trangthai."',MaLoaiSp='".$loaisp."',MaThuongHieu='".$brand."' WHERE MaSanPham='".$_GET["MaSP"]."' ";
 
