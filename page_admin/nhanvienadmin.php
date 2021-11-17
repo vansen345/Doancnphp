@@ -182,7 +182,7 @@ for($i=1; $i<=$totalpage; $i++){
                                     <td><?php echo $cot["Dienthoai"]?></td>
 
                                     <td>
-                                        <a href="suanhanvien.php?MaNV=<?php echo $cot["MaNhanVien"];?>"><span<i style="width: 29px" class="far fa-edit"></i></span></a>
+                                        <a href="suanhanvien.php?MaNV=<?php echo $cot["MaNhanVien"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
                                         <a onclick="return Del('<?php echo $cot["TenDangNhap"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaNV=<?php echo $cot["MaNhanVien"];?>"><span class="Xoadulieu"><i class=" far fa-trash-alt"></i></span></a>
 
                                     </td>

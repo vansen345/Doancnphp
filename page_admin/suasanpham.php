@@ -29,19 +29,41 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $tensanpham=$_POST["tensanpham"];
     $soluong=$_POST["soluong"];
     $anh=$cot["Anh"];
-    $dongia=$_POST["dongia"] ;
+    $anh2=$cot["Anh2"];
+    $anh3=$cot["Anh3"];
+    $anh4=$cot["Anh4"];
+    $dongia=$_POST["dongia"] * 1000 ;
     $thongtin=$_POST["thongtin"];
     $trangthai=$_POST["trangthai"];
     $loaisp=$_POST["loaisp"];
+    $brand=$_POST["brand"];
 
 
     if($_FILES["anh"]["name"]!="")
     {
-        unlink("../images/hinhanh/".$anh);
+        unlink("../images/product/hinhanh/".$anh);
         $anh=$_FILES["anh"]["name"];
         move_uploaded_file($_FILES["anh"]["tmp_name"],"../images/hinhanh/".$anh);
     }
-    $sua="UPDATE sanpham SET TenSanPham='".$tensanpham."',SoLuong='".$soluong."',Anh='".$anh."',DonGia='".$dongia."',ThongTin='".$thongtin."',TrangThai='".$trangthai."',MaLoaiSp='".$loaisp."' WHERE MaSanPham='".$_GET["MaSP"]."' ";
+    if($_FILES["anh2"]["name"]!="")
+    {
+        unlink("../images/product/hinhanh/".$anh2);
+        $anh=$_FILES["anh2"]["name"];
+        move_uploaded_file($_FILES["anh2"]["tmp_name"],"../images/hinhanh/".$anh2);
+    }
+    if($_FILES["anh3"]["name"]!="")
+    {
+        unlink("../images/product/hinhanh/".$anh3);
+        $anh=$_FILES["anh3"]["name"];
+        move_uploaded_file($_FILES["anh3"]["tmp_name"],"../images/hinhanh/".$anh3);
+    }
+    if($_FILES["anh4"]["name"]!="")
+    {
+        unlink("../images/product/hinhanh/".$anh4);
+        $anh=$_FILES["anh4"]["name"];
+        move_uploaded_file($_FILES["anh4"]["tmp_name"],"../images/hinhanh/".$anh4);
+    }
+    $sua="UPDATE sanpham SET TenSanPham='".$tensanpham."',SoLuong='".$soluong."',Anh='".$anh."', Anh2='".$anh2."', Anh3='".$anh3."', DonGia='".$dongia."', ThongTin='".$thongtin."',Anh4='".$anh4."',TrangThai='".$trangthai."',MaLoaiSp='".$loaisp."',MaThuongHieu='".$brand."' WHERE MaSanPham='".$_GET["MaSP"]."' ";
 
    if(mysqli_query($conn,$sua))
     {
@@ -96,11 +118,31 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     </tr>
                     <tr>
                         <th></th>
-                        <td> <img width="100px" src="../images/hinhanh/<?php echo $cot["Anh"];?>"></td>
+                        <td>
+                            <img width="100px" src="../images/product/hinhanh/<?php echo $cot["Anh"];?>">
+                            <img width="100px" src="../images/product/hinhanh/<?php echo $cot["Anh2"];?>">
+                            <img width="100px" src="../images/product/hinhanh/<?php echo $cot["Anh3"];?>">
+                            <img width="100px" src="../images/product/hinhanh/<?php echo $cot["Anh4"];?>">
+                        </td>
                     </tr>
                     <tr>
                         <th>Ảnh</th>
                         <td><input  type="file" id="anh" name="anh" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Ảnh</th>
+                        <td><input  type="file" id="anh" name="anh2" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Ảnh</th>
+                        <td><input  type="file" id="anh" name="anh3" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Ảnh</th>
+                        <td><input  type="file" id="anh" name="anh4" class="form-control" style="width: 500px"></td>
 
                     </tr>
                     <tr>
@@ -146,6 +188,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                                     <?php } else { ?>
                                 <option  value="<?php echo $cotloai["MaLoaiSP"]?>"><?php echo $cotloai["TenLoai"]?></option>
                                 <?php } } ?>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <?php
+                    $thuonghieu="SELECT * FROM thuonghieu";
+                    $truyvanthuonghieu=mysqli_query($conn,$thuonghieu);
+                    ?>
+                    <tr>
+                        <th>Thương hiệu</th>
+                        <td>
+                            <select name="brand" id="brand">
+                                <?php
+                                while ($cotbrand=mysqli_fetch_array($truyvanthuonghieu)){
+                                    if($cotbrand["MaThuongHieu"]==$cot["MaThuongHieu"]){
+                                        ?>
+                                        <option selected value="<?php echo $cotbrand["MaThuongHieu"]?>"><?php echo $cotbrand["TenThuongHieu"]?></option>
+                                    <?php } else { ?>
+                                        <option  value="<?php echo $cotbrand["MaThuongHieu"]?>"><?php echo $cotloai["TenThuongHieu"]?></option>
+                                    <?php } } ?>
                             </select>
                         </td>
 

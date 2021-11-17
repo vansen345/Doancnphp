@@ -15,10 +15,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $tensanpham=$_POST["tensanpham"];
     $soluong=$_POST["soluong"];
     $anh=$_FILES["anh"];
+    $anh2=$_FILES["anh2"];
+    $anh3=$_FILES["anh3"];
+    $anh4=$_FILES["anh4"];
     $dongia=$_POST["dongia"];
     $thongtin=$_POST["thongtin"];
     $trangthai=$_POST["trangthai"];
     $loaisp=$_POST["loaisp"];
+    $brand=$_POST["brand"];
 
     if($anh["type"]!="image/jpeg" && $anh["type"]!="image/png")
     {
@@ -27,9 +31,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         return;
     }
 
-    move_uploaded_file($anh["tmp_name"],"../images/hinhanh/".$anh["name"]);
+    move_uploaded_file($anh["tmp_name"],"../images/product/hinhanh/".$anh["name"]);
+    move_uploaded_file($anh2["tmp_name"],"../images/product/hinhanh/".$anh2["name"]);
+    move_uploaded_file($anh3["tmp_name"],"../images/product/hinhanh/".$anh3["name"]);
+    move_uploaded_file($anh4["tmp_name"],"../images/product/hinhanh/".$anh4["name"]);
 
-    $them="INSERT INTO sanpham(TenSanPham,SoLuong,Anh,DonGia,ThongTin,TrangThai,MaLoaiSp) VALUES ('".$tensanpham."','".$soluong."','".$anh["name"]."','".$dongia."','".$thongtin."','".$trangthai."','".$loaisp."')";
+    $them="INSERT INTO sanpham(TenSanPham,SoLuong,Anh,Anh2,Anh3,DonGia,ThongTin,Anh4,TrangThai,MaLoaiSp,MaThuongHieu) VALUES ('".$tensanpham."','".$soluong."','".$anh["name"]."','".$anh2["name"]."','".$anh3["name"]."','".$dongia."','".$thongtin."','".$anh4["name"]."','".$trangthai."','".$loaisp."','".$brand."')";
     if(mysqli_query($conn,$them))
     {
         echo "<script>alert('Thêm thành công')</script>";
@@ -87,6 +94,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
                     </tr>
                     <tr>
+                        <th>Ảnh</th>
+                        <td><input  type="file" id="anh2" name="anh2" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Ảnh</th>
+                        <td><input  type="file" id="anh3" name="anh3" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Ảnh</th>
+                        <td><input  type="file" id="anh4" name="anh4" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
                         <th>Đơn giá</th>
                         <td><input  id="dongia" name="dongia" class="form-control" style="width: 500px"></td>
 
@@ -96,9 +118,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                         <td><input  id="thongtin" name="thongtin" class="form-control" style="width: 500px"></td>
 
                     </tr>
+                    <?php
+                    $sqltrangthai="SELECT * FROM trangthai";
+                    $laytrangthai = mysqli_query($conn,$sqltrangthai)
+                    ?>
                     <tr>
-                        <th>Trạng thái</th>
-                        <td><input id="trangthai" name="trangthai" class="form-control" style="width: 500px"></td>
+                        <th>Danh mục</th>
+                        <td>
+                            <select name="trangthai" id="trangthai">
+                                <?php
+                                while ($status=mysqli_fetch_array($laytrangthai)){
+                                    ?>
+                                    <option value="<?php echo $status["id_status"]?>"><?php echo $status["tentrangthai"]?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
 
                     </tr>
                     <tr>
@@ -109,6 +143,23 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                                 while ($cotloai=mysqli_fetch_array($truyvanloai)){
                                 ?>
                                 <option value="<?php echo $cotloai["MaLoaiSP"]?>"><?php echo $cotloai["TenLoai"]?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <?php
+                    $thuonghieu="SELECT * FROM thuonghieu";
+                    $truyvanthuonghieu=mysqli_query($conn,$thuonghieu);
+                    ?>
+                    <tr>
+                        <th>Thương hiệu</th>
+                        <td>
+                            <select name="brand" id="brand">
+                                <?php
+                                while ($rowbrand=mysqli_fetch_array($truyvanthuonghieu)){
+                                    ?>
+                                    <option value="<?php echo $rowbrand["MaThuongHieu"]?>"><?php echo $rowbrand["TenThuongHieu"]?></option>
                                 <?php } ?>
                             </select>
                         </td>

@@ -124,7 +124,7 @@ include ('connect.php');
                                  <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label for="country">Tỉnh/Thành Phố <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide city" name="province" id="province" >
+                                        <select required class="country_option nice-select wide city" name="province" id="province" >
                                             <?php
                                             $truyvantp="SELECT * FROM pvs_tinhthanhpho";
                                             $laytp=mysqli_query($conn,$truyvantp);
@@ -140,7 +140,7 @@ include ('connect.php');
                                 <div class="col-12 ">
                                     <div class="default-form-box">
                                         <label>Quận/ huyện <span style="color: red">(*)</span></label>
-                                        <select style="position: relative" class="wide tinh" name="district" id="district">
+                                        <select required style="position: relative" class="wide tinh" name="district" id="district">
 
                                         </select>
                                     </div>

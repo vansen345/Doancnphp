@@ -69,7 +69,9 @@ if(isset($_SESSION["tendangnhap"]))
                 <div class="product-details-gallery-area" data-aos="fade-up"  data-aos-delay="0">
                     <!-- Start Large Image -->
                     <div class="product-large-image product-large-image-horaizontal swiper-container">
+
                         <div class="swiper-wrapper">
+
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                 <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                             </div>
@@ -82,14 +84,6 @@ if(isset($_SESSION["tendangnhap"]))
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                 <img src="../images/product/hinhanh/<?php echo $cot["Anh4"]?>" alt="">
                             </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../images/product/hinhanh/<?php echo $cot["Anh2"]?>" alt="">
-                            </div>
-
-
 
                         </div>
                     </div>
@@ -101,23 +95,14 @@ if(isset($_SESSION["tendangnhap"]))
                                 <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"] ?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh2"]?>" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh2"] ?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh3"]?>" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh3"] ?>" alt="">
                             </div>
                             <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh4"]?>" alt="">
+                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh4"] ?>" alt="">
                             </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh2"]?>" alt="">
-                            </div>
-
-
-
                         </div>
                         <!-- Add Arrows -->
                         <div class="gallery-thumb-arrow swiper-button-next"></div>
@@ -145,7 +130,7 @@ if(isset($_SESSION["tendangnhap"]))
                         <p><?php echo $cot["ThongTin"]?></p>
                     </div> <!-- End  Product Details Text Area-->
                     <!-- Start Product Variable Area -->
-                    <?php if($cot["SoLuong"]=='0' || $cot["TrangThai"]=='2'){
+                    <?php if($cot["SoLuong"]=='0' && $cot["TrangThai"]=='2'){
                         echo '<h3 style="margin-bottom: 50px">Hết hàng</h3>';
                         ?>
                     <?php } else{ ?>

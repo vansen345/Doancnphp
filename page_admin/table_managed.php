@@ -30,6 +30,11 @@ include ('../page/connect.php');
 $sql="SELECT * FROM thanhvien";
 $querydm=mysqli_query($conn,$sql);
 ?>
+<?php
+$dondat="SELECT * FROM dondat";
+$querydd=mysqli_query($conn,$dondat);
+$rowdd=mysqli_fetch_array($querydd);
+//?>
 
 		<!-- END SIDEBAR -->
 		<!-- BEGIN PAGE -->
@@ -172,7 +177,7 @@ $querydm=mysqli_query($conn,$sql);
                                             <td class="center hidden-480"><?php echo $cot["Diachi"]?></td>
                                             <td class="center hidden-480"><?php echo $cot["Email"]?></td>
 <!--                                            <td class="center hidden-480">--><?php //echo $cot["NgayDat"]?><!--</td>-->
-<!--											<td ><a href="xemlichsu.php?khachhang=--><?php //echo $cot["MaDonDat"]?><!--"><span class="label label-success">Xem lịch sử</span></a></td>-->
+											<td ><a href="xemlichsu.php?khachhang=<?php echo $cot["TenDangNhap"]?>"><span class="label label-success">Xem lịch sử</span></a></td>
 										</tr>
                                     <?php } ?>
 

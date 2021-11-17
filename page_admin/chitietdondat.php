@@ -147,6 +147,17 @@ else{
                             </div>
                         </div>
                         <div>
+                            <?php
+                            $tp="SELECT * FROM pvs_tinhthanhpho WHERE matp = '".$cotDDH["thanhpho"]."'";
+                            $querytp=mysqli_query($conn,$tp);
+                            $laytp=mysqli_fetch_array($querytp);
+
+                            $quanhuyen="SELECT * FROM pvs_quanhuyen WHERE maqh = '".$cotDDH["quanhuyen"]."'";
+                            $queryqh=mysqli_query($conn,$quanhuyen);
+                            $layqh=mysqli_fetch_array($queryqh);
+
+
+                            ?>
                         <form id="duyethang" method="post" action="<?php echo $_SERVER["REQUEST_URI"];?>">
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 
@@ -155,7 +166,7 @@ else{
                                     <td>
                                         <b>Mã đơn đặt hàng:</b> <?php echo $cotDDH["MaDonDat"];?> <br>
                                         <b>Khách hàng:</b> <?php echo $cotDDH["hotentv"];?><br>
-                                        <b>Nơi giao:</b> <?php echo $cotDDH["NoiGiao"];?><br>
+                                        <b>Nơi giao:</b> <?php echo $cotDDH["NoiGiao"];?>,<?php echo $laytp["name_city"] ?>,<?php echo $layqh["name_quanhuyen"]?> <br>
                                         <b>Số điện thoại:</b> <?php echo $cotDDH["dt"];?><br>
                                         <b>Ngày đặt:</b> <?php echo date("d/m/Y",strtotime($cotDDH["NgayDat"])); ?><br>
                                         <b>Trạng thái:

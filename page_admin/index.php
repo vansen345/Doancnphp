@@ -144,8 +144,13 @@ if(!isset($_SESSION["admin"]))
 								<div class="visual">
 									<i class="icon-bar-chart"></i>
 								</div>
+                                <?php
+                                $doanhthu="SELECT SUM(tongtien) FROM dondat";
+                                $truyvan=mysqli_query($conn,$doanhthu);
+                                $laydoanhthu=mysqli_fetch_row($truyvan);
+                                ?>
 								<div class="details">
-									<div class="number">12,5M$</div>
+									<div class="number"><?=number_format($laydoanhthu[0],0,",",".")?> VND</div>
 									<div class="desc">Total Profit</div>
 								</div>
 								<a class="more" href="#">

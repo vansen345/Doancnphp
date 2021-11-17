@@ -54,7 +54,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     }
 
     if(isset($_GET["dx_admin"]))
+    {
         unset($_SESSION["admin"]);
+//
+        echo "<script>location='../page_admin/login/dangnhapadmin.php'</script>";
+
+    }
+
 
     ?>
 

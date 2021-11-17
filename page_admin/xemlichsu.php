@@ -122,11 +122,35 @@ include ('../page/connect.php');
                         <?php
                             if(isset($_GET["khachhang"])){
                                 $magiaodich=$_GET["khachhang"];
+                                $sql="SELECT * FROM dondat WHERE TenDangNhap = '".$magiaodich."'";
+                                $query=mysqli_query($conn,$sql);
+                                $layid=mysqli_fetch_array($query);
+
                             } else{
                                 $magiaodich="";
                             }
-//                            $sqlselect= mysqli_query($conn,"SELECT * FROM dondat,thanhvien,sanpham,ct_dondat WHERE ct_dondat.MaSanPham = sanpham.MaSanPham AND thanhvien.TenDangNhap = dondat.TenDangNhap AND  ct_dondat.MaDonDat = '".$magiaodich."'" );
 
+
+
+
+
+                        $sql3="SELECT * FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham ";
+                        $query3=mysqli_query($conn,$sql3);
+//                        $layid3=mysqli_fetch_array($query3);
+
+
+
+
+//                            $sqlselect= mysqli_query($conn,"SELECT * FROM dondat,sanpham,ct_dondat WHERE ct_dondat.MaSanPham = sanpham.MaSanPham AND thanhvien.TenDangNhap = dondat.TenDangNhap AND  ct_dondat.MaDonDat = '".$magiaodich."'" );
+//                        $sqlselect="SELECT ct_dondat.*, ct_dondat.SoLuong as 'sl' FROM ct_dondat INNER JOIN  sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham WHERE MaDonDat='".$magiaodich."'";
+//                        $queryctdd= mysqli_query($conn,$sqlselect);
+//                        $sqlselect="SELECT sanpham.*,ct_dondat.* FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham=sanpham.MaSanPham WHERE MaDonDat='".$_GET["khachhang"]."'";
+//                            $query=mysqli_query($conn,$sqlselect);
+//
+//                        $sqlselect2="SELECT thanhvien.*,dondat.* FROM dondat INNER JOIN thanhvien ON dondat.TenDangNhap=thanhvien.TenDangNhap WHERE MaDonDat='".$_GET["khachhang"]."'";
+//                        $query2=mysqli_query($conn,$sqlselect);
+//                        $sql="SELECT ct_dondat.* FROM ct_dondat JOIN sanpham ON sanpham.MaSanPham=ct_dondat.MaSanPham JOIN dondat ON ct_dondat.MaDonDat=dondat.MaDonDat";
+//                            $query=mysqli_query($conn,$sql);
                         ?>
 
                         <table class="table table-striped table-bordered table-hover" id="sample_1">
@@ -135,21 +159,22 @@ include ('../page/connect.php');
 
                                 <th>Mã đơn hàng</th>
                                 <th class="hidden-480">Tên sản phẩm</th>
-                                <th class="hidden-480">Ngày đặt</th>
+                                <th class="hidden-480"> Số lượng</th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            while ($row=mysqli_fetch_array($sqlselect)){
+                           <?php
+                            while ($row=mysqli_fetch_array($query3)){
+
 
 
                             ?>
                             <tr class="odd gradeX">
 
-                                <td><?php echo $row["MaDonDat"] ?></td>
-                                <td class="hidden-480"><?php echo $row["TenSanPham"] ?></td>
-                                <td class="hidden-480"><?php echo $row["NgayDat"] ?></td>
+                                <td><?php echo $row["MaDonDat"]?></td>
+                                <td class="hidden-480"><?php echo $row["TenSanPham"]?></td>
+<!--                                <td class="hidden-480">--><?php //echo $row["sl"] ?><!--</td>-->
 
                             </tr>
                             <?php } ?>

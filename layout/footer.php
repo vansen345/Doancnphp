@@ -425,7 +425,10 @@
 <!--        }-->
 <!--    }).render('#paypal-button-container');-->
 <!--    //This function displays Smart Payment Buttons on your web page.-->
-</script>
+<!--</script>-->
+<!--<div class="zalo-chat-widget" data-oaid="3052243566673908807" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="300" data-height="500"></div>-->
+<!---->
+<!--<script src="https://sp.zalo.me/plugins/sdk.js"></script>-->
 </body>
 
 <!-- Mirrored from htmldemo.hasthemes.com/hono/hono/index-3.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jan 2021 00:32:12 GMT -->

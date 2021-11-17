@@ -85,7 +85,7 @@
                                         <a href="../page/shop-full-width.php">ProDuct</a>
                                     </li>
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="../page/product-details-default.php">Category <i class="fa fa-angle-down"></i></a>
+                                        <a href="#">Category <i class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
@@ -193,7 +193,7 @@
                             <?php } else { ?>
 
                                         <li >
-                                            Hello-<a href="../page/thongtintk.php" style="margin-right: 18px" > <?php echo $_SESSION["tendangnhap"]?></a>
+                                          <a href="../page/thongtintk.php" style="margin-right: 18px" >  Hi-<?php echo $_SESSION["tendangnhap"]?></a>
 
                                             <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
 

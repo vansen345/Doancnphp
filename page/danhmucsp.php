@@ -129,16 +129,16 @@ for($i=1; $i<=$totalpage; $i++){
                                                             <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                             <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                         </a>
-                                                        <div class="action-link">
-                                                            <div class="action-link-left">
-                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
-                                                            </div>
-                                                            <div class="action-link-right">
-                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
-                                                                <a href="wishlist.php"><i class="icon-heart"></i></a>
-                                                                <a href="compare.php"><i class="icon-shuffle"></i></a>
-                                                            </div>
-                                                        </div>
+<!--                                                        <div class="action-link">-->
+<!--                                                            <div class="action-link-left">-->
+<!--                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>-->
+<!--                                                            </div>-->
+<!--                                                            <div class="action-link-right">-->
+<!--                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>-->
+<!--                                                                <a href="wishlist.php"><i class="icon-heart"></i></a>-->
+<!--                                                                <a href="compare.php"><i class="icon-shuffle"></i></a>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
                                                     </div>
                                                     <div class="content">
                                                         <div class="content-left">

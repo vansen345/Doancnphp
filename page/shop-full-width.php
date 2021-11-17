@@ -107,7 +107,7 @@ $totalpage= ceil($total / $item_per_page);
                                                     <div class="image-box">
                                                         <a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>" class="image-link">
                                                             <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
-                                                            <img src="../images/product/hinhanh/<?php echo $cot["Anh2"]?>" alt="">
+                                                            <img src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="">
                                                         </a>
 <!--                                                        <div class="action-link">-->
 <!--                                                            <div class="action-link-left">-->
