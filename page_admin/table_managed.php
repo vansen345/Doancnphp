@@ -153,10 +153,10 @@ $rowdd=mysqli_fetch_array($querydd);
 
 											<th class="hidden-480">Họ tên</th>
 											<th class="hidden-480">Tên đăng nhập</th>
-
                                             <th class="hidden-480">Điện thoại</th>
                                             <th class="hidden-480">Địa chỉ</th>
                                             <th class="hidden-480">Email</th>
+                                            <th class="hidden-480">Số lượng đơn hàng</th>
 
 <!--											<th>Chỉnh sửa</th>-->
 										</tr>
@@ -165,6 +165,9 @@ $rowdd=mysqli_fetch_array($querydd);
                                     <?php
                                     while ($cot=mysqli_fetch_array($querydm))
                                     {
+                                        $getcount = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$cot["TenDangNhap"]."'";
+                                        $db = mysqli_query($conn,$getcount);
+                                        $count = mysqli_num_rows($db);
 
 
                                     ?>
@@ -176,8 +179,18 @@ $rowdd=mysqli_fetch_array($querydd);
 											<td class="center hidden-480"><?php echo $cot["Dienthoai"]?></td>
                                             <td class="center hidden-480"><?php echo $cot["Diachi"]?></td>
                                             <td class="center hidden-480"><?php echo $cot["Email"]?></td>
+                                            <td class="center hidden-480"><?php echo $count ?></td>
 <!--                                            <td class="center hidden-480">--><?php //echo $cot["NgayDat"]?><!--</td>-->
+                                            <?php
+                                            if($count > 0){
+                                            ?>
 											<td ><a href="xemlichsu.php?khachhang=<?php echo $cot["TenDangNhap"]?>"><span class="label label-success">Xem lịch sử</span></a></td>
+                                            <?php } else{?>
+                                                <td>
+
+                                                    <a  href="#"><span class="label bg-red">Khách chưa đơn</span></a>
+                                                </td>
+                                            <?php }?>
 										</tr>
                                     <?php } ?>
 

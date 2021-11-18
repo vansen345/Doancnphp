@@ -119,16 +119,6 @@ include ('../layout/header.php')
                                 <p>Subtotal</p>
                                 <p class="cart_amount"><?php  echo number_format($tongtien,0,",","."); ?></p>
                             </div>
-                            <div class="cart_subtotal ">
-                                <p>Shipping</p>
-                                <p class="cart_amount"><span>Flat Rate:</span> $255.00</p>
-                            </div>
-                            <a href="#">Calculate shipping</a>
-
-                            <div class="cart_subtotal">
-                                <p>Total</p>
-                                <p class="cart_amount">$215.00</p>
-                            </div>
                             <div class="checkout_btn">
                                 <?php if(isset($_SESSION["tendangnhap"])){ ?>
                                 <a href="checkout.php" class="btn btn-md btn-golden">Proceed to Checkout</a>

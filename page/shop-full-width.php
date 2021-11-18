@@ -97,9 +97,6 @@ $totalpage= ceil($total / $item_per_page);
                                         <div class="row">
                                             <?php
                                             while ($cot=mysqli_fetch_array($truyvan)){
-
-
-
                                             ?>
                                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                                                 <!-- Start Product Default Single Item -->

@@ -122,21 +122,31 @@ include ('../page/connect.php');
                         <?php
                             if(isset($_GET["khachhang"])){
                                 $magiaodich=$_GET["khachhang"];
-                                $sql="SELECT * FROM dondat WHERE TenDangNhap = '".$magiaodich."'";
-                                $query=mysqli_query($conn,$sql);
-                                $layid=mysqli_fetch_array($query);
-
+//                                $sql="SELECT * FROM dondat WHERE TenDangNhap = '".$magiaodich."'";
+//                                $query=mysqli_query($conn,$sql);
+//                                $layid=mysqli_fetch_array($query);
                             } else{
                                 $magiaodich="";
                             }
 
 
 
+                            $sql3="SELECT * FROM dondat WHERE TenDangNhap = '".$magiaodich."' ";
+                            $query3=mysqli_query($conn,$sql3);
+                            $layid3=mysqli_fetch_array($query3);
+
+                            $sql4 = "SELECT * FROM ct_dondat WHERE MaDonDat = '" . $layid3["MaDonDat"] . "' ";
+                            $query4 = mysqli_query($conn, $sql4);
+                            $layid4 = mysqli_fetch_array($query4);
+
+                            $sql5 = "SELECT *,ct_dondat.SoLuong as 'sl' FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham= sanpham.MaSanPham WHERE MaDonDat = '" . $layid3["MaDonDat"] . "' ";
+                            $query5 = mysqli_query($conn, $sql5);
 
 
-                        $sql3="SELECT * FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham ";
-                        $query3=mysqli_query($conn,$sql3);
-//                        $layid3=mysqli_fetch_array($query3);
+
+
+
+
 
 
 
@@ -165,16 +175,16 @@ include ('../page/connect.php');
                             </thead>
                             <tbody>
                            <?php
-                            while ($row=mysqli_fetch_array($query3)){
 
-
+                            while ( $layid5=mysqli_fetch_array($query5)){
 
                             ?>
                             <tr class="odd gradeX">
+                                <td><?php echo $layid5["MaDonDat"]?></td>
 
-                                <td><?php echo $row["MaDonDat"]?></td>
-                                <td class="hidden-480"><?php echo $row["TenSanPham"]?></td>
-<!--                                <td class="hidden-480">--><?php //echo $row["sl"] ?><!--</td>-->
+                                <td><?php echo $layid5["TenSanPham"]?></td>
+                                <td class="hidden-480"><?php echo $layid5["sl"]?></td>
+
 
                             </tr>
                             <?php } ?>

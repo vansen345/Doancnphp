@@ -11,10 +11,11 @@ if(isset($_GET["MaSanPham"]))
     if(mysqli_query($conn,$xoa))
     {
         echo "<script>alert('Xóa thành công')</script>";
+
     }
     else
     {
-        echo "<script>alert('Xảy ra lỗi')</script>";
+        echo "<script>alert('Sản phẩm đã có trong đơn đặt')</script>";
     }
 
 }
