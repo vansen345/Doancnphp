@@ -190,9 +190,6 @@ else{
                                             <option  value="0">Chưa giao</option>
                                             <option value="1"> Đã giao</option>
 
-
-
-
                                         </select>
                                         <button style="margin-bottom: 10px" name="capnhattinhtrang" type="submit" class="btn-primary">Cập nhật</button>
 
@@ -231,7 +228,6 @@ else{
                                 </tr>
                                 <?php } ?>
                                 <tr>
-                                    <th colspan="3">Tổng tiền</th>
                                     <th><?php  echo number_format($tongtien,0,",",".");  ?></th>
                                 </tr>
                                 </tbody>

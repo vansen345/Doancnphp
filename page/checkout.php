@@ -165,13 +165,7 @@ include ('connect.php');
                                 </div>
 <!--                                <div id="paypal-button-container">-->
 <!--                                </div>-->
-                                <div class="order_button pt-3" style="margin-left:200px">
-                                    <?php
-                                    $vnd_to_usd = $_SESSION["tongbill"]/ 23000
-                                    ?>
-                                    <div style=" margin-top: -45px" id="paypal-button"></div>
-                                    <input type="hidden" id="vnd_to_usd" value="<?php echo ceil($vnd_to_usd) ?>">
-                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -233,12 +227,19 @@ include ('connect.php');
                                 <div class="panel-default">
                                     <label class="checkbox-default" for="currencyCod" data-bs-toggle="collapse" data-bs-target="#methodCod">
                                         <input type="checkbox" id="currencyCod">
-                                        <span>Thanh toán khi nhận hàng (COD)</span>
+                                        <span>Thanh toán online</span>
                                     </label>
 
                                     <div id="methodCod" class="collapse" data-parent="#methodCod">
                                         <div class="card-body1">
-                                            <p>Vui lòng kiểm tra lại thông tin giao hàng gồm: Số nhà, đường, Phường/ xã, Quận/ huyện, Tỉnh/ thành phó</p>
+                                            <div class="order_button pt-3" style="">
+                                                <?php
+                                                $vnd_to_usd = $_SESSION["tongbill"]/ 23000
+                                                ?>
+                                                <div style="margin-left: 30px" id="paypal-button"></div>
+                                                <input type="hidden" id="vnd_to_usd" value="<?php echo ceil($vnd_to_usd) ?>">
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

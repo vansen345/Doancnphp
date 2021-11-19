@@ -144,7 +144,7 @@ include ('../page/connect.php');
 
                             $tongtien="SELECT SUM(tongtien) FROM dondat WHERE TenDangNhap = '".$magiaodich."'";
                             $truyvan=mysqli_query($conn,$tongtien);
-                            $laydoanhthu=mysqli_fetch_row($truyvan);
+                            $laytt=mysqli_fetch_row($truyvan);
 
 
 
@@ -173,8 +173,9 @@ include ('../page/connect.php');
 
                                 <th>Mã đơn hàng</th>
                                 <th class="hidden-480">Tên sản phẩm</th>
-                                <th class="hidden-480"> Số lượng</th>
-                                <th class="hidden-480"> Tổng tiền</th>
+                                <th class="hidden-480">Số lượng</th>
+<!--                                <th>Tổng chi</th>-->
+
 
                             </tr>
                             </thead>
@@ -190,9 +191,15 @@ include ('../page/connect.php');
                                 <td><?php echo $layid5["TenSanPham"]?></td>
                                 <td class="hidden-480"><?php echo $layid5["sl"]?></td>
 
-
                             </tr>
                             <?php } ?>
+<!--                           <td>--><?//=number_format($laytt[0],0,",",".")?><!-- VND</td>-->
+
+                           <tr>
+                               <th colspan="2" >Tổng chi</th>
+                               <th><?php  echo number_format($laytt[0],0,",",".");  ?></th>
+                           </tr>
+
 
                             </tbody>
                         </table>

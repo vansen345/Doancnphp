@@ -188,7 +188,7 @@ $rowdd=mysqli_fetch_array($querydd);
                                             <?php } else{?>
                                                 <td>
 
-                                                    <a  href="#"><span class="label bg-red">Khách chưa đơn</span></a>
+                                                    <a ><span class="label bg-red">Khách chưa đơn</span></a>
                                                 </td>
                                             <?php }?>
 										</tr>

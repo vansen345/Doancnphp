@@ -116,8 +116,13 @@ if(!isset($_SESSION["admin"]))
 								<div class="visual">
 									<i class="icon-shopping-cart"></i>
 								</div>
+                                <?php
+                                $donhang="SELECT * FROM dondat";
+                                $truyvandd= mysqli_query($conn,$donhang);
+                                $tongdd=mysqli_num_rows($truyvandd)
+                                ?>
 								<div class="details">
-									<div class="number">549</div>
+									<div class="number"><?php echo $tongdd ?></div>
 									<div class="desc">New Orders</div>
 								</div>
 								<a class="more" href="#">
@@ -150,8 +155,9 @@ if(!isset($_SESSION["admin"]))
                                 $laydoanhthu=mysqli_fetch_row($truyvan);
                                 ?>
 								<div class="details">
+                                    <div class="desc">Total Profit</div>
 									<div class="number"><?=number_format($laydoanhthu[0],0,",",".")?> VND</div>
-									<div class="desc">Total Profit</div>
+
 								</div>
 								<a class="more" href="#">
 								View more <i class="m-icon-swapright m-icon-white"></i>
