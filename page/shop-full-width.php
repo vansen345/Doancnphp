@@ -50,31 +50,27 @@ $totalpage= ceil($total / $item_per_page);
                             <!-- Start Sort Wrapper Box -->
                             <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up"  data-aos-delay="0">
                                 <!-- Start Sort tab Button -->
-                                <div class="sort-tablist d-flex align-items-center">
-                                    <ul class="tablist nav sort-tab-btn">
-                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-4-grid"><img src="../images/icons/bkg_grid.png" alt=""></a></li>
-                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-list"><img src="../images/icons/bkg_list.png" alt=""></a></li>
-                                    </ul>
+                                <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
+                                    Nhập giá từ <input type="tel" id="gia" width="200px" class="form-control">
+                                    <button id="timkiemgia" style="margin-left: 20px;display: flex" type="submit">Tìm Kiếm</button>
 
-                                    <!-- Start Page Amount -->
-                                    <div class="page-amount ml-2">
-                                        <span>Showing 1–9 of 21 results</span>
-                                    </div> <!-- End Page Amount -->
-                                </div> <!-- End Sort tab Button -->
+                                </div>
+                                <div>
 
+                                </div>
                                 <!-- Start Sort Select Option -->
                                 <div class="sort-select-list d-flex align-items-center">
                                     <label class="mr-2">Sort By:</label>
                                     <form action="#">
                                         <fieldset>
                                             <select name="speed" id="speed">
-                                                <option>Sort by average rating</option>
-                                                <option>Sort by popularity</option>
-                                                <option selected="selected">Sort by newness</option>
-                                                <option>Sort by price: low to high</option>
+                                                <option>100.000 trở xuống</option>
+                                                <option>200.000 trở xuống</option>
+                                                <option>500.000 trở xuống</option>
                                                 <option>Sort by price: high to low</option>
                                                 <option>Product Name: Z</option>
                                             </select>
+
                                         </fieldset>
                                     </form>
                                 </div> <!-- End Sort Select Option -->
@@ -93,8 +89,8 @@ $totalpage= ceil($total / $item_per_page);
                             <div class="col-12">
                                 <div class="tab-content">
                                     <!-- Start Grid View Product -->
-                                    <div class="tab-pane active show sort-layout-single" id="layout-4-grid">
-                                        <div class="row">
+                                    <div class="tab-pane active show sort-layout-single" >
+                                        <div class="row" id="loadgia">
                                             <?php
                                             while ($cot=mysqli_fetch_array($truyvan)){
                                             ?>
@@ -204,3 +200,12 @@ $totalpage= ceil($total / $item_per_page);
 <?php
 include ('../layout/footer.php')
 ?>
+<script>
+    $(document).ready(function () {
+        $('#timkiemgia').click(function () {
+            TimKiemGia($('#gia').val())
+            
+        });
+        
+    });
+</script>

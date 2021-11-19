@@ -9,6 +9,18 @@ $(document).ready(function () {
     });
 
 });
+
+$(document).ready(function () {
+    $(".tinh").change(function () {
+        var idxa=$(".tinh").val();
+        $.post("ward.php",{"idxa": idxa},function (data) {
+            $(".xa").html(data);
+
+        })
+
+    });
+
+});
 //shipping
 $(document).ready(function () {
     $(".city").change(function () {

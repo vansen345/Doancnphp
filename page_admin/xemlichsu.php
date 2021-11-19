@@ -135,12 +135,16 @@ include ('../page/connect.php');
                             $query3=mysqli_query($conn,$sql3);
                             $layid3=mysqli_fetch_array($query3);
 
-                            $sql4 = "SELECT * FROM ct_dondat WHERE MaDonDat = '" . $layid3["MaDonDat"] . "' ";
-                            $query4 = mysqli_query($conn, $sql4);
-                            $layid4 = mysqli_fetch_array($query4);
+//                            $sql4 = "SELECT * FROM ct_dondat WHERE MaDonDat = '" . $layid3["MaDonDat"] . "' ";
+//                            $query4 = mysqli_query($conn, $sql4);
+//                            $layid4 = mysqli_fetch_array($query4);
 
-                            $sql5 = "SELECT *,ct_dondat.SoLuong as 'sl' FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham= sanpham.MaSanPham WHERE MaDonDat = '" . $layid3["MaDonDat"] . "' ";
+                            $sql5 = "SELECT sanpham.*,ct_dondat.*,dondat.*,ct_dondat.SoLuong as 'sl' FROM ct_dondat JOIN sanpham ON ct_dondat.MaSanPham=sanpham.MaSanPham JOIN dondat ON ct_dondat.MaDonDat = dondat.MaDonDat  WHERE TenDangNhap ='".$magiaodich."' ";
                             $query5 = mysqli_query($conn, $sql5);
+
+                            $tongtien="SELECT SUM(tongtien) FROM dondat WHERE TenDangNhap = '".$magiaodich."'";
+                            $truyvan=mysqli_query($conn,$tongtien);
+                            $laydoanhthu=mysqli_fetch_row($truyvan);
 
 
 
@@ -170,6 +174,7 @@ include ('../page/connect.php');
                                 <th>Mã đơn hàng</th>
                                 <th class="hidden-480">Tên sản phẩm</th>
                                 <th class="hidden-480"> Số lượng</th>
+                                <th class="hidden-480"> Tổng tiền</th>
 
                             </tr>
                             </thead>

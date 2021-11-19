@@ -17,8 +17,10 @@ else{
     else{
         $page=1;
     }
-    $rowperpgae=4;
+    $rowperpgae=2;
     $perrow=$page * $rowperpgae-$rowperpgae;
+
+
 
 include ('connect.php');
 

@@ -148,8 +148,8 @@ include ('connect.php');
                                 <div class="col-12">
                                     <div class="default-form-box">
                                         <label>Phường/Xã <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide " name="ward" id="ward" >
-                                            <option value="">--Chưa chọn phường xã--</option>
+                                        <select class="country_option nice-select wide xa" name="ward" id="ward" >
+<!--                                            <option value="">--Chưa chọn phường xã--</option>-->
                                         </select>
                                     </div>
                                 </div>
