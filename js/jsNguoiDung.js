@@ -62,19 +62,7 @@ function DanhGiaSP(masanpham,tendangnhap,noidung) {
     });
 }
 
-function TimKiemGia(gia){
-    $.ajax({
-        url:"ajax/TimKiemGia.php",
-        type:"POST",
-        data:{
-            gia:gia
-        },
-        success:function (giatri) {
-            $('#loadgia').text(giatri);
 
-        }
-    });
-}
 
 
 function addCart(id) {

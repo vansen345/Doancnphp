@@ -350,7 +350,7 @@
 <script src="../js/plugins/ajax-mail.js"></script>
 <script src="../js/jsNguoiDung.js"></script>
 <script src="../js/quanhuyen.js"></script>
-
+<script src="../js/SearchPrice.js"></script>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
     var usd = document.getElementById("vnd_to_usd").value;

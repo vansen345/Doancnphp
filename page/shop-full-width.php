@@ -49,30 +49,42 @@ $totalpage= ceil($total / $item_per_page);
                         <div class="row">
                             <!-- Start Sort Wrapper Box -->
                             <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up"  data-aos-delay="0">
-                                <!-- Start Sort tab Button -->
-                                <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
-                                    Nhập giá từ <input type="tel" id="gia" width="200px" class="form-control">
-                                    <button id="timkiemgia" style="margin-left: 20px;display: flex" type="submit">Tìm Kiếm</button>
 
-                                </div>
+                                <!-- Start Sort tab Button -->
+<!--                                <form method="get">-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-md-4">-->
+<!--                                            <label>Start Price </label>-->
+<!--                                            <input type="text" name="star_ptice" class="form-control">-->
+<!--                                        </div>-->
+<!--                                        <div class="col-md-4">-->
+<!--                                            <label>End Price</label>-->
+<!--                                            <input type="text" name="end_price" class="form-control">-->
+<!---->
+<!--                                        </div>-->
+<!--                                        <div class="col-md-3">-->
+<!--                                            <label>Click</label>-->
+<!--                                           <input type="submit" value="Search">-->
+<!--                                        </div>-->
+<!---->
+<!--                                    </div>-->
+<!---->
+<!--                                </form>-->
+
                                 <div>
 
                                 </div>
                                 <!-- Start Sort Select Option -->
                                 <div class="sort-select-list d-flex align-items-center">
-                                    <label class="mr-2">Sort By:</label>
-                                    <form action="#">
-                                        <fieldset>
-                                            <select name="speed" id="speed">
-                                                <option>100.000 trở xuống</option>
-                                                <option>200.000 trở xuống</option>
-                                                <option>500.000 trở xuống</option>
-                                                <option>Sort by price: high to low</option>
-                                                <option>Product Name: Z</option>
-                                            </select>
 
-                                        </fieldset>
-                                    </form>
+                                    <div class="price-range-block">
+                                        <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+
+                                        <div style="margin:30px auto">
+                                            <input  type="number" min=0 max="3000000" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" />
+                                            <input type="number" min=0 max="3000000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field" />
+                                        </div>
+                                    </div>
                                 </div> <!-- End Sort Select Option -->
 
 
@@ -89,8 +101,8 @@ $totalpage= ceil($total / $item_per_page);
                             <div class="col-12">
                                 <div class="tab-content">
                                     <!-- Start Grid View Product -->
-                                    <div class="tab-pane active show sort-layout-single" >
-                                        <div class="row" id="loadgia">
+                                    <div class="tab-pane active show sort-layout-single" id="loadgia" >
+                                        <div class="row" >
                                             <?php
                                             while ($cot=mysqli_fetch_array($truyvan)){
                                             ?>
@@ -200,12 +212,97 @@ $totalpage= ceil($total / $item_per_page);
 <?php
 include ('../layout/footer.php')
 ?>
-<script>
-    $(document).ready(function () {
-        $('#timkiemgia').click(function () {
-            TimKiemGia($('#gia').val())
-            
+<script type="text/javascript">
+$(document).ready(function () {
+
+    function filterProduct() {
+        $("#loadgia").html("<p>Loading</p>")
+        var min_price = $("#min_price").val();
+        var max_price = $("#max_price").val();
+
+        $.ajax({
+            url:"ajax/SearchPrice.php",
+            type:"POST",
+            data:{min_price:min_price,max_price:max_price},
+            success:function (data){
+               $('#loadgia').html(data);
+
+            }
+
         });
+        //alert(min_price + max_price);
+    }
+    $("#min_price,#max_price").on('keyup',function () {
+        filterProduct();
         
     });
+
+    $("#slider-range").slider({
+                range: true,
+                orientation: "horizontal",
+                min: 0,
+                max: 3000000,
+                values: [0, 3000000],
+                step: 100,
+
+                slide: function (event, ui) {
+                    if (ui.values[0] == ui.values[1]) {
+                        return false;
+                    }
+                    $("#min_price").val(ui.values[0]);
+                    $("#max_price").val(ui.values[1]);
+                    filterProduct();
+                }
+            });
+    $("#min_price").val($("#slider-range").slider("value",0));
+    $("#max_price").val($("#slider-range").slider("value",1));
+    });
 </script>
+<style>
+
+
+
+    .price-range-block {
+        margin:2% 0%;
+    }
+    .ui-slider-horizontal {
+        height: .6em;
+    }
+    .ui-slider-horizontal {
+
+        width:100%;
+    }
+    .ui-widget-header {
+        background: #ff365d;
+    }
+
+
+    .price-range-field{
+        width:40%;
+        margin-top: 10px;
+        min-width: 16%;
+        background-color:#f9f9f9;
+        border: 1px solid #6e6666;
+        color: black;
+        font-family: myFont;
+        font: normal 14px Arial, Helvetica, sans-serif;
+        border-radius: 5px;
+        height:26px;
+        padding:5px;
+    }
+    .search-results-block{
+        position: relative;
+        display: block;
+        clear: both;
+    }
+
+</style>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $('#timkiemgia').click(function () {-->
+<!--            TimKiemGia($('#gia').val())-->
+<!--            -->
+<!--        });-->
+<!--        -->
+<!--    });-->
+<!--</script>-->
