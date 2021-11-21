@@ -19,8 +19,8 @@ $(document).ready(function () {
         })
 
     });
-
 });
+
 //shipping
 $(document).ready(function () {
     $(".city").change(function () {

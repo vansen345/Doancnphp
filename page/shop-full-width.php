@@ -49,28 +49,6 @@ $totalpage= ceil($total / $item_per_page);
                         <div class="row">
                             <!-- Start Sort Wrapper Box -->
                             <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up"  data-aos-delay="0">
-
-                                <!-- Start Sort tab Button -->
-<!--                                <form method="get">-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-4">-->
-<!--                                            <label>Start Price </label>-->
-<!--                                            <input type="text" name="star_ptice" class="form-control">-->
-<!--                                        </div>-->
-<!--                                        <div class="col-md-4">-->
-<!--                                            <label>End Price</label>-->
-<!--                                            <input type="text" name="end_price" class="form-control">-->
-<!---->
-<!--                                        </div>-->
-<!--                                        <div class="col-md-3">-->
-<!--                                            <label>Click</label>-->
-<!--                                           <input type="submit" value="Search">-->
-<!--                                        </div>-->
-<!---->
-<!--                                    </div>-->
-<!---->
-<!--                                </form>-->
-
                                 <div>
 
                                 </div>
