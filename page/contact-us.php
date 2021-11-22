@@ -32,7 +32,7 @@ include ('../layout/header.php')
                 <div class="col-12">
                     <div class="mapouter">
                         <div class="gmap_canvas">
-                            <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=121%20King%20St%2C%20Melbourne%20VIC%203000%2C%20Australia&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1252354013013!2d106.71228896452088!3d10.801719111680656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a459cb43ab%3A0x6c3d29d370b52a7e!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBDw7RuZyBOZ2jhu4cgVFAuSENNIC0gSFVURUNI!5e0!3m2!1svi!2s!4v1637424291305!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,8 @@ include ('../layout/header.php')
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="contact-details-content contact-phone">
-                                    <a href="tel:+012345678102">+012 345 678 102</a>
-                                    <a href="tel:+012345678102">+012 345 678 102</a>
+                                    <a href="tel:+012345678102">0353 619 624</a>
+                                    <a href="tel:+012345678102">0947 696 640</a>
                                 </div>
                             </div> <!-- End Contact Details Single Item -->
                             <!-- Start Contact Details Single Item -->
@@ -64,7 +64,7 @@ include ('../layout/header.php')
                                     <i class="fa fa-globe"></i>
                                 </div>
                                 <div class="contact-details-content contact-phone">
-                                    <a href="mailto:urname@email.com">urname@email.com</a>
+                                    <a href="mailto:urname@email.com">2sshop69888@gmail.com</a>
                                     <a href="http://www.yourwebsite.com/">www.yourwebsite.com</a>
                                 </div>
                             </div> <!-- End Contact Details Single Item -->
@@ -74,8 +74,8 @@ include ('../layout/header.php')
                                     <i class="fa fa-map-marker"></i>
                                 </div>
                                 <div class="contact-details-content contact-phone">
-                                    <span>Address goes here,</span>
-                                    <span>street, Crossroad 123.</span>
+                                    <span>475A Điện Biên Phủ </span>
+                                    <span>Phường 25, Bình Thạnh, HCMC.</span>
                                 </div>
                             </div> <!-- End Contact Details Single Item -->
                         </div>
