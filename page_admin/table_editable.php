@@ -44,6 +44,11 @@ for($i=1; $i<=$totalpage; $i++){
 }
 
 ?>
+<?php
+$role= "SELECT * FROM nhanvien WHERE TenDangNhap = '".$_SESSION["admin"]."'";
+$queryrole=mysqli_query($conn,$role);
+$layquyen= mysqli_fetch_array($queryrole);
+?>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN PAGE -->
 		<div class="page-content">
@@ -145,7 +150,15 @@ for($i=1; $i<=$totalpage; $i++){
 							<div class="portlet-body">
 								<div class="table-toolbar">
 									<div class="btn-group">
+                                        <?php
+                                        if($layquyen["id_role"]==1){
+
+
+                                        ?>
+
                                         <a class="btn green" href="themspadmin.php">Thêm</a>
+                                        <?php } ?>
+
                                     </div>
 									<div class="btn-group pull-right">
 										<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
@@ -195,11 +208,19 @@ for($i=1; $i<=$totalpage; $i++){
 											<td><?php echo $cot["ThongTin"]?></td>
                                             <td><?php echo $cot["TenLoai"]?></td>
                                             <td><?php echo $laytrangthai["tentrangthai"]?></td>
+
+
 											<td>
+                                                <?php
+                                                if($layquyen["id_role"]==1){
+
+
+                                                ?>
                                                <a href="suasanpham.php?MaSP=<?php echo $cot["MaSanPham"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
                                                 <a onclick="return Del('<?php echo $cot["TenSanPham"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaSanPham=<?php echo $cot["MaSanPham"];?>"><span class="Xoadulieu"><i class=""></i>Xóa</span></a>
-
+                                                <?php } ?>
                                             </td>
+
 										</tr>
                                         <?php } ?>
 

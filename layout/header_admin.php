@@ -60,10 +60,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         echo "<script>location='../page_admin/login/dangnhapadmin.php'</script>";
 
     }
-
-
     ?>
-
+    <?php
+    $role= "SELECT * FROM nhanvien WHERE TenDangNhap = '".$_SESSION["admin"]."'";
+    $queryrole=mysqli_query($conn,$role);
+    $layquyen= mysqli_fetch_array($queryrole);
+    ?>
 
 </head>
 <!-- END HEAD -->
@@ -358,7 +360,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <i class="icon-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
+                        <?php
+                        if($layquyen["id_role"]==1){
+                        ?>
                         <li><a href="../page_admin/nhanvienadmin.php"><i class="icon-user"></i>Nhân viên</a></li>
+                        <?php } ?>
+
 
                         <li><a href="<?php echo $_SERVER["PHP_SELF"];?>?dx_admin=0"><i class="icon-key"></i> Log Out</a></li>
                     </ul>

@@ -17,6 +17,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $ngaysinh=$_POST["ngaysinh"];
     $gioitinh=$_POST["gioitinh"];
     $dienthoai=$_POST["dienthoai"];
+    $role=$_POST["role"];
 
     $kttontai="SELECT * FROM nhanvien WHERE TenDangNhap='".$tendangnhap."'";
     $truyvan=mysqli_query($conn,$kttontai);
@@ -26,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     }
     else
     {
-        $them="INSERT INTO nhanvien(Hoten,TenDangNhap,MatKhau,Ngaysinh,Gioitinh,Dienthoai) VALUES ('".$hoten."','".$tendangnhap."','".$matkhau."','".$ngaysinh."','".$gioitinh."','".$dienthoai."')";
+        $them="INSERT INTO nhanvien(Hoten,TenDangNhap,MatKhau,Ngaysinh,Gioitinh,Dienthoai,id_role) VALUES ('".$hoten."','".$tendangnhap."','".$matkhau."','".$ngaysinh."','".$gioitinh."','".$dienthoai."','".$role."')";
 
         if(mysqli_query($conn,$them))
         {
@@ -99,6 +100,23 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     <tr>
                         <th>Điện thoại</th>
                         <td><input required id="dienthoai" name="dienthoai" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <?php
+                    $quyen="SELECT * FROM roles";
+                    $truyvanquyen=mysqli_query($conn,$quyen);
+                    ?>
+                    <tr>
+                        <th>Quyền</th>
+                        <td>
+                            <select name="role" id="role">
+                                <?php
+                                while ($rowbrand=mysqli_fetch_array($truyvanquyen)){
+                                    ?>
+                                    <option value="<?php echo $rowbrand["id_roles"]?>"><?php echo $rowbrand["name"]?></option>
+                                <?php } ?>
+                            </select>
+                        </td>
 
                     </tr>
 

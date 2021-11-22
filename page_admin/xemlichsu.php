@@ -105,9 +105,7 @@ include ('../page/connect.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                                <button id="sample_editable_1_new" class="btn green">
-                                    Add New <i class="icon-plus"></i>
-                                </button>
+
                             </div>
                             <div class="btn-group pull-right">
                                 <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>

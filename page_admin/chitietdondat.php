@@ -35,6 +35,11 @@ else{
     echo "<script>location='dondatadmin.php';</script>";
 }
 ?>
+<?php
+$role= "SELECT * FROM nhanvien WHERE TenDangNhap = '".$_SESSION["admin"]."'";
+$queryrole=mysqli_query($conn,$role);
+$layquyen= mysqli_fetch_array($queryrole);
+?>
 
 
 <div class="page-content">
@@ -195,7 +200,12 @@ else{
 
 
                                         <br>
+                                        <?php
+                                        if($layquyen["id_role"]==1){
+                                        ?>
                                         <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="<?php echo $_SERVER["PHP_SELF"];?>?MaDDXoa=<?php echo $cotDDH["MaDonDat"]?>" id="xoa" class="btn-danger">Xóa</a>
+                                        <?php } ?>
+
 
 
 
@@ -207,7 +217,7 @@ else{
                                     <th>Tên sản phẩm</th>
                                     <th>Số lượng đặt</th>
                                     <th>ĐƠn giá</th>
-                                    <th>Tổng tiền</th>
+                                    <th>Thành tiền</th>
                                 </tr>
                                 <?php
                                 $tongtien=0;
@@ -228,6 +238,7 @@ else{
                                 </tr>
                                 <?php } ?>
                                 <tr>
+                                    <th colspan="3">Tổng tiền</th>
                                     <th><?php  echo number_format($tongtien,0,",",".");  ?></th>
                                 </tr>
                                 </tbody>

@@ -161,31 +161,27 @@ for($i=1; $i<=$totalpage; $i++){
                                 <th>Họ tên</th>
                                 <th>Tên đăng nhập</th>
                                 <th>Ngày sinh</th>
-                                <th>Giới tính </th>
                                 <th>Điện thoại</th>
+                                <th></th>
+
 
                             </tr>
                             </thead>
                             <tbody>
                             <?php
                            while ($cot=mysqli_fetch_array($query)){
-
-
                                 ?>
                                 <tr >
                                     <td><?php echo $cot["Hoten"]?></td>
-
                                     <td><?php echo $cot["TenDangNhap"] ?></td>
-
                                     <td><?php echo $cot["Ngaysinh"] ?></td>
-                                    <td><?php echo $cot["Gioitinh"]?></td>
                                     <td><?php echo $cot["Dienthoai"]?></td>
 
                                     <td>
                                         <a href="suanhanvien.php?MaNV=<?php echo $cot["MaNhanVien"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
-                                        <a onclick="return Del('<?php echo $cot["TenDangNhap"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaNV=<?php echo $cot["MaNhanVien"];?>"><span class="Xoadulieu"><i class=" far fa-trash-alt"></i></span></a>
-
+                                        <a onclick="return Del('<?php echo $cot["Hoten"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaNV=<?php echo $cot["MaNhanVien"];?>"><span class="Xoadulieu">Xóa</span></a>
                                     </td>
+
                                 </tr>
                             <?php } ?>
 
@@ -194,7 +190,7 @@ for($i=1; $i<=$totalpage; $i++){
                             </tbody>
 
                         </table>
-                        <div class="row" >
+                        <div class="pt" >
                             <ul class="pagination" style="margin-left: 350px;display: inline-block">
                                 <?php
                                 echo $listpage;
@@ -225,3 +221,31 @@ include ('../layout/footer-admin.php')
 
     }
 </script>
+<style>
+    .pt
+    {
+        width:100%;
+        justify-content:center;
+        display:flex;
+    }
+    .pt li {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+
+    .pt li.active {
+
+
+    }
+    .pt ul{
+        list-style-type: none !important;
+        margin-right: 453px;
+    }
+
+    .pt li:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>

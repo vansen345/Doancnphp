@@ -30,9 +30,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $ngaysinh=$_POST["ngaysinh"];
     $gioitinh=$_POST["gioitinh"];
     $dienthoai=$_POST["dienthoai"];
+    $role=$_POST["role"];
 
 
-        $them="UPDATE nhanvien SET Hoten='".$hoten."',TenDangNhap='".$tendangnhap."',MatKhau='".$matkhau."',Ngaysinh='".$ngaysinh."',Gioitinh='".$gioitinh."',Dienthoai='".$dienthoai."' WHERE MaNhanVien='".$_GET["MaNV"]."'";
+        $them="UPDATE nhanvien SET Hoten='".$hoten."',TenDangNhap='".$tendangnhap."',MatKhau='".$matkhau."',Ngaysinh='".$ngaysinh."',Gioitinh='".$gioitinh."',Dienthoai='".$dienthoai."',id_role='".$role."' WHERE MaNhanVien='".$_GET["MaNV"]."'";
 
         if(mysqli_query($conn,$them))
         {
@@ -106,6 +107,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                         <th>Điện thoại</th>
                         <td><input required id="dienthoai" name="dienthoai" value="<?php echo $cot["Dienthoai"]?>" class="form-control" style="width: 500px"></td>
 
+                    </tr>
+                    <?php
+                    $quyen="SELECT * FROM roles";
+                    $truyvanquyen=mysqli_query($conn,$quyen);
+                    ?>
+                    <tr>
+                        <th>Quyền</th>
+                        <td>
+                            <select name="role" id="role">
+                                <?php
+                                while ($cotquyen=mysqli_fetch_array($truyvanquyen)){
+                                    if($cotquyen["id_roles"]==$cot["id_role"]){
+                                        ?>
+                                        <option selected value="<?php echo $cotquyen["id_roles"]?>"><?php echo $cotquyen["name"]?></option>
+                                    <?php } else { ?>
+                                        <option  value="<?php echo $cotquyen["id_roles"]?>"><?php echo $cotquyen["name"]?></option>
+                                    <?php } } ?>
+                            </select>
+                        </td>
                     </tr>
 
                     <tr>
