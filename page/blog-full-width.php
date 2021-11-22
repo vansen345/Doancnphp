@@ -1,6 +1,12 @@
 <?php
 include ('../layout/header.php')
 ?>
+<?php
+include ('connect.php');
+$blog="SELECT * FROM blog";
+$query=mysqli_query($conn,$blog);
+
+?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
 
@@ -33,12 +39,17 @@ include ('../layout/header.php')
             <div class="col-lg-12">
                 <div class="blog-wrapper">
                     <div class="row mb-n6">
+                        <?php
+                        while ($cot=mysqli_fetch_array($query)){
+
+
+                        ?>
                         <div class="col-xl-4 col-md-6 col-12 mb-6">
                             <!-- Start Product Default Single Item -->
                             <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="0">
                                 <div class="image-box">
                                     <a href="blog-single-sidebar-left.php" class="image-link">
-                                        <img class="img-fluid" src="../images/blog/blog-grid-home-1-img-1.jpg" alt="">
+                                        <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Image"]?>" alt="">
                                     </a>
                                 </div>
                                 <div class="content">
@@ -46,140 +57,15 @@ include ('../layout/header.php')
                                         <li>POSTED BY : <a href="#" class="author">Admin</a></li>
                                         <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
                                     </ul>
-                                    <h6 class="title"><a href="blog-single-sidebar-left.php"> Blog image post</a></h6>
-                                    <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                    <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                </div>
-                            </div>
-                            <!-- End Product Default Single Item -->
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-12 mb-6">
-                            <!-- Start Product Default Single Item -->
-                            <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="200">
-                                <div class="blog-list-slider-arrow">
-                                    <!-- Slider main container -->
-                                    <div class="blog-list-slider swiper-container">
-                                        <!-- Additional required wrapper -->
-                                        <div class="swiper-wrapper">
-                                            <!-- Slides -->
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-4.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-2.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-3.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-1.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-5.jpg" alt=""></div>
-                                        </div>
+                                    <h6 class="title"><a href="blog-single-sidebar-left.php?id_blog=<?php echo $cot["Id_blog"]?>"><?php echo $cot["Title"]?></a></h6>
 
-                                        <!-- If we need navigation buttons -->
-                                        <div class="swiper-button-prev"></div>
-                                        <div class="swiper-button-next"></div>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <ul class="post-meta">
-                                        <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
-                                    </ul>
-                                    <h6 class="title"><a href="blog-single-sidebar-left.php"> Blog Slider post</a></h6>
-                                    <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
                                     <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
                                 </div>
                             </div>
                             <!-- End Product Default Single Item -->
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12 mb-6">
-                            <!-- Start Product Default Single Item -->
-                            <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="400">
-                                <div class="blog-video-box">
-                                    <img class="img-fluid" src="../images/blog/blog-grid-home-1-img-5.jpg" alt="">
-                                    <a href="https://youtu.be/MKjhBO2xQzg" class="video-play-btn" data-autoplay="true" data-vbtype="video">
-                                        <i class="fa fa-youtube-play"></i>
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <ul class="post-meta">
-                                        <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
-                                    </ul>
-                                    <h6 class="title"><a href="blog-single-sidebar-left.php"> Blog video post</a></h6>
-                                    <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                    <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                </div>
-                            </div>
-                            <!-- End Product Default Single Item -->
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-12 mb-6">
-                            <!-- Start Product Default Single Item -->
-                            <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="0">
-                                <div class="image-box">
-                                    <a href="blog-single-sidebar-left.php" class="image-link">
-                                        <img class="img-fluid" src="../images/blog/blog-grid-home-1-img-2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <ul class="post-meta">
-                                        <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
-                                    </ul>
-                                    <h6 class="title"><a href="blog-single-sidebar-left.php"> Blog image post</a></h6>
-                                    <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                    <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                </div>
-                            </div>
-                            <!-- End Product Default Single Item -->
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-12 mb-6">
-                            <!-- Start Product Default Single Item -->
-                            <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="200">
-                                <div class="image-box">
-                                    <a href="blog-single-sidebar-left.php" class="image-link">
-                                        <img class="img-fluid" src="../images/blog/blog-grid-home-1-img-5.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <ul class="post-meta">
-                                        <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
-                                    </ul>
-                                    <h6 class="title"><a href="blog-single-sidebar-left.php"> Blog image post</a></h6>
-                                    <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                    <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                </div>
-                            </div>
-                            <!-- End Product Default Single Item -->
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-12 mb-6">
-                            <!-- Start Product Default Single Item -->
-                            <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="400">
-                                <div class="blog-list-slider-arrow">
-                                    <!-- Slider main container -->
-                                    <div class="blog-list-slider swiper-container">
-                                        <!-- Additional required wrapper -->
-                                        <div class="swiper-wrapper">
-                                            <!-- Slides -->
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-5.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-2.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-3.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-1.jpg" alt=""></div>
-                                            <div class="blog-list-slider-img swiper-slide"><img class="img-fluid"  src="../images/blog/blog-grid-home-1-img-4.jpg" alt=""></div>
-                                        </div>
+                        <?php } ?>
 
-                                        <!-- If we need navigation buttons -->
-                                        <div class="swiper-button-prev"></div>
-                                        <div class="swiper-button-next"></div>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <ul class="post-meta">
-                                        <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
-                                    </ul>
-                                    <h6 class="title"><a href="blog-single-sidebar-left.php"> Blog Slider post</a></h6>
-                                    <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
-                                    <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                </div>
-                            </div>
-                            <!-- End Product Default Single Item -->
-                        </div>
                     </div>
                 </div>
 

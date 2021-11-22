@@ -299,7 +299,7 @@ if(isset($_SESSION["tendangnhap"]))
                                                             <h6 class="comment-name"><?php echo $truyvanbl["Hoten"]  ?></h6>
                                                             <span style="margin-left: 550px"> Date: <?php echo $truyvanbl["NgayBinhLuan"] ?></span>
                                                             <?php if(isset($_SESSION["tendangnhap"]) && $truyvanbl["TenDangNhap"]== $_SESSION["tendangnhap"] ){ ?>
-                                                                <a style="margin-left: 100px" data-bs-toggle="modal" data-bs-target="#modalQuickview1"  class="icon_chinhsua"><i class="ion-edit"></i></a>
+                                                                <a style="margin-left: 100px" data-bs-toggle="modal" data-bs-target="#modalQuickview2"  class="icon_chinhsua"><i class="ion-edit"></i></a>
                                                                 <a style="margin-left: 10px" onclick="XoaBinhLuan(<?php echo $truyvanbl["MaBinhLuan"]; ?>,<?php echo $cot["MaSanPham"];?>)" class="ion-android-delete"></a>
                                                             <?php } ?>
 
@@ -424,7 +424,7 @@ if(isset($_SESSION["tendangnhap"]))
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalQuickview1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalQuickview2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">

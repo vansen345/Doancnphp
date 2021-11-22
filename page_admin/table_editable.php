@@ -152,10 +152,7 @@ $layquyen= mysqli_fetch_array($queryrole);
 									<div class="btn-group">
                                         <?php
                                         if($layquyen["id_role"]==1){
-
-
                                         ?>
-
                                         <a class="btn green" href="themspadmin.php">Thêm</a>
                                         <?php } ?>
 
