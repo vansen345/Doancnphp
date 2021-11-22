@@ -174,8 +174,8 @@ include ('connect.php');
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3  class="section-title">the New arrivals</h3>
-                            <p>Preorder now to receive exclusive deals & gifts</p>
+                            <h3  class="section-title">Sản phẩm mới</h3>
+<!--                            <p>Preorder now to receive exclusive deals & gifts</p>-->
                         </div>
                     </div>
                 </div>
