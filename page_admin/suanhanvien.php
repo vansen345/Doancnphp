@@ -90,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     </tr>
                     <tr>
                         <th>Mật khẩu</th>
-                        <td><input required  id="matkhau" name="matkhau"  class="form-control" value="<?php echo $cot["MatKhau"]?>" style="width: 500px"></td>
+                        <td><input required  id="matkhau" name="matkhau" type="password"  class="form-control" value="<?php echo $cot["MatKhau"]?>" style="width: 500px"></td>
 
                     </tr>
                     <tr>

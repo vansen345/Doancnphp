@@ -170,7 +170,7 @@ include ('connect.php');
                         </form>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <form action="#">
+                        <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
                             <h3>Đơn hàng của bạn</h3>
                             <div class="order_table table-responsive">
                                 <?php
@@ -229,12 +229,18 @@ include ('connect.php');
                                         <input type="checkbox" id="currencyCod">
                                         <span>Thanh toán online</span>
                                     </label>
+                                    <?php
+                                    $query="SELECT * FROM pvs_tinhthanhpho";
+                                    $layship=mysqli_query($conn,$query);
+                                    $rowship = mysqli_fetch_array($layship);
+                                    ?>
+
 
                                     <div id="methodCod" class="collapse" data-parent="#methodCod">
                                         <div class="card-body1">
                                             <div class="order_button pt-3" style="">
                                                 <?php
-                                                $vnd_to_usd = $_SESSION["tongbill"]/ 23000
+                                                $vnd_to_usd = ($ordertotal + $rowship["phiship"])/ 23000
                                                 ?>
                                                 <div style="margin-left: 30px" id="paypal-button"></div>
                                                 <input type="hidden" id="vnd_to_usd" value="<?php echo ceil($vnd_to_usd) ?>">
@@ -275,7 +281,7 @@ if(isset($_POST["send"])){
         $tongship=$_SESSION["tongbill"];
         $thanhpho=$_POST["province"];
         $quanhuyen=$_POST["district"];
-        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH,tongtiengoc,tongtien,thanhpho,quanhuyen) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."','".$tongship."','".$ordertotal."','".$thanhpho."','".$quanhuyen."')";
+        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH,tongtiengoc,tongtien,thanhpho,quanhuyen) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."','".$ordertotal."','".$tongship."','".$thanhpho."','".$quanhuyen."')";
         if (mysqli_query($conn, $themdondat)) {
             $madondat = 0;
             $date=date("d/m/Y");
@@ -419,6 +425,7 @@ if(isset($_POST["send"])){
 <?php
 include ('../layout/footer.php')
 ?>
+
 <!--<script>-->
 <!--    $(document).ready(function () {-->
 <!--        $('#province').change(function () {-->

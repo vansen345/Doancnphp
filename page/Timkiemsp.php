@@ -2,6 +2,7 @@
 include ('../layout/header.php');
 ?>
 
+
 <?php
 
 if(isset($_POST['timkiemtensp'])){
@@ -28,16 +29,16 @@ $laysp="SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$_POST["timkiemtensp"]."
 $query = mysqli_query($conn,$laysp);
     $totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$_POST["timkiemtensp"]."%'"));
     $totalpage=ceil($totalrow/$rowperpgae);
-$listpage="";
-for($i=1; $i<=$totalpage; $i++) {
-    if ($page == $i) {
-        $listpage .= '<li><a class="active" href="Timkiemsp.php?search='.$_POST["timkiemtensp"].'&page='.$i.'">'.$i.'</a></li>';
-    }
-    else{
-        $listpage .= '<li><a href="Timkiemsp.php?search='.$_POST["timkiemtensp"].'&page='.$i.'">'.$i.'</a></li>';
-
-    }
-}
+//$listpage="";
+//for($i=1; $i<=$totalpage; $i++) {
+//    if ($page == $i) {
+//        $listpage .= '<li><a class="active" href="Timkiemsp.php?search='.$_POST["timkiemtensp"].'&page='.$i.'">'.$i.'</a></li>';
+//    }
+//    else{
+//        $listpage .= '<li><a href="Timkiemsp.php?search='.$_POST["timkiemtensp"].'&page='.$i.'">'.$i.'</a></li>';
+//
+//    }
+//}
 ?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
@@ -75,34 +76,13 @@ for($i=1; $i<=$totalpage; $i++) {
                         <div class="row">
                             <!-- Start Sort Wrapper Box -->
                             <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up"  data-aos-delay="0">
-                                <!-- Start Sort tab Button -->
-                                <div class="sort-tablist d-flex align-items-center">
-                                    <ul class="tablist nav sort-tab-btn">
-                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-4-grid"><img src="../images/icons/bkg_grid.png" alt=""></a></li>
-                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-list"><img src="../images/icons/bkg_list.png" alt=""></a></li>
-                                    </ul>
+                                <div>
 
-                                    <!-- Start Page Amount -->
-                                    <div class="page-amount ml-2">
-                                        <span>Showing 1–9 of 21 results</span>
-                                    </div> <!-- End Page Amount -->
-                                </div> <!-- End Sort tab Button -->
-
+                                </div>
                                 <!-- Start Sort Select Option -->
                                 <div class="sort-select-list d-flex align-items-center">
-                                    <label class="mr-2">Sort By:</label>
-                                    <form action="#">
-                                        <fieldset>
-                                            <select name="speed" id="speed">
-                                                <option>Sort by average rating</option>
-                                                <option>Sort by popularity</option>
-                                                <option selected="selected">Sort by newness</option>
-                                                <option>Sort by price: low to high</option>
-                                                <option>Sort by price: high to low</option>
-                                                <option>Product Name: Z</option>
-                                            </select>
-                                        </fieldset>
-                                    </form>
+
+
                                 </div> <!-- End Sort Select Option -->
 
 
@@ -149,13 +129,7 @@ for($i=1; $i<=$totalpage; $i++) {
                                                         <div class="content">
                                                             <div class="content-left">
                                                                 <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>"><?php echo $cot["TenSanPham"] ?></a></h6>
-                                                                <ul class="review-star">
-                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                    <li class="fill"><i class="ion-android-star"></i></li>
-                                                                    <li class="empty"><i class="ion-android-star"></i></li>
-                                                                </ul>
+
                                                             </div>
                                                             <div class="content-right">
                                                                 <span class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</span>
@@ -318,9 +292,7 @@ for($i=1; $i<=$totalpage; $i++) {
                 <!-- Start Pagination -->
                 <div class="page-pagination text-center" data-aos="fade-up"  data-aos-delay="0">
                     <ul>
-                        <?php
-                        echo $listpage;
-                        ?>
+
                     </ul>
                 </div> <!-- End Pagination -->
 

@@ -35,13 +35,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Login</h3>
+                    <h3 class="breadcrumb-title">Forget Password</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                <li class="active" aria-current="page">Login</li>
+                                <li class="active" aria-current="page">Forget Password</li>
                             </ul>
                         </nav>
                     </div>
@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             <!--login area start-->
             <div class="col-lg-6 col-md-6">
                 <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
-                    <h3>Quên mật khẩu</h3>
+                    <h3>Forget Password</h3>
                     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
                         <input type="hidden" name="tranghientai" value="<?php echo $_SERVER["PHP_SELF"];?>">
                         <div class="default-form-box">

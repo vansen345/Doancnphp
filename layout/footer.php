@@ -323,6 +323,7 @@
             </div>
         </div>
     </div>
+
 </div> <!-- End Modal Quickview cart -->
 
 <!-- ::::::::::::::All JS Files here :::::::::::::: -->
@@ -388,6 +389,8 @@
             return actions.payment.execute().then(function() {
                 // Show a confirmation message to the buyer
                 window.alert('Cám ơn bạn đãt đặt hàng!');
+                window.location='../page/index-3.php';
+
             });
         }
     }, '#paypal-button');

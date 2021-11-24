@@ -71,14 +71,11 @@ for($i=1; $i<=$totalpage; $i++){
                             <div class="sort-box d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column" data-aos="fade-up"  data-aos-delay="0">
                                 <!-- Start Sort tab Button -->
                                 <div class="sort-tablist d-flex align-items-center">
-                                    <ul class="tablist nav sort-tab-btn">
-                                        <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-4-grid"><img src="../images/icons/bkg_grid.png" alt=""></a></li>
-                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-list"><img src="../images/icons/bkg_list.png" alt=""></a></li>
-                                    </ul>
+
 
                                     <!-- Start Page Amount -->
                                     <div class="page-amount ml-2">
-                                        <span>Showing 1–9 of 21 results</span>
+
                                     </div> <!-- End Page Amount -->
                                 </div> <!-- End Sort tab Button -->
 
@@ -117,9 +114,6 @@ for($i=1; $i<=$totalpage; $i++){
                                         <div class="row">
                                             <?php
                                             while ($cot=mysqli_fetch_array($query)){
-
-
-
                                             ?>
                                             <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                                                 <!-- Start Product Default Single Item -->
@@ -143,13 +137,7 @@ for($i=1; $i<=$totalpage; $i++){
                                                     <div class="content">
                                                         <div class="content-left">
                                                             <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot["MaSanPham"];?>"><?php echo $cot["TenSanPham"] ?></a></h6>
-                                                            <ul class="review-star">
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                                            </ul>
+
                                                         </div>
                                                         <div class="content-right">
                                                             <span class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</span>

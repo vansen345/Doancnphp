@@ -792,8 +792,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                             Sản phẩm</a>
                     </li>
                     <li >
-                        <a href="../page/table_advanced.php">
-                            Advanced Tables</a>
+                        <a href="../page_admin/blog.php">
+                            Blog</a>
                     </li>
                 </ul>
             </li>

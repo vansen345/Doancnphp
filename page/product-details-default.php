@@ -12,7 +12,7 @@ $truyvan=mysqli_query($conn,$laysp);
 $cot=mysqli_fetch_array($truyvan);
 
 if(!isset($_GET["Masp"]))
-    echo "<script>location='index-3.php';</script>";
+    echo "<script>location='shop-full-width.php';</script>";
 
 $count="SELECT MaBinhLuan FROM binhluan WHERE MaSanPham = '".$_GET["Masp"]."' ";
 $countbl=mysqli_query($conn,$count);

@@ -205,10 +205,6 @@ $layquyen= mysqli_fetch_array($queryrole);
                                         ?>
                                         <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="<?php echo $_SERVER["PHP_SELF"];?>?MaDDXoa=<?php echo $cotDDH["MaDonDat"]?>" id="xoa" class="btn-danger">Xóa</a>
                                         <?php } ?>
-
-
-
-
                                     </td>
 
 
@@ -238,8 +234,12 @@ $layquyen= mysqli_fetch_array($queryrole);
                                 </tr>
                                 <?php } ?>
                                 <tr>
-                                    <th colspan="3">Tổng tiền</th>
+                                    <th colspan="3"></th>
                                     <th><?php  echo number_format($tongtien,0,",",".");  ?></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3">Tổng tiền</th>
+                                    <th><?php  echo number_format($cotDDH["tongtien"],0,",",".");  ?></th>
                                 </tr>
                                 </tbody>
 
@@ -267,8 +267,6 @@ $layquyen= mysqli_fetch_array($queryrole);
 
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST") {
-
-
     $laynv = "SELECT * FROM nhanvien WHERE TenDangNhap='" . $_SESSION["admin"] . "'";
     $truyvanlaynv = mysqli_query($conn, $laynv);
     $cotTV = mysqli_fetch_array($truyvanlaynv);
@@ -278,8 +276,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         mysqli_query($conn, "UPDATE dondat SET TrangThai='" . $trangthai . "',MaNhanVien='" . $cotTV["MaNhanVien"] . "' WHERE MaDonDat='" . $_GET["MaDD"] . "'");
 
         echo "<script>location='dondatadmin.php';</script>";
-
-
     }
 }
 

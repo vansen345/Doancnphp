@@ -123,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     $laytrangthai = mysqli_query($conn,$sqltrangthai)
                     ?>
                     <tr>
-                        <th>Danh mục</th>
+                        <th>Trạng thái</th>
                         <td>
                             <select name="trangthai" id="trangthai">
                                 <?php

@@ -7,7 +7,11 @@ if(!isset($_GET["id_blog"]))
 $laysp="SELECT * FROM blog WHERE Id_blog='".$_GET["id_blog"]."'";
 $truyvan=mysqli_query($conn,$laysp);
 $cot=mysqli_fetch_array($truyvan);
-
+?>
+<?php
+$count="SELECT MaBinhLuanBlog FROM binhluanblog WHERE MaBlog = '".$_GET["id_blog"]."' ";
+$countbl=mysqli_query($conn,$count);
+$row= mysqli_num_rows($countbl);
 ?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
@@ -156,7 +160,7 @@ $cot=mysqli_fetch_array($truyvan);
                 </div> <!-- End Blog Single Content Area -->
                 <div class="comment-area">
                     <div class="comment-box" data-aos="fade-up"  data-aos-delay="0">
-                        <h4 class="title mb-4">3 Comments</h4>
+                        <h4 class="title mb-4"><?php echo $row ?> Comments</h4>
                         <?php
                         $layblog="SELECT * FROM binhluanblog INNER JOIN thanhvien ON binhluanblog.TenDangNhap = thanhvien.TenDangNhap WHERE MaBlog='".$cot["Id_blog"]."' ORDER BY MaBinhLuanBlog DESC ";
                         $cotblog=mysqli_query($conn,$layblog);
@@ -168,7 +172,7 @@ $cot=mysqli_fetch_array($truyvan);
                             ?>
                             <!-- Start - Review Comment list-->
                             <li class="comment-list">
-                                <div class="comment-wrapper">
+                                <div class="comment-wrapper userComment" >
                                     <div class="comment-img">
                                         <img src="../images/user/image-1.png" alt="">
                                     </div>
@@ -177,20 +181,50 @@ $cot=mysqli_fetch_array($truyvan);
                                             <div class="comment-content-left">
                                                 <h6 class="comment-name"><?php echo $truyvanblog["Hoten"]  ?></h6>
                                             </div>
-                                            <div class="comment-content-right">
-                                                <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                            </div>
+
                                         </div>
+
 
                                         <div class="para-content">
                                             <p><?php echo $truyvanblog["NoiDung"]  ?> </p>
                                         </div>
+                                        <div class="comment-content-right" >
+                                            <a href="javascript:void(0)" onclick="reply(this)"><i class="fa fa-reply"></i>Reply</a>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <!-- Start - Review Comment Reply-->
                                <!-- End - Review Comment Reply-->
                             </li> <!-- End - Review Comment list-->
                             <?php } ?>
+                            <ul class="comment-reply " >
+                                <li class="comment-reply-list " >
+                                    <div class="comment-wrapper replyrow " style="display: none;margin-top: 20px">
+                                        <div class="comment-img">
+                                            <img src="../images/user/image-1.png" alt="">
+                                        </div>
+
+                                        <div class="comment-content">
+                                            <div class="comment-content-top">
+                                                <div class="comment-content-left">
+                                                    <h6 class="comment-name">Oaklee Odom</h6>
+                                                </div>
+                                            </div>
+                                            <div class="para-content">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <textarea class="form-control" cols="90" rows="2" name="reply_blog" id="comment-review-text2" placeholder="Write a review" required></textarea>
+                                            </div>
+                                            <div class="col-12" style="margin-top: 10px;margin-left: 550px">
+                                                <button class="btn-black-default-hover" onclick="$('.replyrow').hide();">Close</button>
+                                                <button class="btn-black-default-hover" type="submit" id="addReply">Reply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                             <!-- Start - Review Comment list-->
                             <!-- End - Review Comment list-->
                         </ul> <!-- End - Review Comment -->
@@ -215,7 +249,7 @@ $cot=mysqli_fetch_array($truyvan);
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-md btn-golden" type="submit">Post Comment</button>
+                                    <button class="btn btn-md btn-golden"  type="submit">Post Comment</button>
                                 </div>
                             </div>
                         </form>
@@ -246,4 +280,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <?php
 include ('../layout/footer.php')
 ?>
+<script>
+
+    function reply(caller) {
+        $(".replyrow").insertAfter($(caller));
+        $('.replyrow').show();
+        
+    }
+</script>
 

@@ -14,7 +14,7 @@ if(isset($_GET["MaNV"]))
     }
     else
     {
-        echo "<script>alert('Xảy ra lỗi')</script>";
+        echo "<script>alert('Nhân viên đang xử lý đơn hàng')</script>";
     }
 
 }

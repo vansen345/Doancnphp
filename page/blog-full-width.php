@@ -5,8 +5,8 @@ include ('../layout/header.php')
 include ('connect.php');
 $blog="SELECT * FROM blog";
 $query=mysqli_query($conn,$blog);
-
 ?>
+
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
 
@@ -53,10 +53,7 @@ $query=mysqli_query($conn,$blog);
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <ul class="post-meta">
-                                        <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
-                                    </ul>
+
                                     <h6 class="title"><a href="blog-single-sidebar-left.php?id_blog=<?php echo $cot["Id_blog"]?>"><?php echo $cot["Title"]?></a></h6>
 
                                     <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
