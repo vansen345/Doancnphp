@@ -45,7 +45,7 @@ if(isset($_SESSION["tendangnhap"]))
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Product Details - Default</h3>
+                    <h3 class="breadcrumb-title">CHI TIẾT SẢN PHẨM</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>

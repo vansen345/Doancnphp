@@ -15,7 +15,7 @@ include ('../layout/header.php')
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="../page/index-3.php">Home</a></li>
-                                    <li class="active" aria-current="page">Contact Us</li>
+                                    <li class="active" aria-current="page">Liên hệ</li>
                                 </ul>
                             </nav>
                         </div>

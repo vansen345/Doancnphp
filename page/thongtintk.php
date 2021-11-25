@@ -25,7 +25,7 @@ $cotthongtin=mysqli_fetch_array($truyvanthongtin);
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                <li class="active" aria-current="page">Login</li>
+                                <li class="active" aria-current="page">Thông tin khách hàng</li>
                             </ul>
                         </nav>
                     </div>

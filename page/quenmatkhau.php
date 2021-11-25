@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                <li class="active" aria-current="page">Login</li>
+                                <li class="active" aria-current="page">Đăng nhập</li>
                             </ul>
                         </nav>
                     </div>

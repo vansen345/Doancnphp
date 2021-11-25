@@ -16,7 +16,7 @@ include ('../layout/header.php')
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="../page/blog-full-width.php">Blog</a></li>
-                                <li class="active" aria-current="page">Blog Full Width</li>
+<!--                                <li class="active" aria-current="page">Blog</li>-->
                             </ul>
                         </nav>
                     </div>
