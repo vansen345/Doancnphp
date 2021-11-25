@@ -174,7 +174,7 @@ include ('connect.php');
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3  class="section-title">Sản phẩm mới</h3>
+                            <h3  class="section-title">BEST SELLERS</h3>
 <!--                            <p>Preorder now to receive exclusive deals & gifts</p>-->
                         </div>
                     </div>
@@ -202,8 +202,6 @@ include ('connect.php');
                                 <!-- Start Product Default Single Item -->
                                 <?php
                                 while ($row=mysqli_fetch_array($query)){
-
-
                                 ?>
                                 <div class="product-default-single-item product-color--pink swiper-slide">
                                     <div class="image-box">
@@ -211,9 +209,7 @@ include ('connect.php');
                                             <img src="../images/product/hinhanh/<?php echo $row["Anh"] ?>" alt="">
                                             <img src="../images/product/hinhanh/<?php echo $row["Anh"] ?>" alt="">
                                         </a>
-                                        <div class="tag">
-                                            <span>sale</span>
-                                        </div>
+
 <!--                                        <div class="action-link">-->
 <!--                                            <div class="action-link-left">-->
 <!--                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>-->
@@ -228,13 +224,7 @@ include ('connect.php');
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $row["MaSanPham"];?>"><?php echo $row["TenSanPham"] ?></a></h6>
-                                            <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul>
+
                                         </div>
                                         <div class="content-right">
                                             <span class="price"><?=number_format($row["DonGia"],0,",",".")?> VND</span>
@@ -294,7 +284,7 @@ include ('connect.php');
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3  class="section-title">BEST SELLERS</h3>
+                            <h3  class="section-title">HOT PRODUCTS</h3>
                             <p>Add our best sellers to your weekly lineup.</p>
                         </div>
                     </div>
@@ -302,7 +292,17 @@ include ('connect.php');
             </div>
         </div>
     </div>
+    <?php
+
+
+
+    ?>
     <!-- Start Section Content Text Area -->
+    <?php
+    $sql2="SELECT * FROM danhgia INNER JOIN sanpham ON danhgia.MaSanPham = sanpham.MaSanPham GROUP BY danhgia.MaSanPham ORDER BY danhgia.NoiDung DESC LIMIT 4";
+    $query2=mysqli_query($conn,$sql2);
+
+    ?>
 
     <div class="product-wrapper" data-aos="fade-up"  data-aos-delay="0">
         <div class="container">
@@ -318,40 +318,41 @@ include ('connect.php');
                             <div class="swiper-wrapper">
                                 <!-- End Product Default Single Item -->
                                 <!-- Start Product Default Single Item -->
+                                <?php
+                                while ($row2=mysqli_fetch_array($query2)){
+                                $layDG_ND="SELECT * FROM danhgia WHERE MaSanPham='".$row2["MaSanPham"]."' ORDER BY NoiDung DESC ";
+                                $truyvanND=mysqli_query($conn,$layDG_ND);
+                                if(mysqli_num_rows($truyvanND)>0) {
+                                    $cotDG = mysqli_fetch_array($truyvanND);
+                                    $sosao = $cotDG["NoiDung"];
+                                }
+                                ?>
                                 <div class="product-default-single-item product-color--pink swiper-slide">
                                     <div class="image-box">
                                         <a href="../page/product-details-default.php" class="image-link">
-                                            <img src="../images/product/default/home-1/default-2.jpg" alt="">
-                                            <img src="../images/product/default/home-3/default-10.jpg" alt="">
+                                            <img src="../images/product/hinhanh/<?php echo $row2["Anh"] ?>" alt="">
+                                            <img src="../images/product/hinhanh/<?php echo $row2["Anh"] ?>" alt="">
                                         </a>
-                                        <div class="action-link">
-                                            <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
-                                            </div>
-                                            <div class="action-link-right">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
-                                                <a href="../page/wishlist.php"><i class="icon-heart"></i></a>
-                                                <a href="../page/compare.php"><i class="icon-shuffle"></i></a>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div class="content">
                                         <div class="content-left">
-                                            <h6 class="title"><a href="../page/product-details-default.php">Epicuri per lobortis</a></h6>
+                                            <h6 class="title"><a href="../page/product-details-default.php?Masp=<?php echo $row2["MaSanPham"];?>"><?php echo $row2["TenSanPham"] ?></a></h6>
                                             <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
+                                                <li class="sao sao1" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
+                                                <li class="sao sao2" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
+                                                <li class="sao sao3" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
+                                                <li class="sao sao4" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
+                                                <li class="sao sao5" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
                                             </ul>
                                         </div>
                                         <div class="content-right">
-                                            <span class="price">$68</span>
+                                            <span class="price"><?=number_format($row2["DonGia"],0,",",".")?> VND</span>
                                         </div>
 
                                     </div>
                                 </div>
+                                <?php } ?>
                                 <!-- End Product Default Single Item -->
                                 <!-- Start Product Default Single Item -->
                             </div>
@@ -524,3 +525,20 @@ include ('connect.php');
 <?php
 include ('../layout/footer.php')
 ?>
+<script>
+    $(document).ready(function () {
+        for (i=1;i<=<?php echo $sosao ?>;i++){
+            $('.sao'+i).css('color','#ff365d');
+        }
+        $('.sao').mouseenter(function () {
+            for(i=1;i<=$(this).attr('data-sao');i++){
+                $('.sao'+i).addClass('saohover');
+
+            }
+        })
+        $('.sao').mouseleave(function () {
+            $('.sao').removeClass('saohover');
+
+        })
+    })
+</script>

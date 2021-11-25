@@ -505,8 +505,6 @@ include ('../layout/footer.php')
         $('.icon_chinhsua').click(function () {
             $('#bl_edit').val($(this).parent().find("#bl_id").val());
             $('#contentcm').val($(this).parent().find("#bl_noidung").val());
-
-
         })
         
     })

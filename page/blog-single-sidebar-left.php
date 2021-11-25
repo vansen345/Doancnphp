@@ -198,6 +198,7 @@ $row= mysqli_num_rows($countbl);
                                <!-- End - Review Comment Reply-->
                             </li> <!-- End - Review Comment list-->
                             <?php } ?>
+                            <form action="<?php echo $_SERVER["PHP_SELF"]?>?id_blog=<?php echo $cot["Id_blog"]?>" method="post">
                             <ul class="comment-reply " >
                                 <li class="comment-reply-list " >
                                     <div class="comment-wrapper replyrow " style="display: none;margin-top: 20px">
@@ -219,12 +220,13 @@ $row= mysqli_num_rows($countbl);
                                             </div>
                                             <div class="col-12" style="margin-top: 10px;margin-left: 550px">
                                                 <button class="btn-black-default-hover" onclick="$('.replyrow').hide();">Close</button>
-                                                <button class="btn-black-default-hover" type="submit" id="addReply">Reply</button>
+                                                <button name="rl_comment" class="btn-black-default-hover" type="submit" id="addReply">Reply</button>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
+                            </form>
                             <!-- Start - Review Comment list-->
                             <!-- End - Review Comment list-->
                         </ul> <!-- End - Review Comment -->
@@ -277,6 +279,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     }
 }
 ?>
+
+<?php
+//if($_SERVER["REQUEST_METHOD"]=="POST"){
+//    $date= date("Y-m-d");
+//    $ndrl=$_POST["reply_blog"];
+//    $id=  $_GET["id_blog"];
+//    $user=$_SESSION["tendangnhap"];
+//    $themrpl="INSERT INTO replylog(MaBinhLuanBlog,NgayBinhLuan,NoiDung,TenDangNhap) VALUES ('".$id."','".$date."','".$ndrl."','".$user."') ";
+//    if(mysqli_query($conn,$themrpl)){
+//        echo "<script>alert('Bình luận của bạn đã được ghi nhận');window.location='blog-single-sidebar-left.php?id_blog=".$id."'</script>";
+//    } else{
+//        echo "<script>alert('Đã xảy ra lỗi');</script>";
+//
+//    }
+//}
+//?>
 <?php
 include ('../layout/footer.php')
 ?>

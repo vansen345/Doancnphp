@@ -162,6 +162,7 @@ for($i=1; $i<=$totalpage; $i++){
                                 <th>Tên đăng nhập</th>
                                 <th>Ngày sinh</th>
                                 <th>Điện thoại</th>
+                                <th>Quyền</th>
                                 <th></th>
 
 
@@ -170,12 +171,16 @@ for($i=1; $i<=$totalpage; $i++){
                             <tbody>
                             <?php
                            while ($cot=mysqli_fetch_array($query)){
+                               $sqlroles="SELECT * FROM roles WHERE id_roles = '".$cot["id_role"]."'";
+                               $quyen=mysqli_query($conn,$sqlroles);
+                               $layquyen = mysqli_fetch_array($quyen);
                                 ?>
                                 <tr >
                                     <td><?php echo $cot["Hoten"]?></td>
                                     <td><?php echo $cot["TenDangNhap"] ?></td>
                                     <td><?php echo $cot["Ngaysinh"] ?></td>
                                     <td><?php echo $cot["Dienthoai"]?></td>
+                                    <td><?php echo $layquyen["name"]?></td>
 
                                     <td>
                                         <a href="suanhanvien.php?MaNV=<?php echo $cot["MaNhanVien"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
