@@ -181,6 +181,7 @@ $row= mysqli_num_rows($countbl);
                                             <div class="comment-content-left">
                                                 <h6 class="comment-name"><?php echo $truyvanblog["Hoten"]  ?></h6>
                                             </div>
+                                            <a style="margin-left: 10px;margin-bottom: 3px" onclick="XoaBinhLuanBlog(<?php echo $truyvanblog["MaBinhLuanBlog"]; ?>,<?php echo $cot["Id_blog"];?>)" class="ion-android-delete"></a>
 
                                         </div>
 

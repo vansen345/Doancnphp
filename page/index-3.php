@@ -349,7 +349,6 @@ include ('connect.php');
                                         <div class="content-right">
                                             <span class="price"><?=number_format($row2["DonGia"],0,",",".")?> VND</span>
                                         </div>
-
                                     </div>
                                 </div>
                                 <?php } ?>

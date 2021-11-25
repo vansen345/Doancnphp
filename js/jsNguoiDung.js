@@ -45,6 +45,21 @@ function XoaBinhLuan(mabinhluan,masanpham) {
 
 }
 
+function XoaBinhLuanBlog(mabinhluanblog,mablog) {
+    $.ajax({
+        url:"ajax/XoaBinhLuanBlog.php",
+        type:"POST",
+        data:{
+            mabinhluanblog:mabinhluanblog
+        },
+        success:function (giatri) {
+            alert(giatri);
+            window.location="blog-single-sidebar-left.php?id_blog="+mablog;
+        }
+    });
+
+}
+
 function DanhGiaSP(masanpham,tendangnhap,noidung) {
     $.ajax({
         url:"ajax/DanhGiaSP.php",
