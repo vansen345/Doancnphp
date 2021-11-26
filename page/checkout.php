@@ -34,7 +34,7 @@ include ('connect.php');
                                 <ul>
                                     <li><a href="../page/index-3.php">Home</a></li>
                                     <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                    <li class="active" aria-current="page">Checkout</li>
+                                    <li class="active" aria-current="page">Thanh toán</li>
                                 </ul>
                             </nav>
                         </div>
