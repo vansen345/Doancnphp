@@ -16,7 +16,7 @@ include ('../layout/header.php')
                                 <ul>
                                     <li><a href="../page/index-3.php">Home</a></li>
                                     <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                    <li class="active" aria-current="page">My Account</li>
+                                    <li class="active" aria-current="page">Tài khoản của tôi</li>
                                 </ul>
                             </nav>
                         </div>

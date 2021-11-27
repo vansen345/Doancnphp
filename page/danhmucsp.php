@@ -48,7 +48,7 @@ for($i=1; $i<=$totalpage; $i++){
                             <ul>
                                 <li><a href="index-3.php">Home</a></li>
                                 <li><a href="shop-full-width.php">Shop</a></li>
-                                <li class="active" aria-current="page">Shop Full Width</li>
+                                <li class="active" aria-current="page">Danh mục sản phẩm</li>
                             </ul>
                         </nav>
                     </div>
