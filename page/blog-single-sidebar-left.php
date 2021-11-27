@@ -181,7 +181,9 @@ $row= mysqli_num_rows($countbl);
                                             <div class="comment-content-left">
                                                 <h6 class="comment-name"><?php echo $truyvanblog["Hoten"]  ?></h6>
                                             </div>
+                                            <?php if(isset($_SESSION["tendangnhap"]) && $truyvanblog["TenDangNhap"]== $_SESSION["tendangnhap"] ){ ?>
                                             <a style="margin-left: 10px;margin-bottom: 3px" onclick="XoaBinhLuanBlog(<?php echo $truyvanblog["MaBinhLuanBlog"]; ?>,<?php echo $cot["Id_blog"];?>)" class="ion-android-delete"></a>
+                                            <?php } ?>
 
                                         </div>
 
@@ -199,38 +201,40 @@ $row= mysqli_num_rows($countbl);
                                <!-- End - Review Comment Reply-->
                             </li> <!-- End - Review Comment list-->
                             <?php } ?>
-                            <form action="<?php echo $_SERVER["PHP_SELF"]?>?id_blog=<?php echo $cot["Id_blog"]?>" method="post">
-                            <ul class="comment-reply " >
-                                <li class="comment-reply-list " >
-                                    <div class="comment-wrapper replyrow " style="display: none;margin-top: 20px">
-                                        <div class="comment-img">
-                                            <img src="../images/user/image-1.png" alt="">
-                                        </div>
 
-                                        <div class="comment-content">
-                                            <div class="comment-content-top">
-                                                <div class="comment-content-left">
-                                                    <h6 class="comment-name">Oaklee Odom</h6>
-                                                </div>
-                                            </div>
-                                            <div class="para-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <textarea class="form-control" cols="90" rows="2" name="reply_blog" id="comment-review-text2" placeholder="Write a review" required></textarea>
-                                            </div>
-                                            <div class="col-12" style="margin-top: 10px;margin-left: 550px">
-                                                <button class="btn-black-default-hover" onclick="$('.replyrow').hide();">Close</button>
-                                                <button name="rl_comment" class="btn-black-default-hover" type="submit" id="addReply">Reply</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            </form>
-                            <!-- Start - Review Comment list-->
+
+                              <!-- Start - Review Comment list-->
                             <!-- End - Review Comment list-->
                         </ul> <!-- End - Review Comment -->
+                        <ul class="comment-reply " >
+                            <li class="comment-reply-list " >
+                                <div class="comment-wrapper replyrow" style="display: none;margin-top: 20px">
+                                    <div class="comment-img">
+                                        <img src="../images/user/image-1.png" alt="">
+                                    </div>
+
+                                    <div class="comment-content">
+                                        <div class="comment-content-top">
+                                            <div class="comment-content-left">
+                                                <h6 class="comment-name">Oaklee Odom</h6>
+                                            </div>
+                                        </div>
+                                        <div class="para-content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora inventore dolorem a unde modi iste odio amet, fugit fuga aliquam, voluptatem maiores animi dolor nulla magnam ea! Dignissimos aspernatur cumque nam quod sint provident modi alias culpa, inventore deserunt accusantium amet earum soluta consequatur quasi eum eius laboriosam, maiores praesentium explicabo enim dolores quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam officia, saepe repellat. </p>
+                                        </div>
+                                        <form method="post">
+                                        <div class="col-md-12">
+                                            <textarea class="form-control" cols="90" rows="2" name="reply_blog" id="comment-review-text2" placeholder="Write a review" required></textarea>
+                                        </div>
+                                        <div class="col-12" style="margin-top: 10px;margin-left: 550px">
+                                            <button class="btn-black-default-hover" onclick="$('.replyrow').hide();">Close</button>
+                                            <button name="rl_comment" class="btn-black-default-hover" type="submit" id="addReply">Reply</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
 
                     <!-- Start comment Form -->
@@ -280,14 +284,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     }
 }
 ?>
-
 <?php
-//if($_SERVER["REQUEST_METHOD"]=="POST"){
+//if(isset($_POST["rl_comment"])){
 //    $date= date("Y-m-d");
 //    $ndrl=$_POST["reply_blog"];
 //    $id=  $_GET["id_blog"];
 //    $user=$_SESSION["tendangnhap"];
-//    $themrpl="INSERT INTO replylog(MaBinhLuanBlog,NgayBinhLuan,NoiDung,TenDangNhap) VALUES ('".$id."','".$date."','".$ndrl."','".$user."') ";
+//    $themrpl="INSERT INTO replylog (MaBinhLuanBlog,NgayBinhLuan,NoiDung,TenDangNhap) VALUES ('".$id."','".$date."','".$ndrl."','".$user."') ";
 //    if(mysqli_query($conn,$themrpl)){
 //        echo "<script>alert('Bình luận của bạn đã được ghi nhận');window.location='blog-single-sidebar-left.php?id_blog=".$id."'</script>";
 //    } else{
@@ -295,7 +298,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 //
 //    }
 //}
-//?>
+?>
 <?php
 include ('../layout/footer.php')
 ?>

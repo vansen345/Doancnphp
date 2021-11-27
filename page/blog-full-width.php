@@ -3,8 +3,14 @@ include ('../layout/header.php')
 ?>
 <?php
 include ('connect.php');
-$blog="SELECT * FROM blog";
+$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:4;
+$current_page=!empty($_GET['page'])?$_GET['page']:1;
+$offset=($current_page-1) * $item_per_page;
+$blog="SELECT * FROM blog ORDER BY Id_blog ASC LIMIT ".$item_per_page." OFFSET ".$offset;
 $query=mysqli_query($conn,$blog);
+$total=mysqli_query($conn,"SELECT * FROM blog");
+$total= $total->num_rows;
+$totalpage= ceil($total / $item_per_page);
 ?>
 
 <!-- Offcanvas Overlay -->
@@ -69,10 +75,9 @@ $query=mysqli_query($conn,$blog);
                 <!-- Start Pagination -->
                 <div class="page-pagination text-center" data-aos="fade-up"  data-aos-delay="0">
                     <ul>
-                        <li><a class="active" href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="ion-ios-skipforward"></i></a></li>
+                        <?php
+                        include ("phantrang.php");
+                        ?>
                     </ul>
                 </div> <!-- End Pagination -->
             </div>

@@ -42,8 +42,9 @@ function XoaBinhLuan(mabinhluan,masanpham) {
             window.location="product-details-default.php?Masp="+masanpham;
         }
     });
-
 }
+
+
 
 function XoaBinhLuanBlog(mabinhluanblog,mablog) {
     $.ajax({

@@ -6,8 +6,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 include ('connect.php');
-
-
 ?>
 <?php
 
@@ -229,18 +227,18 @@ include ('connect.php');
                                         <input type="checkbox" id="currencyCod">
                                         <span>Thanh toán online</span>
                                     </label>
-                                    <?php
-                                    $query="SELECT * FROM pvs_tinhthanhpho";
-                                    $layship=mysqli_query($conn,$query);
-                                    $rowship = mysqli_fetch_array($layship);
-                                    ?>
+<!--                                    --><?php
+//                                    $query="SELECT * FROM pvs_tinhthanhpho ";
+//                                    $layship=mysqli_query($conn,$query);
+//                                    $rowship = mysqli_fetch_array($layship);
+//                                    ?>
 
 
                                     <div id="methodCod" class="collapse" data-parent="#methodCod">
                                         <div class="card-body1">
                                             <div class="order_button pt-3" style="">
                                                 <?php
-                                                $vnd_to_usd = ($ordertotal + $rowship["phiship"])/ 23000
+                                                $vnd_to_usd =  $_SESSION["tongbill"]/ 23000
                                                 ?>
                                                 <div style="margin-left: 30px" id="paypal-button"></div>
                                                 <input type="hidden" id="vnd_to_usd" value="<?php echo ceil($vnd_to_usd) ?>">

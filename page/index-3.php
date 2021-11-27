@@ -529,15 +529,15 @@ include ('../layout/footer.php')
         for (i=1;i<=<?php echo $sosao ?>;i++){
             $('.sao'+i).css('color','#ff365d');
         }
-        $('.sao').mouseenter(function () {
-            for(i=1;i<=$(this).attr('data-sao');i++){
-                $('.sao'+i).addClass('saohover');
-
-            }
-        })
-        $('.sao').mouseleave(function () {
-            $('.sao').removeClass('saohover');
-
-        })
+        // $('.sao').mouseenter(function () {
+        //     for(i=1;i<=$(this).attr('data-sao');i++){
+        //         $('.sao'+i).addClass('saohover');
+        //
+        //     }
+        // })
+        // $('.sao').mouseleave(function () {
+        //     $('.sao').removeClass('saohover');
+        //
+        // })
     })
 </script>

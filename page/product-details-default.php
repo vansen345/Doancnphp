@@ -380,16 +380,7 @@ if(isset($_SESSION["tendangnhap"]))
                                             <img src="../images/product/hinhanh/<?php echo $cot1["Anh"]?>" alt="">
                                             <img src="../images/product/hinhanh/<?php echo $cot1["Anh"]?>" alt="">
                                         </a>
-                                        <div class="action-link">
-                                            <div class="action-link-left">
-<!--                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>-->
-                                            </div>
-                                            <div class="action-link-right">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview" ><i class="icon-magnifier"></i></a>
-                                                <a href="wishlist.php"><i class="icon-heart"></i></a>
-                                                <a href="compare.php"><i class="icon-shuffle"></i></a>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div class="content">
                                         <div class="content-left">
@@ -438,15 +429,12 @@ if(isset($_SESSION["tendangnhap"]))
                         <div class="col-lg-6 col-md-6 div_doimatkhau">
                             <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
                                 <h3>Edit Comment</h3>
-
                                 <div class="default-form-box">
                                     <label>Content <span style="color: red" >(*)</span></label> <input type="hidden" id="bl_edit">
                                     <input id="comment_idprd" value="<?php echo $_GET["Masp"]?>" type="hidden">
 <!--                                    <input required=""  id="matkhaucu" type="password">-->
                                     <textarea  id="contentcm" placeholder="Write a review"  style="width: 800px"></textarea>
                                 </div>
-
-
                                 <div class="login_submit">
                                     <span style="color:red;" id="bl_thongbao"></span>
                                     <button id="edit_commnent" class="btn btn-md btn-black-default-hover mb-4" type="submit">Lưu</button>

@@ -6,14 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>2S SHOP</title>
-
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/png">
-
-
-
     <!-- ::::::::::::::All CSS Files here :::::::::::-->
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../css/vendor/font-awesome.min.css">
@@ -34,8 +29,6 @@
     <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <link rel="stylesheet"  href="../css/App.css" />
-
-
     <!-- Main CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://fontawesome.com/v5.15/icons?d=gallery&p=2">
@@ -48,17 +41,48 @@
     if(isset($_GET["dx"])){
         unset($_SESSION["tendangnhap"]);
         echo "<script>location='index-3.php';</script>";
-
-
     }
-
-
-
-
     ?>
-
+    <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+    include ('connect.php');
+    ?>
 </head>
 <body>
+<?php
+if(isset($_POST["feedback"])){
+    include ('../PHPMAILER/lib/PHPMailer.php');
+    include ('../PHPMAILER/lib/SMTP.php');
+    include ('../PHPMAILER/lib/Exception.php');
+    $mail = new PHPMailer(true);
+    try{
+
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = '2sshop69888@gmail.com';                     //SMTP username
+        $mail->Password   = 'Sen@123456789';
+        $mail->SMTPSecure = 'tls';
+        $mail->CharSet = 'UTF-8';
+        $mail->Port       = 587;
+        $sendmail= $_POST["email"];
+        $fullname=$_POST["hoten"];
+
+        $mail->setFrom('2sshop69888@gmail.com', '2SShop GangSter');
+        $mail->addAddress($sendmail, $fullname);
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $_POST["subject"];
+        $mail->Body    =$_POST["message"];
+        $mail->send();
+        echo 'Phản hồi của bạn đã được gửi';
+
+    } catch (Exception $e) {
+        echo "Lỗi gửi mail: {$mail->ErrorInfo}";
+    }
+}
+?>
 <!-- Start Header Area -->
 <header class="header-section d-none d-xl-block">
     <div class="header-wrapper">
@@ -630,6 +654,9 @@
             </div>
         </div>
     </div> <!-- ...:::: End Breadcrumb Section:::... -->
+<?php
+include ('connect.php');
+?>
 
 <!-- ...::::Start Map Section:::... -->
 <div class="map-section" data-aos="fade-up"  data-aos-delay="0">
@@ -736,34 +763,34 @@
                 <div class="col-lg-8">
                     <div class="contact-form section-top-gap-100" data-aos="fade-up"  data-aos-delay="200">
                         <h3>Get In Touch</h3>
-                        <form id="contact-form" action="https://htmlmail.hasthemes.com/nazmul/mail.php" method="post">
+                        <form action="" method="post">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="default-form-box mb-20">
                                         <label for="contact-name">Name</label>
-                                        <input name="name" type="text" id="contact-name">
+                                        <input name="hoten" type="text" id="contact-name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box mb-20">
                                         <label for="contact-email">Email</label>
-                                        <input name="email" type="email" id="contact-email">
+                                        <input name="email" type="email" id="contact-email" required >
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="default-form-box mb-20">
                                         <label for="contact-subject">Subject</label>
-                                        <input name="subject" type="text" id="contact-subject">
+                                        <input name="subject" type="text" id="contact-subject" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="default-form-box mb-20">
                                         <label for="contact-message">Your Message</label>
-                                        <textarea name="message" id="contact-message" cols="30" rows="10"></textarea>
+                                        <textarea name="message" id="contact-message" cols="30" rows="10" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <button class="btn btn-lg btn-black-default-hover" type="submit">SEND</button>
+                                    <button class="btn btn-lg btn-black-default-hover" name="feedback" type="submit">SEND</button>
                                 </div>
                                 <p class="form-messege"></p>
                             </div>
@@ -780,7 +807,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- <script src="Scripts/jquery-3.1.1.min.js"></script> -->
 <script src="../js/Map.js"></script>
-
 <?php
 include ('../layout/footer.php')
 ?>
+
