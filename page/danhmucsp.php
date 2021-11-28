@@ -80,21 +80,7 @@ for($i=1; $i<=$totalpage; $i++){
                                 </div> <!-- End Sort tab Button -->
 
                                 <!-- Start Sort Select Option -->
-                                <div class="sort-select-list d-flex align-items-center">
-                                    <label class="mr-2">Sort By:</label>
-                                    <form action="#">
-                                        <fieldset>
-                                            <select name="speed" id="speed">
-                                                <option>Sort by average rating</option>
-                                                <option>Sort by popularity</option>
-                                                <option selected="selected">Sort by newness</option>
-                                                <option>Sort by price: low to high</option>
-                                                <option>Sort by price: high to low</option>
-                                                <option>Product Name: Z</option>
-                                            </select>
-                                        </fieldset>
-                                    </form>
-                                </div> <!-- End Sort Select Option -->
+                            <!-- End Sort Select Option -->
 
 
 

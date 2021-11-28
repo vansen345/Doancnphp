@@ -152,7 +152,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     </tr>
                     <tr>
                         <th>Thông tin</th>
-                        <td><input required id="thongtin" name="thongtin" class="form-control" style="width: 500px"  value="<?php echo empty($_POST["thongtin"])? $cot["ThongTin"]:$_POST["thongtin"]; ?>"></td>
+<!--                        <td><textarea  class="form-control col-md-8"  id="thongtin" name="thongtin" cols="30" rows="10" value="--><?php //echo empty($_POST["thongtin"])? $cot["ThongTin"]:$_POST["thongtin"]; ?><!--" required></textarea></td>-->
+                        <td><textarea class="form-control col-md-8" name="thongtin" id="thongtin" cols="50" rows="30" style="height: 100px; color: black"><?php echo empty($_POST["thongtin"])? $cot["ThongTin"]:$_POST["thongtin"]; ?></textarea></td>
+<!--                        <td><input required id="thongtin" name="thongtin" class="form-control" style="width: 500px"  value="--><?php //echo empty($_POST["thongtin"])? $cot["ThongTin"]:$_POST["thongtin"]; ?><!--"></td>-->
 
                     </tr>
                     <?php

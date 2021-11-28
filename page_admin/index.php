@@ -96,7 +96,7 @@ if(!isset($_SESSION["admin"]))
 						<div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 							<div class="dashboard-stat blue">
 								<div class="visual">
-									<i class="icon-comments"></i>
+									<i class="icon-user"></i>
 								</div>
                                 <?php
                                 $kh="SELECT * FROM thanhvien";
@@ -108,7 +108,7 @@ if(!isset($_SESSION["admin"]))
 										<?php echo $laykh ?>
 									</div>
 									<div class="desc">                           
-										New Feedbacks
+										Customer
 									</div>
 								</div>
 								<a class="more" href="#">
@@ -175,11 +175,30 @@ if(!isset($_SESSION["admin"]))
 					<div class="row-fluid">
 
 					</div>
+                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <!--                           <td>--><?//=number_format($laytt[0],0,",",".")?><!-- VND</td>-->
+                        <tr>
+                            <th >Tổng số đơn hàng chưa giao</th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <th>Tổng số đơn hàng đã giao</th>
+                            <th></th>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
 
 				</div>
 			</div>
 			<!-- END PAGE CONTAINER-->    
 		</div>
+
 		<!-- END PAGE -->
 	</div>
 	<!-- END CONTAINER -->

@@ -2,6 +2,7 @@
 <!--Footer-->
 <!-- Start Footer Section -->
 <footer class="footer-section footer-bg section-top-gap-100">
+
     <div class="footer-wrapper">
         <!-- Start Footer Top -->
         <div class="footer-top">
@@ -15,7 +16,7 @@
                                 <li><a href="#">Thông tin vận chuyển</a></li>
                                 <li><a href="#">Điều khoản & Điều kiện</a></li>
                                 <li><a href="../page/contact-us.php">Liên Hệ</a></li>
-                                <li><a href="#">Trả hàng</a></li>
+
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
@@ -26,10 +27,7 @@
                             <h5 class="title">Tài Khoản</h5>
                             <ul class="footer-nav">
                                 <li><a href="../page/my-account.php">Tài khoản của tôi</a></li>
-                                <li><a href="../page/wishlist.php">Danh sách yêu thích</a></li>
-                                <li><a href="../page/privacy-policy.php">Cấp lại mật khẩu</a></li>
                                 <li><a href="../page/faq.php">Các câu hỏi thường gặp</a></li>
-                                <li><a href="#">Lịch sửa đơn hàng</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->

@@ -196,13 +196,20 @@ $layquyen= mysqli_fetch_array($queryrole);
 
                                         ?>
 										<tr >
-                                            <td><img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" alt="" /></td>
+                                            <td><img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" style="width: 150px" alt="" /></td>
 
 											<td><?php echo $cot["TenSanPham"] ?></td>
 
 											<td><?php echo $cot["SoLuong"] ?></td>
 											<td class="center"><?=number_format($cot["DonGia"],0,",",".")?> VND</td>
-											<td><?php echo $cot["ThongTin"]?></td>
+											<td>
+                                                <?php
+                                                if(strlen($cot["ThongTin"])<20)
+                                                    echo $cot["ThongTin"];
+                                                else
+                                                    echo substr($cot["ThongTin"],0,20)."...";
+                                                ?>
+                                            </td>
                                             <td><?php echo $cot["TenLoai"]?></td>
                                             <td><?php echo $laytrangthai["tentrangthai"]?></td>
 
