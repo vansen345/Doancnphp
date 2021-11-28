@@ -108,7 +108,7 @@ if(!isset($_SESSION["admin"]))
 										<?php echo $laykh ?>
 									</div>
 									<div class="desc">                           
-										Customer
+										Khách hàng
 									</div>
 								</div>
 								<a class="more" href="#">
@@ -128,7 +128,7 @@ if(!isset($_SESSION["admin"]))
                                 ?>
 								<div class="details">
 									<div class="number"><?php echo $tongdd ?></div>
-									<div class="desc">New Orders</div>
+									<div class="desc">Đơn hàng</div>
 								</div>
 								<a class="more" href="#">
 								View more <i class="m-icon-swapright m-icon-white"></i>
@@ -152,7 +152,7 @@ if(!isset($_SESSION["admin"]))
 						<div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 							<div class="dashboard-stat yellow">
 								<div class="visual">
-									<i class="icon-bar-chart"></i>
+									<i class="icon-money"></i>
 								</div>
                                 <?php
                                 $doanhthu="SELECT SUM(tongtien) FROM dondat";
@@ -160,7 +160,7 @@ if(!isset($_SESSION["admin"]))
                                 $laydoanhthu=mysqli_fetch_row($truyvan);
                                 ?>
 								<div class="details">
-                                    <div class="desc">Total Profit</div>
+                                    <div class="desc">Tổng doanh thu</div>
 									<div class="number"><?=number_format($laydoanhthu[0],0,",",".")?> VND</div>
 
 								</div>

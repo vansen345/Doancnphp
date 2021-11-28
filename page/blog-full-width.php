@@ -22,7 +22,7 @@ $totalpage= ceil($total / $item_per_page);
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Blog Grid - Full Width</h3>
+                    <h3 class="breadcrumb-title">Blog</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>

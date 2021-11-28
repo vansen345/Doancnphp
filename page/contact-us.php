@@ -640,12 +640,12 @@ if(isset($_POST["feedback"])){
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">Contact Us</h3>
+                        <h3 class="breadcrumb-title">Liên Hệ</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="../page/index-3.php">Home</a></li>
-                                    <li class="active" aria-current="page">Contact Us</li>
+                                    <li class="active" aria-current="page">Liên Hệ</li>
                                 </ul>
                             </nav>
                         </div>

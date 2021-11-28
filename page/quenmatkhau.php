@@ -35,13 +35,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Forget Password</h3>
+                    <h3 class="breadcrumb-title">Quên Mật Khẩu</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                <li class="active" aria-current="page">Forget Password</li>
+                                <li class="active" aria-current="page">Quên mật khẩu</li>
                             </ul>
                         </nav>
                     </div>

@@ -11,13 +11,13 @@ include ('../layout/header.php')
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="breadcrumb-title">About Us</h3>
+                        <h3 class="breadcrumb-title">Thông Tin Shop</h3>
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
 <!--                                    <li><a href="#">Pages</a></li>-->
-                                    <li class="active" aria-current="page">Liên hệ</li>
+                                    <li class="active" aria-current="page">Thông tin</li>
                                 </ul>
                             </nav>
                         </div>
@@ -34,15 +34,15 @@ include ('../layout/header.php')
                 <div class="col-md-6">
                     <div class="about-img" data-aos="fade-up"  data-aos-delay="0">
                         <div class="img-responsive">
-                            <img src="assets/images/about/img-about.jpg" alt="">
+                            <img src="#" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="content" data-aos="fade-up"  data-aos-delay="200">
-                        <h3 class="title">ABOUT OUR HONO STORE</h3>
-                        <h5 class="semi-title">We believe that every project existing in digital world is a result of an idea and every idea has a cause.</h5>
-                        <p>For this reason, our each design serves an idea. Our strength in design is reflected by our name, our care for details. Our specialist won't be afraid to go extra miles just to approach near perfection. We don't require everything to be perfect, but we need them to be perfectly cared for. That's a reason why we are willing to give contributions at best. Not a single detail is missed out under Billey's professional eyes.The amount of dedication and effort equals to the level of passion and determination. Get better, together as one.</p>
+                        <h3 class="title">Thông tin Shop</h3>
+                        <h5 class="semi-title">Từ những ước mơ được cháy hết mình với chiếc xe thân yêu của mình, chúng tôi đã xây dựng nên 2S Shop để thỏa niềm đam mê của mình.</h5>
+                        <p>Nếu bạn muốn chăm sóc chiếc xe thân yêu của mình hãy đến với chung tôi, chúng tôi sẽ thực hiện ước mơ của bạn với một mức giá không thể nào hấp dẫn hơn. Mỗi ngày được chạy trên chiếc xe thân yêu của quý khách là niềm vui của 2S shop chúng tôi</p>
                     </div>
                 </div>
             </div>

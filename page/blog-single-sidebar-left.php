@@ -22,13 +22,13 @@ $row= mysqli_num_rows($countbl);
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Blog Single - Left Sidebar</h3>
+                    <h3 class="breadcrumb-title">Chi Tiết</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="index-3.php">Home</a></li>
                                 <li><a href="../page/blog-full-width.php">Blog</a></li>
-                                <li class="active" aria-current="page">Blog Single Left Sidebar</li>
+                                <li class="active" aria-current="page">Chi Tiết</li>
                             </ul>
                         </nav>
                     </div>

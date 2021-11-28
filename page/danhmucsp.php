@@ -42,7 +42,7 @@ for($i=1; $i<=$totalpage; $i++){
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Shop - Full Width</h3>
+                    <h3 class="breadcrumb-title">Danh Mục Sản Phẩm</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>

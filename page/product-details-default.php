@@ -45,13 +45,13 @@ if(isset($_SESSION["tendangnhap"]))
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Product Details - Default</h3>
+                    <h3 class="breadcrumb-title">Chi Tiết Sản Phẩm</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="#">Shop</a></li>
-                                <li class="active" aria-current="page">Product Details Default</li>
+                                <li class="active" aria-current="page">Chi Tiết Sản Phẩm</li>
                             </ul>
                         </nav>
                     </div>

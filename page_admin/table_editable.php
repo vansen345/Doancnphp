@@ -157,6 +157,7 @@ $layquyen= mysqli_fetch_array($queryrole);
                                         <?php } ?>
 
                                     </div>
+
 									<div class="btn-group pull-right">
 										<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
 										</button>
@@ -167,6 +168,7 @@ $layquyen= mysqli_fetch_array($queryrole);
 										</ul>
 									</div>
 								</div>
+
 								<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 									<thead>
 										<tr>

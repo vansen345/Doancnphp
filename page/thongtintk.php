@@ -19,13 +19,13 @@ $cotthongtin=mysqli_fetch_array($truyvanthongtin);
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Login</h3>
+                    <h3 class="breadcrumb-title">Đổi Mật Khẩu</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="../page/index-3.php">Home</a></li>
                                 <li><a href="../page/shop-full-width.php">Shop</a></li>
-                                <li class="active" aria-current="page">Login</li>
+                                <li class="active" aria-current="page">Đổi mật khẩu</li>
                             </ul>
                         </nav>
                     </div>
