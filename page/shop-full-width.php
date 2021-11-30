@@ -2,13 +2,24 @@
 include ('../layout/header.php');
 ?>
 <?php
+$tk = isset($_GET['timkiemtensp']) ? $_GET['timkiemtensp'] : "";
+if($tk){
+    $where2 ="WHERE TenSanPham LIKE '%".$tk."%' ";
+}
 include ('connect.php');
 $item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:4;
 $current_page=!empty($_GET['page'])?$_GET['page']:1;
 $offset=($current_page-1) * $item_per_page;
-$laysp="SELECT * FROM sanpham  ORDER BY MaSanPham ASC LIMIT ".$item_per_page." OFFSET ".$offset;
-$truyvan=mysqli_query($conn,$laysp);
-$total=mysqli_query($conn,"SELECT * FROM sanpham");
+if($tk){
+    $laysp="SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$tk."%'   ORDER BY MaSanPham ASC LIMIT ".$item_per_page." OFFSET ".$offset;
+    $truyvan=mysqli_query($conn,$laysp);
+    $total=mysqli_query($conn,"SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$tk."%' ");
+}
+else{
+    $laysp="SELECT * FROM sanpham  ORDER BY MaSanPham ASC LIMIT ".$item_per_page." OFFSET ".$offset;
+    $truyvan=mysqli_query($conn,$laysp);
+    $total=mysqli_query($conn,"SELECT * FROM sanpham");
+}
 $total= $total->num_rows;
 $totalpage= ceil($total / $item_per_page);
 

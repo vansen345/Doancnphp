@@ -4,6 +4,33 @@ if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
 <?php
+//if(isset($_GET['page'])){
+//    $page=$_GET['page'];
+//}
+//else{
+//    $page=1;
+//}
+//$rowperpgae=4;
+//$perrow=$page * $rowperpgae-$rowperpgae;
+//    $dssp="SELECT * FROM sanpham INNER JOIN loaisp ON sanpham.MaLoaiSP=loaisp.MaLoaiSP ORDER BY MaSanPham DESC  LIMIT $perrow,$rowperpgae ";
+//    $query=mysqli_query($conn,$dssp);
+//    $totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM sanpham"));
+//$totalpage=ceil($totalrow/$rowperpgae);
+//$listpage="";
+//for($i=1; $i<=$totalpage; $i++){
+//    if($page==$i){
+//        $listpage.='<li class="active"><a style="color: #d33b33" class="page-link" href="table_editable.php?danhsachSP=&page='.$i.'">'.$i.'</a></li>';
+//    }
+//    else
+//    {
+//        $listpage.='<li><a style="color: #d33b33" class="page-link" href="table_editable.php?danhsachSP&page='.$i.'">'.$i.'</a></li>';
+//    }
+?>
+<?php
+$search = isset($_GET['search_city']) ? $_GET['search_city'] : "";
+if($search){
+    $where="WHERE TenSanPham LIKE '%".$search."%' ";
+}
 include ('../page/connect.php');
 if(isset($_GET["MaSanPham"]))
 {
@@ -17,32 +44,23 @@ if(isset($_GET["MaSanPham"]))
     {
         echo "<script>alert('Sản phẩm đã có trong đơn đặt')</script>";
     }
-
 }
-
-if(isset($_GET['page'])){
-    $page=$_GET['page'];
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 3;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($current_page - 1) * $item_per_page;
+if($search)
+{
+    $dbdata = "SELECT * FROM sanpham INNER JOIN loaisp ON sanpham.MaLoaiSP=loaisp.MaLoaiSP WHERE TenSanPham LIKE '%".$search."%' ORDER BY MaSanPham DESC  LIMIT " . $item_per_page . " OFFSET " . $offset;
+    $query = mysqli_query($conn, $dbdata);
+    $total = mysqli_query($conn, "SELECT * FROM sanpham WHERE TenSanPham LIKE '%".$search."%'");
 }
 else{
-    $page=1;
+    $dbdata = "SELECT * FROM sanpham INNER JOIN loaisp ON sanpham.MaLoaiSP=loaisp.MaLoaiSP  ORDER BY MaSanPham DESC  LIMIT " . $item_per_page . " OFFSET " . $offset;
+    $query = mysqli_query($conn, $dbdata);
+    $total = mysqli_query($conn, "SELECT * FROM sanpham ");
 }
-$rowperpgae=4;
-$perrow=$page * $rowperpgae-$rowperpgae;
-    $dssp="SELECT * FROM sanpham INNER JOIN loaisp ON sanpham.MaLoaiSP=loaisp.MaLoaiSP ORDER BY MaSanPham DESC  LIMIT $perrow,$rowperpgae ";
-    $query=mysqli_query($conn,$dssp);
-    $totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM sanpham"));
-$totalpage=ceil($totalrow/$rowperpgae);
-$listpage="";
-for($i=1; $i<=$totalpage; $i++){
-    if($page==$i){
-        $listpage.='<li class="active"><a style="color: #d33b33" class="page-link" href="table_editable.php?danhsachSP=&page='.$i.'">'.$i.'</a></li>';
-    }
-    else
-    {
-        $listpage.='<li><a style="color: #d33b33" class="page-link" href="table_editable.php?danhsachSP&page='.$i.'">'.$i.'</a></li>';
-    }
-}
-
+$total = $total->num_rows;
+$totalpage = ceil($total / $item_per_page);
 ?>
 <?php
 $role= "SELECT * FROM nhanvien WHERE TenDangNhap = '".$_SESSION["admin"]."'";
@@ -158,16 +176,20 @@ $layquyen= mysqli_fetch_array($queryrole);
 
                                     </div>
 
-									<div class="btn-group pull-right">
-										<button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
-										</button>
-										<ul class="dropdown-menu pull-right">
-											<li><a href="#">Print</a></li>
-											<li><a href="#">Save as PDF</a></li>
-											<li><a href="#">Export to Excel</a></li>
-										</ul>
-									</div>
+
 								</div>
+                                <div class="input-group">
+                                    <div class="form-outline">
+                                        <form action="" method="get">
+                                            <input type="text" value="<?=isset($_GET['search_city']) ? $_GET['search_city'] : ""?>"  name="search_city" id="form1" class="form-control" />
+                                            <button style="margin-bottom: 10px" type="submit" class="btn btn-primary">
+                                                <i class="icon-search"></i>
+                                            </button>
+                                        </form>
+
+                                    </div>
+
+                                </div>
 
 								<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 									<thead>
@@ -180,7 +202,11 @@ $layquyen= mysqli_fetch_array($queryrole);
 											<th>Thông tin</th>
                                             <th>Danh mục</th>
                                             <th>Trạng thái</th>
+                                            <?php
+                                            if($layquyen["id_role"]==1){
+                                            ?>
 											<th>Cập nhật/ sửa</th>
+                                            <?php } ?>
 										</tr>
 									</thead>
                                     <?php
@@ -188,14 +214,11 @@ $layquyen= mysqli_fetch_array($queryrole);
                                     ?>
 									<tbody>
                                     <?php
-//
+
                                     while ($cot=mysqli_fetch_array($query)){
                                     $sql="SELECT * FROM trangthai WHERE id_status = '".$cot["TrangThai"]."'";
                                     $trangthai=mysqli_query($conn,$sql);
                                     $laytrangthai = mysqli_fetch_array($trangthai);
-
-
-
                                         ?>
 										<tr >
                                             <td><img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Anh"]?>" style="width: 150px" alt="" /></td>
@@ -214,40 +237,26 @@ $layquyen= mysqli_fetch_array($queryrole);
                                             </td>
                                             <td><?php echo $cot["TenLoai"]?></td>
                                             <td><?php echo $laytrangthai["tentrangthai"]?></td>
-
-
+                                            <?php
+                                            if($layquyen["id_role"]==1){
+                                            ?>
 											<td>
-                                                <?php
-                                                if($layquyen["id_role"]==1){
 
-
-                                                ?>
                                                <a href="suasanpham.php?MaSP=<?php echo $cot["MaSanPham"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
                                                 <a onclick="return Del('<?php echo $cot["TenSanPham"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaSanPham=<?php echo $cot["MaSanPham"];?>"><span class="Xoadulieu"><i class=""></i>Xóa</span></a>
-                                                <?php } ?>
+
                                             </td>
+                                            <?php } ?>
 
 										</tr>
                                         <?php } ?>
-
-
-
 									</tbody>
-
 								</table>
-
-
 							</div>
-
 						</div>
-                        <div class="pt" >
-                            <ul class="pagination" style="margin-left: 350px;display: inline-block">
-                                <?php
-                                echo $listpage;
-                                ?>
-                            </ul>
-
-                        </div>
+                        <?php
+                        include ('phantrangadmin.php')
+                        ?>
 						<!-- END EXAMPLE TABLE PORTLET-->
 					</div>
 				</div>

@@ -151,11 +151,6 @@ if(isset($_SESSION["tendangnhap"]))
                                     <input id="quanlity" min="1" max="100" value="1" type="number">
                                 </div>
                             </div>
-
-
-
-
-
                             <div class="product-add-to-cart-btn">
                                 <a  onclick="addCart(<?php echo $cot["MaSanPham"]?>)" class="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
                             </div>
@@ -283,6 +278,9 @@ if(isset($_SESSION["tendangnhap"]))
                                         <!-- Start - Review Comment list-->
                                         <?php
                                             while ($truyvanbl=mysqli_fetch_array($cotbl)){
+                                                $sqllike="SELECT * FROM likecmt ";
+                                                $querycmt=mysqli_query($conn,$sqllike);
+                                                $laylike=mysqli_fetch_array($querycmt)
                                         ?>
                                         <li class="comment-list">
                                             <div class="comment-wrapper">
@@ -307,7 +305,19 @@ if(isset($_SESSION["tendangnhap"]))
                                                             <input id="bl_noidung" type="hidden" value="<?php echo $truyvanbl["NoiDung"]  ?>">
                                                             <div   class="para-content bl_noidung" style="margin-bottom: 35px; margin-left: -3px">
                                                                 <p><?php echo $truyvanbl["NoiDung"]  ?></p>
+                                                                <a id="click_unlike_like" data-type_click="like" data-id_text="<?php echo $truyvanbl["MaBinhLuan"] ?>" >
+                                                                    <i class="icon-like"></i>
+                                                                    <input type="hidden" id="ch_like<?php  echo $truyvanbl["MaBinhLuan"] ?>">
+                                                                    <span class="count_like<?php echo $truyvanbl["MaBinhLuan"] ?>">0</span>
+                                                                </a>
+
+                                                                <a id="click_unlike_like"  data-type_click="unlike" data-id_text="<?php echo $truyvanbl["MaBinhLuan"]?>"  style="margin-left: 10px">
+                                                                    <i class="icon-dislike"></i>
+                                                                    <input type="hidden" id="ch_unlike<?php echo $truyvanbl["MaBinhLuan"] ?>">
+                                                                    <span class="count_unlike<?php echo $truyvanbl["MaBinhLuan"] ?>">0</span>
+                                                                </a>
                                                             </div>
+
                                                         </div>
 
                                                     </div>
@@ -522,6 +532,57 @@ include ('../layout/footer.php')
             }
         });
 
+    });
+</script>
+<script>
+    $(document).on('click','#click_unlike_like',function () {
+        var type=$(this).data('type_click');
+        var text_id=$(this).data('id_text');
+        var count_like=parseInt($(".count_like"+text_id).text());
+        var count_unlike=parseInt($(".count_unlike"+text_id).text());
+
+        var ch_like=$("#ch_like"+text_id).val();
+        var ch_unlike=$("#ch_unlike"+text_id).val();
+        
+        function Minus_like() {
+            $(".count_like"+text_id).text(count_like-1);
+            $("#ch_like"+text_id).val("");
+        }
+        
+        function Minus_unlike() {
+            $(".count_unlike"+text_id).text(count_unlike-1);
+            $("#ch_unlike"+text_id).val("");
+        }
+
+        if(type=="like"){
+            if(ch_unlike=="yes"){
+                Minus_unlike();
+            }
+            if(ch_like=="yes")
+            {
+                Minus_like();
+            }
+            if(ch_like=="")
+            {
+                $(".count_like"+text_id).text(count_like+1);
+                $("#ch_like"+text_id).val("yes");
+            }
+        }
+        if(type=="unlike"){
+            if(ch_like=="yes")
+            {
+                Minus_like();
+            }
+            if(ch_unlike=="yes")
+            {
+                Minus_unlike();
+            }
+            if(ch_unlike=="")
+            {
+                $(".count_unlike"+text_id).text(count_unlike+1);
+                $("ch_unlike"+text_id).val("yes");
+            }
+        }
     });
 </script>
 

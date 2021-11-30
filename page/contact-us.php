@@ -44,45 +44,12 @@
     }
     ?>
     <?php
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    use PHPMailer\PHPMailer\SMTP;
+
     include ('connect.php');
     ?>
 </head>
 <body>
-<?php
-if(isset($_POST["feedback"])){
-    include ('../PHPMAILER/lib/PHPMailer.php');
-    include ('../PHPMAILER/lib/SMTP.php');
-    include ('../PHPMAILER/lib/Exception.php');
-    $mail = new PHPMailer(true);
-    try{
 
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = '2sshop69888@gmail.com';                     //SMTP username
-        $mail->Password   = 'Sen@123456789';
-        $mail->SMTPSecure = 'tls';
-        $mail->CharSet = 'UTF-8';
-        $mail->Port       = 587;
-        $sendmail= $_POST["email"];
-        $fullname=$_POST["hoten"];
-
-        $mail->setFrom('2sshop69888@gmail.com', '2SShop GangSter');
-        $mail->addAddress($sendmail, $fullname);
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = $_POST["subject"];
-        $mail->Body    =$_POST["message"];
-        $mail->send();
-        echo 'Phản hồi của bạn đã được gửi';
-
-    } catch (Exception $e) {
-        echo "Lỗi gửi mail: {$mail->ErrorInfo}";
-    }
-}
-?>
 <!-- Start Header Area -->
 <header class="header-section d-none d-xl-block">
     <div class="header-wrapper">
@@ -760,43 +727,8 @@ include ('connect.php');
                         </div> <!-- End Contact Social Link -->
                     </div> <!-- End Contact Details -->
                 </div>
-                <div class="col-lg-8">
-                    <div class="contact-form section-top-gap-100" data-aos="fade-up"  data-aos-delay="200">
-                        <h3>Get In Touch</h3>
-                        <form action="" method="post">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="default-form-box mb-20">
-                                        <label for="contact-name">Name</label>
-                                        <input name="hoten" type="text" id="contact-name" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="default-form-box mb-20">
-                                        <label for="contact-email">Email</label>
-                                        <input name="email" type="email" id="contact-email" required >
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="default-form-box mb-20">
-                                        <label for="contact-subject">Subject</label>
-                                        <input name="subject" type="text" id="contact-subject" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="default-form-box mb-20">
-                                        <label for="contact-message">Your Message</label>
-                                        <textarea name="message" id="contact-message" cols="30" rows="10" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <button class="btn btn-lg btn-black-default-hover" name="feedback" type="submit">SEND</button>
-                                </div>
-                                <p class="form-messege"></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>

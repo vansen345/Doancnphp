@@ -145,9 +145,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
                 <form class="sidebar-search">
                     <div class="input-box">
-                        <a href="javascript:;" class="remove"></a>
-                        <input type="text" placeholder="Search..." />
-                        <input type="button" class="submit" value=" " />
+
+
                     </div>
                 </form>
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
@@ -578,9 +577,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 </ul>
             </li>
             <li class="last ">
-                <a href="../page/charts.php">
-                    <i class="icon-bar-chart"></i>
-                    <span class="title">Visual Charts</span>
+                <a href="../page_admin/shipping.php">
+                    <img src="../images/product/hinhanh/shipping.jpg" style="width: 20px" alt="">
+                    <span class="title">Phí vận chuyển</span>
                 </a>
             </li>
         </ul>

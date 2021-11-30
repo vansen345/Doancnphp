@@ -238,6 +238,15 @@ $layquyen= mysqli_fetch_array($queryrole);
                                     <th><?php  echo number_format($tongtien,0,",",".");  ?></th>
                                 </tr>
                                 <tr>
+                                    <th colspan="3">Ship</th>
+                                    <th>
+                                        <?php
+                                        $ship=$cotDDH["tongtien"]-$tongtien;
+                                        echo number_format($ship,0,",",".");
+                                        ?>
+                                    </th>
+                                </tr>
+                                <tr>
                                     <th colspan="3">Tổng tiền</th>
                                     <th><?php  echo number_format($cotDDH["tongtien"],0,",",".");  ?></th>
                                 </tr>

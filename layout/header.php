@@ -41,15 +41,8 @@
         if(isset($_GET["dx"])){
             unset($_SESSION["tendangnhap"]);
             echo "<script>location='index-3.php';</script>";
-
-
         }
-
-
-
-
     ?>
-
 </head>
 <body>
 <!-- Start Header Area -->
@@ -593,7 +586,7 @@
 <!-- Start Offcanvas Search Bar Section -->
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
-    <form method="post" name="sfrom" action="Timkiemsp.php">
+    <form method="get" action="shop-full-width.php">
         <input  name="timkiemtensp"  type="search" placeholder="type keyword(s) here" />
         <button type="submit" class="btn btn-lg btn-pink">Search</button>
     </form>

@@ -17,7 +17,6 @@ if(isset($_POST["id"]) && isset($_POST["num"]))
             'price'=>$row[6],
             'number'=>$num
         );
-
     }
     else{
         $giohang=$_SESSION["giohang"];

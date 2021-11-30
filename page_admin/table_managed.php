@@ -4,31 +4,29 @@ if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
 <?php
+$search = isset($_GET['search_city']) ? $_GET['search_city'] : "";
+if($search){
+    $where ="WHERE Hoten LIKE '%".$search."%' ";
+}
 include ('../page/connect.php');
-//if(isset($_GET['page'])){
-//    $page=$_GET['page'];
-//}
-//else{
-//    $page=1;
-//}
-//$rowperpgae=4;
-//$perrow=$page * $rowperpgae-$rowperpgae;
-//$sqldm="SELECT * FROM thanhvien,dondat,ct_dondat WHERE thanhvien.TenDangNhap = dondat.TenDangNhap  LIMIT $perrow,$rowperpgae";
-//$querydm=mysqli_query($conn,$sqldm);
-//$totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM thanhvien"));
-//$totalpage=ceil($totalrow/$rowperpgae);
-//$listpage="";
-//for($i=1; $i<=$totalpage; $i++){
-//    if($page==$i){
-//        $listpage.='<li class="active"><a style="color: #d33b33" class="page-link" href="table_managed.php?danhsachSP=&page='.$i.'">'.$i.'</a></li>';
-//    }
-//    else
-//    {
-//        $listpage.='<li><a style="color: #d33b33" class="page-link" href="table_managed.php?danhsachSP&page='.$i.'">'.$i.'</a></li>';
-//    }
-//}
-$sql="SELECT * FROM thanhvien";
-$querydm=mysqli_query($conn,$sql);
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($current_page - 1) * $item_per_page;
+if($search)
+{
+    $sql="SELECT * FROM thanhvien WHERE Hoten LIKE '%".$search."%' LIMIT ".$item_per_page." OFFSET ".$offset ;
+    $querydm=mysqli_query($conn,$sql);
+    $total = mysqli_query($conn, "SELECT * FROM thanhvien WHERE Hoten LIKE '%".$search."%'");
+}
+else{
+    $sql="SELECT * FROM thanhvien LIMIT ".$item_per_page." OFFSET ".$offset;
+    $querydm=mysqli_query($conn,$sql);
+    $total = mysqli_query($conn, "SELECT * FROM sanpham ");
+}
+$total = $total->num_rows;
+$totalpage = ceil($total / $item_per_page);
+
+
 ?>
 <?php
 $dondat="SELECT * FROM dondat";
@@ -134,6 +132,7 @@ $rowdd=mysqli_fetch_array($querydd);
 									<a href="javascript:;" class="remove"></a>
 								</div>
 							</div>
+
 							<div class="portlet-body">
 								<div class="table-toolbar">
 
@@ -147,6 +146,18 @@ $rowdd=mysqli_fetch_array($querydd);
 										</ul>
 									</div>
 								</div>
+                                <div class="input-group">
+                                    <div class="form-outline">
+                                        <form action="" method="get">
+                                            <input type="text" value="<?=isset($_GET['search_city']) ? $_GET['search_city'] : ""?>"  name="search_city" id="form1" class="form-control" />
+                                            <button style="margin-bottom: 10px" type="submit" class="btn btn-primary">
+                                                <i class="icon-search"></i>
+                                            </button>
+                                        </form>
+
+                                    </div>
+
+                                </div>
 								<table class="table table-striped table-bordered table-hover" id="sample_1">
 									<thead>
 										<tr>
@@ -168,8 +179,6 @@ $rowdd=mysqli_fetch_array($querydd);
                                         $getcount = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$cot["TenDangNhap"]."'";
                                         $db = mysqli_query($conn,$getcount);
                                         $count = mysqli_num_rows($db);
-
-
                                     ?>
 										<tr class="odd gradeX">
 
@@ -196,15 +205,11 @@ $rowdd=mysqli_fetch_array($querydd);
 
 									</tbody>
 								</table>
-                                <div class="row" >
-                                    <ul class="pagination" style="margin-left: 350px;display: inline-block">
-<!--                                        --><?php
-//                                        echo $listpage;
-//                                        ?>
-                                    </ul>
+                                <?php
+                                include ('phantrangadmin.php')
+                                ?>
 
-                                </div>
-							</div>
+                            </div>
 						</div>
 						<!-- END EXAMPLE TABLE PORTLET-->
 					</div>
@@ -231,3 +236,31 @@ $rowdd=mysqli_fetch_array($querydd);
 <?php
 include ('../layout/footer-admin.php')
 ?>
+<style>
+.pt
+{
+width:100%;
+justify-content:center;
+display:flex;
+}
+.pt li {
+color: black;
+float: left;
+padding: 8px 16px;
+text-decoration: none;
+transition: background-color .3s;
+}
+
+.pt li.active {
+
+
+}
+.pt ul{
+list-style-type: none !important;
+margin-right: 453px;
+}
+
+.pt li:hover:not(.active) {
+background-color: #ddd;
+}
+</style>

@@ -4,45 +4,33 @@ if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
 <?php
+$search = isset($_GET['search_city']) ? $_GET['search_city'] : "";
+if($search){
+    $where="WHERE name_city LIKE '%".$search."%' ";
+}
 include ('../page/connect.php');
-if(isset($_GET["MaNV"]))
-{
-    $xoa="DELETE FROM nhanvien WHERE MaNhanVien='".$_GET["MaNV"]."'";
-    if(mysqli_query($conn,$xoa))
-    {
-        echo "<script>alert('Xóa thành công')</script>";
-    }
-    else
-    {
-        echo "<script>alert('Nhân viên đang xử lý đơn hàng')</script>";
-    }
-
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 5;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($current_page - 1) * $item_per_page;
+if($search){
+    $dbdata = "SELECT * FROM pvs_tinhthanhpho WHERE name_city LIKE '%".$search."%'  ORDER BY matp ASC  LIMIT " . $item_per_page . " OFFSET " . $offset;
+    $query = mysqli_query($conn, $dbdata);
+    $total = mysqli_query($conn, "SELECT * FROM pvs_tinhthanhpho WHERE name_city LIKE '%".$search."%' ");
+}else{
+    $dbdata = "SELECT * FROM pvs_tinhthanhpho ORDER BY matp ASC  LIMIT " . $item_per_page . " OFFSET " . $offset;
+    $query = mysqli_query($conn, $dbdata);
+    $total = mysqli_query($conn, "SELECT * FROM pvs_tinhthanhpho");
 }
-
-if(isset($_GET['page'])){
-    $page=$_GET['page'];
-}
-else{
-    $page=1;
-}
-$rowperpgae=4;
-$perrow=$page * $rowperpgae-$rowperpgae;
-$dssp="SELECT * FROM nhanvien ORDER BY MaNhanVien DESC  LIMIT $perrow,$rowperpgae ";
-$query=mysqli_query($conn,$dssp);
-$totalrow=mysqli_num_rows(mysqli_query($conn,"SELECT * FROM nhanvien"));
-$totalpage=ceil($totalrow/$rowperpgae);
-$listpage="";
-for($i=1; $i<=$totalpage; $i++){
-    if($page==$i){
-        $listpage.='<li class="active"><a style="color: #d33b33" class="page-link" href="nhanvienadmin.php?danhsachSP=&page='.$i.'">'.$i.'</a></li>';
-    }
-    else
-    {
-        $listpage.='<li><a style="color: #d33b33" class="page-link" href="nhanvienadmin.php?danhsachSP&page='.$i.'">'.$i.'</a></li>';
-    }
-}
-
+$total = $total->num_rows;
+$totalpage = ceil($total / $item_per_page);
 ?>
+<?php
+$role= "SELECT * FROM nhanvien WHERE TenDangNhap = '".$_SESSION["admin"]."'";
+$queryrole=mysqli_query($conn,$role);
+$layquyen= mysqli_fetch_array($queryrole);
+?>
+<!-- END SIDEBAR -->
+<!-- BEGIN PAGE -->
 <div class="page-content">
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
     <div id="portlet-config" class="modal hide">
@@ -116,7 +104,7 @@ for($i=1; $i<=$totalpage; $i++){
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>
-                        <a href="#">Nhân viên</a>
+                        <a href="#">Phí vận chuyển</a>
                         <i class="icon-angle-right"></i>
                     </li>
 
@@ -139,74 +127,73 @@ for($i=1; $i<=$totalpage; $i++){
                             <a href="javascript:;" class="remove"></a>
                         </div>
                     </div>
+
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                                <a class="btn green" href="themnhanvienadmin.php">Thêm</a>
-                            </div>
-                            <div class="btn-group pull-right">
-                                <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="#">Print</a></li>
-                                    <li><a href="#">Save as PDF</a></li>
-                                    <li><a href="#">Export to Excel</a></li>
-                                </ul>
                             </div>
                         </div>
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <form action="" method="get">
+                                    <input type="text" value="<?=isset($_GET['search_city']) ? $_GET['search_city'] : ""?>" id="form1" name="search_city" class="form-control" />
+                                    <button style="margin-bottom: 10px" type="submit" class="btn btn-primary">
+                                        <i class="icon-search"></i>
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </div>
+
                         <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                             <thead>
                             <tr>
 
-                                <th>Họ tên</th>
-                                <th>Tên đăng nhập</th>
-                                <th>Ngày sinh</th>
-                                <th>Điện thoại</th>
-                                <th>Quyền</th>
-                                <th></th>
-
-
+                                <th>Id</th>
+                                <th>Tên thành phố</th>
+                                <th>Type</th>
+                                <th>Phí vận chuyển</th>
+                                <?php
+                                if($layquyen["id_role"]==1){
+                                ?>
+                                <th>Cập nhật/sửa</th>
+                               <?php } ?>
                             </tr>
                             </thead>
+
                             <tbody>
                             <?php
-                           while ($cot=mysqli_fetch_array($query)){
-                               $sqlroles="SELECT * FROM roles WHERE id_roles = '".$cot["id_role"]."'";
-                               $quyen=mysqli_query($conn,$sqlroles);
-                               $layquyen = mysqli_fetch_array($quyen);
-                                ?>
+                            while ($cot=mysqli_fetch_array($query)){
+                            ?>
                                 <tr >
-                                    <td><?php echo $cot["Hoten"]?></td>
-                                    <td><?php echo $cot["TenDangNhap"] ?></td>
-                                    <td><?php echo $cot["Ngaysinh"] ?></td>
-                                    <td><?php echo $cot["Dienthoai"]?></td>
-                                    <td><?php echo $layquyen["name"]?></td>
-
+                                    <td><?php echo $cot["matp"]?></td>
+                                    <td><?php echo $cot["name_city"]?></td>
+                                    <td class="center"><?php echo $cot["type"]?></td>
+                                    <td><?php echo $cot["phiship"]?></td>
+                                    <?php
+                                    if($layquyen["id_role"]==1){
+                                    ?>
                                     <td>
-                                        <a href="suanhanvien.php?MaNV=<?php echo $cot["MaNhanVien"];?>"><span<i style="width: 29px" class="icon-edit"></i></span></a>
-                                        <?php if($cot["id_role"]==2){ ?>
-                                        <a onclick="return Del('<?php echo $cot["Hoten"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaNV=<?php echo $cot["MaNhanVien"];?>"><span class="Xoadulieu">Xóa</span></a>
-                                        <?php } ?>
-                                    </td>
 
+                                        <a ><i style="margin-left: 30px" class="icon-edit"></i></a>
+
+                                    </td>
+                                    <?php } ?>
                                 </tr>
                             <?php } ?>
-
-
-
                             </tbody>
 
                         </table>
-                        <div class="pt" >
-                            <ul class="pagination" style="margin-left: 350px;display: inline-block">
-                                <?php
-                                echo $listpage;
-                                ?>
-                            </ul>
 
-                        </div>
 
                     </div>
+
+                </div>
+             <?php
+                        include ('phantrangadmin.php')
+             ?>
+
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->
             </div>
@@ -222,12 +209,7 @@ for($i=1; $i<=$totalpage; $i++){
 <?php
 include ('../layout/footer-admin.php')
 ?>
-<script>
-    function Del(name) {
-        return confirm("Bạn có chắc muốn xóa nhân viên: " + name + "?");
 
-    }
-</script>
 <style>
     .pt
     {
@@ -256,3 +238,4 @@ include ('../layout/footer-admin.php')
         background-color: #ddd;
     }
 </style>
+
