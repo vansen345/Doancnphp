@@ -3,7 +3,7 @@ include ('../layout/header.php')
 ?>
 <?php
 include ('connect.php');
-$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:4;
+$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:3;
 $current_page=!empty($_GET['page'])?$_GET['page']:1;
 $offset=($current_page-1) * $item_per_page;
 $blog="SELECT * FROM blog ORDER BY Id_blog ASC LIMIT ".$item_per_page." OFFSET ".$offset;
@@ -76,7 +76,7 @@ $totalpage= ceil($total / $item_per_page);
                 <div class="page-pagination text-center" data-aos="fade-up"  data-aos-delay="0">
                     <ul>
                         <?php
-                        include ("phantrang.php");
+                        include ("phantrangblog.php");
                         ?>
                     </ul>
                 </div> <!-- End Pagination -->

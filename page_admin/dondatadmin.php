@@ -3,16 +3,9 @@ include ('../layout/header_admin.php');
 if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
-
 <?php
 include ('../page/connect.php');
-
-
-
 $truyvan=mysqli_query($conn,"SELECT dondat.*,thanhvien.Hoten as 'hotentv',nhanvien.Hoten as 'hotennv' FROM dondat JOIN thanhvien ON dondat.TenDangNhap=thanhvien.TenDangNhap JOIN nhanvien ON dondat.MaNhanVien=nhanvien.MaNhanVien");
-
-
-
 ?>
     <div class="page-content">
         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->

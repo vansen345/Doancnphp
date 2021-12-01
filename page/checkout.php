@@ -159,7 +159,7 @@ include ('connect.php');
                                     </div>
                                 </div>
                                 <div class="order_button pt-3">
-                                    <button name="send" class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
+                                    <button id="paypal" name="send" class="btn btn-md btn-black-default-hover" type="submit">Đặt hàng</button>
                                 </div>
 <!--                                <div id="paypal-button-container">-->
 <!--                                </div>-->

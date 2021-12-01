@@ -305,13 +305,13 @@ if(isset($_SESSION["tendangnhap"]))
                                                             <input id="bl_noidung" type="hidden" value="<?php echo $truyvanbl["NoiDung"]  ?>">
                                                             <div   class="para-content bl_noidung" style="margin-bottom: 35px; margin-left: -3px">
                                                                 <p><?php echo $truyvanbl["NoiDung"]  ?></p>
-                                                                <a id="click_unlike_like" data-type_click="like" data-id_text="<?php echo $truyvanbl["MaBinhLuan"] ?>" >
+                                                                <a class="btn btn-sm- btn-default btn-hover-success add_style<?php echo$truyvanbl["MaBinhLuan"]?>" id="click_unlike_like" data-type_click="like" data-id_text="<?php echo $truyvanbl["MaBinhLuan"] ?>" >
                                                                     <i class="icon-like"></i>
                                                                     <input type="hidden" id="ch_like<?php  echo $truyvanbl["MaBinhLuan"] ?>">
                                                                     <span class="count_like<?php echo $truyvanbl["MaBinhLuan"] ?>">0</span>
                                                                 </a>
 
-                                                                <a id="click_unlike_like"  data-type_click="unlike" data-id_text="<?php echo $truyvanbl["MaBinhLuan"]?>"  style="margin-left: 10px">
+                                                                <a class="btn btn-sm- btn-default btn-hover-success add_styleun<?php  echo$truyvanbl["MaBinhLuan"] ?>" id="click_unlike_like"  data-type_click="unlike" data-id_text="<?php echo$truyvanbl["MaBinhLuan"]?>"  style="margin-left: 10px">
                                                                     <i class="icon-dislike"></i>
                                                                     <input type="hidden" id="ch_unlike<?php echo $truyvanbl["MaBinhLuan"] ?>">
                                                                     <span class="count_unlike<?php echo $truyvanbl["MaBinhLuan"] ?>">0</span>
@@ -395,13 +395,7 @@ if(isset($_SESSION["tendangnhap"]))
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"><a href="product-details-default.php?Masp=<?php echo $cot1["MaSanPham"];?>"</a><?php echo $cot1["TenSanPham"]?></h6>
-                                            <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul>
+
                                         </div>
                                         <div class="content-right">
                                             <span class="price"><?=number_format($cot1["DonGia"],0,",",".")?> VND</span>
@@ -550,39 +544,48 @@ include ('../layout/footer.php')
         }
         
         function Minus_unlike() {
-            $(".count_unlike"+text_id).text(count_unlike-1);
+            $(".count_unlike"+text_id).text(count_unlike -1);
             $("#ch_unlike"+text_id).val("");
         }
 
         if(type=="like"){
             if(ch_unlike=="yes"){
                 Minus_unlike();
+                $(".add_styleun"+text_id).removeAttr('style');
             }
             if(ch_like=="yes")
             {
                 Minus_like();
+                $(".add_style"+text_id).removeAttr('style');
+
             }
             if(ch_like=="")
             {
                 $(".count_like"+text_id).text(count_like+1);
                 $("#ch_like"+text_id).val("yes");
+                $(".add_style"+text_id).css('color','red');
             }
         }
         if(type=="unlike"){
             if(ch_like=="yes")
             {
                 Minus_like();
+                $(".add_style"+text_id).removeAttr('style');
             }
             if(ch_unlike=="yes")
             {
                 Minus_unlike();
+                $(".add_styleun"+text_id).removeAttr('style');
             }
             if(ch_unlike=="")
             {
-                $(".count_unlike"+text_id).text(count_unlike+1);
+                $(".count_unlike"+text_id).text(count_unlike+ 1);
                 $("ch_unlike"+text_id).val("yes");
+                $(".add_styleun"+text_id).css('color','red');
             }
         }
+        $(this).html($(this).data('count_like'));
+        $(this).html($(this).data('count_unlike'));
     });
 </script>
 

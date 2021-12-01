@@ -8,13 +8,13 @@
         if($current_page > 3){
             $firs_page=1;
             ?>
-            <li  class=""><a style="color: #d33b33" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$firs_page?>">First</a></li>
+            <li  class=""><a style="color: #d33b33" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$firs_page?>"> << </a></li>
             <?php
         }
         if($current_page > 1){
             $prev_page = $current_page - 1;
             ?>
-            <li  class=""><a style="color: #ff365d" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$prev_page?>">Prev</a></li>
+            <li  class=""><a style="color: #ff365d" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$prev_page?>"> < </a></li>
         <?php }
         ?>
         <?php for($num=1;$num<=$totalpage;$num++){ ?>
@@ -24,18 +24,18 @@
                 <?php } ?>
             <?php } else{ ?>
 <!--                    <li class="active"><stong style="color: #ff365d">--><?//=$num?><!--</stong></li>-->
-                <li class="page-item" style="color: black"><a style="color: #ff365d;background-color: black" class="page-link"><?=$num?></a></li>
+                <li class="page-item" style="color: black"><a style="color: #ff365d;background-color: #333333" class="page-link"><?=$num?></a></li>
             <?php } ?>
         <?php } ?>
         <?php
         if($current_page < $totalpage -1){
             $next_page = $current_page + 1;?>
-            <li class=""><a style="color: #ff365d" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$next_page?>">Next</a></li>
+            <li class=""><a style="color: #ff365d" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$next_page?>"> > </a></li>
         <?php }
         if($current_page < $totalpage -3){
             $end_page = $totalpage;
             ?>
-            <li  class=""><a style="color: #ff365d" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$end_page?>">Last</a></li>
+            <li  class=""><a style="color: #ff365d" class="" href="?<?=$param?>per_page=<?=$item_per_page?>&page=<?=$end_page?>"> >> </a></li>
         <?php } ?>
     </ul>
 </div> <!-- End Pagination -->

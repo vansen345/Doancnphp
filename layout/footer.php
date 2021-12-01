@@ -387,7 +387,7 @@
             return actions.payment.execute().then(function() {
                 // Show a confirmation message to the buyer
                 window.alert('Cám ơn bạn đãt đặt hàng!');
-                window.location='../page/index-3.php';
+                 document.getElementById('paypal').click();
 
             });
         }

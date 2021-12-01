@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             <!--login area start-->
             <div class="col-lg-6 col-md-6">
                 <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
-                    <h3>Forget Password</h3>
+                    <h3>Quên mật khẩu</h3>
                     <form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
                         <input type="hidden" name="tranghientai" value="<?php echo $_SERVER["PHP_SELF"];?>">
                         <div class="default-form-box">

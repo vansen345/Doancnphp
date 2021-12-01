@@ -170,15 +170,17 @@ $layquyen= mysqli_fetch_array($queryrole);
                                     <td><?php echo $cot["matp"]?></td>
                                     <td><?php echo $cot["name_city"]?></td>
                                     <td class="center"><?php echo $cot["type"]?></td>
-                                    <td><?php echo $cot["phiship"]?></td>
+                                    <td><?=number_format($cot["phiship"],0,",",".")?></td>
                                     <?php
                                     if($layquyen["id_role"]==1){
                                     ?>
                                     <td>
 
-                                        <a ><i style="margin-left: 30px" class="icon-edit"></i></a>
+                                        <a href="updateshipp.php?id_ship=<?php echo $cot["matp"]?>" ><i style="margin-left: 30px" class="icon-edit"></i></a>
 
                                     </td>
+                                    <?php }else{ ?>
+                                    <a href="loiphanquyen.php" ><i style="margin-left: 30px" class="icon-edit"></i></a>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>

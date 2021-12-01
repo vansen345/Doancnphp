@@ -204,6 +204,8 @@ $layquyen= mysqli_fetch_array($queryrole);
                                         if($layquyen["id_role"]==1){
                                         ?>
                                         <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="<?php echo $_SERVER["PHP_SELF"];?>?MaDDXoa=<?php echo $cotDDH["MaDonDat"]?>" id="xoa" class="btn-danger">Xóa</a>
+                                        <?php } else{ ?>
+                                            <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="loiphanquyen.php" id="xoa" class="btn-danger">Xóa</a>
                                         <?php } ?>
                                     </td>
 

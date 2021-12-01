@@ -175,22 +175,29 @@ if(!isset($_SESSION["admin"]))
 					<div class="row-fluid">
 
 					</div>
+                    <?php
+                    $ddh="SELECT * FROM dondat WHERE TrangThai = '0'";
+                    $ct=mysqli_query($conn,$ddh);
+                    $tinh=mysqli_num_rows($ct);
+                    ?>
                     <table class="table table-striped table-bordered table-hover" id="sample_1">
                         <thead>
                         </thead>
                         <tbody>
                         <!--                           <td>--><?//=number_format($laytt[0],0,",",".")?><!-- VND</td>-->
                         <tr>
-                            <th >Tổng số đơn hàng chưa giao</th>
-                            <th></th>
-
+                          <th href="#">Tổng số đơn hàng chưa giao</th>
+                            <th><?php echo $tinh ?></th>
                         </tr>
+                        <?php
+                        $dg="SELECT * FROM dondat WHERE TrangThai = '1'";
+                        $ctdg=mysqli_query($conn,$dg);
+                        $tinhdg=mysqli_num_rows($ctdg);
+                        ?>
                         <tr>
                             <th>Tổng số đơn hàng đã giao</th>
-                            <th></th>
+                            <th><?php echo $tinhdg ?></th>
                         </tr>
-
-
                         </tbody>
                     </table>
 

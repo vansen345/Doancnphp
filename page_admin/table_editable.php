@@ -172,6 +172,8 @@ $layquyen= mysqli_fetch_array($queryrole);
                                         if($layquyen["id_role"]==1){
                                         ?>
                                         <a class="btn green" href="themspadmin.php">Thêm</a>
+                                        <?php } else{ ?>
+                                            <a class="btn green" href="loiphanquyen.php">Thêm</a>
                                         <?php } ?>
 
                                     </div>
@@ -202,11 +204,9 @@ $layquyen= mysqli_fetch_array($queryrole);
 											<th>Thông tin</th>
                                             <th>Danh mục</th>
                                             <th>Trạng thái</th>
-                                            <?php
-                                            if($layquyen["id_role"]==1){
-                                            ?>
+
 											<th>Cập nhật/ sửa</th>
-                                            <?php } ?>
+
 										</tr>
 									</thead>
                                     <?php
@@ -246,6 +246,12 @@ $layquyen= mysqli_fetch_array($queryrole);
                                                 <a onclick="return Del('<?php echo $cot["TenSanPham"];?>')"  href="<?php echo $_SERVER["PHP_SELF"];?>?MaSanPham=<?php echo $cot["MaSanPham"];?>"><span class="Xoadulieu"><i class=""></i>Xóa</span></a>
 
                                             </td>
+                                            <?php } else{ ?>
+                                            <td>
+                                                <a href="loiphanquyen.php"><span<i style="width: 29px" class="icon-edit"></i></span></a>
+                                                <a href="loiphanquyen.php"><span class="Xoadulieu"><i class=""></i>Xóa</span></a>
+                                            </td>
+
                                             <?php } ?>
 
 										</tr>
