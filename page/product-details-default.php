@@ -138,7 +138,7 @@ if(isset($_SESSION["tendangnhap"]))
                         <h4 class="title">Available Options</h4>
                         <!-- Product Variable Single Item -->
                         <div class="variable-single-item">
-                            <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> 200 IN STOCK</div>
+                            <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> Còn Hàng</div>
                         </div>
                         <!-- Product Variable Single Item -->
 
@@ -278,9 +278,9 @@ if(isset($_SESSION["tendangnhap"]))
                                         <!-- Start - Review Comment list-->
                                         <?php
                                             while ($truyvanbl=mysqli_fetch_array($cotbl)){
-                                                $sqllike="SELECT * FROM likecmt ";
-                                                $querycmt=mysqli_query($conn,$sqllike);
-                                                $laylike=mysqli_fetch_array($querycmt)
+//                                                $sqllike="SELECT * FROM likecmt ";
+//                                                $querycmt=mysqli_query($conn,$sqllike);
+//                                                $laylike=mysqli_fetch_array($querycmt)
                                         ?>
                                         <li class="comment-list">
                                             <div class="comment-wrapper">

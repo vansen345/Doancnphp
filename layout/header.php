@@ -587,7 +587,7 @@
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
     <form method="get" action="shop-full-width.php">
-        <input  name="timkiemtensp"  type="search" placeholder="type keyword(s) here" />
+        <input  name="timkiemtensp"  type="search" placeholder="Nhập tên sản phẩm muốn tìm" />
         <button type="submit" class="btn btn-lg btn-pink">Search</button>
     </form>
 </div>

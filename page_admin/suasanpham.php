@@ -208,7 +208,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                                         ?>
                                         <option selected value="<?php echo $cotbrand["MaThuongHieu"]?>"><?php echo $cotbrand["TenThuongHieu"]?></option>
                                     <?php } else { ?>
-                                        <option  value="<?php echo $cotbrand["MaThuongHieu"]?>"><?php echo $cotloai["TenThuongHieu"]?></option>
+                                        <option  value="<?php echo $cotbrand["MaThuongHieu"]?>"><?php echo $cotbrand["TenThuongHieu"]?></option>
                                     <?php } } ?>
                             </select>
                         </td>

@@ -62,7 +62,7 @@ $totalpage= ceil($total / $item_per_page);
 
                                     <h6 class="title"><a href="blog-single-sidebar-left.php?id_blog=<?php echo $cot["Id_blog"]?>"><?php echo $cot["Title"]?></a></h6>
 
-                                    <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
+                                    <a href="blog-single-sidebar-left.php?id_blog=<?php echo $cot["Id_blog"]?>" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
                                 </div>
                             </div>
                             <!-- End Product Default Single Item -->

@@ -329,7 +329,7 @@ include ('connect.php');
                                 ?>
                                 <div class="product-default-single-item product-color--pink swiper-slide">
                                     <div class="image-box">
-                                        <a href="../page/product-details-default.php" class="image-link">
+                                        <a href="product-details-default.php?Masp=<?php echo $row2["MaSanPham"]?>" class="image-link">
                                             <img src="../images/product/hinhanh/<?php echo $row2["Anh"] ?>" alt="">
                                             <img src="../images/product/hinhanh/<?php echo $row2["Anh"] ?>" alt="">
                                         </a>
