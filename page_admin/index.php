@@ -3,6 +3,7 @@ include ('../layout/header_admin.php');
 if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
+
 		<!-- END SIDEBAR -->
 		<!-- BEGIN PAGE -->
 		<div class="page-content">
@@ -141,7 +142,7 @@ if(!isset($_SESSION["admin"]))
 									<i class="icon-globe"></i>
 								</div>
 								<div class="details">
-									<div class="number">+89%</div>
+									<div class="number"></div>
 									<div class="desc">Brand Popularity</div>
 								</div>
 								<a class="more" href="#">

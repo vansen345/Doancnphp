@@ -147,7 +147,7 @@ include ('connect.php');
 <!--                                    <div class="default-form-box">-->
 <!--                                        <label>Phường/Xã <span style="color: red">(*)</span></label>-->
 <!--                                        <select class="country_option nice-select wide xa" name="ward" id="ward" >-->
-<!--<!--                                            <option value="">--Chưa chọn phường xã--</option>-->-->
+<!--<--                                            <option value="">--Chưa chọn phường xã--</option>-->
 <!--                                        </select>-->
 <!--                                    </div>-->
 <!--                                </div>-->
@@ -183,8 +183,6 @@ include ('connect.php');
                                             <th>Tổng cộng</th>
                                         </tr>
                                     </thead>
-
-
                                     <tbody>
                                     <?php
                                     foreach ($_SESSION["giohang"] as $key=>$value){
@@ -192,8 +190,6 @@ include ('connect.php');
                                     $ordertotal+=$subtotal;
                                     ?>
                                         <tr>
-
-
                                             <td><?php echo $value["name"] ?> <strong> × <?php echo $value["number"] ?></strong></td>
                                             <td><?php  echo number_format($subtotal,0,",","."); ?> VNĐ</td>
                                     <?php }?>

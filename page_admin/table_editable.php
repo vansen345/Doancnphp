@@ -206,15 +206,10 @@ $layquyen= mysqli_fetch_array($queryrole);
                                             <th>Trạng thái</th>
 
 											<th>Cập nhật/ sửa</th>
-
 										</tr>
 									</thead>
-                                    <?php
-
-                                    ?>
 									<tbody>
                                     <?php
-
                                     while ($cot=mysqli_fetch_array($query)){
                                     $sql="SELECT * FROM trangthai WHERE id_status = '".$cot["TrangThai"]."'";
                                     $trangthai=mysqli_query($conn,$sql);

@@ -166,11 +166,11 @@ $layquyen= mysqli_fetch_array($queryrole);
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <b>Mã đơn đặt hàng:</b> <?php echo $cotDDH["MaDonDat"];?> <br>
-                                        <b>Khách hàng:</b> <?php echo $cotDDH["hotentv"];?><br>
-                                        <b>Nơi giao:</b> <?php echo $cotDDH["NoiGiao"];?>,<?php echo $layqh["name_quanhuyen"]?>,<?php echo $laytp["name_city"] ?> <br>
-                                        <b>Số điện thoại:</b> <?php echo $cotDDH["dt"];?><br>
-                                        <b>Ngày đặt:</b> <?php echo date("d/m/Y",strtotime($cotDDH["NgayDat"])); ?><br>
+                                        <b><i class="icon-file-text"></i> Mã đơn đặt hàng:</b> <?php echo $cotDDH["MaDonDat"];?> <br>
+                                        <b><i class="icon-user"></i> Khách hàng:</b> <?php echo $cotDDH["hotentv"];?><br>
+                                        <b><i class="icon-map-marker"></i> Nơi giao</b> <?php echo $cotDDH["NoiGiao"];?>,<?php echo $layqh["name_quanhuyen"]?>,<?php echo $laytp["name_city"] ?> <br>
+                                        <b><i class="icon-phone"></i> Số điện thoại:</b> <?php echo $cotDDH["dt"];?><br>
+                                        <b><i class="icon-calendar"></i> Ngày đặt:</b> <?php echo date("d/m/Y",strtotime($cotDDH["NgayDat"])); ?><br>
                                         <b>Trạng thái:
                                             <?php
                                             if($cotDDH["TrangThai"]==0) {
@@ -184,14 +184,20 @@ $layquyen= mysqli_fetch_array($queryrole);
                                     <td colspan="3">
                                         Trạng thái:
                                         <select name="TrangThai" id="TrangThai" class="form-control">
-                                            <option  value="0">Chưa giao</option>
+                                            <?php if(trim($cotDDH["TrangThai"])==0){ ?>
+                                            <option selected  value="0">Chưa giao</option>
                                             <option value="1"> Đã giao</option>
+                                            <?php } else{ ?>
+
+                                            <option  selected value="1"> Đã giao</option>
+                                            <?php } ?>
+
                                         </select>
                                         <?php if($cotDDH["TrangThai"]==0){
                                         ?>
                                         <button style="margin-bottom: 10px" name="capnhattinhtrang" type="submit" class="btn-primary">Cập nhật</button>
                                         <?php } else{ ?>
-                                        <button style="margin-bottom: 10px" name="capnhattinhtrang" type="submit" class="btn-primary" disabled>Cập nhật</button>
+                                        <button style="margin-bottom: 10px;cursor: no-drop" name="capnhattinhtrang"  type="submit" class="btn-primary" disabled>Cập nhật</button>
                                         <?php } ?>
                                         <br>
                                         <?php
@@ -233,11 +239,11 @@ $layquyen= mysqli_fetch_array($queryrole);
                                 </tr>
                                 <tr>
                                     <th colspan="3">Ship</th>
-                                    <th>
-                                        <?php
-                                        $ship=$cotDDH["tongtien"]-$tongtien;
-                                        echo number_format($ship,0,",",".");
-                                        ?>
+                                    <th style="">+
+                                            <?php
+                                            $ship=$cotDDH["tongtien"]-$tongtien;
+                                            echo number_format($ship,0,",",".");
+                                            ?>
                                     </th>
                                 </tr>
                                 <tr>
