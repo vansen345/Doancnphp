@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             <a href="nhanvienadmin.php">Nhân viên</a>
             <i class="icon-angle-right"></i>
         </li>
-        <li><a href="#">Thay đổi thông tinx</a></li>
+        <li><a href="#">Thay đổi thông tin</a></li>
     </ul>
 
     <div class="col-lg-12">

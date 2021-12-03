@@ -27,7 +27,6 @@ $truyvanlaychitiet=mysqli_query($conn,$laychitiet);
 if(mysqli_num_rows($truyvanlaychitiet)>0)
 {
     $cotDDH=mysqli_fetch_array($truyvanlaychitiet);
-
     $laychitietDD="SELECT sanpham.*,ct_dondat.* FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham=sanpham.MaSanPham WHERE MaDonDat='".$_GET["MaDD"]."'";
     $truyvanlaychitietDD=mysqli_query($conn,$laychitietDD);
 }
@@ -161,11 +160,9 @@ $layquyen= mysqli_fetch_array($queryrole);
                             $queryqh=mysqli_query($conn,$quanhuyen);
                             $layqh=mysqli_fetch_array($queryqh);
 
-
                             ?>
                         <form id="duyethang" method="post" action="<?php echo $_SERVER["REQUEST_URI"];?>">
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
-
                                 <tbody>
                                 <tr>
                                     <td>
@@ -182,34 +179,29 @@ $layquyen= mysqli_fetch_array($queryrole);
                                                 echo 'Đã giao';
 
                                              }?>
-
                                         </b>
-
                                     </td>
-
                                     <td colspan="3">
                                         Trạng thái:
-
                                         <select name="TrangThai" id="TrangThai" class="form-control">
-
                                             <option  value="0">Chưa giao</option>
                                             <option value="1"> Đã giao</option>
-
                                         </select>
+                                        <?php if($cotDDH["TrangThai"]==0){
+                                        ?>
                                         <button style="margin-bottom: 10px" name="capnhattinhtrang" type="submit" class="btn-primary">Cập nhật</button>
-
-
+                                        <?php } else{ ?>
+                                        <button style="margin-bottom: 10px" name="capnhattinhtrang" type="submit" class="btn-primary" disabled>Cập nhật</button>
+                                        <?php } ?>
                                         <br>
                                         <?php
                                         if($layquyen["id_role"]==1){
                                         ?>
-                                        <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="<?php echo $_SERVER["PHP_SELF"];?>?MaDDXoa=<?php echo $cotDDH["MaDonDat"]?>" id="xoa" class="btn-danger">Xóa</a>
+                                        <a onclick="return Del('<?php echo $cotDDH["MaDonDat"];?>')" style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="<?php echo $_SERVER["PHP_SELF"];?>?MaDDXoa=<?php echo $cotDDH["MaDonDat"]?>" id="xoa" class="btn-danger">Xóa</a>
                                         <?php } else{ ?>
                                             <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="loiphanquyen.php" id="xoa" class="btn-danger">Xóa</a>
                                         <?php } ?>
                                     </td>
-
-
                                 </tr>
                                 <tr>
                                     <th>Tên sản phẩm</th>
@@ -221,23 +213,23 @@ $layquyen= mysqli_fetch_array($queryrole);
                                 $tongtien=0;
                                 while ($cotCT=mysqli_fetch_array($truyvanlaychitietDD))
                                 {
-
-                                   $tongtien+=$cotCT["SoLuong"] * $cotCT["DonGia"];
+                                   $tongtien+=$cotCT["SoLuong"] * $cotCT["Gia"];
                                 ?>
                                 <tr>
                                     <td><?php echo $cotCT["TenSanPham"]; ?></td>
                                     <td><?php echo $cotCT["SoLuong"]; ?></td>
-                                    <td><?=number_format($cotCT["DonGia"],0,",",".")?></td>
-                                    <td><?php
-                                        $total=$cotCT["SoLuong"]*$cotCT["DonGia"];
-
+                                    <td><?=number_format($cotCT["Gia"],0,",",".")?></td>
+                                    <td>
+                                        <?php
+                                        $total=$cotCT["SoLuong"]*$cotCT["Gia"];
                                         echo number_format($total,0,",",".");
-                                        ?></td>
+                                        ?>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                                 <tr>
                                     <th colspan="3"></th>
-                                    <th><?php  echo number_format($tongtien,0,",",".");  ?></th>
+                                    <th><?php  echo number_format($tongtien,0,",",".");?></th>
                                 </tr>
                                 <tr>
                                     <th colspan="3">Ship</th>
@@ -253,16 +245,10 @@ $layquyen= mysqli_fetch_array($queryrole);
                                     <th><?php  echo number_format($cotDDH["tongtien"],0,",",".");  ?></th>
                                 </tr>
                                 </tbody>
-
                             </table>
-
                         </form>
                         </div>
-
-
-
                     </div>
-
                 </div>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->
@@ -297,16 +283,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 include ('../layout/footer-admin.php');
 ?>
 <script>
-    $(document).ready(function () {
-    $('#xoa').click(function () {
-    if(!confirm("Bạn có thục sự muốn xóa"))
-      return false;
+    function Del(name) {
+        return confirm("Bạn có chắc muốn xóa đơn hàng: " + name + "?");
 
-     });
-
-    });
+    }
 </script>
-
 
 
 

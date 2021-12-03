@@ -111,7 +111,7 @@ if(!isset($_SESSION["admin"]))
 										Khách hàng
 									</div>
 								</div>
-								<a class="more" href="#">
+								<a class="more" href="table_managed.php">
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>
@@ -130,7 +130,7 @@ if(!isset($_SESSION["admin"]))
 									<div class="number"><?php echo $tongdd ?></div>
 									<div class="desc">Đơn hàng</div>
 								</div>
-								<a class="more" href="#">
+								<a class="more" href="dondatadmin.php">
 								View more <i class="m-icon-swapright m-icon-white"></i>
 								</a>                 
 							</div>
@@ -186,7 +186,7 @@ if(!isset($_SESSION["admin"]))
                         <tbody>
                         <!--                           <td>--><?//=number_format($laytt[0],0,",",".")?><!-- VND</td>-->
                         <tr>
-                          <th href="#">Tổng số đơn hàng chưa giao</th>
+                            <th>Tổng số đơn hàng chưa giao</th>
                             <th><?php echo $tinh ?></th>
                         </tr>
                         <?php

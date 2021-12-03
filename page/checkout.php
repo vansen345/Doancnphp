@@ -143,14 +143,14 @@ include ('connect.php');
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <label>Phường/Xã <span style="color: red">(*)</span></label>
-                                        <select class="country_option nice-select wide xa" name="ward" id="ward" >
-<!--                                            <option value="">--Chưa chọn phường xã--</option>-->
-                                        </select>
-                                    </div>
-                                </div>
+<!--                                <div class="col-12">-->
+<!--                                    <div class="default-form-box">-->
+<!--                                        <label>Phường/Xã <span style="color: red">(*)</span></label>-->
+<!--                                        <select class="country_option nice-select wide xa" name="ward" id="ward" >-->
+<!--<!--                                            <option value="">--Chưa chọn phường xã--</option>-->-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
                                 <div class="col-12 mt-3">
                                     <div class="order-notes">
@@ -238,6 +238,7 @@ include ('connect.php');
                                         <div class="card-body1">
                                             <div class="order_button pt-3" style="">
                                                 <?php
+
                                                 $vnd_to_usd =  $_SESSION["tongbill"]/ 23000
                                                 ?>
                                                 <div style="margin-left: 30px" id="paypal-button"></div>
@@ -288,6 +289,8 @@ if(isset($_POST["send"])){
             while ($cotDD = mysqli_fetch_array($truyvanlaydondat)) {
                 $madondat = $cotDD["MaDonDat"];
             }
+
+
             $content="<div style='background: white;padding: 15px;border: 1px solid'>";
             $content="<div>";
 //            $content="<div>";
@@ -307,14 +310,25 @@ if(isset($_POST["send"])){
                 $masp = $value["masp"];
                 $price=number_format($value["price"],0,",",".");
                 $number = $value["number"];
+                $gia=$value["price"];
                 $total=number_format($value["price"] * $value["number"],0,",",".");
                 $date=date("d/m/Y");
-                $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."')";
+                $themctdd = "INSERT INTO ct_dondat VALUES ('".$madondat."','".$masp."','".$number."','".$gia."')";
                 $tongtien= number_format($ordertotal,0,",",".");
                 $hoten= $cottv["Hoten"];
                 $diachi=$cottv["Diachi"];
                 $sdt=$cottv["Dienthoai"];
+                $ship=number_format($_SESSION["ship"],0,",",".");
+                $shipping=number_format($_SESSION["tongbill"],0,",",".");
                 mysqli_query($conn, $themctdd);
+
+                $tp="SELECT * FROM pvs_tinhthanhpho WHERE matp = '".$thanhpho."'";
+                $querytp=mysqli_query($conn,$tp);
+                $laytp=mysqli_fetch_array($querytp);
+
+                $quanhuyen="SELECT * FROM pvs_quanhuyen WHERE maqh = '".$quanhuyen."'";
+                $queryqh=mysqli_query($conn,$quanhuyen);
+                $layqh=mysqli_fetch_array($queryqh);
 
                 $getcount = "SELECT * FROM ct_dondat WHERE MaSanPham = '".$masp."' AND MaDonDat = '".$madondat."'";
                 $get_db = mysqli_fetch_array(mysqli_query($conn, $getcount));
@@ -330,6 +344,7 @@ if(isset($_POST["send"])){
                     $query = "UPDATE sanpham SET SoLuong = '".$soluongton."' WHERE MaSanPham = '".$masp."'";
                     $queryupdate=mysqli_query($conn,$query);
                 }
+//
                 $content.="     
                         <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Đơn giá: <span>$price</span></p>
@@ -338,7 +353,9 @@ if(isset($_POST["send"])){
                            <br>
                              ";
             }
-            $content.='<b style="color: black">Tổng tiền: '.$tongtien.'</b>';
+            $content.='<b style="color: black">Tổng tiền: '.$tongtien.'</b><br>';
+            $content.='<b style="color: black">Phí ship: '.$ship.'</b><br>';
+            $content.='<b style="color: black">Tổng tiền: '.$shipping.'</b>';
             $content.='</div><hr>';
             $content.='<h3 style="font-weight: normal;font-size: 20px;color: black">Thông tin khách hàng</h3>';
             $content.='<table>';
@@ -347,7 +364,7 @@ if(isset($_POST["send"])){
             $content.='<td>';
             $content.='<h4 style="font-size: 16px;font-weight: 500;color: #555">Địa chỉ giao hàng</h4>';
             $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Tên khách hàng: '.$hoten.'</p>';
-            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$noigiao.'</p>';
+            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$noigiao.', '.$layqh["name_quanhuyen"].','.$laytp["name_city"].'</p>';
             $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Điện thoại: '.$dienthoai.'</p>';
             $content.='</td>';
 //            $content.='<td>';
@@ -375,6 +392,8 @@ if(isset($_POST["send"])){
 
 
             unset($_SESSION["giohang"]);
+
+
             echo "<script>alert('Đặt hàng thành công xin hãy kiểm tra email của bạn');location='shop-full-width.php';</script>";
         }
         else {
