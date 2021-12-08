@@ -297,7 +297,10 @@ if(isset($_POST["send"])){
 
             $content="<h2 style='font-weight: normal;font-size: 24px;color: black'>Cám ơn bạn đã mua hàng!</h2>
             <p style='font-size: 16px;color: #777;line-height: 150%'>Xin chào $tenhkh.Chúng tôi đã nhận được đặt hàng của bạn và đã sẵn sàng để vận chuyển. Chúng tôi sẽ thông báo cho bạn khi đơn hàng được gửi đi.</p><hr>
-            <h3 style='margin: 10px 0;font-size: 18px;color: black;font-weight: normal'>Đơn Hàng Của Bạn <p style='font-size: 14px;color: #555;line-height: 150%' >Đã đặt vào ngày: $date</p></h3>";
+            <h3 style='margin: 10px 0;font-size: 18px;color: black;font-weight: normal'>Đơn Hàng Của Bạn <p style='font-size: 14px;color: #555;line-height: 150%' >Đã đặt vào ngày: $date</p></h3>
+            <p style='font-size: 14px;color: #555;line-height: 150%' >Mã đơn hàng: $madondat</p>";
+
+
             $i=0;
             foreach ($_SESSION["giohang"] as $key=> $value) {
 //                $total=0;
@@ -322,9 +325,9 @@ if(isset($_POST["send"])){
                 $querytp=mysqli_query($conn,$tp);
                 $laytp=mysqli_fetch_array($querytp);
 
-                $quanhuyen="SELECT * FROM pvs_quanhuyen WHERE maqh = '".$quanhuyen."'";
-                $queryqh=mysqli_query($conn,$quanhuyen);
-                $layqh=mysqli_fetch_array($queryqh);
+//                $quanhuyen="SELECT * FROM pvs_quanhuyen WHERE maqh = '".$quanhuyen."'";
+//                $queryqh=mysqli_query($conn,$quanhuyen);
+//                $layqh=mysqli_fetch_array($queryqh);
 
                 $getcount = "SELECT * FROM ct_dondat WHERE MaSanPham = '".$masp."' AND MaDonDat = '".$madondat."'";
                 $get_db = mysqli_fetch_array(mysqli_query($conn, $getcount));
@@ -342,6 +345,7 @@ if(isset($_POST["send"])){
                 }
 //
                 $content.="     
+                       
                         <p style='margin: 4px 0;font-size: 14px;color: black'>Tên sản phẩm: <span>".$value["name"]."</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Đơn giá: <span>$price</span></p>
                           <p style='margin: 4px 0;font-size: 14px;color: black'>Số lượng: <span>$number</span></p>
@@ -360,7 +364,7 @@ if(isset($_POST["send"])){
             $content.='<td>';
             $content.='<h4 style="font-size: 16px;font-weight: 500;color: #555">Địa chỉ giao hàng</h4>';
             $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Tên khách hàng: '.$hoten.'</p>';
-            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$noigiao.', '.$layqh["name_quanhuyen"].','.$laytp["name_city"].'</p>';
+            $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Địa chỉ: '.$noigiao.','.$laytp["name_city"].'</p>';
             $content.='<p style="font-size: 16px;color: #777;line-height: 150%">Điện thoại: '.$dienthoai.'</p>';
             $content.='</td>';
 //            $content.='<td>';

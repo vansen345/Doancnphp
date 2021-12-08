@@ -137,20 +137,16 @@ include ('../page/connect.php');
 //                            $query4 = mysqli_query($conn, $sql4);
 //                            $layid4 = mysqli_fetch_array($query4);
 
-                            $sql5 = "SELECT sanpham.*,ct_dondat.*,dondat.*,ct_dondat.SoLuong as 'sl' FROM ct_dondat JOIN sanpham ON ct_dondat.MaSanPham=sanpham.MaSanPham JOIN dondat ON ct_dondat.MaDonDat = dondat.MaDonDat  WHERE TenDangNhap ='".$magiaodich."' ";
+                            $sql5 = "SELECT sanpham.*,ct_dondat.*,dondat.*,ct_dondat.SoLuong as 'sl',dondat.TrangThai as 'tt' FROM ct_dondat JOIN sanpham ON ct_dondat.MaSanPham=sanpham.MaSanPham JOIN dondat ON ct_dondat.MaDonDat = dondat.MaDonDat  WHERE dondat.TrangThai='1' AND TenDangNhap ='".$magiaodich."'";
                             $query5 = mysqli_query($conn, $sql5);
 
-                            $tongtien="SELECT SUM(tongtien) FROM dondat WHERE TenDangNhap = '".$magiaodich."'";
+                            $tongtien="SELECT SUM(tongtien) FROM dondat WHERE TenDangNhap = '".$magiaodich."' AND TrangThai='1'";
                             $truyvan=mysqli_query($conn,$tongtien);
                             $laytt=mysqli_fetch_row($truyvan);
 
-
-
-
-
-
-
-
+//                            $dd="SELECT * FROM dondat WHERE TenDangNhap='".$magiaodich."'";
+//                            $ddd=mysqli_query($conn,$dd);
+//                            $dddd=mysqli_num_rows($ddd)
 
 
 //                            $sqlselect= mysqli_query($conn,"SELECT * FROM dondat,sanpham,ct_dondat WHERE ct_dondat.MaSanPham = sanpham.MaSanPham AND thanhvien.TenDangNhap = dondat.TenDangNhap AND  ct_dondat.MaDonDat = '".$magiaodich."'" );
@@ -197,8 +193,20 @@ include ('../page/connect.php');
                                <th colspan="2" >Tổng chi</th>
                                <th><?php  echo number_format($laytt[0],0,",",".");  ?></th>
                            </tr>
+                           <tr>
+                               <?php
+                               $phanloai=  number_format($laytt[0],0,",",".");
+                               $goc= '5000000';
+                               ?>
+                               <th colspan="2" >Loại</th>
+                               <?php
+                               if($phanloai > $goc) {?>
+                               <th>Khách tiềm năng</th>
+                               <?php } else{ ?>
+                               <th>Khách le</th>
+                               <?php } ?>
 
-
+                           </tr>
                             </tbody>
                         </table>
                     </div>

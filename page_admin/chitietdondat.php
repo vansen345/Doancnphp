@@ -105,7 +105,7 @@ $layquyen= mysqli_fetch_array($queryrole);
                 <!-- END BEGIN STYLE CUSTOMIZER -->
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Editable Tables <small>editable table samples</small>
+                    Chi tiết đơn hàng
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -162,8 +162,10 @@ $layquyen= mysqli_fetch_array($queryrole);
 
                             ?>
                         <form id="duyethang" method="post" action="<?php echo $_SERVER["REQUEST_URI"];?>">
+
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                                 <tbody>
+                                <h3>Thông tin đơn hàng</h3>
                                 <tr>
                                     <td>
                                         <b><i class="icon-file-text"></i> Mã đơn đặt hàng:</b> <?php echo $cotDDH["MaDonDat"];?> <br>
@@ -198,15 +200,17 @@ $layquyen= mysqli_fetch_array($queryrole);
                                         <button style="margin-bottom: 10px" name="capnhattinhtrang" type="submit" class="btn-primary">Cập nhật</button>
                                         <?php } else{ ?>
                                         <button style="margin-bottom: 10px;cursor: no-drop" name="capnhattinhtrang"  type="submit" class="btn-primary" disabled>Cập nhật</button>
+
                                         <?php } ?>
                                         <br>
                                         <?php
-                                        if($layquyen["id_role"]==1){
+                                        if($layquyen["id_role"]==1 && $cotDDH["TrangThai"]==0 ){
                                         ?>
                                         <a onclick="return Del('<?php echo $cotDDH["MaDonDat"];?>')" style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="<?php echo $_SERVER["PHP_SELF"];?>?MaDDXoa=<?php echo $cotDDH["MaDonDat"]?>" id="xoa" class="btn-danger">Xóa</a>
                                         <?php } else{ ?>
-                                            <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="loiphanquyen.php" id="xoa" class="btn-danger">Xóa</a>
-                                        <?php } ?>
+                                            <a  style="margin-left: 70px;padding: 5px;margin-bottom: 5px;cursor: no-drop"  id="xoa" class="btn-danger">Xóa</a>
+<!--                                            <a style="margin-left: 70px;padding: 5px;margin-bottom: 5px" href="loiphanquyen.php" id="xoa" class="btn-danger">Xóa</a>-->
+                                        <?php }  ?>
                                     </td>
                                 </tr>
                                 <tr>

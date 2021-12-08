@@ -362,7 +362,12 @@ if(isset($_SESSION["tendangnhap"]))
         </div>
     </div>
     <?php
-    $sql2="SELECT * FROM sanpham ORDER BY MaSanPham DESC LIMIT 6";
+    $lienquan="SELECT * FROM loaisp";
+    $querylq=mysqli_query($conn,$lienquan);
+    $layloailq=mysqli_fetch_array($querylq)
+    ?>
+    <?php
+    $sql2="SELECT * FROM sanpham WHERE MaLoaiSp = '".$layloailq["MaLoaiSP"]."' ORDER BY MaSanPham DESC LIMIT 6";
     $query2=mysqli_query($conn,$sql2);
     ?>
     <!-- Start Section Content Text Area -->
@@ -378,10 +383,7 @@ if(isset($_SESSION["tendangnhap"]))
                                 <?php
                                 while ($cot1 = mysqli_fetch_array($query2))
                                 {
-
-
                                 ?>
-
                                 <!-- End Product Default Single Item -->
                                 <!-- Start Product Default Single Item -->
                                 <div class="product-default-single-item product-color--golden swiper-slide">

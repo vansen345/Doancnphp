@@ -185,7 +185,7 @@ include ('connect.php');
     <?php
 //    $sql="SELECT a.MaDonDat,b.MaSanPham,SUM(c.SoLuong) FROM ct_dondat INNER JOIN sanpham.* ON ct_dondat.MaSanPham = sanpham.MaSanPham GROUP BY b.MaSanPham ORDER BY a.MaDonDat DESC ";
 //    $truyvanbest=mysqli_query($conn,$sql);
-    $sql="SELECT * FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham GROUP BY ct_dondat.MaSanPham ORDER BY SUM(ct_dondat.SoLuong) DESC LIMIT 4";
+    $sql="SELECT * FROM ct_dondat INNER JOIN sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham JOIN dondat ON ct_dondat.MaDonDat=dondat.MaDonDat WHERE dondat.TrangThai='1' GROUP BY ct_dondat.MaSanPham ORDER BY SUM(ct_dondat.SoLuong) DESC LIMIT 4";
     $query=mysqli_query($conn,$sql);
 
     ?>
@@ -338,13 +338,13 @@ include ('connect.php');
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"><a href="../page/product-details-default.php?Masp=<?php echo $row2["MaSanPham"];?>"><?php echo $row2["TenSanPham"] ?></a></h6>
-                                            <ul class="review-star">
-                                                <li class="sao sao1" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
-                                                <li class="sao sao2" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
-                                                <li class="sao sao3" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
-                                                <li class="sao sao4" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
-                                                <li class="sao sao5" data-sao="<?php echo $sosao?>"><i class="ion-android-star"></i></li>
-                                            </ul>
+<!--                                            <ul class="review-star">-->
+<!--                                                <li class="sao sao1" data-sao="--><?php //echo $sosao?><!--"><i class="ion-android-star"></i></li>-->
+<!--                                                <li class="sao sao2" data-sao="--><?php //echo $sosao?><!--"><i class="ion-android-star"></i></li>-->
+<!--                                                <li class="sao sao3" data-sao="--><?php //echo $sosao?><!--"><i class="ion-android-star"></i></li>-->
+<!--                                                <li class="sao sao4" data-sao="--><?php //echo $sosao?><!--"><i class="ion-android-star"></i></li>-->
+<!--                                                <li class="sao sao5" data-sao="--><?php //echo $sosao?><!--"><i class="ion-android-star"></i></li>-->
+<!--                                            </ul>-->
                                         </div>
                                         <div class="content-right">
                                             <span class="price"><?=number_format($row2["DonGia"],0,",",".")?> VND</span>

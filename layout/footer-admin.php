@@ -48,6 +48,10 @@
 <script src="../js/scripts/app.js" type="text/javascript"></script>
 <script src="../js/scripts/index.js" type="text/javascript"></script>
 <script src="../js/scripts/tasks.js" type="text/javascript"></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
@@ -63,6 +67,132 @@
         Tasks.initDashboardWidget();
     });
 </script>
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+    var array1 = document.getElementById('total1').value;
+    var array2 = document.getElementById('total2').value;
+    var array3 = document.getElementById('total3').value;
+    var array4 = document.getElementById('total4').value;
+    var array5 = document.getElementById('total5').value;
+    var array6 = document.getElementById('total6').value;
+    var array7 = document.getElementById('total7').value;
+    var array8 = document.getElementById('total8').value;
+    var array9 = document.getElementById('total9').value;
+    var array10 = document.getElementById('total10').value;
+    var array11 = document.getElementById('total11').value;
+    var array12 = document.getElementById('total12').value;
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+        type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+            labels:['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
+            datasets:[{
+                label:'Population',
+                data:[
+                    array1,
+                    array2,
+                    array3,
+                    array4,
+                    array5,
+                    array6,
+                    array7,
+                    array8,
+                    array9,
+                    array10,
+                    array11,
+                    array12,
+                ],
+                //backgroundColor:'green',
+                backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
+            }]
+        },
+        options:{
+            title:{
+                display:true,
+                text:'Thống Kê Theo Tháng',
+                fontSize:25
+            },
+            legend:{
+                display:true,
+                position:'right',
+                labels:{
+                    fontColor:'#000'
+                }
+            },
+            layout:{
+                padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                }
+            },
+            tooltips:{
+                enabled:true
+            }
+        }
+    });
+</script>
+<!--<script>-->
+<!--$(function () {-->
+<!--        // var array2 = document.getElementById('total2').value;-->
+<!--        // var array3 = document.getElementById('total3').value;-->
+<!--        // var array4 = document.getElementById('total4').value;-->
+<!--        // var array5 = document.getElementById('total5').value;-->
+<!--        // var array6 = document.getElementById('total6').value;-->
+<!--        // var array7 = document.getElementById('total7').value;-->
+<!--        // var array8 = document.getElementById('total8').value;-->
+<!--        // var array9 = document.getElementById('total9').value;-->
+<!--        // var array10 = document.getElementById('total10').value;-->
+<!--        // var array11 = document.getElementById('total11').value;-->
+<!--        // var array12 = document.getElementById('total12').value;-->
+<!--      new Morris.Bar({-->
+<!--            element: 'myfirstchart',-->
+<!--            data: [-->
+<!--                { month: 'Tháng 1', value: 0 },-->
+<!--                { month: 'Tháng 2', value: 20 },-->
+<!--                { month: 'Tháng 3', value: 5 },-->
+<!--                { month: 'Tháng 4', value: 5 },-->
+<!--                { month: 'Tháng 5', value: 20 },-->
+<!--                { month: 'Tháng 6', value: 20 },-->
+<!--                { month: 'Tháng 7', value: 20 },-->
+<!--                { month: 'Tháng 8', value: 20 },-->
+<!--                { month: 'Tháng 9', value: 20 },-->
+<!--                { month: 'Tháng 10', value: 20 },-->
+<!--                { month: 'Tháng 11', value: 20 },-->
+<!--                { month: 'Tháng 12', value: 20 },-->
+<!--            ],-->
+<!--            xkey: 'month',-->
+<!---->
+<!--            ykeys: ['value'],-->
+<!---->
+<!--            labels: ['Đơn hàng','Doanh thu','Số lượng bán ra']-->
+<!--        });-->
+<!--})-->
+<!---->
+<!--</script>-->
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

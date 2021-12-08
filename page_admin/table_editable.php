@@ -133,7 +133,7 @@ $layquyen= mysqli_fetch_array($queryrole);
 						<!-- END BEGIN STYLE CUSTOMIZER -->  
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 						<h3 class="page-title">
-							Editable Tables <small>editable table samples</small>
+							Sản Phẩm <small>Thông tin sản phẩm</small>
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -157,7 +157,7 @@ $layquyen= mysqli_fetch_array($queryrole);
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
 						<div class="portlet box blue">
 							<div class="portlet-title">
-								<div class="caption"><i class="icon-edit"></i>Editable Table</div>
+								<div class="caption"><i class="icon-info"></i>Thông tin sản phẩm</div>
 								<div class="tools">
 									<a href="javascript:;" class="collapse"></a>
 									<a href="#portlet-config" data-toggle="modal" class="config"></a>

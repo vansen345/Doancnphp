@@ -4,7 +4,7 @@ if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
 <?php
-$search = isset($_GET['search_city']) ? $_GET['search_city'] : "";
+$search = isset($_GET['search_kh']) ? $_GET['search_kh'] : "";
 if($search){
     $where ="WHERE Hoten LIKE '%".$search."%' ";
 }
@@ -21,7 +21,7 @@ if($search)
 else{
     $sql="SELECT * FROM thanhvien LIMIT ".$item_per_page." OFFSET ".$offset;
     $querydm=mysqli_query($conn,$sql);
-    $total = mysqli_query($conn, "SELECT * FROM sanpham ");
+    $total = mysqli_query($conn, "SELECT * FROM thanhvien ");
 }
 $total = $total->num_rows;
 $totalpage = ceil($total / $item_per_page);
@@ -100,7 +100,7 @@ $rowdd=mysqli_fetch_array($querydd);
 						<!-- END BEGIN STYLE CUSTOMIZER -->  
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 						<h3 class="page-title">
-							Managed Tables <small>managed table samples</small>
+							Khách Hàng <small>Thông tin khách hàng</small>
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -109,10 +109,10 @@ $rowdd=mysqli_fetch_array($querydd);
 								<i class="icon-angle-right"></i>
 							</li>
 							<li>
-								<a href="#">Data Tables</a>
+								<a href="#">Khách Hàng</a>
 								<i class="icon-angle-right"></i>
 							</li>
-							<li><a href="#">Managed Tables</a></li>
+
 						</ul>
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
@@ -124,7 +124,7 @@ $rowdd=mysqli_fetch_array($querydd);
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
 						<div class="portlet box light-grey">
 							<div class="portlet-title">
-								<div class="caption"><i class="icon-globe"></i>Managed Table</div>
+								<div class="caption"><i class="icon-user"></i>Thông tin khách hàng</div>
 								<div class="tools">
 									<a href="javascript:;" class="collapse"></a>
 									<a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -149,7 +149,7 @@ $rowdd=mysqli_fetch_array($querydd);
                                 <div class="input-group">
                                     <div class="form-outline">
                                         <form action="" method="get">
-                                            <input type="text" value="<?=isset($_GET['search_city']) ? $_GET['search_city'] : ""?>"  name="search_city" id="form1" class="form-control" />
+                                            <input type="text" value="<?=isset($_GET['search_kh']) ? $_GET['search_kh'] : ""?>"  name="search_kh" id="form1" class="form-control" />
                                             <button style="margin-bottom: 10px" type="submit" class="btn btn-primary">
                                                 <i class="icon-search"></i>
                                             </button>
@@ -162,12 +162,8 @@ $rowdd=mysqli_fetch_array($querydd);
 									<thead>
 										<tr>
 
-											<th class="hidden-480">Họ tên</th>
-											<th class="hidden-480">Tên đăng nhập</th>
-                                            <th class="hidden-480">Điện thoại</th>
-                                            <th class="hidden-480">Địa chỉ</th>
-                                            <th class="hidden-480">Email</th>
-                                            <th class="hidden-480">Số lượng đơn hàng</th>
+											<th style="text-align: center" class="">Họ tên</th>
+                                            <th class=""></th>
 
 <!--											<th>Chỉnh sửa</th>-->
 										</tr>
@@ -176,28 +172,20 @@ $rowdd=mysqli_fetch_array($querydd);
                                     <?php
                                     while ($cot=mysqli_fetch_array($querydm))
                                     {
-                                        $getcount = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$cot["TenDangNhap"]."'";
+                                        $getcount = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$cot["TenDangNhap"]."' AND TrangThai='1'";
                                         $db = mysqli_query($conn,$getcount);
                                         $count = mysqli_num_rows($db);
+
                                     ?>
 										<tr class="odd gradeX">
-
-											<td><?php echo $cot["Hoten"]?></td>
-											<td class="hidden-480"><?php echo $cot["TenDangNhap"]?></td>
-
-											<td class="center hidden-480"><?php echo $cot["Dienthoai"]?></td>
-                                            <td class="center hidden-480"><?php echo $cot["Diachi"]?></td>
-                                            <td class="center hidden-480"><?php echo $cot["Email"]?></td>
-                                            <td class="center hidden-480"><?php echo $count ?></td>
-<!--                                            <td class="center hidden-480">--><?php //echo $cot["NgayDat"]?><!--</td>-->
-                                            <?php
-                                            if($count > 0){
+											<td style="text-align: center"><?php echo $cot["Hoten"]?></td>
+                                          <?php
+                                                if($count > 0){
                                             ?>
-											<td ><a href="xemlichsu.php?khachhang=<?php echo $cot["TenDangNhap"]?>"><span class="label label-success">Xem lịch sử</span></a></td>
+											<td style="text-align: center;"><a href="xemtong.php?khachhang=<?php echo $cot["TenDangNhap"]?>"><span class="label label-success">Xem lịch sử</span></a></td>
                                             <?php } else{?>
-                                                <td>
-
-                                                    <a ><span class="label bg-red">Khách chưa đơn</span></a>
+                                                <td style="text-align: center;">
+                                                    <a><span  class="label bg-red">Khách chưa đơn</span></a>
                                                 </td>
                                             <?php }?>
 										</tr>
@@ -206,7 +194,7 @@ $rowdd=mysqli_fetch_array($querydd);
 									</tbody>
 								</table>
                                 <?php
-                                include ('phantrangadmin.php')
+                                include ('phantrangkh.php')
                                 ?>
 
                             </div>

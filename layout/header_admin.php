@@ -36,6 +36,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <!-- BEGIN PAGE LEVEL STYLES -->
     <link href="../css/css/pages/tasks.css" rel="stylesheet" type="text/css" media="screen"/>
     <link rel="stylesheet" href="../icon/fontawesome-free-5.15.3-web/css/all.min.css">
+<!--    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">-->
     <!-- END PAGE LEVEL STYLES -->
     <link rel="shortcut icon" href="../page_admin/favicon.ico" />
     <?php
@@ -530,10 +531,10 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                         <a href="../page_admin/table_editable.php">
                             Danh sách sản phẩm</a>
                     </li>
-                    <li >
-                        <a href="#">
-                            Danh mục sản phẩm</a>
-                    </li>
+<!--                    <li >-->
+<!--                        <a href="#">-->
+<!--                            Danh mục sản phẩm</a>-->
+<!--                    </li>-->
                 </ul>
             </li>
             <li >
@@ -573,6 +574,19 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                     <li >
                         <a href="../page_admin/blog.php">
                             Blog</a>
+                    </li>
+                </ul>
+            </li>
+            <li >
+                <a href="javascript:;">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">Thống kê</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li >
+                        <a href="../page_admin/loinhuan.php ">
+                            Thống kê lợi nhuận</a>
                     </li>
                 </ul>
             </li>

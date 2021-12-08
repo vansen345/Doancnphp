@@ -156,7 +156,7 @@ if(!isset($_SESSION["admin"]))
 									<i class="icon-money"></i>
 								</div>
                                 <?php
-                                $doanhthu="SELECT SUM(tongtien) FROM dondat";
+                                $doanhthu="SELECT SUM(tongtien) FROM dondat WHERE TrangThai='1'";
                                 $truyvan=mysqli_query($conn,$doanhthu);
                                 $laydoanhthu=mysqli_fetch_row($truyvan);
                                 ?>
@@ -174,43 +174,64 @@ if(!isset($_SESSION["admin"]))
 					<!-- END DASHBOARD STATS -->
 					<div class="clearfix"></div>
 					<div class="row-fluid">
-
+<!--                        <p>Thống kê đơn hàng theo : <span id="text-date"></span></p>-->
+<!--                        <div id="myfirstchart" style="height: 250px;"></div>-->
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
 					</div>
                     <?php
                     $ddh="SELECT * FROM dondat WHERE TrangThai = '0'";
                     $ct=mysqli_query($conn,$ddh);
                     $tinh=mysqli_num_rows($ct);
                     ?>
-                    <table class="table table-striped table-bordered table-hover" id="sample_1">
-                        <thead>
-                        </thead>
-                        <tbody>
-                        <!--                           <td>--><?//=number_format($laytt[0],0,",",".")?><!-- VND</td>-->
-                        <tr>
-                            <th>Tổng số đơn hàng chưa giao</th>
-                            <th><?php echo $tinh ?></th>
-                        </tr>
-                        <?php
-                        $dg="SELECT * FROM dondat WHERE TrangThai = '1'";
-                        $ctdg=mysqli_query($conn,$dg);
-                        $tinhdg=mysqli_num_rows($ctdg);
-                        ?>
-                        <tr>
-                            <th>Tổng số đơn hàng đã giao</th>
-                            <th><?php echo $tinhdg ?></th>
-                        </tr>
-                        </tbody>
-                    </table>
-
+<!--
 				</div>
+
 			</div>
-			<!-- END PAGE CONTAINER-->    
+			<-- END PAGE CONTAINER-->
 		</div>
+
 
 		<!-- END PAGE -->
 	</div>
+            <?php
+            $i = 1;
+            for ($i;$i<13;$i++) {
+                $get_total = "SELECT SUM(tongtien) as total FROM dondat WHERE month(NgayDat) = '$i' and TrangThai = '1'";
+                $query = mysqli_query($conn, $get_total);
+                $mysql = mysqli_fetch_array($query);
+                ?>
+                <input type="hidden" id="total<?php echo $i?>" value="<?php echo $mysql["total"]?>">
+            <?php }?>
+
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
 <?php
 include ('../layout/footer-admin.php');
 ?>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        thongke();-->
+<!--        new Morris.Line({-->
+<!--            element: 'myfirstchart',-->
+<!--            xkey: 'date',-->
+<!--            ykeys: ['date','order','sale','quanity'],-->
+<!--            labels: ['Đơn hàng','Doanh thu','Số lượng bán ra']-->
+<!--        });-->
+<!--        function thongke() {-->
+<!--            var text = '365 ngày qua';-->
+<!--            $("#text-date").text(text);-->
+<!--            $.ajax({-->
+<!--                url:"page_admin/thongke.php",-->
+<!--                method:"POST",-->
+<!--                dataType:"JSON",-->
+<!--                success:function (data) {-->
+<!--                    char.setData(data);-->
+<!--                    $("#text-date").text(text);-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!---->
+<!--</script>-->

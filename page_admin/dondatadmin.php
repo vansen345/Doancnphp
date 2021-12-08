@@ -71,7 +71,7 @@ $truyvan=mysqli_query($conn,"SELECT dondat.*,thanhvien.Hoten as 'hotentv',nhanvi
                     <!-- END BEGIN STYLE CUSTOMIZER -->
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                     <h3 class="page-title">
-                        Editable Tables <small>editable table samples</small>
+                       Đơn Hàng <small>Thông tin đơn hàng</small>
                     </h3>
                     <ul class="breadcrumb">
                         <li>
@@ -94,7 +94,7 @@ $truyvan=mysqli_query($conn,"SELECT dondat.*,thanhvien.Hoten as 'hotentv',nhanvi
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet box blue">
                         <div class="portlet-title">
-                            <div class="caption"><i class="icon-edit"></i>Editable Table</div>
+                            <div class="caption"><i class="icon-edit"></i>Thông tin đơn hàng</div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse"></a>
                                 <a href="#portlet-config" data-toggle="modal" class="config"></a>

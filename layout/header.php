@@ -171,6 +171,21 @@
                                     <i class="icon-magnifier"></i>
                                 </a>
                             </li>
+<!--                            <li>-->
+<!--                                <a href="#" data-bs-toggle="modal" data-bs-target="#searchmadon">-->
+<!--                                    <img class="img-fluid" src="../images/product/hinhanh/detail.png" width="25px" style="background-color: white;margin-bottom: 5px" alt="">-->
+<!--                                </a>-->
+<!--                            </li>-->
+
+
+                            <?php if(isset($_SESSION["tendangnhap"])){ ?>
+                            <li>
+                                <a href="../page/xemdonhang.php" >
+                                    <img class="img-fluid" src="../images/product/hinhanh/detail.png" width="25px" style="background-color: white;margin-bottom: 5px" alt="">
+                                </a>
+                            </li>
+                            <?php } ?>
+
 
 <!--                            <li>-->
 <!--                                <a href="" class="">-->
@@ -186,7 +201,7 @@
                             <?php } else { ?>
 
                                         <li >
-                                          <a href="../page/thongtintk.php" style="margin-right: 18px" >  Hi-<?php echo $_SESSION["tendangnhap"]?></a>
+                                          <a href="../page/thongtintk.php"  >  Hi-<?php echo $_SESSION["tendangnhap"]?></a>
 
                                             <a href="<?php echo $_SERVER["PHP_SELF"];?>?dx=0">
 
@@ -198,11 +213,13 @@
 
 
                             <?php }?>
-                            <li>
-                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
-                                    <i class="icon-menu"></i>
-                                </a>
-                            </li>
+
+
+<!--                            <li>-->
+<!--                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">-->
+<!--                                    <i class="icon-menu"></i>-->
+<!--                                </a>-->
+<!--                            </li>-->
 
                         </ul>
                         <!-- End Header Action Link -->
@@ -591,4 +608,6 @@
         <button type="submit" class="btn btn-lg btn-pink">Search</button>
     </form>
 </div>
+
+
 <!-- End Offcanvas Search Bar Secti../
