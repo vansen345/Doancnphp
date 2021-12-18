@@ -124,7 +124,7 @@ $querysao=mysqli_query($conn,$tinhsao);
                         <div class="gallery-thumb-arrow swiper-button-next"></div>
                         <div class="gallery-thumb-arrow swiper-button-prev"></div>
                     </div>
-                    <!-- End Thumbnail Image -->
+                    <!-- End Thumbnail Image aaaa -->
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6">
