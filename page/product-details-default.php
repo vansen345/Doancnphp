@@ -38,6 +38,22 @@ if(isset($_SESSION["tendangnhap"]))
 ?>
 <!-- Offcanvas Overlay -->
 <div class="offcanvas-overlay"></div>
+<?php
+$tinhsao="SELECT * FROM danhgia WHERE MaSanPham='".$cot["MaSanPham"]."'";
+$querysao=mysqli_query($conn,$tinhsao);
+
+
+
+    $tinh="SELECT MaSanPham FROM danhgia WHERE MaSanPham= '".$cot["MaSanPham"]."' ";
+    $querytinh=mysqli_query($conn,$tinh);
+  $laytinh=mysqli_num_rows($querytinh);
+//
+    $sum= $conn->query("SELECT SUM(NoiDung) AS tongsao FROM danhgia WHERE MaSanPham= '".$cot["MaSanPham"]."'");
+    $rDt=$sum->fetch_array();
+    $total=$rDt['tongsao'];
+//
+//    $avg=$total / $laytinh;
+//?>
 
 <!-- ...:::: Start Breadcrumb Section:::... -->
 <div class="breadcrumb-section breadcrumb-bg-color--golden">
@@ -116,16 +132,35 @@ if(isset($_SESSION["tendangnhap"]))
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
                         <h4 class="title"><?php echo $cot["TenSanPham"]?></h4>
+                        <?php if(mysqli_num_rows($querysao) >0){
+                            $avg=$total / $laytinh;
+                        ?>
                         <div class="d-flex align-items-center">
                             <ul class="review-star">
+                                <a style="margin-left: 10px;color: #ff365d " href="#" class="customer-review ml-2"><?php echo $avg ?></a>
                                 <li class="sao sao1" data-sao="1" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 1)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao2" data-sao="2" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 2)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao3" data-sao="3" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 3)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao4" data-sao="4" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 4)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
-                            </ul>
-                            <a href="#" class="customer-review ml-2">(<?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá)</a>
+                            </ul> ||
+                            <a href="#" class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>
                         </div>
+                        <?php } else{ ?>
+                            <div class="d-flex align-items-center">
+
+
+                                <ul class="review-star">
+                                    <a style="margin-left: 10px" href="#" class="customer-review ml-2">0</a>
+                                    <li class="sao sao1" data-sao="1" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 1)" ><i class="ion-android-star"></i></li>
+                                    <li  class="sao sao2" data-sao="2" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 2)" ><i class="ion-android-star"></i></li>
+                                    <li  class="sao sao3" data-sao="3" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 3)" ><i class="ion-android-star"></i></li>
+                                    <li  class="sao sao4" data-sao="4" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 4)" ><i class="ion-android-star"></i></li>
+                                    <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
+                                </ul> ||
+                                <a href="#" class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>
+                            </div>
+                        <?php } ?>
                         <div class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</div>
                         <p><?php echo $cot["ThongTin"]?></p>
                     </div> <!-- End  Product Details Text Area-->
@@ -135,20 +170,18 @@ if(isset($_SESSION["tendangnhap"]))
                         ?>
                     <?php } else{ ?>
                     <div class="product-details-variable">
-                        <h4 class="title">Available Options</h4>
+                        <h4 class="title">Sản phẩm có sẵn</h4>
                         <!-- Product Variable Single Item -->
                         <div class="variable-single-item">
                             <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> Còn Hàng</div>
                         </div>
                         <!-- Product Variable Single Item -->
-
-
                         <div class="d-flex align-items-center ">
 
                                 <div class="variable-single-item ">
-                                <span>Quantity</span>
+                                <span>Số lượng</span>
                                 <div class="product-variable-quantity">
-                                    <input id="quanlity" min="1" max="100" value="1" type="number">
+                                    <input id="quanlity" min="1" max="<?php echo $cot["SoLuong"]?>" value="1" type="number">
                                 </div>
                             </div>
                             <div class="product-add-to-cart-btn">
@@ -157,19 +190,22 @@ if(isset($_SESSION["tendangnhap"]))
                         </div>
                         <!-- Start  Product Details Meta Area-->
                         <div class="product-details-meta mb-20">
-                            <a href="wishlist.php" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
-                            <a href="compare.php" class="icon-space-right"><i class="icon-refresh"></i>Compare</a>
+
                         </div> <!-- End  Product Details Meta Area-->
                     </div> <!-- End Product Variable Area -->
-                    <?php }?>
+                    <?php } ?>
+                    <?php
+                    $thuonghieu="SELECT * FROM thuonghieu WHERE MaThuongHieu = '".$cot["MaThuongHieu"]."'";
+                    $truyvanth=mysqli_query($conn,$thuonghieu);
+                    $layth = mysqli_fetch_array($truyvanth);
+                    ?>
 
                     <!-- Start  Product Details Catagories Area-->
                     <div class="product-details-catagory mb-2">
-                        <span class="title">CATEGORIES:</span>
+                        <span class="title">THƯƠNG HIỆU:</span>
                         <ul>
-                            <li><a href="#">BAR STOOL</a></li>
-                            <li><a href="#">KITCHEN UTENSILS</a></li>
-                            <li><a href="#">TENNIS</a></li>
+                            <li><a href="#"><?php echo $layth["TenThuongHieu"]?></a></li>
+
                         </ul>
                     </div> <!-- End  Product Details Catagories Area-->
                     <!-- Start  Product Details Social Area-->
@@ -199,13 +235,13 @@ if(isset($_SESSION["tendangnhap"]))
                     <!-- Start Product Details Tab Button -->
                     <ul class="nav tablist product-details-content-tab-btn d-flex justify-content-center">
                         <li><a class="nav-link active" data-bs-toggle="tab" href="#description">
-                                Description
+                             MÔ TẢ
                             </a></li>
-                        <li><a class="nav-link" data-bs-toggle="tab" href="#specification">
-                                Specification
-                            </a></li>
+<!--                        <li><a class="nav-link" data-bs-toggle="tab" href="#specification">-->
+<!--                                Specification-->
+<!--                            </a></li>-->
                         <li><a class="nav-link" data-bs-toggle="tab" href="#review">
-                                Reviews (<?php echo $row ?>)
+                                BÌNH LUẬN (<?php echo $row ?>)
                             </a></li>
                     </ul> <!-- End Product Details Tab Button -->
 
@@ -215,8 +251,8 @@ if(isset($_SESSION["tendangnhap"]))
                             <!-- Start Product Details Tab Content Singel -->
                             <div class="tab-pane active show" id="description">
                                 <div class="single-tab-content-item">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. </p>
-                                    <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget</p>
+                                    <p><?php echo $cot["ThongTin"]?>. </p>
+
                                 </div>
                             </div> <!-- End Product Details Tab Content Singel -->
                             <!-- Start Product Details Tab Content Singel -->
@@ -353,8 +389,8 @@ if(isset($_SESSION["tendangnhap"]))
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3  class="section-title">RELATED PRODUCTS</h3>
-                            <p>Browse the collection of our related products.</p>
+                            <h3  class="section-title">SẢN PHẨM LIÊN QUAN</h3>
+                            <p>Duyệt qua bộ sưu tập các sản phẩm liên quan của chúng tôi.</p>
                         </div>
                     </div>
                 </div>
@@ -362,7 +398,7 @@ if(isset($_SESSION["tendangnhap"]))
         </div>
     </div>
     <?php
-    $lienquan="SELECT * FROM loaisp";
+    $lienquan="SELECT * FROM loaisp WHERE MaLoaiSP = '".$cot["MaLoaiSp"]."' ";
     $querylq=mysqli_query($conn,$lienquan);
     $layloailq=mysqli_fetch_array($querylq)
     ?>

@@ -585,8 +585,17 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                 </a>
                 <ul class="sub-menu">
                     <li >
+                        <a href="../page_admin/loinhuanngay.php ">
+                            Doanh thu theo ngày</a>
+                    </li>
+                    <li >
                         <a href="../page_admin/loinhuan.php ">
-                            Thống kê lợi nhuận</a>
+                             Lợi nhuận sản phẩm trong tháng</a>
+                    </li>
+
+                    <li >
+                        <a href="../page_admin/loinhuan7ngay.php">
+                           Lợi nhuận sản phẩm trong 7 ngày</a>
                     </li>
                 </ul>
             </li>

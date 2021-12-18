@@ -37,6 +37,7 @@ if(isset($_GET["MaSanPham"]))
     $xoa="DELETE FROM sanpham WHERE MaSanPham='".$_GET["MaSanPham"]."'";
     if(mysqli_query($conn,$xoa))
     {
+//        mysqli_query($conn, "DELETE FROM sanpham WHERE MaSanPham='".$_GET["MaSanPham"]."'");
         echo "<script>alert('Xóa thành công')</script>";
 
     }

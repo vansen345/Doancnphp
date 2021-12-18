@@ -5,7 +5,7 @@ if(!isset($_SESSION["admin"]))
 ?>
 <?php
 include ('../page/connect.php');
-$truyvan=mysqli_query($conn,"SELECT dondat.*,thanhvien.Hoten as 'hotentv',nhanvien.Hoten as 'hotennv' FROM dondat JOIN thanhvien ON dondat.TenDangNhap=thanhvien.TenDangNhap JOIN nhanvien ON dondat.MaNhanVien=nhanvien.MaNhanVien");
+$truyvan=mysqli_query($conn,"SELECT dondat.*,thanhvien.Hoten as 'hotentv',nhanvien.Hoten as 'hotennv' FROM dondat JOIN thanhvien ON dondat.TenDangNhap=thanhvien.TenDangNhap JOIN nhanvien ON dondat.MaNhanVien=nhanvien.MaNhanVien  ORDER BY MaDonDat DESC");
 ?>
     <div class="page-content">
         <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->

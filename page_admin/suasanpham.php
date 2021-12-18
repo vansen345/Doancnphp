@@ -37,6 +37,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $trangthai=$_POST["trangthai"];
     $loaisp=$_POST["loaisp"];
     $brand=$_POST["brand"];
+    $giavon = $_POST["giavon"];
 
 
     if($_FILES["anh"]["name"]!="")
@@ -77,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 ?>
 <div class="page-content">
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-    <div id="portlet-config" class="modal hide">
+    <div id="portlet-config" class="modal hide" >
         <div class="modal-header">
             <button data-dismiss="modal" class="close" type="button"></button>
             <h3>portlet Settings</h3>
@@ -86,8 +87,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             <p>Here will be a configuration form</p>
         </div>
     </div>
-    <h3 class="page-title">
-        Editable Tables <small>editable table samples</small>
+    <h3 class="page-title" style="margin-top: 10px">
+        Sửa Thông Tin Sản Phẩm <small>Sửa Thông Tin Sản Phẩm</small>
     </h3>
     <ul class="breadcrumb">
         <li>
@@ -99,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             <a href="table_editable.php">Sản phẩm</a>
             <i class="icon-angle-right"></i>
         </li>
-        <li><a href="#">Sửa sản phẩm</a></li>
+        <li><a href="#">Sửa Thông Tin Sản Phẩm</a></li>
     </ul>
 
     <div class="col-lg-12">
@@ -147,7 +148,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     </tr>
                     <tr>
                         <th>Đơn giá</th>
-                        <td><input required id="dongia" name="dongia" class="form-control" style="width: 500px"  value="<?=number_format($cot["DonGia"],0,",",".")?>" ></td>
+                        <td><input required id="dongia" name="dongia" class="form-control" style="width: 500px"  value="<?=$cot["DonGia"]?>" ></td>
+
+                    </tr>
+                    <tr>
+                        <th>Giá vốn</th>
+                        <td><input required id="giavon" name="giavon" class="form-control" style="width: 500px"  value="<?=$cot["GiaVon"]?>" disabled ></td>
 
                     </tr>
                     <tr>

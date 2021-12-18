@@ -137,26 +137,48 @@ if(!isset($_SESSION["admin"]))
 							</div>
 						</div>
 						<div class="span3 responsive" data-tablet="span6  fix-offset" data-desktop="span3">
-							<div class="dashboard-stat purple">
+							<div  class="dashboard-stat purple">
 								<div class="visual">
-									<i class="icon-globe"></i>
+									<i class="icon-calendar"></i>
 								</div>
+                                <?php
+                                $sum = "SELECT SUM(tongtiengoc) FROM dondat WHERE NgayDat = DATE(NOW()) AND TrangThai = '1'";
+                                $query_sum = mysqli_query($conn,$sum);
+                                $get_sum = mysqli_fetch_row($query_sum);
+                                ?>
 								<div class="details">
-									<div class="number"></div>
-									<div class="desc">Brand Popularity</div>
+                                    <div class="desc"> Tổng doanh thu trong ngày</div>
+									<div class="number"><?=number_format($get_sum[0],0,",",".")?> VND</div>
 								</div>
-								<a class="more" href="#">
-								View more <i class="m-icon-swapright m-icon-white"></i>
-								</a>                 
+
 							</div>
 						</div>
+<!--                        <div class="span3 responsive" data-tablet="span6  fix-offset" data-desktop="span3">-->
+<!--                            <div  class="dashboard-stat purple">-->
+<!--                                <div class="visual">-->
+<!--                                    <i class="icon-calendar"></i>-->
+<!--                                </div>-->
+<!--                                --><?php
+//                                $sum2 = "SELECT SUM(tongtiengoc) FROM dondat WHERE NgayDat = MONTH() AND TrangThai = '1'";
+//                                $query_sum2 = mysqli_query($conn,$sum2);
+//                                $get_sum2 = mysqli_fetch_row($query_sum2);
+//                                ?>
+<!--                                <div class="details">-->
+<!--                                    <div class="desc"> Tổng doanh thu trong ngày</div>-->
+<!--                                    <div class="number">--><?//=number_format($get_sum2[0],0,",",".")?><!-- VND</div>-->
+<!--                                </div>-->
+<!---->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
 						<div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 							<div class="dashboard-stat yellow">
 								<div class="visual">
 									<i class="icon-money"></i>
 								</div>
                                 <?php
-                                $doanhthu="SELECT SUM(tongtien) FROM dondat WHERE TrangThai='1'";
+                                $doanhthu="SELECT SUM(tongtiengoc) FROM dondat WHERE TrangThai='1'";
                                 $truyvan=mysqli_query($conn,$doanhthu);
                                 $laydoanhthu=mysqli_fetch_row($truyvan);
                                 ?>
@@ -165,9 +187,7 @@ if(!isset($_SESSION["admin"]))
 									<div class="number"><?=number_format($laydoanhthu[0],0,",",".")?> VND</div>
 
 								</div>
-								<a class="more" href="#">
-								View more <i class="m-icon-swapright m-icon-white"></i>
-								</a>                 
+
 							</div>
 						</div>
 					</div>
@@ -198,7 +218,7 @@ if(!isset($_SESSION["admin"]))
             <?php
             $i = 1;
             for ($i;$i<13;$i++) {
-                $get_total = "SELECT SUM(tongtien) as total FROM dondat WHERE month(NgayDat) = '$i' and TrangThai = '1'";
+                $get_total = "SELECT SUM(tongtiengoc) as total FROM dondat WHERE month(NgayDat) = '$i' and TrangThai = '1'";
                 $query = mysqli_query($conn, $get_total);
                 $mysql = mysqli_fetch_array($query);
                 ?>

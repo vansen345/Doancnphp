@@ -163,11 +163,15 @@ $rowdd=mysqli_fetch_array($querydd);
 										<tr>
 
 											<th style="text-align: center" class="">Họ tên</th>
+                                            <th style="text-align: center" class="">Tiền khách chi</th>
                                             <th class=""></th>
 
 <!--											<th>Chỉnh sửa</th>-->
 										</tr>
 									</thead>
+                                    <?php
+
+                                    ?>
 									<tbody>
                                     <?php
                                     while ($cot=mysqli_fetch_array($querydm))
@@ -176,9 +180,14 @@ $rowdd=mysqli_fetch_array($querydd);
                                         $db = mysqli_query($conn,$getcount);
                                         $count = mysqli_num_rows($db);
 
+                                        $tongchi="SELECT SUM(tongtiengoc) FROM dondat WHERE TenDangNhap = '".$cot["TenDangNhap"]."' AND TrangThai='1'";
+                                        $truyvantt=mysqli_query($conn,$tongchi);
+                                        $ttt=mysqli_fetch_row($truyvantt);
+
                                     ?>
 										<tr class="odd gradeX">
 											<td style="text-align: center"><?php echo $cot["Hoten"]?></td>
+                                            <td style="text-align: center"><?php echo number_format($ttt[0],0,",","."); ?></td>
                                           <?php
                                                 if($count > 0){
                                             ?>

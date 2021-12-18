@@ -23,6 +23,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $trangthai=$_POST["trangthai"];
     $loaisp=$_POST["loaisp"];
     $brand=$_POST["brand"];
+    $giavon=$_POST["giavon"];
 
     if($anh["type"]!="image/jpeg" && $anh["type"]!="image/png")
     {
@@ -36,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     move_uploaded_file($anh3["tmp_name"],"../images/product/hinhanh/".$anh3["name"]);
     move_uploaded_file($anh4["tmp_name"],"../images/product/hinhanh/".$anh4["name"]);
 
-    $them="INSERT INTO sanpham(TenSanPham,SoLuong,Anh,Anh2,Anh3,DonGia,ThongTin,Anh4,TrangThai,MaLoaiSp,MaThuongHieu) VALUES ('".$tensanpham."','".$soluong."','".$anh["name"]."','".$anh2["name"]."','".$anh3["name"]."','".$dongia."','".$thongtin."','".$anh4["name"]."','".$trangthai."','".$loaisp."','".$brand."')";
+    $them="INSERT INTO sanpham(TenSanPham,SoLuong,Anh,Anh2,Anh3,DonGia,ThongTin,Anh4,TrangThai,MaLoaiSp,MaThuongHieu,GiaVon) VALUES ('".$tensanpham."','".$soluong."','".$anh["name"]."','".$anh2["name"]."','".$anh3["name"]."','".$dongia."','".$thongtin."','".$anh4["name"]."','".$trangthai."','".$loaisp."','".$brand."','".$giavon."')";
     if(mysqli_query($conn,$them))
     {
         echo "<script>alert('Thêm thành công')</script>";
@@ -59,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         </div>
     </div>
     <h3 class="page-title">
-        Editable Tables <small>editable table samples</small>
+       Thêm mới sản phẩm
     </h3>
     <ul class="breadcrumb">
         <li>
@@ -111,6 +112,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
                     <tr>
                         <th>Đơn giá</th>
                         <td><input  id="dongia" name="dongia" class="form-control" style="width: 500px"></td>
+
+                    </tr>
+                    <tr>
+                        <th>Giá vốn</th>
+                        <td><input  id="giavon" name="giavon" class="form-control" style="width: 500px"></td>
 
                     </tr>
                     <tr>

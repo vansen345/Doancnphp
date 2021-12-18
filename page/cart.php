@@ -13,7 +13,7 @@ include ('../layout/header.php')
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Cart</h3>
+                    <h3 class="breadcrumb-title">Giỏ Hàng</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
@@ -49,12 +49,12 @@ include ('../layout/header.php')
                                 <!-- Start Cart Table Head -->
                                 <thead>
                                 <tr>
-                                    <th class="product_remove">Delete</th>
-                                    <th class="product_thumb">Image</th>
-                                    <th class="product_name">Product</th>
-                                    <th class="product-price">Price</th>
-                                    <th class="product_quantity">Quantity</th>
-                                    <th class="product_total">Total</th>
+                                    <th class="product_remove">Xóa</th>
+                                    <th class="product_thumb">Hình</th>
+                                    <th class="product_name">Tên</th>
+                                    <th class="product-price">Đơn Giá</th>
+                                    <th class="product_quantity">Số Lượng</th>
+                                    <th class="product_total">Thành Tiền</th>
                                 </tr>
                                 </thead> <!-- End Cart Table Head -->
                                 <tbody>
@@ -113,15 +113,15 @@ include ('../layout/header.php')
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="coupon_code right"  data-aos="fade-up"  data-aos-delay="400">
-                        <h3>Cart Totals</h3>
+                        <h3>Tổng Giỏ Hàng</h3>
                         <div class="coupon_inner">
                             <div class="cart_subtotal">
-                                <p>Subtotal</p>
+                                <p>Tổng Tiền:</p>
                                 <p class="cart_amount"><?php  echo number_format($tongtien,0,",","."); ?></p>
                             </div>
                             <div class="checkout_btn">
                                 <?php if(isset($_SESSION["tendangnhap"])){ ?>
-                                <a href="checkout.php" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                <a href="checkout.php" class="btn btn-md btn-golden">Tiến hành thành toán</a>
                                 <?php } else{ ?>
                                 <span style="margin-left: 100px" class="text-danger">Bạn cần đăng nhập để đặt hàng</span>
                                 <?php } ?>

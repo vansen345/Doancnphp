@@ -115,7 +115,7 @@ $layquyen= mysqli_fetch_array($queryrole);
 						<!-- END BEGIN STYLE CUSTOMIZER -->  
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 						<h3 class="page-title">
-							Editable Tables <small>editable table samples</small>
+							Blog <small>Danh sách Blog</small>
 						</h3>
 						<ul class="breadcrumb">
 							<li>

@@ -3,32 +3,11 @@ include ('../layout/header_admin.php');
 if(!isset($_SESSION["admin"]))
     echo "<script>location='login/dangnhapadmin.php'</script>";
 ?>
+
 <?php
-$search = isset($_GET['search_city']) ? $_GET['search_city'] : "";
-if($search){
-    $where="WHERE name_city LIKE '%".$search."%' ";
-}
 include ('../page/connect.php');
-$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 5;
-$current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
-$offset = ($current_page - 1) * $item_per_page;
-if($search){
-    $dbdata = "SELECT * FROM pvs_tinhthanhpho WHERE name_city LIKE '%".$search."%'  ORDER BY matp ASC  LIMIT " . $item_per_page . " OFFSET " . $offset;
-    $query = mysqli_query($conn, $dbdata);
-    $total = mysqli_query($conn, "SELECT * FROM pvs_tinhthanhpho WHERE name_city LIKE '%".$search."%' ");
-}else{
-    $dbdata = "SELECT * FROM pvs_tinhthanhpho ORDER BY matp ASC  LIMIT " . $item_per_page . " OFFSET " . $offset;
-    $query = mysqli_query($conn, $dbdata);
-    $total = mysqli_query($conn, "SELECT * FROM pvs_tinhthanhpho");
-}
-$total = $total->num_rows;
-$totalpage = ceil($total / $item_per_page);
 ?>
-<?php
-$role= "SELECT * FROM nhanvien WHERE TenDangNhap = '".$_SESSION["admin"]."'";
-$queryrole=mysqli_query($conn,$role);
-$layquyen= mysqli_fetch_array($queryrole);
-?>
+
 <!-- END SIDEBAR -->
 <!-- BEGIN PAGE -->
 <div class="page-content">
@@ -95,7 +74,7 @@ $layquyen= mysqli_fetch_array($queryrole);
                 <!-- END BEGIN STYLE CUSTOMIZER -->
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Shipping <small></small>
+                    Lợi nhuận <small>Lợi nhuận sản phẩm trong 7 ngày</small>
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -104,7 +83,7 @@ $layquyen= mysqli_fetch_array($queryrole);
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>
-                        <a href="#">Phí vận chuyển</a>
+                        <a href="#">Lợi nhuận sản phẩm trong 7 ngày</a>
                         <i class="icon-angle-right"></i>
                     </li>
 
@@ -114,12 +93,23 @@ $layquyen= mysqli_fetch_array($queryrole);
         </div>
         <!-- END PAGE HEADER-->
         <!-- BEGIN PAGE CONTENT-->
+        <?php
+
+                        $ngay = date('Y-m-j');
+                        $newngay = strtotime ( '-7 day' , strtotime ( $ngay ) ) ;
+                        $newnm = date ( 'd/m/Y' , $newngay );
+
+                        $homnay = date("Y-m-j");
+                        $todaymoi = strtotime ( '-0 day' , strtotime ( $homnay ) ) ;
+                        $newtoday = date ( 'd/m/Y' , $todaymoi );
+                    ?>
+
         <div class="row-fluid">
             <div class="span12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet box blue">
+                <div class="portlet box light-grey">
                     <div class="portlet-title">
-                        <div class="caption"><i class="icon-edit"></i>Editable Table</div>
+                        <div class="caption"><i class="icon-money"></i>Lợi nhuận sản phẩm trong 7 ngày từ ngày <?php echo $newnm?> đến <?php echo $newtoday?></div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
                             <a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -130,88 +120,89 @@ $layquyen= mysqli_fetch_array($queryrole);
 
                     <div class="portlet-body">
                         <div class="table-toolbar">
-                            <div class="btn-group">
+
+                            <div class="btn-group pull-right">
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">Tools <i class="icon-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">Print</a></li>
+                                    <li><a href="#">Save as PDF</a></li>
+                                    <li><a href="#">Export to Excel</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <div class="form-outline">
-                                <form action="" method="get">
-                                    <input type="text" value="<?=isset($_GET['search_city']) ? $_GET['search_city'] : ""?>" id="form1" name="search_city" class="form-control" />
-                                    <button style="margin-bottom: 10px" type="submit" class="btn btn-primary">
-                                        <i class="icon-search"></i>
-                                    </button>
-                                </form>
-
-                            </div>
-
-                        </div>
-
-                        <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                        <table class="table table-striped table-bordered table-hover" id="sample_1">
                             <thead>
                             <tr>
-
-                                <th>Id</th>
-                                <th>Tên thành phố</th>
-                                <th>Type</th>
-                                <th>Phí vận chuyển</th>
-                                <?php
-                                if($layquyen["id_role"]==1){
-                                ?>
-                                <th>Cập nhật/sửa</th>
-                               <?php } ?>
+                                <th style="text-align: center" class="">ID</th>
+                                <th style="text-align: center" class="">Sản phẩm</th>
+                                <th class="">Số lượng bán</th>
+                                <th class="">Doanh thu</th>
+                                <th class="">Tiền vốn</th>
+                                <th class="">Lợi nhuận</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             <?php
-                            while ($cot=mysqli_fetch_array($query)){
+                            error_reporting(0);
+                            $sort = "SELECT *, SUM(ct_dondat.Soluong) as total 
+                                FROM ct_dondat 
+                                INNER JOIN sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham 
+                                INNER JOIN dondat ON dondat.MaDonDat = ct_dondat.MaDonDat
+                                WHERE dondat.TrangThai = '1' AND NgayDat <= NOW() - INTERVAL 0 DAY AND NgayDat > NOW() - INTERVAL 8 DAY
+                                GROUP BY ct_dondat.MaSanPham 
+                                ORDER BY ct_dondat.MaSanPham DESC";
+                            $laysort = mysqli_query($conn, $sort);
+                            $tongban = 0;
+                            $tongdoanhthu = 0;
+//                            $total_kho = 0;
+//                            $total_income = 0;
+                            while ($row = mysqli_fetch_array($laysort)){
+//                            $lay_kho = mysqli_query($conn,"SELECT GiaNhap FROM kho WHERE MaSanPham = '".$row["MaSanPham"]."'");
+//                            $kho = mysqli_fetch_row($lay_kho);
+
+                            $tongban += $row["total"];
+                            $tongdoanhthu += $row["Gia"]*$row["total"];
+                            //                        $total_kho += $kho[0] * $row["total"];
+                            //                        $total_income += ($row["Gia"]*$row["total"]) - $kho[0];
                             ?>
-                                <tr >
-                                    <td><?php echo $cot["matp"]?></td>
-                                    <td><?php echo $cot["name_city"]?></td>
-                                    <td class="center"><?php echo $cot["type"]?></td>
-                                    <td><?=number_format($cot["phiship"],0,",",".")?></td>
-                                    <?php
-                                    if($layquyen["id_role"]==1){
-                                    ?>
-                                    <td>
-
-                                        <a href="updateshipp.php?id_ship=<?php echo $cot["matp"]?>" ><i style="margin-left: 30px" class="icon-edit"></i></a>
-
-                                    </td>
-                                    <?php }else{ ?>
-                                    <a href="loiphanquyen.php" ><i style="margin-left: 30px" class="icon-edit"></i></a>
-                                    <?php } ?>
-                                </tr>
-                            <?php } ?>
+                            <tr class="odd gradeX">
+                                <td style="text-align: center"><?php echo $row["MaSanPham"]?></td>
+                                <td style="text-align: center"><?php echo $row["TenSanPham"]?></td>
+                                <td style="text-align: center"><?php echo $row["total"]?></td>
+                                <td style="text-align: center"><?php echo number_format($row["Gia"]*$row["total"],0,",",".")?></td>
+                                <td style="text-align: center"><?php echo number_format( $row["GiaVon"]*$row["total"],0,",",".")?></td>
+                                <td style="text-align: center">  <?php echo number_format( ($row["Gia"]*$row["total"]) - $row["GiaVon"] * $row["total"],0,",",".")?></td>
+                                <?php } ?>
                             </tbody>
-
                         </table>
-
-
                     </div>
-
-                </div>
-             <?php
-                        include ('phantrangadmin.php')
-             ?>
-
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->
             </div>
         </div>
-        <!-- END PAGE CONTENT -->
+        <div class="row-fluid">
+            <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+            <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT-->
     </div>
     <!-- END PAGE CONTAINER-->
 </div>
 <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
 <?php
 include ('../layout/footer-admin.php')
 ?>
-
 <style>
     .pt
     {

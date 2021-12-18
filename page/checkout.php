@@ -219,9 +219,10 @@ include ('connect.php');
                             </div>
                             <div class="payment_method">
                                 <div class="panel-default">
-                                    <label class="checkbox-default" for="currencyCod" data-bs-toggle="collapse" data-bs-target="#methodCod">
-                                        <input type="checkbox" id="currencyCod">
+                                    <label   class="radio" for="currencyCod" data-bs-toggle="collapse" data-bs-target="#methodCod">
                                         <span>Thanh toán online</span>
+                                        <input name="pt" style="margin-left: -20px" type="radio"  value="Thanh Toán Online" id="currencyCod">
+
                                     </label>
 <!--                                    --><?php
 //                                    $query="SELECT * FROM pvs_tinhthanhpho ";
@@ -245,15 +246,7 @@ include ('connect.php');
                                     </div>
                                 </div>
                                 <div class="panel-default">
-                                    <label class="checkbox-default" for="currencyPaypal" data-bs-toggle="collapse" data-bs-target="#methodPaypal">
-                                        <input type="checkbox" id="currencyPaypal">
-                                        <span>Thanh toán Momo</span>
-                                    </label>
-                                    <div id="methodPaypal" class="collapse " data-parent="#methodPaypal">
-                                        <div class="card-body1">
-                                            <p>Sau khi thanh toán vui lòng chụp lại tin nhắn thanh toán thành công và gửi cho CSKH!</p>
-                                        </div>
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -276,7 +269,8 @@ if(isset($_POST["send"])){
         $tongship=$_SESSION["tongbill"];
         $thanhpho=$_POST["province"];
         $quanhuyen=$_POST["district"];
-        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH,tongtiengoc,tongtien,thanhpho,quanhuyen) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."','".$ordertotal."','".$tongship."','".$thanhpho."','".$quanhuyen."')";
+        $pt=$_POST["pt"];
+        $themdondat = "INSERT INTO dondat(TenDangNhap,MaNhanVien,TrangThai,NoiGiao,NgayDat,DienThoai,GhiChu,TenKH,tongtiengoc,tongtien,thanhpho,quanhuyen,PhuongThuc) VALUES ('" . $tendangnhap . "','1','" . $trangthai . "','" . $noigiao . "','" . $ngaydat . "','".$dienthoai."','".$ghichu."','".$tenhkh."','".$ordertotal."','".$tongship."','".$thanhpho."','".$quanhuyen."','".$pt."')";
         if (mysqli_query($conn, $themdondat)) {
             $madondat = 0;
             $date=date("d/m/Y");

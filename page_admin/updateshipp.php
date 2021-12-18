@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         </div>
     </div>
     <h3 class="page-title">
-        Editable Tables <small>editable table samples</small>
+        Cập nhật phí ship
     </h3>
     <ul class="breadcrumb">
         <li>

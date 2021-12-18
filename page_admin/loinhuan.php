@@ -74,7 +74,7 @@ include ('../page/connect.php');
                 <!-- END BEGIN STYLE CUSTOMIZER -->
                 <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                 <h3 class="page-title">
-                    Khách Hàng <small>Thông tin khách hàng</small>
+                    Lợi nhuận <small>Lợi nhuận sản phẩm tháng 12</small>
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -83,7 +83,7 @@ include ('../page/connect.php');
                         <i class="icon-angle-right"></i>
                     </li>
                     <li>
-                        <a href="#">Khách Hàng</a>
+                        <a href="#">Lợi nhuận sản phẩm tháng <?php echo $date = date('m');?></a>
                         <i class="icon-angle-right"></i>
                     </li>
 
@@ -98,7 +98,7 @@ include ('../page/connect.php');
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box light-grey">
                     <div class="portlet-title">
-                        <div class="caption"><i class="icon-user"></i>Thông tin khách hàng</div>
+                        <div class="caption"><i class="icon-money"></i>Lợi nhuận sản phẩm tháng <?php echo $date = date('m');?></div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
                             <a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -134,24 +134,24 @@ include ('../page/connect.php');
                         <tbody>
                         <?php
                         error_reporting(0);
-                        $sort = "SELECT *, SUM(ct_dondat.SoLuong) as total 
+                        $sort_thang = "SELECT *, SUM(ct_dondat.SoLuong) as total 
                             FROM ct_dondat 
                             INNER JOIN sanpham ON ct_dondat.MaSanPham = sanpham.MaSanPham 
                             INNER JOIN dondat ON dondat.MaDonDat = ct_dondat.MaDonDat
                             WHERE dondat.TrangThai = '1' AND month(CURRENT_DATE) = month(NgayDat) 
                             GROUP BY ct_dondat.MaSanPham 
                             ORDER BY ct_dondat.MaSanPham DESC";
-                        $query_sort = mysqli_query($conn, $sort);
-                        $total_count = 0;
-                        $total_revenues = 0;
-                        $total_kho = 0;
-                        $total_income = 0;
-                        while ($row = mysqli_fetch_array($query_sort)){
+                        $tong_thang = mysqli_query($conn, $sort_thang);
+                        $tongbanthang = 0;
+                        $tongdoanhthuthang = 0;
+//                        $total_kho = 0;
+//                        $total_income = 0;
+                        while ($row = mysqli_fetch_array($tong_thang)){
                         $query_kho = mysqli_query($conn,"SELECT GiaNhap FROM kho WHERE MaSanPham = '".$row["MaSanPham"]."'");
                         $kho = mysqli_fetch_row($query_kho);
 
-                        $total_count += $row["total"];
-                        $total_revenues += $row["Gia"]*$row["total"];
+                        $tongbanthang += $row["total"];
+                        $tongdoanhthuthang += $row["Gia"]*$row["total"];
 //                        $total_kho += $kho[0] * $row["total"];
 //                        $total_income += ($row["Gia"]*$row["total"]) - $kho[0];
                         ?>
@@ -160,8 +160,8 @@ include ('../page/connect.php');
                             <td style="text-align: center"><?php echo $row["TenSanPham"]?></td>
                             <td style="text-align: center"><?php echo $row["total"]?></td>
                             <td style="text-align: center"><?php echo number_format($row["Gia"]*$row["total"],0,",",".")?></td>
-                            <td style="text-align: center"><?php echo number_format( $kho[0]* $row["total"],0,",",".")?></td>
-                            <td style="text-align: center">  <?php echo number_format( ($row["Gia"]*$row["total"]) - $kho[0]* $row["total"],0,",",".")?></td>
+                            <td style="text-align: center"><?php echo number_format( $row["GiaVon"]* $row["total"],0,",",".")?></td>
+                            <td style="text-align: center">  <?php echo number_format( ($row["Gia"]*$row["total"]) - $row["GiaVon"]* $row["total"],0,",",".")?></td>
                         <?php } ?>
                         </tbody>
                         </table>

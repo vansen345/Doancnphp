@@ -26,8 +26,8 @@
                         <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"  data-aos-delay="200">
                             <h5 class="title">Tài Khoản</h5>
                             <ul class="footer-nav">
-                                <li><a href="../page/my-account.php">Tài khoản của tôi</a></li>
-                                <li><a href="../page/faq.php">Các câu hỏi thường gặp</a></li>
+                                <li><a href="../page/login.php">Tài khoản của tôi</a></li>
+                                <li><a href="#">Các câu hỏi thường gặp</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->

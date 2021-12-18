@@ -56,17 +56,7 @@ $row= mysqli_num_rows($countbl);
                   <!-- End Single Sidebar Widget -->
 
                     <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget" >
-                        <h6 class="sidebar-title">Meta</h6>
-                        <div class="sidebar-content">
-                            <ul class="sidebar-menu">
-                                <li ><a href="login.php">Log in</a></li>
-                                <li ><a href="#">Entries feed</a></li>
-                                <li ><a href="#">Comments feed</a></li>
-                                <li ><a href="#">WordPress.org</a></li>
-                            </ul>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
+                   <!-- End Single Sidebar Widget -->
 
                     <!-- Start Single Sidebar Widget -->
                     <div class="sidebar-single-widget" >
@@ -113,7 +103,7 @@ $row= mysqli_num_rows($countbl);
                     </div>
                     <ul class="post-meta" data-aos="fade-up"  data-aos-delay="200">
                         <li>POSTED BY : <a href="#" class="author">Admin</a></li>
-                        <li>ON : <a href="#" class="date">APRIL 24, 2018</a></li>
+
                     </ul>
                     <h4 class="post-title" data-aos="fade-up"  data-aos-delay="400"><?php echo $cot["Title"]?></h4>
                     <div class="para-content" data-aos="fade-up"  data-aos-delay="600">

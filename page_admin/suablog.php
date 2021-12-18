@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         </div>
     </div>
     <h3 class="page-title">
-        Editable Tables <small>editable table samples</small>
+        Chỉnh sửa Blog
     </h3>
     <ul class="breadcrumb">
         <li>
@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             <a href="table_editable.php">Blog</a>
             <i class="icon-angle-right"></i>
         </li>
-        <li><a href="#">Update Blog</a></li>
+        <li><a href="#">Chỉnh sửa Blog</a></li>
     </ul>
 
     <div class="col-lg-12">

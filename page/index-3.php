@@ -205,7 +205,7 @@ include ('connect.php');
                                 ?>
                                 <div class="product-default-single-item product-color--pink swiper-slide">
                                     <div class="image-box">
-                                        <a href="../page/product-details-default.php" class="image-link">
+                                        <a href="../page/product-details-default.php?Masp=<?php echo $row["MaSanPham"];?>" class="image-link">
                                             <img src="../images/product/hinhanh/<?php echo $row["Anh"] ?>" alt="">
                                             <img src="../images/product/hinhanh/<?php echo $row["Anh"] ?>" alt="">
                                         </a>
@@ -299,9 +299,8 @@ include ('connect.php');
     ?>
     <!-- Start Section Content Text Area -->
     <?php
-    $sql2="SELECT * FROM danhgia INNER JOIN sanpham ON danhgia.MaSanPham = sanpham.MaSanPham GROUP BY danhgia.MaSanPham ORDER BY danhgia.NoiDung DESC LIMIT 4";
+    $sql2="SELECT * FROM danhgia INNER JOIN sanpham ON danhgia.MaSanPham = sanpham.MaSanPham WHERE NoiDung= '5' GROUP BY danhgia.MaSanPham  LIMIT 4";
     $query2=mysqli_query($conn,$sql2);
-
     ?>
 
     <div class="product-wrapper" data-aos="fade-up"  data-aos-delay="0">
@@ -320,12 +319,13 @@ include ('connect.php');
                                 <!-- Start Product Default Single Item -->
                                 <?php
                                 while ($row2=mysqli_fetch_array($query2)){
-                                $layDG_ND="SELECT * FROM danhgia WHERE MaSanPham='".$row2["MaSanPham"]."' ORDER BY NoiDung DESC ";
-                                $truyvanND=mysqli_query($conn,$layDG_ND);
-                                if(mysqli_num_rows($truyvanND)>0) {
-                                    $cotDG = mysqli_fetch_array($truyvanND);
-                                    $sosao = $cotDG["NoiDung"];
-                                }
+
+//                                $layDG_ND="SELECT * FROM danhgia WHERE MaSanPham='".$row2["MaSanPham"]."' ORDER BY NoiDung DESC ";
+//                                $truyvanND=mysqli_query($conn,$layDG_ND);
+//                                if(mysqli_num_rows($truyvanND)>0) {
+//                                    $cotDG = mysqli_fetch_array($truyvanND);
+//                                    $sosao = $cotDG["NoiDung"];
+//                                }
                                 ?>
                                 <div class="product-default-single-item product-color--pink swiper-slide">
                                     <div class="image-box">
@@ -524,20 +524,4 @@ include ('connect.php');
 <?php
 include ('../layout/footer.php')
 ?>
-<script>
-    $(document).ready(function () {
-        for (i=1;i<=<?php echo $sosao ?>;i++){
-            $('.sao'+i).css('color','#ff365d');
-        }
-        // $('.sao').mouseenter(function () {
-        //     for(i=1;i<=$(this).attr('data-sao');i++){
-        //         $('.sao'+i).addClass('saohover');
-        //
-        //     }
-        // })
-        // $('.sao').mouseleave(function () {
-        //     $('.sao').removeClass('saohover');
-        //
-        // })
-    })
-</script>
+

@@ -5,13 +5,20 @@ if(!isset($_SESSION["admin"]))
 ?>
 <?php
 include ('../page/connect.php');
-if(!isset($_GET["khachhang"]))
-    echo "<script>location='table_managed.php';</script>";
+//if(!isset($_GET["khachhang"]))
+//    echo "<script>location='table_managed.php';</script>";
+
 $laychitiet="SELECT * FROM thanhvien WHERE TenDangNhap ='".$_GET["khachhang"]."'";
 $truyvanlaychitiet=mysqli_query($conn,$laychitiet);
-if(mysqli_num_rows($truyvanlaychitiet)>0) {
-    $cotDDH = mysqli_fetch_array($truyvanlaychitiet);
-}
+$cotDDH = mysqli_fetch_array($truyvanlaychitiet);
+
+$tongtien="SELECT SUM(tongtiengoc) FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
+$truyvan=mysqli_query($conn,$tongtien);
+$laytt=mysqli_fetch_row($truyvan);
+
+
+
+
 ?>
 <div class="page-content">
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -101,7 +108,7 @@ if(mysqli_num_rows($truyvanlaychitiet)>0) {
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet box blue">
                     <div class="portlet-title">
-                        <div class="caption"><i class="icon-edit"></i>Editable Table</div>
+                        <div class="caption"><i class="icon-edit"></i>Lịch sử giao dịch</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse"></a>
                             <a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -123,9 +130,7 @@ if(mysqli_num_rows($truyvanlaychitiet)>0) {
                             </div>
                         </div>
                         <?php
-                        $tongtien="SELECT SUM(tongtien) FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
-                        $truyvan=mysqli_query($conn,$tongtien);
-                        $laytt=mysqli_fetch_row($truyvan);
+
                         ?>
                         <div>
                             <form id="duyethang" method="post" action="<?php echo $_SERVER["REQUEST_URI"];?>">
@@ -136,23 +141,28 @@ if(mysqli_num_rows($truyvanlaychitiet)>0) {
                                     <tr>
                                         <td>
                                             <b><i class="icon-user"></i> Họ tên:</b> <?php echo $cotDDH["Hoten"];?> <br>
-                                            <b><i class="icon-map-marker"></i> Địa chỉ:</b> <?php echo $cotDDH["Diachi"];?><br>
+<!--                                            <b><i class="icon-map-marker"></i> Địa chỉ:</b> --><?php //echo $cotDDH["Diachi"];?><!--<br>-->
                                             <b><i class="icon-phone"></i> Số điện thoại:</b> <?php echo $cotDDH["Dienthoai"];?><br>
                                         </td>
                                         <?php
-                                      $loaikh= number_format($laytt[0],0,",",".");
-                                        $goc='5000000';
-                                        $laygoc= number_format($goc,0,",",".");
-                                        $vip='10000000';
-                                        $layvip= number_format($vip,0,",",".");
+                                        $countsl = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
+                                        $db = mysqli_query($conn,$countsl);
+                                        $count = mysqli_num_rows($db);
+
+                                        $tongtien2="SELECT SUM(tongtiengoc) FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
+                                        $truyvan2=mysqli_query($conn,$tongtien2);
+                                        $laytt2=mysqli_fetch_row($truyvan2);
+
+                                        $goal2= 5000000;
+                                        $laygoal2= number_format($goal2,0,",",".");
+                                        $vip2= 10000000;
+                                        $layvip2= number_format($vip2,0,",",".");
                                         ?>
                                         <td>
-                                            <?php if($loaikh > $laygoc) { ?>
-                                            <b><i class="icon-user"></i> Loại: Khách tiềm năng </b>  <br>
-                                            <?php } else if($loaikh > $layvip) { ?>
-                                                <b><i class="icon-user"></i> Loại: Khách hàng quen thuộc</b>  <br>
-                                            <?php } else{ ?>
-                                                <b><i class="icon-user"></i> Loại: Khách hàng thường</b>  <br>
+                                            <?php if($laytt2[0] > $goal2){ ?>
+                                                <b><i class="icon-user"></i> Loại:</b> Khách tiềm năng <br>
+                                            <?php } else  { ?>
+                                            <b><i class="icon-user"></i> Loại:</b> Khách thuờng <br>
                                             <?php } ?>
                                             <b><i class="icon-mail-reply-all"></i> Email:</b> <?php echo $cotDDH["Email"] ?><br>
                                         </td>
@@ -162,9 +172,7 @@ if(mysqli_num_rows($truyvanlaychitiet)>0) {
                             </form>
                         </div>
                         <?php
-                        $countsl = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
-                        $db = mysqli_query($conn,$countsl);
-                        $count = mysqli_num_rows($db);
+
                         ?>
 
                         <?php
@@ -174,14 +182,20 @@ if(mysqli_num_rows($truyvanlaychitiet)>0) {
                         ?>
 
                         <?php
-                        $tichdiem="SELECT tongtiengoc FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
-                        $point=mysqli_query($conn,$tichdiem);
-                        $laypoint=mysqli_fetch_array($point);
+//                        $point=0;
+//                        $tinhpoint="SELECT tongtiengoc FROM dondat WHERE TenDangNhap= '".$cotDDH["TenDangNhap"]."' AND TrangThai='1' AND tongtiengoc > '2000000' ";
+//                        $laypoint=mysqli_query($conn,$tinhpoint);
+//                        while ($truyvanpoint=mysqli_fetch_array($laypoint)){
+//                            $point=  number_format($laypoint["tongtiengoc"],0,",",".");
+//                        }
                         ?>
 
-
+                        <?php
+                        $firsdate="SELECT NgayDat FROM dondat WHERE TenDangNhap = '".$_GET["khachhang"]."' AND TrangThai='1'";
+                        $date=mysqli_query($conn,$firsdate);
+                        $xuatdate=mysqli_fetch_array($date);
+                        ?>
                         <form id="duyethang" method="post" action="<?php echo $_SERVER["REQUEST_URI"];?>">
-
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                                 <tbody>
                                 <h3>Lịch sử giao dịch</h3>
@@ -192,28 +206,16 @@ if(mysqli_num_rows($truyvanlaychitiet)>0) {
                                         <b><i class="icon-money"></i> Tổng chi: </b> <?php echo number_format($laytt[0],0,",","."); ?><br>
                                     </td>
                                     <?php
-
-//                                    $showp=0;
-                                    $format= number_format($laypoint["tongtiengoc"],0,",",".");
-                                    $goalpoint= '2000000';
-                                    $formatgoal= number_format($goalpoint,0,",",".");
+//                                    $show=0;
+//                                   $point= number_format($truyvanpoint["tongtiengoc"],0,",",".");
+//                                    $mucpoint= 3000000;
+//                                    $formatpoint= number_format($mucpoint,0,",",".");
                                     ?>
                                     <td>
-
-<!--                                      --><?php //if($format > $formatgoal){
-//                                          $show=0;
-//                                        ?>
-                                            <b><i class=""></i> Điểm tích lũy:</b>  <br>
-<!--                                    --><?php //} else{
-//                                          ?>
-
-<!--                                        --><?php //} ?>
-
-                                          <b><i class="icon-calendar"></i> Ngày bắt đầu mua hàng:</b> <?php ?><br>
-
+                                          <b><i class="icon-calendar"></i> Ngày bắt đầu mua hàng:</b> <?php
+                                        $date=date_create($xuatdate["NgayDat"]);
+                                        echo date_format($date,"d/m/Y");?><br>
                                     </td>
-
-
                                 </tr>
                                 </tbody>
                             </table>

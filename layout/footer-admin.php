@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="footer-inner">
-        2013 &copy; Metronic by keenthemes.
+        COPYRIGHT &copy; 2S. POWERED BY SÁNG-SẾN.
     </div>
     <div class="footer-tools">
 			<span class="go-top">
@@ -51,6 +51,9 @@
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>-->
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="../js/jsAdmin/Chart.bundle.js" type="text/javascript"></script>
+<script src="../js/jsAdmin/Chart.bundle.min.js" type="text/javascript"></script>
+<script src="../js/jsAdmin/Chart.min.js" type="text/javascript"></script>
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
@@ -155,45 +158,64 @@
         }
     });
 </script>
-<!--<script>-->
-<!--$(function () {-->
-<!--        // var array2 = document.getElementById('total2').value;-->
-<!--        // var array3 = document.getElementById('total3').value;-->
-<!--        // var array4 = document.getElementById('total4').value;-->
-<!--        // var array5 = document.getElementById('total5').value;-->
-<!--        // var array6 = document.getElementById('total6').value;-->
-<!--        // var array7 = document.getElementById('total7').value;-->
-<!--        // var array8 = document.getElementById('total8').value;-->
-<!--        // var array9 = document.getElementById('total9').value;-->
-<!--        // var array10 = document.getElementById('total10').value;-->
-<!--        // var array11 = document.getElementById('total11').value;-->
-<!--        // var array12 = document.getElementById('total12').value;-->
-<!--      new Morris.Bar({-->
-<!--            element: 'myfirstchart',-->
-<!--            data: [-->
-<!--                { month: 'Tháng 1', value: 0 },-->
-<!--                { month: 'Tháng 2', value: 20 },-->
-<!--                { month: 'Tháng 3', value: 5 },-->
-<!--                { month: 'Tháng 4', value: 5 },-->
-<!--                { month: 'Tháng 5', value: 20 },-->
-<!--                { month: 'Tháng 6', value: 20 },-->
-<!--                { month: 'Tháng 7', value: 20 },-->
-<!--                { month: 'Tháng 8', value: 20 },-->
-<!--                { month: 'Tháng 9', value: 20 },-->
-<!--                { month: 'Tháng 10', value: 20 },-->
-<!--                { month: 'Tháng 11', value: 20 },-->
-<!--                { month: 'Tháng 12', value: 20 },-->
-<!--            ],-->
-<!--            xkey: 'month',-->
-<!---->
-<!--            ykeys: ['value'],-->
-<!---->
-<!--            labels: ['Đơn hàng','Doanh thu','Số lượng bán ra']-->
-<!--        });-->
-<!--})-->
-<!---->
-<!--</script>-->
+
+<script>
+    var chartjsElement = document.getElementById('chart-js');
+    var d = new Date();
+    if (d.getMonth() >= 0) {
+        c = d.getMonth()+1;
+    }
+    var day0 =document.getElementById('day0').value;
+    var day1 =document.getElementById('day1').value;
+    var day2 =document.getElementById('day2').value;
+    var day3 =document.getElementById('day3').value;
+    var day4 =document.getElementById('day4').value;
+    var day5 =document.getElementById('day5').value;
+    var day6 =document.getElementById('day6').value;
+    var chartjs = new Chart(chartjsElement, {
+        type: 'bar',
+        data: {
+            labels: [d.getDate()-6+"/"+c, d.getDate()-5+"/"+c, d.getDate()-4+"/"+c, d.getDate()-3+"/"+c, d.getDate()-2+"/"+c, d.getDate()-1+"/"+c,d.getDate()+"/"+c],
+            datasets: [{
+                label: '',
+                data: [day6, day5, day4, day3, day2, day1,day0],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
 <!-- END JAVASCRIPTS -->
 </body>
-<!-- END BODY -->
+
 </html>
