@@ -54,7 +54,7 @@ $totalpage= ceil($total / $item_per_page);
                             <!-- Start Product Default Single Item -->
                             <div class="blog-list blog-grid-single-item blog-color--golden"  data-aos="fade-up"  data-aos-delay="0">
                                 <div class="image-box">
-                                    <a href="blog-single-sidebar-left.php" class="image-link">
+                                    <a href="blog-single-sidebar-left.php?id_blog=<?php echo $cot["Id_blog"]?>" class="image-link">
                                         <img class="img-fluid" src="../images/product/hinhanh/<?php echo $cot["Image"]?>" alt="">
                                     </a>
                                 </div>

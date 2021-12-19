@@ -133,7 +133,7 @@ $querysao=mysqli_query($conn,$tinhsao);
                     <div class="product-details-text">
                         <h4 class="title"><?php echo $cot["TenSanPham"]?></h4>
                         <?php if(mysqli_num_rows($querysao) >0){
-                            $avg=$total / $laytinh;
+                            $avg= round(($total / $laytinh),1);
                         ?>
                         <div class="d-flex align-items-center">
                             <ul class="review-star">
