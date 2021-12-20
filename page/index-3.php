@@ -69,66 +69,36 @@ include ('connect.php');
 <!-- End Hero Slider Section-->
 
 <!-- Start Service Section -->
-<div class="service-promo-section section-top-gap-100">
-    <div class="service-wrapper">
-        <div class="container">
-            <div class="row">
-                <!-- Start Service Promo Single Item -->
-                <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="service-promo-single-item"  data-aos="fade-up"  data-aos-delay="0">
-                        <div class="image">
-                            <img src="../images/icons/service-promo-5.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h6 class="title">FREE SHIPPING</h6>
-                            <p>Get 10% cash back, free shipping, free returns, and more at 1000+ top retailers!</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Service Promo Single Item -->
-                <!-- Start Service Promo Single Item -->
-                <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="service-promo-single-item"  data-aos="fade-up"  data-aos-delay="200">
-                        <div class="image">
-                            <img src="../images/icons/service-promo-6.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h6 class="title">30 DAYS MONEY BACK</h6>
-                            <p>100% satisfaction guaranteed, or get your money back within 30 days!</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Service Promo Single Item -->
-                <!-- Start Service Promo Single Item -->
-                <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="service-promo-single-item"  data-aos="fade-up"  data-aos-delay="400">
-                        <div class="image">
-                            <img src="../images/icons/service-promo-7.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h6 class="title">SAFE PAYMENT</h6>
-                            <p>Pay with the world’s most popular and secure payment methods.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Service Promo Single Item -->
-                <!-- Start Service Promo Single Item -->
-                <div class="col-lg-3 col-sm-6 col-12">
-                    <div class="service-promo-single-item"  data-aos="fade-up"  data-aos-delay="600">
-                        <div class="image">
-                            <img src="../images/icons/service-promo-8.png" alt="">
-                        </div>
-                        <div class="content">
-                            <h6 class="title">LOYALTY CUSTOMER</h6>
-                            <p>Card for the other 30% of their purchases at a rate of 1% cash back.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Service Promo Single Item -->
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="service-promo-section section-top-gap-100">-->
+<!--    <div class="service-wrapper">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                --><?php
+//                $brand="SELECT * FROM thuonghieu LIMIT 4";
+//                $querybrand=mysqli_query($conn,$brand);
+//                ?>
+<!--                --><?php //while ($row3=mysqli_fetch_array($querybrand)){ ?>
+<!--                <!-- Start Service Promo Single Item -->
+<!--                <div class="col-lg-3 col-sm-6 col-12">-->
+<!--                    <div class="service-promo-single-item"  data-aos="fade-up"  data-aos-delay="0">-->
+<!--                        <div class="image">-->
+<!--                            <img src="../images/product/hinhanh/--><?php //echo $row3["Anh_Brand"]?><!--" width="72px", height="64px" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="content">-->
+<!--                            <h6 class="title">--><?php //echo $row3["TenThuongHieu"] ?><!--</h6>-->
+<!--<!--                            <p>--><?php ////echo $row3["ChiTiet"] ?><!--<!--</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                --><?php //} ?>
+<!--                <!-- End Service Promo Single Item -->
+<!--                <!-- Start Service Promo Single Item -->
+<!---->
+<!--                <!-- End Service Promo Single Item -->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!-- End Service Section -->
 
 <!-- Start Banner Section -->
@@ -247,6 +217,7 @@ include ('connect.php');
             </div>
         </div>
     </div>
+
 </div>
 <!-- End Product Default Slider Section -->
 
@@ -351,6 +322,82 @@ include ('connect.php');
                                         </div>
                                     </div>
                                 </div>
+                                <?php } ?>
+                                <!-- End Product Default Single Item -->
+                                <!-- Start Product Default Single Item -->
+                            </div>
+
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="product-default-slider-section section-fluid section-inner-bg">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up"  data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3  class="section-title"></h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+
+
+
+    ?>
+    <!-- Start Section Content Text Area -->
+    <?php
+    $brand="SELECT * FROM thuonghieu";
+    $query_brand=mysqli_query($conn,$brand);
+    ?>
+
+    <div class="product-wrapper" data-aos="fade-up"  data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="product-slider-default-1row default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-default-slider-4grid-1row">
+
+
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- End Product Default Single Item -->
+                                <!-- Start Product Default Single Item -->
+                                <?php
+                                while ($row_brand=mysqli_fetch_array($query_brand)){
+
+//                                $layDG_ND="SELECT * FROM danhgia WHERE MaSanPham='".$row2["MaSanPham"]."' ORDER BY NoiDung DESC ";
+//                                $truyvanND=mysqli_query($conn,$layDG_ND);
+//                                if(mysqli_num_rows($truyvanND)>0) {
+//                                    $cotDG = mysqli_fetch_array($truyvanND);
+//                                    $sosao = $cotDG["NoiDung"];
+//                                }
+                                    ?>
+                                    <div class="product-default-single-item product-color--pink swiper-slide">
+                                        <div class="image-box">
+                                            <a href="brand_product.php?brand=<?php echo $row_brand["MaThuongHieu"]?>" class="image-link">
+                                                <img src="../images/product/hinhanh/<?php echo $row_brand["Anh_Brand"] ?>" width="600px" alt="">
+
+                                            </a>
+
+                                        </div>
+
+                                    </div>
                                 <?php } ?>
                                 <!-- End Product Default Single Item -->
                                 <!-- Start Product Default Single Item -->

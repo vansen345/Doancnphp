@@ -137,7 +137,7 @@ $querysao=mysqli_query($conn,$tinhsao);
                         ?>
                         <div class="d-flex align-items-center">
                             <ul class="review-star">
-                                <a style="margin-left: 10px;color: #ff365d " href="#" class="customer-review ml-2"><?php echo $avg ?></a>
+                                <a style="margin-left: 10px;color: #ff365d;font-size: 18px " href="#" class="customer-review ml-2"><?php echo $avg ?></a>
                                 <li class="sao sao1" data-sao="1" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 1)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao2" data-sao="2" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 2)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao3" data-sao="3" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 3)" ><i class="ion-android-star"></i></li>

@@ -54,7 +54,7 @@ include ('../layout/header.php')
                                 </thead> <!-- End Cart Table Head -->
                                 <?php
                                 include ('connect.php');
-                                $sql5="SELECT * FROM dondat WHERE TenDangNhap = '".$_SESSION["tendangnhap"]."'";
+                                $sql5="SELECT * FROM dondat WHERE TenDangNhap = '".$_SESSION["tendangnhap"]."' ORDER BY MaDonDat";
                                 $query5 = mysqli_query($conn, $sql5);
                                 ?>
                                 <?php
@@ -75,7 +75,8 @@ include ('../layout/header.php')
                                     <td class="product_thumb"><?php echo $row["MaDonDat"] ?></td>
 
                                     <td class="product-price"><?php echo number_format($row["tongtien"],0,",","."); ?></td>
-                                    <td class="product_total"><?php echo $row["NgayDat"] ?></td>
+                                    <td class="product_total"><?php $date=date_create($row["NgayDat"]);
+                                        echo date_format($date,"d/m/Y");?></td>
                                     <?php if($row["TrangThai"]==0){ ?>
                                     <td class="product_total">Chưa giao</td>
                                     <?php }else{?>

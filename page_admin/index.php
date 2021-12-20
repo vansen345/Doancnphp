@@ -70,7 +70,7 @@ if(!isset($_SESSION["admin"]))
 						<!-- END BEGIN STYLE CUSTOMIZER -->    
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 						<h3 class="page-title">
-							Dashboard <small>statistics and more</small>
+							Trang Chủ <small></small>
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -78,7 +78,7 @@ if(!isset($_SESSION["admin"]))
 								<a href="index.php">Home</a>
 								<i class="icon-angle-right"></i>
 							</li>
-							<li><a href="#">Dashboard</a></li>
+							<li><a href="#">Trang Chủ</a></li>
 							<li class="pull-right no-text-shadow">
 								<div id="dashboard-report-range" class="dashboard-date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change dashboard date range">
 									<i class="icon-calendar"></i>
