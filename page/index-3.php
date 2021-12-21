@@ -120,7 +120,7 @@ include ('connect.php');
                     <img class="img-fluid" src="../images/banner/ad2.png" alt="">
                 </div>
             </div>
-       
+
         <!-- End Banner Single Item -->
         <!-- Start Banner Single Item -->
 

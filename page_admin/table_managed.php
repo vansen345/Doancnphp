@@ -14,12 +14,12 @@ $current_page = !empty($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($current_page - 1) * $item_per_page;
 if($search)
 {
-    $sql="SELECT * FROM thanhvien INNER JOIN dondat ON thanhvien.TenDangNhap = dondat.TenDangNhap WHERE Hoten LIKE '%".$search."%' AND TrangThai='1' GROUP BY dondat.TenDangNhap  LIMIT ".$item_per_page." OFFSET ".$offset ;
+    $sql="SELECT * FROM thanhvien  WHERE Hoten LIKE '%".$search."%'  LIMIT ".$item_per_page." OFFSET ".$offset ;
     $querydm=mysqli_query($conn,$sql);
     $total = mysqli_query($conn, "SELECT * FROM thanhvien WHERE Hoten LIKE '%".$search."%'");
 }
 else{
-    $sql="SELECT * FROM thanhvien INNER JOIN dondat ON thanhvien.TenDangNhap = dondat.TenDangNhap WHERE TrangThai='1' GROUP BY dondat.TenDangNhap LIMIT ".$item_per_page." OFFSET ".$offset;
+    $sql="SELECT * FROM thanhvien  LIMIT ".$item_per_page." OFFSET ".$offset;
     $querydm=mysqli_query($conn,$sql);
     $total = mysqli_query($conn, "SELECT * FROM thanhvien ");
 }
@@ -170,12 +170,14 @@ $rowdd=mysqli_fetch_array($querydd);
 										</tr>
 									</thead>
                                     <?php
-                                    if(mysqli_num_rows($querydm) > 0){
+                                    $tien= 5000000;
+
                                     ?>
 									<tbody>
                                     <?php
                                     while ($cot=mysqli_fetch_array($querydm))
                                     {
+
                                         $getcount = "SELECT MaDonDat FROM dondat WHERE TenDangNhap = '".$cot["TenDangNhap"]."' AND TrangThai='1'";
                                         $db = mysqli_query($conn,$getcount);
                                         $count = mysqli_num_rows($db);
@@ -188,20 +190,19 @@ $rowdd=mysqli_fetch_array($querydd);
 										<tr class="odd gradeX">
 											<td style="text-align: center"><?php echo $cot["Hoten"]?></td>
                                             <td style="text-align: center"><?php echo number_format($ttt[0],0,",","."); ?></td>
-<!--                                          --><?php
-//                                                if($count > 0){
-//                                            ?>
+                                          <?php
+                                                if($count > 0){
+                                            ?>
 											<td style="text-align: center;"><a href="xemtong.php?khachhang=<?php echo $cot["TenDangNhap"]?>"><span class="label label-success">Xem lịch sử</span></a></td>
-<!--                                            --><?php //} else{?>
-<!--                                                <td style="text-align: center;">-->
-<!--                                                    <a><span  class="label bg-red">Khách chưa đơn</span></a>-->
-<!--                                                </td>-->
-<!--                                            --><?php //}?>
+                                            <?php } else{?>
+                                                <td style="text-align: center;">
+                                                    <a><span  class="label bg-red">Khách chưa đơn</span></a>
+                                                </td>
+                                            <?php }?>
 										</tr>
                                     <?php } ?>
 
 									</tbody>
-                                    <?php } ?>
 								</table>
                                 <?php
                                 include ('phantrangkh.php')
