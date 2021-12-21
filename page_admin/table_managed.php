@@ -169,10 +169,6 @@ $rowdd=mysqli_fetch_array($querydd);
 <!--											<th>Chỉnh sửa</th>-->
 										</tr>
 									</thead>
-                                    <?php
-                                    $tien= 5000000;
-
-                                    ?>
 									<tbody>
                                     <?php
                                     while ($cot=mysqli_fetch_array($querydm))
@@ -190,6 +186,7 @@ $rowdd=mysqli_fetch_array($querydd);
 										<tr class="odd gradeX">
 											<td style="text-align: center"><?php echo $cot["Hoten"]?></td>
                                             <td style="text-align: center"><?php echo number_format($ttt[0],0,",","."); ?></td>
+
                                           <?php
                                                 if($count > 0){
                                             ?>

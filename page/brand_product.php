@@ -19,11 +19,11 @@ $totalpage=ceil($totalrow/$rowperpgae);
 $listpage="";
 for($i=1; $i<=$totalpage; $i++){
     if($page==$i){
-        $listpage.='<li><a class="active" href="brand_product.php?brand='.$_GET["brand"].'&page='.$i.'">'.$i.'</a></li>';
+        $listpage.='<li><a style="color: #d33b33" class="active" href="brand_product.php?brand='.$_GET["brand"].'&page='.$i.'">'.$i.'</a></li>';
     }
     else
     {
-        $listpage.='<li><a href="brand_product.php?brand='.$_GET["brand"].'&page='.$i.'">'.$i.'</a></li>';
+        $listpage.='<li><a style="color: #d33b33" href="brand_product.php?brand='.$_GET["brand"].'&page='.$i.'">'.$i.'</a></li>';
     }
 }
 
