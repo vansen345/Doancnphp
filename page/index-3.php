@@ -105,31 +105,31 @@ include ('connect.php');
 <div class="banner-section section-top-gap-100">
     <div class="banner-wrapper clearfix">
         <!-- Start Banner Single Item -->
-        <a href="#">
+
             <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="0">
                 <div class="image">
                     <img class="img-fluid" src="../images/banner/ad1.png" alt="">
                 </div>
             </div>
-        </a>
+
         <!-- End Banner Single Item -->
         <!-- Start Banner Single Item -->
-        <a href="#">
+
             <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="200">
                 <div class="image">
                     <img class="img-fluid" src="../images/banner/ad2.png" alt="">
                 </div>
             </div>
-        </a>
+       
         <!-- End Banner Single Item -->
         <!-- Start Banner Single Item -->
-        <a href="#">
+
             <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="400">
                 <div class="image">
                     <img class="img-fluid" src="../images/banner/ad3.png" alt="">
                 </div>
             </div>
-        </a>
+
         <!-- End Banner Single Item -->
     </div>
 </div>
@@ -225,22 +225,22 @@ include ('connect.php');
 <div class="banner-section section-top-gap-100">
     <div class="banner-wrapper clearfix">
         <!-- Start Banner Single Item -->
-        <a href="../page/product-details-default.php">
+
             <div class="banner-single-item banner-style-8 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="0">
                 <div class="image">
                     <img class="img-fluid" src="../images/banner/pirelli.png" alt="">
                 </div>
             </div>
-        </a>
+
         <!-- End Banner Single Item -->
         <!-- Start Banner Single Item -->
-        <a href="../page/product-details-default.php">
+
             <div class="banner-single-item banner-style-8 banner-animation banner-color--green float-left"  data-aos="fade-up"  data-aos-delay="200">
                 <div class="image">
                     <img class="img-fluid" src="../images/banner/thungxe.png" alt="">
                 </div>
             </div>
-        </a>
+
         <!-- End Banner Single Item -->
     </div>
 </div>

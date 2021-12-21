@@ -28,6 +28,10 @@ include ('../layout/header.php')
         </div>
     </div>
 </div> <!-- ...:::: End Breadcrumb Section:::... -->
+<?php
+$sql5="SELECT * FROM dondat WHERE TenDangNhap = '".$_SESSION["tendangnhap"]."' ORDER BY MaDonDat";
+$query5 = mysqli_query($conn, $sql5);
+?>
 
 <!-- ...:::: Start Cart Section:::... -->
 <div class="cart-section" id="listcart">
@@ -37,10 +41,10 @@ include ('../layout/header.php')
             <div class="row">
                 <div class="col-12">
                     <div class="table_desc">
+                        <?php if(mysqli_num_rows($query5) > 0){ ?>
                         <div class="table_page table-responsive">
-                            <table>
 
-                                <!-- Start Cart Table Head -->
+                            <table>
                                 <thead>
                                 <tr>
                                     <th class="product_remove">Mã đơn hàng</th>
@@ -54,8 +58,7 @@ include ('../layout/header.php')
                                 </thead> <!-- End Cart Table Head -->
                                 <?php
                                 include ('connect.php');
-                                $sql5="SELECT * FROM dondat WHERE TenDangNhap = '".$_SESSION["tendangnhap"]."' ORDER BY MaDonDat";
-                                $query5 = mysqli_query($conn, $sql5);
+
                                 ?>
                                 <?php
                                 $tongtien="SELECT SUM(tongtien) FROM dondat WHERE TenDangNhap = '".$_SESSION["tendangnhap"]."' ";
@@ -88,7 +91,12 @@ include ('../layout/header.php')
                                 <?php } ?>
                                 </tbody>
                             </table>
+
+
                         </div>
+                        <?php } else{ ?>
+                            <b style="margin-left: 480px;font-size: 18px">Bạn chưa có đơn hàng</b>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
