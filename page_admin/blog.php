@@ -139,7 +139,7 @@ $layquyen= mysqli_fetch_array($queryrole);
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
 						<div class="portlet box blue">
 							<div class="portlet-title">
-								<div class="caption"><i class="icon-edit"></i>Editable Table</div>
+								<div class="caption"><i class="fas fa-blog"></i>Blog</div>
 								<div class="tools">
 									<a href="javascript:;" class="collapse"></a>
 									<a href="#portlet-config" data-toggle="modal" class="config"></a>

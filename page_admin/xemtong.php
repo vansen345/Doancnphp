@@ -153,7 +153,7 @@ $laytt=mysqli_fetch_row($truyvan);
                                         $truyvan2=mysqli_query($conn,$tongtien2);
                                         $laytt2=mysqli_fetch_row($truyvan2);
 
-                                        $goal2= 5000000;
+                                        $goal2=5000000;
                                         $laygoal2= number_format($goal2,0,",",".");
                                         $vip2= 10000000;
                                         $layvip2= number_format($vip2,0,",",".");

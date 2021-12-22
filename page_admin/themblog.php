@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
             <i class="icon-angle-right"></i>
         </li>
         <li>
-            <a href="table_editable.php">Blog</a>
+            <a href="blog.php">Blog</a>
             <i class="icon-angle-right"></i>
         </li>
         <li><a href="#">Thêm Blog</a></li>
