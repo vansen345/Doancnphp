@@ -169,13 +169,7 @@
         </div>
     </div>
 </div>  End Modal Add cart -->
-<?php
-//include ('../page/connect.php');
-//$laysp="SELECT * FROM sanpham";
-//$truyvan=mysqli_query($conn,$laysp);
-//$cot=mysqli_fetch_array($truyvan);
-//
-//?>
+
 
 <!-- Start Modal Quickview cart -->
 <div class="modal fade" id="modalQuickview" tabindex="-1" role="dialog" aria-hidden="true">

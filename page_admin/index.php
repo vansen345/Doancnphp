@@ -153,24 +153,6 @@ if(!isset($_SESSION["admin"]))
 
 							</div>
 						</div>
-<!--                        <div class="span3 responsive" data-tablet="span6  fix-offset" data-desktop="span3">-->
-<!--                            <div  class="dashboard-stat purple">-->
-<!--                                <div class="visual">-->
-<!--                                    <i class="icon-calendar"></i>-->
-<!--                                </div>-->
-<!--                                --><?php
-//                                $sum2 = "SELECT SUM(tongtiengoc) FROM dondat WHERE NgayDat = MONTH() AND TrangThai = '1'";
-//                                $query_sum2 = mysqli_query($conn,$sum2);
-//                                $get_sum2 = mysqli_fetch_row($query_sum2);
-//                                ?>
-<!--                                <div class="details">-->
-<!--                                    <div class="desc"> Tổng doanh thu trong ngày</div>-->
-<!--                                    <div class="number">--><?//=number_format($get_sum2[0],0,",",".")?><!-- VND</div>-->
-<!--                                </div>-->
-<!---->
-<!--                            </div>-->
-<!--                        </div>-->
-
 
 						<div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 							<div class="dashboard-stat yellow">

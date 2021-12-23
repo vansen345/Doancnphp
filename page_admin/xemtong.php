@@ -162,7 +162,7 @@ $laytt=mysqli_fetch_row($truyvan);
                                             <?php if($laytt2[0] > $goal2){ ?>
                                                 <b><i class="icon-user"></i> Loại:</b> Khách tiềm năng <br>
                                             <?php } else  { ?>
-                                            <b><i class="icon-user"></i> Loại:</b> Khách thuờng <br>
+                                            <b><i class="icon-user"></i> Loại:</b> Khách thường <br>
                                             <?php } ?>
                                             <b><i class="icon-mail-reply-all"></i> Email:</b> <?php echo $cotDDH["Email"] ?><br>
                                         </td>

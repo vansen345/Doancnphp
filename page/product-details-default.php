@@ -151,7 +151,11 @@ $numtong=mysqli_fetch_array($quertong);
                                 <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
                             </ul> ||
                             <a href="#"  class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>||
+                            <?php if($numtong["total"] > 0){ ?>
                             <a href="#" class="customer-review ml-2"><?php echo $numtong["total"] ?> <span style="color:#A9A9A9;">Đã Bán</span> </a>
+                            <?php } else { ?>
+                                <a href="#" class="customer-review ml-2"> 0 <span style="color:#A9A9A9;">Đã Bán</span> </a>
+                            <?php } ?>
                         </div>
                         <?php } else{ ?>
                             <div class="d-flex align-items-center">
@@ -166,7 +170,11 @@ $numtong=mysqli_fetch_array($quertong);
                                     <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
                                 </ul> ||
                                 <a href="#"  class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>||
-                                <a href="#" class="customer-review ml-2"><?php echo $numtong["total"] ?> <span style="color:#A9A9A9;">Đã Bán</span> </a>
+                                <?php if($numtong["total"] > 0){ ?>
+                                    <a href="#" class="customer-review ml-2"><?php echo $numtong["total"] ?> <span style="color:#A9A9A9;">Đã Bán</span> </a>
+                                <?php } else { ?>
+                                    <a href="#" class="customer-review ml-2"> 0 <span style="color:#A9A9A9;">Đã Bán</span> </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <div class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</div>
@@ -387,6 +395,42 @@ $numtong=mysqli_fetch_array($quertong);
         </div>
     </div>
 </div> <!-- End Product Content Tab Section -->
+<div class="modal fade" id="modalQuickview2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!--                        <div class="col text-right">-->
+                        <!--                            <button type="button" class="close modal-close" data-bs-dismiss="modal" aria-label="Close">-->
+                        <!--                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>-->
+                        <!--                            </button>-->
+                        <!--                        </div>-->
+                        <div class="col-lg-6 col-md-6 div_doimatkhau">
+                            <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
+                                <h3>Edit Comment</h3>
+                                <div class="default-form-box">
+                                    <label>Content <span style="color: red" >(*)</span></label> <input type="hidden" id="bl_edit">
+                                    <input id="comment_idprd" value="<?php echo $cot["MaSanPham"]?>" type="hidden">
+                                    <!--                                    <input required=""  id="matkhaucu" type="password">-->
+                                    <textarea  id="contentcm" placeholder="Write a review"  style="width: 800px"></textarea>
+                                </div>
+                                <div class="login_submit">
+                                    <span style="color:red;" id="bl_thongbao"></span>
+                                    <button id="edit_commnent" class="btn btn-md btn-black-default-hover mb-4" type="submit">Lưu</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Start Product Default Slider Section -->
 <div class="product-default-slider-section section-top-gap-100 section-fluid">
@@ -465,42 +509,7 @@ $numtong=mysqli_fetch_array($quertong);
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalQuickview2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-<!--                        <div class="col text-right">-->
-<!--                            <button type="button" class="close modal-close" data-bs-dismiss="modal" aria-label="Close">-->
-<!--                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>-->
-<!--                            </button>-->
-<!--                        </div>-->
-                        <div class="col-lg-6 col-md-6 div_doimatkhau">
-                            <div class="account_form" data-aos="fade-up"  data-aos-delay="0">
-                                <h3>Edit Comment</h3>
-                                <div class="default-form-box">
-                                    <label>Content <span style="color: red" >(*)</span></label> <input type="hidden" id="bl_edit">
-                                    <input id="comment_idprd" value="<?php echo $_GET["Masp"]?>" type="hidden">
-<!--                                    <input required=""  id="matkhaucu" type="password">-->
-                                    <textarea  id="contentcm" placeholder="Write a review"  style="width: 800px"></textarea>
-                                </div>
-                                <div class="login_submit">
-                                    <span style="color:red;" id="bl_thongbao"></span>
-                                    <button id="edit_commnent" class="btn btn-md btn-black-default-hover mb-4" type="submit">Lưu</button>
-                                </div>
 
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Button trigger modal -->
 
 
