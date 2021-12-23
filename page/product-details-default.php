@@ -54,6 +54,11 @@ $querysao=mysqli_query($conn,$tinhsao);
 //
 //    $avg=$total / $laytinh;
 //?>
+<?php
+$tong="SELECT *, SUM(ct_dondat.Soluong) as total FROM ct_dondat  INNER JOIN dondat ON dondat.MaDonDat = ct_dondat.MaDonDat WHERE MaSanPham = '".$cot["MaSanPham"]."' AND dondat.TrangThai = '1'";
+$quertong=mysqli_query($conn,$tong);
+$numtong=mysqli_fetch_array($quertong);
+?>
 
 <!-- ...:::: Start Breadcrumb Section:::... -->
 <div class="breadcrumb-section breadcrumb-bg-color--golden">
@@ -145,7 +150,8 @@ $querysao=mysqli_query($conn,$tinhsao);
                                 <li  class="sao sao4" data-sao="4" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 4)" ><i class="ion-android-star"></i></li>
                                 <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
                             </ul> ||
-                            <a href="#" class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>
+                            <a href="#"  class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>||
+                            <a href="#" class="customer-review ml-2"><?php echo $numtong["total"] ?> <span style="color:#A9A9A9;">Đã Bán</span> </a>
                         </div>
                         <?php } else{ ?>
                             <div class="d-flex align-items-center">
@@ -159,7 +165,8 @@ $querysao=mysqli_query($conn,$tinhsao);
                                     <li  class="sao sao4" data-sao="4" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 4)" ><i class="ion-android-star"></i></li>
                                     <li  class="sao sao5" data-sao="5" onclick="DanhGiaSP(<?php echo $cot["MaSanPham"]; ?> , '<?php echo $tendangnhap ?>', 5)" ><i class="ion-android-star"></i></li>
                                 </ul> ||
-                                <a href="#" class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>
+                                <a href="#"  class="customer-review ml-2"><?php echo mysqli_num_rows($truyvan_layDG)?> đánh giá</a>||
+                                <a href="#" class="customer-review ml-2"><?php echo $numtong["total"] ?> <span style="color:#A9A9A9;">Đã Bán</span> </a>
                             </div>
                         <?php } ?>
                         <div class="price"><?=number_format($cot["DonGia"],0,",",".")?> VND</div>
